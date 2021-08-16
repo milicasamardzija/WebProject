@@ -2,26 +2,7 @@
     display: flex;
 }
 
-div {
-    display: block;
-}
-
-body {
-    position: relative;
-    font-size: 14px;
-    background: #fff;
-    width: 100%;
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    overflow: scroll;
-    margin: 0 auto;
-    background-size: cover;
-    background-attachment: fixed;
-}
-
-.image {
+.imageRest {
     background-image: url(../pictures/1.png);
     width: 300px;
     margin: 10px;
@@ -38,8 +19,8 @@ body {
 }
 
 .buttons {
-    margin-left: 120px;
-    margin-top: 10px;
+    margin-left: 150px;
+    margin-top: 20px;
 }
 
 .col-info {

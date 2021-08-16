@@ -1,75 +1,72 @@
 /* podesavanja za meni - HORIZONTAL NAVIGATION BAR CSS */
 ul {
-    list-style-type: none;
-    border-radius: 10px;
-    margin: 20px;
-    padding: 0;
-    overflow: hidden;
-    background-color: #333;
-  }
-  
-  li {
-    float: left;
-  }
-  
-  li a {
-    display: block;
-    color: green;
-    text-align: center;
-    padding: 14px 16px;
-    text-decoration: none;
-  }
+  list-style-type: none;
+  border-radius: 10px;
+  margin: 20px;
+  padding: 0;
+  overflow: hidden;
+  background-color: #333;
+}
 
-  
-  li a:hover:not(.active) {
-    background-color: #111;
-  } 
+li {
+  float: left;
+}
 
-  li a:hover {
-    background-color: #111;
-  }
+li a {
+  display: block;
+  color: green;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+
+li a:hover:not(.active) {
+  background-color: #111;
+}
+
+li a:hover {
+  background-color: #111;
+}
 
 h3 {
+  color: green;
+}
 
-      color: green;
-  }
 /* kartica u okviru stavke menija  */
 .containerInfo {
-width: 97%;
-height: 50%;
-margin-top: 20px;
-margin-left: 20px;
-margin-right: 10px;
-opacity: 1;
-border-radius: 10px;
-align-content: center;
-position: relative;
-background-color: fff;
-box-shadow:  0 19px 40px rgb(0 0 0 / 30%), 0 15px 12px rgb(0 0 0 / 22%);
-
-  }
-/* podesavanje informacija  za profil  */
-  .row.content {
-      height: 100%;
-      margin: 20px;
-      position: relative;
-     
+  width: 97%;
+  height: 50%;
+  margin-top: 20px;
+  margin-left: 20px;
+  margin-right: 10px;
+  opacity: 1;
+  border-radius: 10px;
+  align-content: center;
+  position: relative;
+  background-color: fff;
+  box-shadow: 0 19px 40px rgb(0 0 0 / 30%), 0 15px 12px rgb(0 0 0 / 22%);
 }
-  .sidenav {
-    height: 200px;
-    max-width: 200px;
-    position: relative;
-  }
 
-  .informations {
-    margin: 60px;
-    position: relative;
-  }
+/* podesavanje informacija  za profil  */
+.row.content {
+  height: 100%;
+  margin: 20px;
+  position: relative;
 
-  small {
-      color: green !important;
-  }
+}
 
-  
+.sidenav {
+  height: 200px;
+  max-width: 200px;
+  position: relative;
+}
 
-  
+.informations {
+  margin: 60px;
+  position: relative;
+}
+
+small {
+  color: green !important;
+}
