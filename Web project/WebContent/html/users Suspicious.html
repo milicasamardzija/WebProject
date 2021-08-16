@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="../css/restorani.css">
+    <link rel="stylesheet" href="../css/administrator.css"> 
+    <link rel= "stylesheet" href="../css/navibar.css">
+    <link rel= "stylesheet" href="../css/users.css">
+</head>
+<body>
+  <div>
+    <img class="logo image" src="../pictures/donesi.png">
+    <button  type="button" class="btn btn-danger pull-right" id="right-panel-link">Odjavi se</button>
+</div>
+<div class="naslovna">
+    <img class="naslovna image" src="../pictures/Food_header1.jpg">   
+</div>
+  
+<!-- nav bar sa bootstrapa-->
+<ul class="nav nav-tabs">
+    <li><a data-toggle="tab" href="#profil">Profil</a></li>
+    <li class="active"><a data-toggle="tab" href="#restorani">Restorani </a></li>
+    <li><a data-toggle="tab" href="#korisnici">Korisnici</a></li>
+    <li><a data-toggle="tab" href="#sumnjivi">Sumnjivi korisnici</a></li>
+</ul>
+
+
+<div id="profil" class="tab-pane fade">
+    <div class="containerInfo">
+    </div>
+</div>
+<div id="restorani" class="tab-pane fade">
+  <div class="containerInfo">
+  </div>
+</div>
+<div id="korisnici" class="tab-pane fade">
+  <div class="containerInfo">  
+  </div>
+</div>
+
+    <div class="tab-content">
+      <div id="sumnjivi" class="tab-pane fade in active">
+        <div class="containerInfo">
+        <section class="search-bar">
+            <div class="container">
+                <form action="#" >
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="row">
+                                <div class="col-lg-2 col-md-3 col-sm-12 p-0 search">
+                                    <input type="text" class="form-control search-slt" placeholder="Ime">
+                                </div>
+                                <div class="col-lg-2 col-md-3 col-sm-12 p-0 search" >
+                                    <input type="text" class="form-control search-slt" placeholder="Prezime">
+                                </div>
+                                <div class="col-lg-2 col-md-3 col-sm-12 p-0 search" >
+                                  <input type="text" class="form-control search-slt" placeholder="Korisnicko ime">
+                                </div>
+                                <div class="dropdown col-lg-2 col-md-3 col-sm-12 p-0 filt">
+                                    <button class="btn btn-secondary dropdown-toggle filters" type="button" data-toggle="dropdown">
+                                      Uloga
+                                    </button>
+                                    <div class="dropdown-menu">
+                                      <button class="dropdown-item" type="button">Action</button>
+                                      <button class="dropdown-item" type="button">Another action</button>
+                                      <button class="dropdown-item" type="button">Something else here</button>
+                                    </div>
+                                  </div>
+                                  <div class="dropdown col-lg-2 col-md-3 col-sm-12 p-0 filt">
+                                    <button class="btn btn-secondary dropdown-toggle" type="button" data-toggle="dropdown" >
+                                      Tip korisnika
+                                    </button>
+                                    <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
+                                      <button class="dropdown-item" type="button">Action</button>
+                                      <button class="dropdown-item" type="button">Another action</button>
+                                      <button class="dropdown-item" type="button">Something else here</button>
+                                    </div>
+                                  </div>
+                                <div class="col-lg-2 col-md-3 col-sm-12 btn-search">
+                                    <button type="button" class="btn btn-danger wrn-btn">Search</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </section>
+        <div>
+            <table class="table table-hover">
+                <thead>
+                  <tr>
+                    <th scope="col">Ime</th>
+                    <th scope="col">Prezime</th>
+                    <th scope="col">Korisnicko ime</th>
+                    <th scope="col">Broj sakupljenih bodova</th>
+                    <th scope="col">Uloga</th>
+                    <th scope="col">Tip korisnika</th>
+                    <th scope="col"></th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>Mark</td>
+                    <td>Otto</td>
+                    <td>moto</td>
+                    <td>5000</td>
+                    <td>kupac</td>
+                    <td>zlatni</td>
+                    <td><button type="button" class="btn btn-secondary">Blokiraj</button></td>
+                  </tr>
+                  <tr>
+                    <td>Markina</td>
+                    <td>Otto</td>
+                    <td>moto</td>
+                    <td>4000</td>
+                    <td>kupac</td>
+                    <td>srebrni</td>
+                    <td><button type="button" class="btn btn-secondary">Blokiraj</button></td>
+                  </tr>
+                  <tr>
+                    <td>Mark</td>
+                    <td>Otto</td>
+                    <td>moto</td>
+                    <td>5500</td>
+                    <td>kupac</td>
+                    <td>srebrni</td>
+                    <td><button type="button" class="btn btn-secondary">Blokiraj</button></td>
+                  </tr>
+                </tbody>
+              </table>
+        </div>
+      </div>
+    </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/js/bootstrap.min.js" integrity="sha384-oesi62hOLfzrys4LxRF63OJCXdXDipiYWBnvTl9Y9/TRlw5xlKIEHpNyvvDShgf/" crossorigin="anonymous"></script>
+</body>
+</html>
