@@ -1,36 +1,37 @@
- 
-/* Container needed to position the button. Adjust the width as needed */
-.naslovna {
-    position: relative;
-    width: 100%;
-   
-  }
-  
-  /* Make the image responsive */
-  .naslovna .image{
-    width:100%;
-    position: relative;
-    height:50%;
-    
-  }
+ /* Container needed to position the button. Adjust the width as needed */
+ .naslovna {
+   position: relative;
+   width: 100%;
 
-  /* logo i odjavi se btn */
-  .logo {
-    width: 12%;
-    height: 10%;
-    padding-left: none;
-  }
-.logo .image{
-    visibility: visible;
-    height:10px;
-    width: 25px;
-    position: fixed;
-    
-}
-  /* podesavanje za poziciju odjavi se btn */
-#right-panel-link {
-  position: relative;
-  top: 20px;
-  right:50px;
-  size: 24px;
-}
+ }
+
+ /* Make the image responsive */
+ .naslovna .image {
+   width: 100%;
+   position: relative;
+   height: 50%;
+
+ }
+
+ /* logo i odjavi se btn */
+ .logo {
+   width: 12%;
+   height: 10%;
+   padding-left: none;
+ }
+
+ .logo .image {
+   visibility: visible;
+   height: 10px;
+   width: 25px;
+   position: fixed;
+
+ }
+
+ /* podesavanje za poziciju odjavi se btn */
+ #right-panel-link {
+   position: relative;
+   top: 20px;
+   right: 50px;
+   size: 24px;
+ }
