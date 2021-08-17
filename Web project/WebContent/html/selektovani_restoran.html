@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   
+    <link rel="stylesheet" type="text/css" href="../css/restorani.css">
+    <link rel="stylesheet" type="text/css" href="../css/articals.css">
+    <link rel="stylesheet" href="../css/administrator.css"> 
+    <link rel= "stylesheet" href="../css/navibar.css">
+    <link rel= "stylesheet" href="../css/restoranPodaci.css">
+    <link rel= "stylesheet" href="../css/comments.css">
+    <link rel= "stylesheet" href="../css/restorani-pocetna.css">
+
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>  
+
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+    <div>
+        <img class="logo image" src="../pictures/donesi.png">
+        <button type="button" class="btn btn-success pull-right"  id="right-position" data-toggle="modal" data-target="#registracija">Registracija</button>
+        <button  type="button" class="btn btn-danger pull-right" id="right-panel-link" data-toggle="modal" data-target="#prijava">Prijavi se</button>
+    </div>
+
+    <!--  informacije o restoranu -->
+        <div class="restoran">
+            <div class="row-restaurants">
+                <div class = "col-with-picture">
+                    <div class="col-picture">
+                        <div class="imageLogo"></div>
+                    </div>
+                </div>
+                <div class="col-info">
+                    <h4 class="text">Naziv</h1>
+                    <h4 class="text">Tip</h1>
+                    <h4 class="text">Lokacija</h1>
+                    <h4 class="text">Procesna ocena</h1>
+                </div>
+            </div>
+        </div>
+
+
+
+        <!-- Navbar -->
+        <ul class="nav nav-tabs">
+            <li class="active"> <a data-toggle="tab" href="#artikli">Artikli </a></li>
+            <li><a data-toggle="tab" href="#komentari">Komentari</a></li>
+         
+        </ul>
+    
+
+
+    <div class="tab-content">
+
+    <!-- tab za artikle-->
+    <div id="artikli" class="tab-pane fade in active">
+        <div class="containerInfo">
+       <div class="tab-content">
+            <div class="panel">
+               <div class="row-artical">
+
+
+                <div class="column">
+                    <div class="card">
+                     <img src="../pictures/pizza.jpg" alt="Jane" style="width:70%; margin-left: 30px;">
+                      <div class="container">
+                         <h2>Margarita</h2>
+                          <p class="title">Pizza</p>
+                          <p>Cena: 780,00 din</p>
+                          <p>Grmaza: 500g</p>
+                          <p><button class="button">Izmeni</button></p>
+                          <p><button class="button">Izbrisi</button></p>
+                       </div>
+                    </div>
+                </div>
+
+                <div class="column">
+                <div class="card">
+                <img src="../pictures/domaca.png" alt="Jane" style="margin-top: 25px;">
+                <div class="container">
+                    <h2>Domaca</h2>
+                    <p class="title">Pizza</p>
+                    <p>Cena: 600,00 din</p>
+                    <p>Grmaza: 500g</p>
+                    <p><button class="button">Izmeni</button></p>
+                    <p><button class="button">Izbrisi</button></p>
+                     </div>
+                    </div>
+                 </div>
+            
+                <div class="column">
+                 <div class="card">
+                 <img src="../pictures/pizza_buanaroti.jpg" alt="Jane" style="width:70% ;margin-left: 25px">
+                    <div class="container">
+                    <h2>Buanaroti</h2>
+                    <p class="title">Pizza</p>
+                    <p>Cena: 800,00 din</p>
+                    <p>Grmaza: 500g</p>
+                    <p><button class="button">Izmeni</button></p>
+                    <p><button class="button">Izbrisi</button></p>
+                   </div>
+                    </div>
+                 </div>
+
+                 <div class="column">
+                     <div class="card">
+                       <img src="../pictures/pizza2-2.png" alt="Jane" style="width:90% " >
+                         <div class="container">
+                          <h2>Vege</h2>
+                         <p class="title">Pizza</p>
+                         <p>Cena: 550,00 din</p>
+                        <p>Grmaza: 500g</p>
+                          <p><button class="button">Izmeni</button></p>
+                       <p><button class="button">Izbrisi</button></p>
+                     </div>
+                  </div>
+                 </div>
+            </div>
+            </div>  
+
+          </div>
+        </div>
+    </div>
+
+
+
+ <!-- tab za komentare-->
+
+   <div id="komentari" class="tab-pane fade ">
+        <div class="containerInfo">
+
+             <div class= "tab-content"> </div>
+             <div class="media">
+                <div class="media-left media-top">
+                  <img src="../pictures/korisnik.png" class="media-object" style="width:60px">
+                </div>
+                <div class="media-body">
+                  <h4 class="media-heading">Ciao</h4>
+                  <p style="font-weight: 300; font-style: italic;">pera123</p>
+                  <p>Sve je bilo super</p>
+                  <p>
+                    <span class="fa fa-star checked"></span>
+                    <span class="fa fa-star checked"></span>
+                    <span class="fa fa-star checked"></span>
+                    <span class="fa fa-star"></span>
+                    <span class="fa fa-star"></span>
+                  </p>
+                </div>
+              </div>
+              <hr>   
+
+              <div class="media">
+                <div class="media-left media-top">
+                  <img src="../pictures/korisnik.png" class="media-object" style="width:60px">
+                </div>
+                <div class="media-body">
+                  <h4 class="media-heading">Ciao</h4>
+                  <p style="font-weight: 300; font-style: italic;">pera123</p>
+                  <p>Sve je bilo super</p>
+                  <p>
+                    <span class="fa fa-star checked"></span>
+                    <span class="fa fa-star checked"></span>
+                    <span class="fa fa-star checked"></span>
+                    <span class="fa fa-star"></span>
+                    <span class="fa fa-star"></span>
+                  </p>
+                </div>
+              </div>
+              <hr> 
+
+              <div class="media">
+                <div class="media-left media-top">
+                  <img src="../pictures/korisnik.png" class="media-object" style="width:60px">
+                </div>
+                <div class="media-body">
+                  <h4 class="media-heading">Ciao</h4>
+                  <p style="font-weight: 300; font-style: italic;">pera123</p>
+                  <p>Sve je bilo super</p>
+                  <p>
+                    <span class="fa fa-star checked"></span>
+                    <span class="fa fa-star checked"></span>
+                    <span class="fa fa-star checked"></span>
+                    <span class="fa fa-star"></span>
+                    <span class="fa fa-star"></span>
+                  </p>
+                </div>
+              </div>
+              <hr> 
+
+             </div>
+         </div>
+      </div>
+
+
+
+
+
+
+</div>
+
+  
+     <!-- Modal registracija-->
+ <div class="modal fade" id="registracija"  role="dialog" >
+    <div class="modal-dialog" >
+        <!-- Modal content -->
+      <div class="modal-content">
+        <div class="modal-header" style="padding:35px 50px;">
+          <h5 class="modal-title" id="exampleModalLabel">Registracija</h5>
+        </div>
+        <div class="modal-body" style="padding:40px 50px;">
+            <form role="form">
+                <div class="form-group">
+                    <label for="name">Ime</label>
+                    <input type="text" class="form-control" id="name" placeholder="Unesite Vase ime">
+                    <label for="name">Prezime</label>
+                    <input type="text" class="form-control" id="surname" placeholder="Unesite Vase prezime">
+                    
+                    <div class="genderRow"> 
+                        <label >Pol </label>
+                        <div class="col"> 
+                            <input type="radio" name="gender"  value="male"><small>Muski</small>
+                           <input type="radio" name="gender"  value="female"> <small>Zenski</small>
+                         </div>    
+                    </div>
+                    <label for="text" >Datum rodjenja</label>
+                    <input type="date" class="form-control"  >
+                    <label for="text" >Adresa</label>
+                    <input type="text" class="form-control"  >
+                   
+                  <label for="usrname"><span class="glyphicon glyphicon-user"></span> Korisnicko ime</label>
+                  <input type="text" class="form-control" id="usrname" placeholder="Unesite korisnicko ime">
+                </div>
+                <div class="form-group">
+                  <label for="psw"><span class="glyphicon glyphicon-eye-open"></span> Lozinka</label>
+                  <input type="password" class="form-control"  id="psw" placeholder="Unesite lozinku">
+                </div>
+                <button type="submit" class="btn btn-success btn-block"><span ></span> Registruj se</button>
+            </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-danger btn-default pull-left"  data-dismiss="modal">Odustani</button>
+          
+        </div>
+      </div>
+    </div>
+  </div>
+
+ <!-- Modal prijava-->
+ <div class="modal fade" id="prijava"  role="dialog" >
+    <div class="modal-dialog" >
+        <!-- Modal content -->
+      <div class="modal-content">
+        <div class="modal-header" style="padding:35px 50px;">
+          <h5 class="modal-title" id="exampleModalLabel">Prijava</h5>
+        </div>
+        <div class="modal-body" style="padding:40px 50px;">
+            <form role="form">
+                <div class="form-group">
+                  <label for="usrname"><span class="glyphicon glyphicon-user"></span> Korisnicko ime</label>
+                  <input type="text" class="form-control" id="usrname" placeholder="Unesite korisnicko ime">
+                </div>
+                <div class="form-group">
+                  <label for="psw"><span class="glyphicon glyphicon-eye-open"></span> Lozinka</label>
+                  <input type="password" class="form-control"  id="psw" placeholder="Unesite lozinku">
+                </div>
+                <button type="submit" class="btn btn-success btn-block"><span class="glyphicon glyphicon-off"></span> Logovanje</button>
+            </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-danger btn-default pull-left"  data-dismiss="modal">Odustani</button>
+          
+        </div>
+      </div>
+    </div>
+  </div>
+
+</body>
+        
+   
+</body>
+</html>
