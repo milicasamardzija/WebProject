@@ -1,0 +1,100 @@
+<html> 
+  <head> 
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Donesi hranu</title> 
+    <link rel= "stylesheet" href="../css/navibar.css">
+    <link rel= "stylesheet" href="../css/restoranAdd.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- dodatno za butstrap-->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"> 
+  </head>
+  <body>
+    <div>
+      <img class="logo image" src="../pictures/donesi.png">
+      <button  type="button" class="btn btn-danger pull-right" id="right-panel-link">Odjavi se</button>
+    </div>
+    <div class="naslovna">
+        <img class="naslovna image" src="../pictures/Food_header1.jpg">
+    </div>
+  <!-- nav bar sa bootstrapa-->
+    <ul class="nav nav-tabs">
+      <li class="active"><a data-toggle="tab" href="#profil">Profil</a></li>
+      <li><a data-toggle="tab" href="#restorani">Restorani </a></li>
+      <li><a data-toggle="tab" href="#korisnici">Korisnici</a></li>
+      <li><a data-toggle="tab" href="#sumnjivi">Sumnjivi korisnici</a></li>
+    </ul>
+
+    <div class="tab-content t">
+      <div id="restaurantAdd" class="tab-pane fade in active">
+        <div class="containerInfo t"> 
+          <div class="information">
+                <form>
+                  <table class="t">
+                    <tr>
+                      <td class="labela">Naziv:</td>
+                      <td><input class="form-control" type="text" placeholder="Naziv"></td>
+                    </tr>
+                    <tr>
+                      <td class="labela">Tip:</td>
+                      <td><select class="form-control">
+                        <option>Izbaeri tip</option>
+                      </select></td>
+                    </tr>
+                    <tr>
+                      <td class="labela">Adresa:</td>
+                      <td><input class="form-control" type="text" placeholder="Adresa"></td>
+                      <td class="buttonMap"><button type="button" class="btn btn-success"><i></i>Choose on map</button></td>
+                    </tr>
+                    <tr>
+                      <td class="labela">Broj:</td>
+                      <td><input class="form-control" type="text" placeholder="Broj"></td>
+                    </tr>
+                    <tr>
+                      <td class="labela">Grad:</td>
+                      <td><input class="form-control" type="text" placeholder="Grad"></td>
+                    </tr>
+                    <tr>
+                      <td class="labela">Postanski broj:</td>
+                      <td><input class="form-control" type="text" placeholder="Postanski broj"></td>
+                    </tr>
+                    <tr>
+                      <td class="labela">Logo:</td>
+                      <td><input type="file"  onchange="encodeImageFileAsURL(this)"></td>
+                    </tr>
+                    <tr>
+                      <td class="labela">Menadzer:</td>
+                      <td><select class="form-control">
+                        <option>Izaberi menadzera</option>
+                      </select></td>
+                      <td class="buttonMap"><button type="button" class="btn btn-success"><i></i>Kreiraj novog menadzera</button></td>
+                    </tr>
+                    <tr>
+                      <td class="buttonForm"><button type="button" class="btn btn-success">Izmeni</button></td>
+                      <td class="buttonForm"><button type="button" class="btn btn-success">Otkazi</button></td>
+                    </tr>
+                  </table>
+                </form>
+              </div>
+         </div>
+      </div>
+    </div>
+
+      <div id="restorani" class="tab-pane fade">
+        <div class="containerInfo">
+        </div>
+      </div>
+      <div id="korisnici" class="tab-pane fade">
+        <div class="containerInfo">
+        </div>
+      </div>
+      
+      <div id="sumnjivi" class="tab-pane fade">
+        <div class="containerInfo">  
+        </div>
+      </div>
+
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>   
+  </body>
+</html>
