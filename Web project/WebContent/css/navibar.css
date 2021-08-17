@@ -36,7 +36,7 @@ h3 {
 /* kartica u okviru stavke menija  */
 .containerInfo {
   width: 97%;
-  height: 50%;
+  height: 65%;
   margin-top: 20px;
   margin-left: 20px;
   margin-right: 10px;
@@ -66,4 +66,3 @@ h3 {
   margin: 60px;
   position: relative;
 }
-
