@@ -2,9 +2,15 @@
     display: flex;
 }
 
+.background-image{
+    height: max-content;
+    width: 50%;
+}
 .imageRest {
     background-image: url(../pictures/1.png);
+   
     width: 300px;
+    height: 50%;
     margin: 10px;
     border-radius: 10px;
     height: 200px;
