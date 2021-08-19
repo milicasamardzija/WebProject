@@ -96,7 +96,7 @@ public class UsersDAO {
 				}
 			}
 		}
-		
+
 	}
 	public User getUserByUsername(String username) {
 		if(users.containsKey(username)) {
