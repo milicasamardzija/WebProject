@@ -6,12 +6,12 @@
 	"name" : "Aca",
 	"surname" : "Acic",
 	"gender" : 0,
-	"birthday" : "20.01.1990.",
+	"birthday" : "1999-12-01",
 	"role" : 0,
 	"address" : null,
 	"orderIds" : [],
 	"chartId" : -1,
-	"points: -1,
+	"points": -1,
 	"typeCustomer" : null,
 	"idRestaurant" : -1
   }
