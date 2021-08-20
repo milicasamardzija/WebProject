@@ -16,7 +16,6 @@
 			<param-name>jersey.config.server.provider.packages</param-name>
 			<param-value>services,org.codehaus.jackson.jaxrs</param-value>
 		</init-param>
-		
 		<load-on-startup>1</load-on-startup>
 	</servlet>
 	<servlet-mapping>
@@ -24,5 +23,4 @@
 		<!-- Bazna putanja do REST servisa. Može biti bilo šta (pa i prazan string) -->
 		<url-pattern>/rest/*</url-pattern>
 	</servlet-mapping>
-	
 </web-app>
