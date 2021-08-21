@@ -141,6 +141,15 @@ public class UserService {
 				.entity("You do not have permission to access!").build();
 	}
 	
+	//dodavanje korisnika
+	@POST
+	@Path("/addUser")
+	@Consumes(MediaType.APPLICATION_JSON)
+	public void addUser(UserNewDTO user) {
+		UsersDAO users = getUsers();
+		users.addUser(user);																			
+	}
+	
 	private UsersDAO getUsers() {
 		UsersDAO users = (UsersDAO)context.getAttribute("users");
 		
