@@ -13,7 +13,9 @@ import javax.ws.rs.core.Response;
 
 import beans.User;
 import dao.UsersDAO;
+import dto.UserDTO;
 import dto.UserLoginDTO;
+import dto.UserRegistrationDTO;
 import enums.Role;
 
 @Path("/user")
@@ -76,8 +78,24 @@ public class UserService {
 			return Response.status(Response.Status.ACCEPTED).entity("/WebShopREST/html/kupac_profil.html").build();
 		}
 		
-		System.out.println("idem na index.html");
 		return Response.status(Response.Status.ACCEPTED).entity("/WebShopREST/index.html").build();
+	}
+	
+	@POST
+	@Path("/registration")
+	@Produces(MediaType.TEXT_HTML)
+	@Consumes(MediaType.APPLICATION_JSON)
+	public Response registration(UserRegistrationDTO user) {
+		UsersDAO users = getUsers();
+
+		if (users.getUserByUsername(user.username) != null) {
+			return Response.status(Response.Status.BAD_REQUEST)
+					.entity("Uneto korisnicko ime je vec zauzeto.Molimo unesite drugo.").build();
+		}
+	
+		users.registerUser(user);
+		System.out.println(context.getRealPath(""));
+		return Response.status(Response.Status.ACCEPTED).entity("/WebShopREST/index.html").build();	//redirekcija na logovanje																			
 	}
 	
 	private UsersDAO getUsers() {

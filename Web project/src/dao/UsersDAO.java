@@ -18,8 +18,12 @@ import com.fasterxml.jackson.databind.type.MapType;
 import com.fasterxml.jackson.databind.type.TypeFactory;
 
 import beans.Address;
+import beans.Customer;
 import beans.User;
 import dto.UserDTO;
+import dto.UserRegistrationDTO;
+import enums.CustomerType;
+import enums.Role;
 
 public class UsersDAO {
 	private HashMap<String,User> users;
@@ -51,13 +55,6 @@ public class UsersDAO {
 		loadUsers(contextPath);
 	}
 	
-	//dodavanje novog korisnika(menadzer ili dostavljac)
-	//username i password su mu ime i prezime spojeno na pocetku
-	public void addUser(UserDTO user) {
-		getUsers().put(user.name+user.surname, new User(false, false, user.name+user.surname, user.name+user.surname, user.name, user.surname, user.gender, user.birthday, user.role, new Address(user.street, user.number, user.city, user.zipCode, user.latitude, user.longitude ), new ArrayList<Integer>(), -1, -1, null, -1));
-		saveUsers();
-	}
-	
 	//ucitavanje korisnika iz fajla
 	@SuppressWarnings("unchecked")
 	private void loadUsers(String contextPath) {
@@ -74,7 +71,7 @@ public class UsersDAO {
 			TypeFactory factory = TypeFactory.defaultInstance();
 			MapType type = factory.constructMapType(HashMap.class, String.class, User.class);
 			objectMapper.getFactory().configure(JsonGenerator.Feature.ESCAPE_NON_ASCII, true);
-			users = ((HashMap<String, User>) objectMapper.readValue(file, type));
+			this.users = ((HashMap<String, User>) objectMapper.readValue(file, type));
 		} catch (FileNotFoundException fnfe) {
 			try {
 				file.createNewFile();
@@ -118,7 +115,7 @@ public class UsersDAO {
 			ObjectMapper objectMapper = new ObjectMapper();
 			objectMapper.configure(SerializationFeature.INDENT_OUTPUT, true);
 			objectMapper.getFactory().configure(JsonGenerator.Feature.ESCAPE_NON_ASCII, true);
-			String stringUsers = objectMapper.writeValueAsString(users);
+			String stringUsers = objectMapper.writeValueAsString(this.users);
 			fileWriter.write(stringUsers);
 			fileWriter.flush();
 		} catch (IOException e) {
@@ -140,5 +137,21 @@ public class UsersDAO {
 			return users.get(username);
 		}
 		return null;
+	}
+	
+	//dodavanje novog korisnika(menadzer ili dostavljac)
+	//username i password su mu ime i prezime spojeno na pocetku
+	public void addUser(UserDTO user) {
+		getUsers().put(user.name+user.surname, new User(false, false, user.name+user.surname, user.name+user.surname, user.name, user.surname, user.gender, user.birthday, user.role, new Address(user.street, user.number, user.city, user.zipCode), new ArrayList<Integer>(), -1, -1, null, -1));
+		saveUsers();
+	}
+		
+	//registrovani korisnik je uvek kupac i uvek je bronzani na pocetku
+	//da li se chartId dodaje ovde??
+	//podestiti bodvanje za Customer!!! - lupila sam ovde
+	public void registerUser(UserRegistrationDTO user) {
+		getUsers().put(user.username, new User(false, false, user.username, user.password, user.name, user.surname, user.gender, user.birthday, Role.CUSTOMER, new Address(user.street, user.number, user.city, user.zipCode), new ArrayList<Integer>(), -1, 0, new Customer(CustomerType.BRONZE,0.1,2000), -1));
+		saveUsers();
+		System.out.println(this.users.values());
 	}	
 }
