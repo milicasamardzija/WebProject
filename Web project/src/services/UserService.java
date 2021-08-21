@@ -61,8 +61,23 @@ public class UserService {
 			return Response.status(Response.Status.ACCEPTED).entity("/WebShopREST/html/administrator_profil.html").build();
 		}
 		
+		if(userForLogin.getRole().equals(Role.MANAGER)) {
+			System.out.println("menadzer sam");
+			return Response.status(Response.Status.ACCEPTED).entity("/WebShopREST/html/menadzer_profil.html").build();
+		}
+		
+		if(userForLogin.getRole().equals(Role.DELIVERER)) {
+			System.out.println("dostavljac sam");
+			return Response.status(Response.Status.ACCEPTED).entity("/WebShopREST/html/dostavljac_profil.html").build();
+		}
+		
+		if(userForLogin.getRole().equals(Role.CUSTOMER)) {
+			System.out.println("kupac sam");
+			return Response.status(Response.Status.ACCEPTED).entity("/WebShopREST/html/kupac_profil.html").build();
+		}
+		
 		System.out.println("idem na index.html");
-		return Response.status(Response.Status.ACCEPTED).entity("/WebShopREST/html/administrator_profil.html").build();
+		return Response.status(Response.Status.ACCEPTED).entity("/WebShopREST/index.html").build();
 	}
 	
 	private UsersDAO getUsers() {
@@ -73,7 +88,7 @@ public class UserService {
 			users = new UsersDAO(contextPath);
 			context.setAttribute("users", users);
 		}
-		
+	
 		return users;
 	}
 	
