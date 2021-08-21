@@ -6,6 +6,7 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.HashMap;
 
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
@@ -16,7 +17,9 @@ import com.fasterxml.jackson.databind.introspect.VisibilityChecker;
 import com.fasterxml.jackson.databind.type.MapType;
 import com.fasterxml.jackson.databind.type.TypeFactory;
 
+import beans.Address;
 import beans.User;
+import dto.UserDTO;
 
 public class UsersDAO {
 	private HashMap<String,User> users;
@@ -48,6 +51,14 @@ public class UsersDAO {
 		loadUsers(contextPath);
 	}
 	
+	//dodavanje novog korisnika(menadzer ili dostavljac)
+	//username i password su mu ime i prezime spojeno na pocetku
+	public void addUser(UserDTO user) {
+		getUsers().put(user.name+user.surname, new User(false, false, user.name+user.surname, user.name+user.surname, user.name, user.surname, user.gender, user.birthday, user.role, new Address(user.street, user.number, user.city, user.zipCode, user.latitude, user.longitude ), new ArrayList<Integer>(), -1, -1, null, -1));
+		saveUsers();
+	}
+	
+	//ucitavanje korisnika iz fajla
 	@SuppressWarnings("unchecked")
 	private void loadUsers(String contextPath) {
 		FileWriter fileWriter = null;
@@ -97,12 +108,33 @@ public class UsersDAO {
 			}
 		}
 	}
+	
+	//ucitavanje korisnika u fajl
+	private void saveUsers() {
+		File f = new File(filePath + "/data/users.txt");
+		FileWriter fileWriter = null;
+		try {
+			fileWriter = new FileWriter(f);
+			ObjectMapper objectMapper = new ObjectMapper();
+			objectMapper.configure(SerializationFeature.INDENT_OUTPUT, true);
+			objectMapper.getFactory().configure(JsonGenerator.Feature.ESCAPE_NON_ASCII, true);
+			String stringUsers = objectMapper.writeValueAsString(users);
+			fileWriter.write(stringUsers);
+			fileWriter.flush();
+		} catch (IOException e) {
+			e.printStackTrace();
+		} finally {
+			if (fileWriter != null) {
+				try {
+					fileWriter.close();
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		}
+	}
+	
 	public User getUserByUsername(String username) {
-		System.out.println(users.get(username));
-		System.out.println("*******************");
-		System.out.println(users.size());
-		System.out.println("*******************");
-		System.out.println(users.containsKey(username));
 		if(users.containsKey(username)) {
 			System.out.println(users.containsKey(username));
 			return users.get(username);
