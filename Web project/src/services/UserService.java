@@ -3,6 +3,7 @@ package services;
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
 import javax.ws.rs.Consumes;
+import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
@@ -13,6 +14,7 @@ import javax.ws.rs.core.Response;
 
 import beans.User;
 import dao.UsersDAO;
+import dto.UserNewDTO;
 import dto.UserDTO;
 import dto.UserLoginDTO;
 import dto.UserRegistrationDTO;
@@ -98,6 +100,47 @@ public class UserService {
 		return Response.status(Response.Status.ACCEPTED).entity("/WebShopREST/index.html").build();	//redirekcija na logovanje																			
 	}
 	
+	//nisam sigurna da l je neophodno ova provera za admina al kontam ne smeta
+	//treba proveriti za odgovor da li treba ovo da bude
+	@POST
+	@Path("/blockUser")
+	@Produces(MediaType.TEXT_HTML)
+	@Consumes(MediaType.APPLICATION_JSON)
+	public Response blockUser(UserDTO user){
+		
+		if(isUserAdmin()) {
+			UsersDAO users = getUsers();
+			users.blockUserById(user.user.getUsername());
+			
+			return Response
+					.status(Response.Status.ACCEPTED).entity("SUCCESS BLOCK")
+					.entity(getUsers().getValues())
+					.build();
+		}
+		return Response.status(403).type("text/plain")
+				.entity("You do not have permission to access!").build();
+	}
+	
+	//treba proveriti za odgovor da li treba ovo da bude
+	@DELETE
+	@Path("/deleteUser")
+	@Produces(MediaType.TEXT_HTML)
+	@Consumes(MediaType.APPLICATION_JSON)
+	public Response deleteUser(UserDTO user){
+		
+		if(isUserAdmin()) {
+			UsersDAO users = getUsers();
+			users.deleteUserById(user.user.getUsername());
+			
+			return Response
+					.status(Response.Status.ACCEPTED).entity("DELETED")
+					.entity(getUsers().getValues())
+					.build();
+		}
+		return Response.status(403).type("text/plain")
+				.entity("You do not have permission to access!").build();
+	}
+	
 	private UsersDAO getUsers() {
 		UsersDAO users = (UsersDAO)context.getAttribute("users");
 		
@@ -108,6 +151,17 @@ public class UserService {
 		}
 	
 		return users;
+	}
+	
+	private boolean isUserAdmin() {
+		User user = (User) request.getSession().getAttribute("loginUser");
+		
+		if(user!= null) {
+			if(user.getRole().equals(Role.ADMINISTRATOR)) {
+				return true;
+			}
+		}	
+		return false;
 	}
 	
 }

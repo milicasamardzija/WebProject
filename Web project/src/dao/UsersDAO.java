@@ -7,6 +7,7 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.HashMap;
 
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
@@ -20,7 +21,7 @@ import com.fasterxml.jackson.databind.type.TypeFactory;
 import beans.Address;
 import beans.Customer;
 import beans.User;
-import dto.UserDTO;
+import dto.UserNewDTO;
 import dto.UserRegistrationDTO;
 import enums.CustomerType;
 import enums.Role;
@@ -141,7 +142,7 @@ public class UsersDAO {
 	
 	//dodavanje novog korisnika(menadzer ili dostavljac)
 	//username i password su mu ime i prezime spojeno na pocetku
-	public void addUser(UserDTO user) {
+	public void addUser(UserNewDTO user) {
 		getUsers().put(user.name+user.surname, new User(false, false, user.name+user.surname, user.name+user.surname, user.name, user.surname, user.gender, user.birthday, user.role, new Address(user.street, user.number, user.city, user.zipCode), new ArrayList<Integer>(), -1, -1, null, -1));
 		saveUsers();
 	}
@@ -153,5 +154,27 @@ public class UsersDAO {
 		getUsers().put(user.username, new User(false, false, user.username, user.password, user.name, user.surname, user.gender, user.birthday, Role.CUSTOMER, new Address(user.street, user.number, user.city, user.zipCode), new ArrayList<Integer>(), -1, 0, new Customer(CustomerType.BRONZE,0.1,2000), -1));
 		saveUsers();
 		System.out.println(this.users.values());
-	}	
+	}
+	
+	//blokiranje korisnika
+	public void blockUserById(String username) {
+		User user = getUserByUsername(username);
+		if(user != null) {
+			user.setBlocked(true);
+			saveUsers();
+		}
+	}
+	
+	public Collection<User> getValues() {
+		return users.values();
+	}
+	
+	//brisanje korisnika
+	public void deleteUserById(String username) {
+		User user = getUserByUsername(username);
+		if(user != null) {
+			users.remove(username);
+			saveUsers();
+		}	
+	}
 }
