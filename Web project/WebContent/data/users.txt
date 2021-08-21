@@ -32,55 +32,21 @@
 	"typeCustomer" : null,
 	"idRestaurant" : 0
   },
-  "paki" : {
+  "kupac" : {
 	"deleted" : false,
 	"blocked" : false,
-	"username" : "paki",
-	"password" : "paki123",
-	"name" : "Pavle",
-	"surname" : "Pavlovic",
+	"username" : "kupac",
+	"password" : "kupac",
+	"name" : "Marko",
+	"surname" : "Markovic",
 	"gender" : 0,
-	"birthday" : "1999-12-01",
+	"birthday" : "1999-05-11",
 	"role" : 3,
 	"address" : null,
 	"orderIds" : [],
 	"chartId" : -1,
 	"points": -1,
-	"typeCustomer" : 0,
-	"idRestaurant" : -1
-  },
-  "dole" : {
-	"deleted" : false,
-	"blocked" : false,
-	"username" : "dole",
-	"password" : "dole123",
-	"name" : "Nikola",
-	"surname" : "Dolic",
-	"gender" : 0,
-	"birthday" : "1999-12-01",
-	"role" : 2,
-	"address" : null,
-	"orderIds" : [],
-	"chartId" : -1,
-	"points": -1,
-	"typeCustomer" : -1,
-	"idRestaurant" : -1
-  },
-  "nena" : {
-	"deleted" : false,
-	"blocked" : false,
-	"username" : "nena",
-	"password" : "nena123",
-	"name" : "Nevena",
-	"surname" : "Atic",
-	"gender" : 1,
-	"birthday" : "1999-12-01",
-	"role" : 3,
-	"address" : null,
-	"orderIds" : [],
-	"chartId" : -1,
-	"points": -1,
-	"typeCustomer" : 0,
-	"idRestaurant" : -1
+	"typeCustomer" : null,
+	"idRestaurant" : 0
   }
 }

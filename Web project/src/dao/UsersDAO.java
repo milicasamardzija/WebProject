@@ -48,6 +48,7 @@ public class UsersDAO {
 		loadUsers(contextPath);
 	}
 	
+	@SuppressWarnings("unchecked")
 	private void loadUsers(String contextPath) {
 		FileWriter fileWriter = null;
 		BufferedReader in = null;
@@ -72,7 +73,6 @@ public class UsersDAO {
 				objectMapper.getFactory().configure(JsonGenerator.Feature.ESCAPE_NON_ASCII, true);
 				String stringUsers = objectMapper.writeValueAsString(users);
 				fileWriter.write(stringUsers);
-
 			} catch (IOException e) {
 				e.printStackTrace();
 			} finally {
@@ -96,7 +96,6 @@ public class UsersDAO {
 				}
 			}
 		}
-
 	}
 	public User getUserByUsername(String username) {
 		System.out.println(users.get(username));
@@ -109,10 +108,5 @@ public class UsersDAO {
 			return users.get(username);
 		}
 		return null;
-	}
-	
-	
-	
-	
-	
+	}	
 }
