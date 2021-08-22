@@ -132,14 +132,6 @@ public class User {
 		this.points = points;
 	}
 
-	public Customer getTypeCustomer() {
-		return typeCustomer;
-	}
-
-	public void setTypeCustomer(Customer typeCustomer) {
-		this.typeCustomer = typeCustomer;
-	}
-
 	public int getIdRestaurant() {
 		return idRestaurant;
 	}
@@ -148,6 +140,14 @@ public class User {
 		this.idRestaurant = idRestaurant;
 	}	
 	
+	public Customer getTypeCustomer() {
+		return typeCustomer;
+	}
+
+	public void setTypeCustomer(Customer typeCustomer) {
+		this.typeCustomer = typeCustomer;
+	}
+
 	public User() {
 		
 	}

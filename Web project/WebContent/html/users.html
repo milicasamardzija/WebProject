@@ -83,7 +83,7 @@
                 </form>
             </div>
         </section>
-        <div>
+        <div id="users">
             <table class="table table-hover">
                 <thead>
                   <tr>
@@ -97,31 +97,13 @@
                   </tr>
                 </thead>
                 <tbody>
-                  <tr>
-                    <td>Mark</td>
-                    <td>Otto</td>
-                    <td>moto</td>
-                    <td>5000</td>
-                    <td>kupac</td>
-                    <td>zlatni</td>
-                    <td><button type="button" class="btn btn-secondary">Blokiraj</button></td>
-                  </tr>
-                  <tr>
-                    <td>Markina</td>
-                    <td>Otto</td>
-                    <td>moto</td>
-                    <td>4000</td>
-                    <td>kupac</td>
-                    <td>srebrni</td>
-                    <td><button type="button" class="btn btn-secondary">Blokiraj</button></td>
-                  </tr>
-                  <tr>
-                    <td>Mark</td>
-                    <td>Otto</td>
-                    <td>moto</td>
-                    <td>5000</td>
-                    <td>dostavljac</td>
-                    <td></td>
+                  <tr v-for="user in allUsers">
+                    <td>{{user.name}}</td>
+                    <td>{{user.surname}}</td>
+                    <td>{{user.username}}</td>
+                    <td>{{user.points}}</td>
+                    <td>{{user.role}}</td>
+                    <td>{{user.typeCustomer.type}}</td>
                     <td><button type="button" class="btn btn-secondary">Blokiraj</button></td>
                   </tr>
                 </tbody>
@@ -134,6 +116,12 @@
       <div class="containerInfo">  
       </div>
     </div>
+    <script src="../js/vue.js"></script>
+    <script src="../js/axios.js"></script>
+    <script src="../app/app.js"></script>
+    <script src="../js/jquery.min.js"></script>
+    <script src="../js/moment.min.js"></script>
+    <script src="../js/users.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/js/bootstrap.min.js" integrity="sha384-oesi62hOLfzrys4LxRF63OJCXdXDipiYWBnvTl9Y9/TRlw5xlKIEHpNyvvDShgf/" crossorigin="anonymous"></script>
 </body>

@@ -1,5 +1,7 @@
 package services;
 
+import java.util.Collection;
+
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
 import javax.ws.rs.Consumes;
@@ -33,9 +35,11 @@ public class UserService {
 	}
 	
 	@GET
-	@Path("/bozepomozi")
-	public void hej() {
-		System.out.println("HEEJ USPELA SI");
+	@Path("/getAllUsers")
+	@Produces(MediaType.APPLICATION_JSON)
+	public Collection<User> getAll() {
+		UsersDAO users = getUsers();
+		return users.getValues();
 	}
 	
 	@POST
@@ -43,7 +47,6 @@ public class UserService {
 	@Produces(MediaType.TEXT_HTML)
 	@Consumes(MediaType.APPLICATION_JSON)
 	public Response login(UserLoginDTO user) {
-		System.out.println("TU SAAAAAAAAAAAAAM");
 		UsersDAO users = getUsers();
 		
 		User userForLogin = users.getUserByUsername(user.username);
