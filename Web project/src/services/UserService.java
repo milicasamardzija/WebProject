@@ -103,6 +103,14 @@ public class UserService {
 		return Response.status(Response.Status.ACCEPTED).entity("/WebShopREST/index.html").build();	//redirekcija na logovanje																			
 	}
 	
+	@GET
+	@Path("/getNewUser")
+	@Produces(MediaType.APPLICATION_JSON)
+	public User getNewUser() {
+		User user = new User();
+		return user;
+	}
+	
 	//nisam sigurna da l je neophodno ova provera za admina al kontam ne smeta
 	//treba proveriti za odgovor da li treba ovo da bude
 	@POST

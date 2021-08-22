@@ -71,7 +71,7 @@
           <h5 class="modal-title" id="exampleModalLabel">Prijava</h5>
         </div>
         <div class="modal-body" id="logovanje" style="padding:40px 50px;">
-            <form role="form" @submit='login'>
+            <form role="form" method='post' @submit="login">
                 <div class="form-group">
                   <label for="usrname"><span class="glyphicon glyphicon-user"></span> Korisnicko ime</label>
                   <input type="text" class="form-control" id="usrname" placeholder="Unesite korisnicko ime" v-model="user.username">

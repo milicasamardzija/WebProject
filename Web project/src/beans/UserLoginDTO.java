@@ -1,4 +1,4 @@
-package dto;
+package beans;
 
 public class UserLoginDTO {
 	public String username;
