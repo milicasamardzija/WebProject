@@ -5,9 +5,9 @@ const AddUserAdminComponent = {template: '<administrator-addUser></administrator
 const router = new VueRouter({
     mode: 'hash',
     routes:[
-        {path : '/', component: RestaurantsAdminComponent},
-        {path : '/korisnici', component: UsersAdminComponent},
-        {path : '/dodajKorisnika', component: AddUserAdminComponent},
+        {path : '/', component: RestaurantsAdminComponent}, //restorani
+        {path : '/korisnici', component: UsersAdminComponent}, //korisnici
+        {path : '/dodajKorisnika', component: AddUserAdminComponent}, //dodavanje korisnika
     ]
 })
 

@@ -1,7 +1,7 @@
 Vue.component("administrator-restaurants", {
         data(){
             return{
-                restautans:[]
+                restaurants:[]
             }
         },
     template: `
