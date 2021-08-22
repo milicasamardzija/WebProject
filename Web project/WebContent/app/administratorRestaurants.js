@@ -55,28 +55,27 @@ Vue.component("administrator-restaurants", {
                     </div>
                 </form>
             </div>
+            <div class="row-restaurants">
+                <div class = "col-with-picture">
+                    <div class="col-picture">
+                        <div class="imageRest"></div>
+                    </div>
+                </div>
+                <div class="col-info">
+                    <h4 class="text">Naziv</h1>
+                    <h4 class="text">Tip</h1>
+                    <h4 class="text">Lokacija</h1>
+                    <h4 class="text">Procesna ocena</h1>
+                </div>
+                <div class="buttons">
+                    <div class="buttons btn-group-vertical">
+                        <button type="button" class="btn btn-secondary">Dodaj menazera</button>
+                        <button type="button" class="btn btn-secondary">Izmeni</button>
+                        <button type="button" class="btn btn-secondary">Izbrisi</button>
+                    </div>
+                </div>
+            </div>
         </section>
-        <p>dada</p>
-        <div class="row-restaurants">
-            <div class = "col-with-picture">
-                <div class="col-picture">
-                    <div class="imageRest"></div>
-                </div>
-            </div>
-            <div class="col-info">
-                <h4 class="text">Naziv</h1>
-                <h4 class="text">Tip</h1>
-                <h4 class="text">Lokacija</h1>
-                <h4 class="text">Procesna ocena</h1>
-            </div>
-            <div class="buttons">
-                <div class="buttons btn-group-vertical">
-                    <button type="button" class="btn btn-secondary">Dodaj menazera</button>
-                    <button type="button" class="btn btn-secondary">Izmeni</button>
-                    <button type="button" class="btn btn-secondary">Izbrisi</button>
-                </div>
-            </div>
-        </div>
     `,
     methods:{
 

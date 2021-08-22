@@ -65,6 +65,7 @@ public class UserService {
 		
 		if(userForLogin.getRole().equals(Role.ADMINISTRATOR)) {
 			System.out.println("admin sam");
+			//return Response.status(Response.Status.ACCEPTED).entity("/WebShopREST/html/administrator_profil.html").build();
 			return Response.status(Response.Status.ACCEPTED).entity("/WebShopREST/html/admin_dashboard.html").build();
 		}
 		

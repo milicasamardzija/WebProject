@@ -50,7 +50,6 @@ template: `
                     </div>
                 </form>
             </div>
-        </section>
         <!--tabela-->
         <div>
             <table class="table table-hover">
@@ -72,7 +71,7 @@ template: `
                     <td>{{user.username}}</td>
                     <td>{{user.points}}</td>
                     <td>{{user.role}}</td>
-                    <td>{{user.typeCustomer.type}}</td>
+                    <td>{{user.role}}</td>
                     <div>
                       <td><button type="button" class="btn btn-secondary">Izmeni</button></td>
                       <td><button type="button" class="btn btn-secondary">Izbrisi</button></td>
@@ -81,6 +80,7 @@ template: `
                 </tbody>
               </table>
         </div>
+        </section>
     </div>
 `,
     mounted() {
