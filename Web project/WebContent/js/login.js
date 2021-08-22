@@ -3,13 +3,6 @@ var app = new Vue({
     data:{
         user: {} 
     },
-    mounted() {
-        axios.get('/WebShopREST/rest/user/getNewUser')
-        .then(response => {this.user = response.data})
-        .catch(function(error){
-            console.log(error)
-        })
-    },
     methods: {
         login: function(event){
             event.preventDefault()
