@@ -2,3 +2,13 @@
     width: 90%;
     margin-left: 5%;
 }
+
+.plusButton {
+    width: 40px;
+    height: 40px;
+    margin-left: 70px;
+}
+
+.btn-search {
+    margin-left: 5px;
+}
