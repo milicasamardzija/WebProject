@@ -1,7 +1,7 @@
 Vue.component("profil-kupac", {
     data(){
         return{
-            kupac:{}
+            kupac:null
         }
     },
 template: `
