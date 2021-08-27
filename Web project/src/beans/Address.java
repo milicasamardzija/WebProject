@@ -5,9 +5,9 @@ public class Address {
 	private int number;
 	private String city;
 	private int zipCode;
-	private double latitude;
-	private double longitude;
-	
+	private double latitude; //samo restoran 
+	private double longitude; //samo restoran
+	 
 	public Address() {
 		
 	}
