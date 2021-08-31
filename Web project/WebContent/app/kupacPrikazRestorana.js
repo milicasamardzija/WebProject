@@ -57,21 +57,22 @@ template: `
                         </div>
                     </div>
                     <div class="col-info">
-                        <h4 class="text">Naziv</h1>
-                        <h4 class="text">Tip</h1>
-                        <h4 class="text">Lokacija</h1>
-                        <h4 class="text">Procesna ocena</h1>
+                        <h4 class="text" style="color: black;">Naziv:</h4>
+                        <h4 class="text"style="color: black;" >Tip:</h4>
+                        <h4 class="text" style="color: black;">Lokacija:</h4>
+                        <h4 class="text" style="color: black;">Procesna ocena:</h4>
+                        <button type="button" class="btn btn-danger " v-on:click="showRestaurant"> PORUCIVANJE </button>
                     </div>
-                    <div class="buttons">
-                
-                    </div>
+                 
                 </div>
             </form>
         </div>   
     </section>
 `,
 methods:{
-
+showRestaurant: function() {
+    router.push(`/prikaziRestoran`)
+}
 },
 mounted(){
 

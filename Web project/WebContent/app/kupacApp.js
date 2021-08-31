@@ -4,6 +4,8 @@ const PrikaziRestoraneComponent = {template: '<restorani-kupac></restorani-kupac
 const KorpaComponent = {template: '<korpa-kupac></korpa-kupac>'}
 const PorudzbineComponent = {template: '<porudbine-kupac></porudzbine-kupac>'}
 const NedostavljeneComponent= {template: '<nedostavljene-kupac></nedostavljne-kupac>'}
+const PrikazOdabranogRestorana= {template: '<odabraniRestoran-kupac></odabraniRestoran-kupac>'}
+const KomentariRestorana= {template: '<komentariRestoran-kupac></komentariRestoran-kupac>'}
 
 const router = new VueRouter({
     mode: 'hash',
@@ -14,6 +16,8 @@ const router = new VueRouter({
         {path : '/korpa', component: KorpaComponent}, //moja korpa 
         {path : '/porudzbine', component: PorudzbineComponent},//prethodne porudzbine
         {path : '/nedostavljene', component: NedostavljeneComponent}, //nedostavjnee porudzbine
+        {path : '/prikaziRestoran', component: PrikazOdabranogRestorana}, //prikaz restorana koji je oznacen za porucivanje
+        {path : '/prikaziKomentareRestorana', component: KomentariRestorana}, //komentari za odredjeni restoran 
     ]
 })
 
