@@ -72,16 +72,18 @@
 }
 
 .search {
-    margin-left: 10px;
+    margin-left: 30px;
+    margin-right: 20px;
+   
 }
 
 .filt {
-    margin-left: 10px;
-    margin-right: 20px;
+    margin-left: 30px;
+    
     width: 200px;
 }
 
 .btn-search {
     width: 30px;
-    margin-left: 50px;
+    margin-left: 30px;
 }
