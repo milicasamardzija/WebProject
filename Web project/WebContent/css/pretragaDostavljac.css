@@ -1,0 +1,9 @@
+
+.contentTable {
+    margin:25px 25px;
+    font-size: 1.2em;
+}
+
+ .contentTable .td {
+    padding: 12px;
+}
