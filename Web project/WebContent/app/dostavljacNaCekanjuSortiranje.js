@@ -26,8 +26,8 @@ template: `
 
     <button style="margin-left: 90%;" class="btn btn-danger" type="button" v-on:click= "back">Vrati se nazad</button>
 </form>
-<h4 style="font-weight: bold;">
-            <p> PORUDZBINE KOJE ODGOVARAJU IZABRANOM KRITERIJUMU SORTIRANJA: </p> </h4>
+<h4 >
+            <p> Porudznine koje odgovaraju zadatom kriterijumu sortiranja: </p> </h4>
 
 
 </div>

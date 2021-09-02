@@ -42,8 +42,8 @@ template: `
 
             </table>
 
-            <h3>
-            <p> PORUDZBINE KOJE ODGOVARAJU PRETRAZI: </p> </h3>
+            <h4>
+            <p> Porudzbine koje odgovaraju kriterijumima pretrage: </p> </h4>
 
         </div>
 
