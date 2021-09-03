@@ -5,8 +5,8 @@ Vue.component("administrator-restaurants", {
             }
         },
     template: `
-        <section class="search-bar">
-            <div class="container">
+    <div class="containerInfo">
+            <div class="search-bar">
                 <form action="#" >
                     <div class="row">
                         <div class="col-lg-12">
@@ -55,27 +55,29 @@ Vue.component("administrator-restaurants", {
                     </div>
                 </form>
             </div>
-            <div class="row-restaurants">
-                <div class = "col-with-picture">
-                    <div class="col-picture">
-                        <div class="imageRest"></div>
+            <div class="rest">
+                <div class="row-restaurants">
+                    <div class = "col-with-picture">
+                        <div class="col-picture">
+                            <div class="imageRest"></div>
+                        </div>
                     </div>
-                </div>
-                <div class="col-info">
-                    <h4 class="text">Naziv</h1>
-                    <h4 class="text">Tip</h1>
-                    <h4 class="text">Lokacija</h1>
-                    <h4 class="text">Procesna ocena</h1>
-                </div>
-                <div class="buttons">
-                    <div class="buttons btn-group-vertical">
-                        <button type="button" class="btn btn-secondary">Dodaj menazera</button>
-                        <button type="button" class="btn btn-secondary">Izmeni</button>
-                        <button type="button" class="btn btn-secondary">Izbrisi</button>
+                    <div class="col-info">
+                        <h4 class="text">Naziv</h1>
+                        <h4 class="text">Tip</h1>
+                        <h4 class="text">Lokacija</h1>
+                        <h4 class="text">Procesna ocena</h1>
+                    </div>
+                    <div class="buttons">
+                        <div class="buttons btn-group-vertical">
+                            <button type="button" class="btn btn-secondary">Dodaj menazera</button>
+                            <button type="button" class="btn btn-secondary">Izmeni</button>
+                            <button type="button" class="btn btn-secondary">Izbrisi</button>
+                        </div>
                     </div>
                 </div>
             </div>
-        </section>
+    </div>
     `,
     methods:{
 

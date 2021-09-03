@@ -2,13 +2,14 @@
     display: flex;
 }
 
-.background-image{
+.background-image {
     height: max-content;
     width: 50%;
 }
+
 .imageRest {
     background-image: url(../pictures/1.png);
-   
+
     width: 300px;
     height: 50%;
     margin: 10px;

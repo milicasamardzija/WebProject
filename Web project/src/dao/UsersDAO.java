@@ -21,6 +21,7 @@ import com.fasterxml.jackson.databind.type.TypeFactory;
 import beans.Address;
 import beans.Customer;
 import beans.User;
+import dto.UserDTO;
 import dto.UserNewDTO;
 import dto.UserRegistrationDTO;
 import enums.CustomerType;
@@ -153,7 +154,6 @@ public class UsersDAO {
 	public void registerUser(UserRegistrationDTO user) {
 		getUsers().put(user.username, new User(false, false, user.username, user.password, user.name, user.surname, user.gender, user.birthday, Role.CUSTOMER, new Address(user.street, user.number, user.city, user.zipCode), new ArrayList<Integer>(), -1, 0, new Customer(CustomerType.BRONZE,0.1,2000), -1));
 		saveUsers();
-		System.out.println(this.users.values());
 	}
 	
 	//blokiranje korisnika
@@ -176,5 +176,12 @@ public class UsersDAO {
 			users.remove(username);
 			saveUsers();
 		}	
+	}
+	public void changeUser(UserDTO changedUser) {
+		User user =  getUserByUsername(changedUser.user.getUsername());
+		user.setName(changedUser.user.getName());
+		user.setSurname(changedUser.user.getSurname());
+		//ostali parametri
+		saveUsers();
 	}
 }

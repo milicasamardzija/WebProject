@@ -39,7 +39,16 @@ public class UserService {
 	@Produces(MediaType.APPLICATION_JSON)
 	public Collection<User> getAll() {
 		UsersDAO users = getUsers();
-		return users.getValues();
+		Collection<User> allUsers = users.getValues();
+		Collection<User> notDeletedUsers = null;
+		
+			for (User user : allUsers) {
+				if(!user.getDeleted()) { 
+					notDeletedUsers.add(user);
+				}
+			}
+		
+		return notDeletedUsers;
 	}
 	
 	@POST
@@ -153,6 +162,15 @@ public class UserService {
 		UsersDAO users = getUsers();
 		users.addUser(user);																			
 	}
+	
+	//izmena korisnika
+	@POST
+	@Path("/changeUser")
+	@Consumes(MediaType.APPLICATION_JSON)
+	public void changeUser(UserDTO user) {
+		UsersDAO users = getUsers();
+		users.changeUser(user);																			
+	}	
 	
 	private UsersDAO getUsers() {
 		UsersDAO users = (UsersDAO)context.getAttribute("users");
