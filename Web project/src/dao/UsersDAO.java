@@ -135,7 +135,6 @@ public class UsersDAO {
 	
 	public User getUserByUsername(String username) {
 		if(users.containsKey(username)) {
-			System.out.println(users.containsKey(username));
 			return users.get(username);
 		}
 		return null;
