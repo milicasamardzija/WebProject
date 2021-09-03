@@ -74,8 +74,9 @@ public class UserService {
 		
 		if(userForLogin.getRole().equals(Role.ADMINISTRATOR)) {
 			System.out.println("admin sam");
-			return Response.status(Response.Status.ACCEPTED).entity("/WebShopREST"
-					+ "/html/admin_dashboard.html").build();
+		//	return Response.status(Response.Status.ACCEPTED).entity("/WebShopREST/html/admin_dashboard.html").build();
+		//	return Response.status(Response.Status.ACCEPTED).entity("/WebShopREST/html/menadzer_profil.html").build();
+			return null;
 		}
 		
 		if(userForLogin.getRole().equals(Role.MANAGER)) {
@@ -93,7 +94,8 @@ public class UserService {
 			return Response.status(Response.Status.ACCEPTED).entity("/WebShopREST/html/kupac_profil.html").build();
 		}
 		
-		return Response.status(Response.Status.ACCEPTED).entity("/WebShopREST/index.html").build();
+		//return Response.status(Response.Status.ACCEPTED).entity("/WebShopREST/index.html").build();
+		return null;
 	}
 	
 	@POST
@@ -171,6 +173,12 @@ public class UserService {
 		UsersDAO users = getUsers();
 		users.changeUser(user);																			
 	}	
+	
+	@GET
+	@Path("/BozePomozi")
+	public void get() {
+		System.out.println("Ovde saam");
+	}
 	
 	private UsersDAO getUsers() {
 		UsersDAO users = (UsersDAO)context.getAttribute("users");

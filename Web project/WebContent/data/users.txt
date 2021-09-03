@@ -48,5 +48,22 @@
 	"points": -1,
 	"typeCustomer" : null,
 	"idRestaurant" : 0
+  },
+  "nena" : {
+	"deleted" : false,
+	"blocked" : false,
+	"username" : "nena",
+	"password" : "nena",
+	"name" : "Aca",
+	"surname" : "Acic",
+	"gender" : 0,
+	"birthday" : "1999-12-01",
+	"role" : 0,
+	"address" : null,
+	"orderIds" : [],
+	"chartId" : -1,
+	"points": -1,
+	"typeCustomer" : null,
+	"idRestaurant" : -1
   }
 }

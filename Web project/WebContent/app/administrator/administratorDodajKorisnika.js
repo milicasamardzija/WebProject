@@ -7,15 +7,15 @@ Vue.component("administrator-addUser", {
 template: `
 <div class="containerInfo t"> 
   <div class="information">
-    <form>
+    <form @submit='addUser'>
       <table class="t">
         <tr>
           <td class="labela">Ime:</td>
-          <td><input class="form-control" type="text" placeholder="Ime"></td>
+          <td><input class="form-control" type="text" placeholder="Ime" v-model="newUser.name"></td>
         </tr>
         <tr>
             <td class="labela">Prezime:</td>
-            <td><input class="form-control" type="text" placeholder="Prezime"></td>
+            <td><input class="form-control" type="text" placeholder="Prezime" v-model="newUser.surname"></td>
         </tr>
         <tr>
             <td class="labela">Pol:</td>
@@ -63,6 +63,15 @@ template: `
 </div>
 `,
     methods : {
-		
+      addUser: function(event){
+        event.preventDefault()
+        axios.post("/WebShopREST/rest/user/addUser", newUser)
+        .then(
+          response => {
+            router.push(`/korisnici`)
+          } 
+        )
+        .catch()
+      }
 	}
 });

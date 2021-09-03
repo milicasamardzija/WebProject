@@ -13,8 +13,8 @@ template: `
     </div> 
     <div class="col-sm-9">
         <div class="informations">
-            <h4>Ime:</h4> 
-            <h4> Prezime:</h4>
+            <h4>Ime: {{user.name}}</h4> 
+            <h4> Prezime: {{user.surname}}</h4>
             <h4>Korisnicko ime: </h4>
             <h4>Pol: </h4>
             <h4>Datum rodjenja: </h4>
@@ -27,5 +27,14 @@ template: `
 `,
     methods : {
 		
-	}
+	},
+    mounted(){
+        axios.get("/WebShopREST/rest/profile/profileUser")
+        .then( response => {
+            this.user = response.data
+        })
+        .catch(function(error){
+            console.log(error)
+        })
+    }
 });
