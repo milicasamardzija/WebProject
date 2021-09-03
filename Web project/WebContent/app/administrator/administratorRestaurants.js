@@ -1,11 +1,12 @@
 Vue.component("administrator-restaurants", {
-        data(){
-            return{
-                restaurants:[]
-            }
-        },
-    template: `
-        <section class="search-bar">
+    data(){
+        return{
+            restaurants:[]
+        }
+    },
+template: `
+<div class="containerInfo">
+        <div class="search-bar">
             <div class="container">
                 <form action="#" >
                     <div class="row">
@@ -55,32 +56,56 @@ Vue.component("administrator-restaurants", {
                     </div>
                 </form>
             </div>
-            <div class="row-restaurants">
-                <div class = "col-with-picture">
-                    <div class="col-picture">
-                        <div class="imageRest"></div>
+        </div>
+            <div class="rest tab-pane container active">
+                <div class="row-restaurants">
+                    <div class = "col-with-picture">
+                        <div class="col-picture">
+                            <div class="imageRest"></div>
+                        </div>
+                    </div>
+                    <div class="col-info">
+                        <h4 class="text">Naziv</h1>
+                        <h4 class="text">Tip</h1>
+                        <h4 class="text">Lokacija</h1>
+                        <h4 class="text">Procesna ocena</h1>
+                    </div>
+                    <div class="buttons">
+                        <div class="buttons btn-group-vertical">
+                            <button type="button" class="btn btn-secondary">Dodaj menazera</button>
+                            <button type="button" class="btn btn-secondary">Izmeni</button>
+                            <button type="button" class="btn btn-secondary">Izbrisi</button>
+                        </div>
                     </div>
                 </div>
-                <div class="col-info">
-                    <h4 class="text">Naziv</h1>
-                    <h4 class="text">Tip</h1>
-                    <h4 class="text">Lokacija</h1>
-                    <h4 class="text">Procesna ocena</h1>
-                </div>
-                <div class="buttons">
-                    <div class="buttons btn-group-vertical">
-                        <button type="button" class="btn btn-secondary">Dodaj menazera</button>
-                        <button type="button" class="btn btn-secondary">Izmeni</button>
-                        <button type="button" class="btn btn-secondary">Izbrisi</button>
+                <div class="row-restaurants">
+                    <div class = "col-with-picture">
+                        <div class="col-picture">
+                            <div class="imageRest"></div>
+                        </div>
+                    </div>
+                    <div class="col-info">
+                        <h4 class="text">Naziv</h1>
+                        <h4 class="text">Tip</h1>
+                        <h4 class="text">Lokacija</h1>
+                        <h4 class="text">Procesna ocena</h1>
+                    </div>
+                    <div class="buttons">
+                        <div class="buttons btn-group-vertical">
+                            <button type="button" class="btn btn-secondary">Dodaj menazera</button>
+                            <button type="button" class="btn btn-secondary">Izmeni</button>
+                            <button type="button" class="btn btn-secondary">Izbrisi</button>
+                        </div>
                     </div>
                 </div>
             </div>
-        </section>
-    `,
-    methods:{
+        </div>
+    </div>   
+`,
+methods:{
 
-    },
-    mounted(){
+},
+mounted(){
 
-    },
+},
 });

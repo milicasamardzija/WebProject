@@ -64,7 +64,7 @@ public class UserService {
 		request.getSession().setAttribute("loginUser", userForLogin); //kacimo sesiju za korisnika
 		
 		if(userForLogin.getRole().equals(Role.ADMINISTRATOR)) {
-			System.out.println("admin sam");
+			System.out.println("admin sammmmm");
 			//return Response.status(Response.Status.ACCEPTED).entity("/WebShopREST/html/administrator_profil.html").build();
 			return Response.status(Response.Status.ACCEPTED).entity("/WebShopREST/html/admin_dashboard.html").build();
 		}
