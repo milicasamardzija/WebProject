@@ -11,6 +11,19 @@ template: `
   <form @submit='addUser'>
     <table class="t">
       <tr>
+        <td class="labela">Uloga:</td>
+        <td><input class="form-check-input" type="radio" id="exampleRadios2" value="MANAGER" v-model="newUser.role" >
+            <label class="form-check-label" for="exampleRadios2">
+              Menadzer
+            </label>
+        </td>
+        <td><input class="form-check-input" type="radio" id="exampleRadios2" value="DELIVERER"  v-model="newUser.role">
+            <label class="form-check-label" for="exampleRadios2">
+              Dostavljac
+            </label>
+        </td>
+      </tr>
+      <tr>
         <td class="labela">Ime:</td>
         <td><input class="form-control" type="text" placeholder="Ime" v-model="newUser.name"></td>
       </tr>
