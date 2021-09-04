@@ -10,7 +10,7 @@
     <link rel= "stylesheet" href="css/restorani-pocetna.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-    </head>
+    </head> 
     <body>
             <div>
                 <img class="logo image" src="pictures/donesi.png">
@@ -29,32 +29,36 @@
           <h5 class="modal-title" id="exampleModalLabel">Registracija</h5>
         </div>
         <div class="modal-body" style="padding:40px 50px;">
-            <form role="form">
+            <form role="form" method="POST" @submit="registration">
                 <div class="form-group">
                     <label for="name">Ime</label>
-                    <input type="text" class="form-control" id="name" placeholder="Unesite Vase ime">
+                    <input type="text" class="form-control" placeholder="Unesite Vase ime" v-model="user.name">
                     <label for="name">Prezime</label>
-                    <input type="text" class="form-control" id="surname" placeholder="Unesite Vase prezime">
+                    <input type="text" class="form-control"  placeholder="Unesite Vase prezime" v-model="user.surname">
                     <div class="genderRow"> 
                         <label >Pol </label>
                         <div class="col"> 
-                            <input type="radio" name="gender"  value="male"><small>Muski</small>
-                           <input type="radio" name="gender"  value="female"> <small>Zenski</small>
+                            <input type="radio" name="gender"  value="MALE" v-model="user.gender"><small>Muski</small>
+                           <input type="radio" name="gender"  value="FEMALE" v-model="user.gender"> <small>Zenski</small>
                          </div>    
                     </div>
+                    <div> </div>
                     <label for="text" >Datum rodjenja</label>
-                    <input type="date" class="form-control"  >
+                    <div class="genderRow">
+                      <input type="date" style="width: 390px;height: 30px;"  class="date" v-model="user.birthday" > 
+                    </div>
+                    
                     <label for="text" >Adresa</label>
                     <div>
                       <table>
                          <tr>
-                      <td><input type="text"  class="form-control" placeholder="Ulica" ></td>
+                      <td><input type="text"  class="form-control" placeholder="Ulica" v-model="user.street"></td>
                     
-                        <td><input type="text" class="form-control" placeholder="Broj" ></td>
+                        <td><input type="text" class="form-control" placeholder="Broj" v-model="user.number"></td>
                         
                      <tr>
-                        <td> <input type="text" class="form-control" placeholder="Grad" ></td>
-                      <td><input type="text" class="form-control"  placeholder="Postanski broj"></td>
+                        <td> <input type="text" class="form-control" placeholder="Grad" v-model="user.city"></td>
+                      <td><input type="text" class="form-control"  placeholder="Postanski broj" v-model="user.zipCode"></td>
                      </tr>
                      
                   
@@ -63,11 +67,11 @@
                     </div>
                     
                     <label for="usrname"><span class="glyphicon glyphicon-user"></span> Korisnicko ime</label>
-                    <input type="text" class="form-control" id="usrname" placeholder="Unesite korisnicko ime">
+                    <input type="text" class="form-control" id="usrname" placeholder="Unesite korisnicko ime" v-model="user.username">
                 </div>
                 <div class="form-group">
                   <label for="psw"><span class="glyphicon glyphicon-eye-open"></span> Lozinka</label>
-                  <input type="password" class="form-control"  id="psw" placeholder="Unesite lozinku">
+                  <input type="password" class="form-control"  id="psw" placeholder="Unesite lozinku" v-model="user.password">
                 </div>
                 <button type="submit" class="btn btn-success btn-block"><span ></span> Registruj se</button>
             </form>
@@ -117,9 +121,13 @@
                                     Tip restorana
                                 </button>
                                 <span class="dropdown-menu" aria-labelledby="dropdownMenu2">
-                                <button class="dropdown-item" type="button">Action</button>
-                                <button class="dropdown-item" type="button">Another action</button>
-                                <button class="dropdown-item" type="button">Something else here</button>
+                                  <button class="dropdown-item" type="button" value="ITALIAN">Italijanski</button>
+                                  <button class="dropdown-item" type="button" value="CHINESE">Kineski</button>
+                                  <button class="dropdown-item" type="button" value="PIZZA">Pica</button>
+                                  <button class="dropdown-item" type="button" value="BARBECUE">Rostilj</button>
+                                  <button class="dropdown-item" type="button" value="FISH">Riblji</button>
+                                  <button class="dropdown-item" type="button" value="VEGE">Veganski</button>
+                                  
                                 </span>
                             </td>
                               <td style="width: 250px"> 
@@ -127,58 +135,67 @@
                                     Ocena restorana
                                 </button>
                                 <span class="dropdown-menu" aria-labelledby="dropdownMenu2">
-                                <button class="dropdown-item" type="button">Action</button>
-                                <button class="dropdown-item" type="button">Another action</button>
-                                <button class="dropdown-item" type="button">Something else here</button>
+                                <button class="dropdown-item" type="button">1</button>
+                                <button class="dropdown-item" type="button">2</button>
+                                <button class="dropdown-item" type="button">3</button>
+                                <button class="dropdown-item" type="button">4</button>
+                                <button class="dropdown-item" type="button">5</button>
                                 </span>
                             </td>
                             <td style="width: 250px"> <button type="button" class="btn btn-danger wrn-btn btn-search">Search</button></td>
                            </tr>
                        </table>
 
-                  </div>
+               
              
                         <table style="margin-left: 200px; margin-top: 20px;">
                           <tr> 
                             <td style="width:500px "> <p> Ukoliko zelite da filtrirate prikaz restorana,  izaberite odgovarajuci tip: </p></td>
                             <td>       <button class="btn btn-secondary dropdown-toggle" type="button" data-toggle="dropdown" >
-                          Tip restorana
-                      </button>
-                      <span class="dropdown-menu" aria-labelledby="dropdownMenu2">
-                      <button class="dropdown-item" type="button">Action</button>
-                      <button class="dropdown-item" type="button">Another action</button>
-                      <button class="dropdown-item" type="button">Something else here</button>
-                      </span> </td>
-                      <td style="width: 25px;"> </td>
-                          <td style="width:150px "> <p> ili status restorana</p></td>
-                          <td >       <button class="btn btn-secondary dropdown-toggle" type="button" data-toggle="dropdown" >
-                            Status restorana
-                        </button>
-                        <span class="dropdown-menu" aria-labelledby="dropdownMenu2">
-                        <button class="dropdown-item" type="button">Action</button>
-                        <button class="dropdown-item" type="button">Another action</button>
-                        <button class="dropdown-item" type="button">Something else here</button>
-                        </span> </td>
-                          </tr> 
+                          Tip restorana </button>
+                     
+                              <span class="dropdown-menu" aria-labelledby="dropdownMenu2">
+                              <button class="dropdown-item" type="button">Action</button>
+                              <button class="dropdown-item" type="button">Another action</button>
+                              <button class="dropdown-item" type="button">Something else here</button>
+                              </span> </td>
+                            <td style="width: 25px;"> </td>
+                              <td style="width:150px "> <p> ili status restorana</p></td>
+                              <td > <button class="btn btn-secondary dropdown-toggle" type="button" data-toggle="dropdown" > Status restorana </button>
+                                 
+                       
+                                <span class="dropdown-menu" aria-labelledby="dropdownMenu2">
+                                <button class="dropdown-item" type="button" value="ITALIAN">Italijanski</button>
+                                <button class="dropdown-item" type="button" value="CHINESE">Kineski</button>
+                                <button class="dropdown-item" type="button" value="PIZZA">Pica</button>
+                                <button class="dropdown-item" type="button" value="BARBECUE">Rostilj</button>
+                                <button class="dropdown-item" type="button" value="FISH">Riblji</button>
+                                <button class="dropdown-item" type="button" value="VEGE">Veganski</button>
+                                </span>
+                             </td>
+                        </tr> 
                         </table>
 
-         <!-- za sortiranje-->
-                  
- 
+                         <!-- za sortiranje-->
                       <table style="margin-left: 200px; margin-top: 20px;">
-                        <tr> 
-                          <td style="width: 500px;"> <p> Ukoliko zelite da sortirate prikaz, izaberite odgovarajuci kriterijum: </p></td>
-                          <td style="margin-left: 30px;">       <button class="btn btn-secondary dropdown-toggle" type="button" data-toggle="dropdown" >
-                        Sortiranje
-                    </button>
-                    <span class="dropdown-menu" aria-labelledby="dropdownMenu2">
-                    <button class="dropdown-item" type="button">Action</button>
-                    <button class="dropdown-item" type="button">Another action</button>
-                    <button class="dropdown-item" type="button">Something else here</button>
-                    </span> </td>
+                            <tr> 
+                              <td style="width: 500px;"> <p> Ukoliko zelite da sortirate prikaz, izaberite odgovarajuci kriterijum: </p></td>
+                              <td style="margin-left: 30px;">    <button class="btn btn-secondary dropdown-toggle" type="button" data-toggle="dropdown" >
+                            Sortiranje</button>
                         
-                        </tr > </table>
-            
+                                  <span class="dropdown-menu" aria-labelledby="dropdownMenu2">
+                                  <button class="dropdown-item" type="button">Po nazivu rastuce</button>
+                                  <button class="dropdown-item" type="button">Po nazivu opadajuce</button>
+                                  <button class="dropdown-item" type="button">Po mestu rastuce</button>
+                                  <button class="dropdown-item" type="button">Po mestu opadajuce</button>
+                                  <button class="dropdown-item" type="button">Po oceni rastuce</button>
+                                  <button class="dropdown-item" type="button">Po oceni opadajuce</button>
+                                  </span> </td>
+                            
+                            </tr > 
+                    
+                      </table>
+               </div>
             <!--PRIKAZ RESTORANA-->
             <div class="rest tab-pane container active">
                 <div class="row-restaurants">
@@ -214,6 +231,7 @@
     <script src="js/jquery.min.js"></script>
     <script src="js/moment.min.js"></script>
     <script src="js/login.js"></script>
+    <script src="js/registration.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>  
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
