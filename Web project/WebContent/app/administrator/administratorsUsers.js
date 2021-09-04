@@ -45,7 +45,7 @@ template: `
           <td>{{user.role}}</td>
           <td>{{user.role}}</td>
           <div>
-            <td><button type="button" class="btn btn-secondary">Izmeni</button></td>
+            <td><button type="button" class="btn btn-secondary" v-on:click="changeUser">Izmeni</button></td>
             <td><button type="button" class="btn btn-secondary">Izbrisi</button></td>
           </div>
         </tr>
@@ -67,6 +67,9 @@ template: `
   addUser : function () {
       router.push(`/dodajKorisnika`)
   }, 
+  changeUser : function () {
+    router.push(`/izmeniKorisnika`)
+  },
   search: function(){
     router.push(`/pretraga`);
     },

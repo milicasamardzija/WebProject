@@ -153,7 +153,6 @@ public class UsersDAO {
 	public void registerUser(UserRegistrationDTO user) {
 		getUsers().put(user.username, new User(false, false, user.username, user.password, user.name, user.surname, user.gender, user.birthday, Role.CUSTOMER, new Address(user.street, user.number, user.city, user.zipCode), new ArrayList<Integer>(), -1, 0, new Customer(CustomerType.BRONZE,0.1,2000), -1));
 		saveUsers();
-		System.out.println(this.users.values());
 	}
 	
 	//blokiranje korisnika
@@ -176,5 +175,12 @@ public class UsersDAO {
 			users.remove(username);
 			saveUsers();
 		}	
+	}
+	public void changeUser(User user) {
+		User userChange = getUserByUsername(user.getUsername());
+		userChange.setName(user.getName());
+		userChange.setSurname(user.getSurname());
+	
+		saveUsers();
 	}
 }

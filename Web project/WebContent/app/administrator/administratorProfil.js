@@ -19,7 +19,6 @@ template: `
             <h4>Pol: {{user.gender}}</h4>
             <h4>Datum rodjenja: {{user.birthday}}</h4>
             <h4>Adresa: {{user.address.street}}  {{user.address.number}}  {{user.address.city}}  {{user.address.zipCode}}</h4>
-          
             <button type="button" class="btn btn-success">Izmeni podatke</button>
         </div>
     </div>

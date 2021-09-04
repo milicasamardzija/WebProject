@@ -32,18 +32,10 @@ public class ProfileService {
 		}
 		
 		@GET
-		@Path("/BozePomozi")
-		@Produces(MediaType.APPLICATION_JSON)
-		public void get() {
-			System.out.println("Ovde saam");
-		}
-		
-		@GET
 		@Path("/profileUser")
 		@Produces(MediaType.APPLICATION_JSON)
 		public User getUserInformations() {
 			User user = (User)request.getSession().getAttribute("loginUser");		
-			System.out.println(user.getName() + user.getSurname());
 			return user;
 		}
 		

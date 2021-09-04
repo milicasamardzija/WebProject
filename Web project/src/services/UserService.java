@@ -152,9 +152,26 @@ public class UserService {
 	@Consumes(MediaType.APPLICATION_JSON)
 	public UserNewDTO addUser(UserNewDTO user) {
 		UsersDAO users = getUsers();
-		System.out.println(user.name); 
 		users.addUser(user);	
 		return user;
+	} 
+	
+	//izmena korisnika
+	@POST
+	@Path("/changeUser")
+	@Consumes(MediaType.APPLICATION_JSON)
+	public void changeUser(UserDTO user) {
+		UsersDAO users = getUsers();
+		users.changeUser(user.user);	
+	} 
+	
+	//prikaz korisnika
+	@POST
+	@Path("/getUser")
+	@Consumes(MediaType.APPLICATION_JSON)
+	public User getUser(String username) {
+		UsersDAO users = getUsers();
+		return users.getUserByUsername(username);	
 	} 
 	
 	private UsersDAO getUsers() {

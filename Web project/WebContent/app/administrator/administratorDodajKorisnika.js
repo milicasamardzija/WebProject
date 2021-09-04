@@ -91,7 +91,7 @@ template: `
       "zipCode":''+ this.newUser.zipCode})
       .then(
         response => {
-         this.user= response.data
+          router.push(`/korisnici`);
         } 
       )
       .catch()
