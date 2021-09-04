@@ -1,6 +1,7 @@
 Vue.component("administrator-addUser", {
   data:function(){
       return{
+        user:{},
           newUser:{}
       }
   },    
@@ -19,12 +20,12 @@ template: `
       </tr>
       <tr>
           <td class="labela">Pol:</td>
-          <td><input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="option1" checked>
+          <td><input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="MALE" v-model="newUser.gender" checked>
               <label class="form-check-label" for="exampleRadios1">
                 Muski
               </label>
           </td>
-          <td><input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="option1" checked>
+          <td><input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="FEMALE"  v-model="newUser.gender" checked>
               <label class="form-check-label" for="exampleRadios1">
                 Zenski
               </label>
@@ -32,43 +33,52 @@ template: `
       </tr>
       <tr>
           <td class="labela">Datum rodjenja:</td>
-          <td><div class="form-group"> <!-- Date input -->
-              <input class="form-control" id="date" name="date" placeholder="MM/DD/YYY" type="text"/>
+          <td><div class="form-group"> 
+              <input class="form-control" id="date" name="date" placeholder="MM/DD/YYY" type="date" v-model="newUser.birthday"/>
             </div></td>
       </tr>
       <tr>
         <td class="labela">Adresa:</td>
-        <td><input class="form-control" type="text" placeholder="Adresa"></td>
+        <td><input class="form-control" type="text" placeholder="Adresa" v-model="newUser.street"></td>
         <td class="buttonMap"><button type="button" class="btn btn-success"><i></i>Choose on map</button></td>
       </tr>
       <tr>
         <td class="labela">Broj:</td>
-        <td><input class="form-control" type="text" placeholder="Broj"></td>
+        <td><input class="form-control" type="text" placeholder="Broj" v-model="newUser.number"></td>
       </tr>
       <tr>
         <td class="labela">Grad:</td>
-        <td><input class="form-control" type="text" placeholder="Grad"></td>
+        <td><input class="form-control" type="text" placeholder="Grad" v-model="newUser.city"></td>
       </tr>
       <tr>
         <td class="labela">Postanski broj:</td>
-        <td><input class="form-control" type="text" placeholder="Postanski broj"></td>
+        <td><input class="form-control" type="text" placeholder="Postanski broj" v-model="newUser.zipCode"></td>
       </tr>
       <tr>
-        <td class="buttonForm"><button type="button" class="btn btn-success">Sacuvaj</button></td>
-        <td class="buttonForm"><button type="button" class="btn btn-success">Otkazi</button></td>
+        <td class="buttonForm"><button type="button" v-on:click="addUser" class="btn btn-success" >Sacuvaj</button></td>
+      
       </tr>
-    </table>
-  </form>
+ </table>
+  </form>     <td class="buttonForm"><button type="button" class="btn btn-success">Otkazi</button></td>
 </div>
 </div>
 `,
   methods : {
     addUser: function(event){
       event.preventDefault()
-      axios.post("/WebShopREST/rest/user/addUser", newUser)
+      axios.post("/WebShopREST/rest/user/addUser", {
+      "name":''+ this.newUser.name, 
+      "surname":''+ this.newUser.surname, 
+      "gender":''+ this.newUser.gender, 
+      "birthday":''+ this.newUser.birthday, 
+      "role":''+ this.newUser.role, 
+      "street":''+ this.newUser.street, 
+      "number":''+ this.newUser.number, 
+      "city":''+ this.newUser.city, 
+      "zipCode":''+ this.newUser.zipCode})
       .then(
         response => {
-          router.push(`/korisnici`)
+         this.user= response.data
         } 
       )
       .catch()

@@ -149,10 +149,12 @@ public class UserService {
 	@POST
 	@Path("/addUser")
 	@Consumes(MediaType.APPLICATION_JSON)
-	public void addUser(UserNewDTO user) {
+	public UserNewDTO addUser(UserNewDTO user) {
 		UsersDAO users = getUsers();
-		users.addUser(user);																			
-	}
+		System.out.println(user.name); 
+		users.addUser(user);	
+		return user;
+	} 
 	
 	private UsersDAO getUsers() {
 		UsersDAO users = (UsersDAO)context.getAttribute("users");

@@ -15,11 +15,11 @@ template: `
         <div class="informations">
             <h4>Ime: {{user.name}}</h4> 
             <h4> Prezime: {{user.surname}}</h4>
-            <h4>Korisnicko ime: </h4>
-            <h4>Pol: </h4>
-            <h4>Datum rodjenja: </h4>
-            <h4>Adresa: </h4>
-            <h4>Broj telefona: </h4>
+            <h4>Korisnicko ime: {{user.username}}</h4>
+            <h4>Pol: {{user.gender}}</h4>
+            <h4>Datum rodjenja: {{user.birthday}}</h4>
+            <h4>Adresa: {{user.address.street}}  {{user.address.number}}  {{user.address.city}}  {{user.address.zipCode}}</h4>
+          
             <button type="button" class="btn btn-success">Izmeni podatke</button>
         </div>
     </div>
