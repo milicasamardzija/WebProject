@@ -40,6 +40,7 @@ public class UserService {
 	public Collection<User> getAll() {
 		UsersDAO users = getUsers();
 		return users.getValues();
+		
 	}
 	
 	@POST
@@ -64,7 +65,7 @@ public class UserService {
 		request.getSession().setAttribute("loginUser", userForLogin); //kacimo sesiju za korisnika
 		
 		if(userForLogin.getRole().equals(Role.ADMINISTRATOR)) {
-			System.out.println("admin sammmmm");
+			System.out.println("admin sam love you");
 			//return Response.status(Response.Status.ACCEPTED).entity("/WebShopREST/html/administrator_profil.html").build();
 			return Response.status(Response.Status.ACCEPTED).entity("/WebShopREST/html/admin_dashboard.html").build();
 		}

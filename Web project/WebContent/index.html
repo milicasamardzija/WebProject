@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Donesi hranu</title>
-    <link rel="stylesheet" href="../css/administrator.css"> 
+    
     <link rel="stylesheet" href="css/administrator.css"> 
     <link rel= "stylesheet" href="css/navibar.css">
     <link rel= "stylesheet" href="css/restorani-pocetna.css">
@@ -105,53 +105,80 @@
       </div>
     </div>
   </div>
-   <!-- PRIKAZ PRETRAGE-->
-            <div class="col-lg-2 col-md-4 col-sm-12">
-                <div class="row">
-                    <!-- ovo su polja za pretragu-->
-                   <div class="col-lg-2 col-md-2 col-sm-12 p-0 search">
-                        <input type="text" class="form-control search-slt" placeholder="Naziv">
-                    </div>
-                     <div class="col-lg-2 col-md-3 col-sm-12 p-0 search" >
-                        <input type="text" class="form-control search-slt" placeholder="Lokacija">
-                    </div>
-                    <!-- ovo su polja za filtriranje-->
-                    <div class="dropdown col-lg-1 col-md-3 col-sm-12 p-0 filt">
-                        <button class="btn btn-secondary dropdown-toggle" type="button" data-toggle="dropdown" >
-                            Tip
+  
+                    
+                <div >
+                      <table style="margin-left: 200px; margin-top: 20px;" >
+                          <tr> 
+                            <td style="width: 250px"> <input style="width: 150px" type="text" class="form-control search-slt" placeholder="Naziv"> </td>
+                            <td style="width: 250px" > <input style="width: 150px"  type="text" class="form-control search-slt" placeholder="Lokacija"> </td>
+                              <td style="width: 300px"> 
+                                <button class="btn btn-secondary dropdown-toggle" type="button" data-toggle="dropdown" >
+                                    Tip restorana
+                                </button>
+                                <span class="dropdown-menu" aria-labelledby="dropdownMenu2">
+                                <button class="dropdown-item" type="button">Action</button>
+                                <button class="dropdown-item" type="button">Another action</button>
+                                <button class="dropdown-item" type="button">Something else here</button>
+                                </span>
+                            </td>
+                              <td style="width: 250px"> 
+                                <button class="btn btn-secondary dropdown-toggle" type="button" data-toggle="dropdown" >
+                                    Ocena restorana
+                                </button>
+                                <span class="dropdown-menu" aria-labelledby="dropdownMenu2">
+                                <button class="dropdown-item" type="button">Action</button>
+                                <button class="dropdown-item" type="button">Another action</button>
+                                <button class="dropdown-item" type="button">Something else here</button>
+                                </span>
+                            </td>
+                            <td style="width: 250px"> <button type="button" class="btn btn-danger wrn-btn btn-search">Search</button></td>
+                           </tr>
+                       </table>
+
+                  </div>
+             
+                        <table style="margin-left: 200px; margin-top: 20px;">
+                          <tr> 
+                            <td style="width:500px "> <p> Ukoliko zelite da filtrirate prikaz restorana,  izaberite odgovarajuci tip: </p></td>
+                            <td>       <button class="btn btn-secondary dropdown-toggle" type="button" data-toggle="dropdown" >
+                          Tip restorana
+                      </button>
+                      <span class="dropdown-menu" aria-labelledby="dropdownMenu2">
+                      <button class="dropdown-item" type="button">Action</button>
+                      <button class="dropdown-item" type="button">Another action</button>
+                      <button class="dropdown-item" type="button">Something else here</button>
+                      </span> </td>
+                      <td style="width: 25px;"> </td>
+                          <td style="width:150px "> <p> ili status restorana</p></td>
+                          <td >       <button class="btn btn-secondary dropdown-toggle" type="button" data-toggle="dropdown" >
+                            Status restorana
                         </button>
                         <span class="dropdown-menu" aria-labelledby="dropdownMenu2">
                         <button class="dropdown-item" type="button">Action</button>
                         <button class="dropdown-item" type="button">Another action</button>
                         <button class="dropdown-item" type="button">Something else here</button>
-                        </span>
-                    </div>
-                     <div class="dropdown col-lg-2 col-md-3 col-sm-12 p-0 filt">
-                        <button class="btn btn-secondary dropdown-toggle filters" type="button" data-toggle="dropdown">
-                        Ocena
-                        </button>
-                    <div class="dropdown-menu">
-                        <button class="dropdown-item" type="button">Action</button>
-                        <button class="dropdown-item" type="button">Another action</button>
-                        <button class="dropdown-item" type="button">Something else here</button>
-                    </div>
-                    </div>
-                    <div class="dropdown col-lg-2 col-md-3 col-sm-12 p-0 filt">
-                        <button class="btn btn-secondary dropdown-toggle" type="button" data-toggle="dropdown" >
-                        Otvoreni
-                        </button>
-                        <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
-                        <button class="dropdown-item" type="button">Action</button>
-                        <button class="dropdown-item" type="button">Another action</button>
-                        <button class="dropdown-item" type="button">Something else here</button>
-                        </div>
-                   </div>
-                    <!-- dugme za pretragu-->
-                    <div class="col-lg-1 col-md-3 col-sm-12 btn-search">
-                        <button type="button" class="btn btn-danger wrn-btn btn-search">Search</button>
-                    </div>
-                </div>
-            </div>
+                        </span> </td>
+                          </tr> 
+                        </table>
+
+         <!-- za sortiranje-->
+                  
+ 
+                      <table style="margin-left: 200px; margin-top: 20px;">
+                        <tr> 
+                          <td style="width: 500px;"> <p> Ukoliko zelite da sortirate prikaz, izaberite odgovarajuci kriterijum: </p></td>
+                          <td style="margin-left: 30px;">       <button class="btn btn-secondary dropdown-toggle" type="button" data-toggle="dropdown" >
+                        Sortiranje
+                    </button>
+                    <span class="dropdown-menu" aria-labelledby="dropdownMenu2">
+                    <button class="dropdown-item" type="button">Action</button>
+                    <button class="dropdown-item" type="button">Another action</button>
+                    <button class="dropdown-item" type="button">Something else here</button>
+                    </span> </td>
+                        
+                        </tr > </table>
+            
             <!--PRIKAZ RESTORANA-->
             <div class="rest tab-pane container active">
                 <div class="row-restaurants">
