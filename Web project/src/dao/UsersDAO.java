@@ -134,7 +134,6 @@ public class UsersDAO {
 	
 	public User getUserByUsername(String username) {
 		if(users.containsKey(username)) {
-			System.out.println(users.containsKey(username));
 			return users.get(username);
 		}
 		return null;
@@ -143,7 +142,7 @@ public class UsersDAO {
 	//dodavanje novog korisnika(menadzer ili dostavljac)
 	//username i password su mu ime i prezime spojeno na pocetku
 	public void addUser(UserNewDTO user) {
-		getUsers().put(user.name+user.surname, new User(false, false, user.name+user.surname, user.name+user.surname, user.name, user.surname, user.gender, user.birthday, user.role, new Address(user.street, user.number, user.city, user.zipCode), new ArrayList<Integer>(), -1, -1, null, -1));
+		getUsers().put(user.name+user.surname, new User(false, false, user.name+user.surname, user.name+user.surname, user.name, user.surname, user.gender, user.birthday, user.role, new Address(user.street, user.number, user.city, user.zipCode), new ArrayList<Integer>(), 0, 0, new Customer(), 0));
 		saveUsers();
 	}
 		
@@ -180,6 +179,11 @@ public class UsersDAO {
 		User userChange = getUserByUsername(user.getUsername());
 		userChange.setName(user.getName());
 		userChange.setSurname(user.getSurname());
+		userChange.setGender(user.getGender());
+		userChange.setBirthday(user.getBirthday());
+		userChange.setRole(user.getRole());
+		userChange.setAddress(user.getAddress());
+		
 	
 		saveUsers();
 	}

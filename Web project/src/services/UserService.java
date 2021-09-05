@@ -168,10 +168,12 @@ public class UserService {
 	//prikaz korisnika
 	@POST
 	@Path("/getUser")
+	@Produces(MediaType.APPLICATION_JSON)
 	@Consumes(MediaType.APPLICATION_JSON)
-	public User getUser(String username) {
+	public User getUser(User user) {
 		UsersDAO users = getUsers();
-		return users.getUserByUsername(username);	
+		System.out.println(users.getUserByUsername(user.getUsername()).getName());
+		return users.getUserByUsername(user.getUsername());	
 	} 
 	
 	private UsersDAO getUsers() {
