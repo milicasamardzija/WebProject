@@ -17,7 +17,7 @@
 <body>
     <div>
         <img class="logo image" src="../pictures/donesi.png">
-        <button  type="button" class="btn btn-danger pull-right" id="right-panel-link" href="../index.html">Odjavi se</button>
+        <button  type="button" class="btn btn-danger pull-right" id="right-panel-link" data-toggle="modal" data-target="#odjava">Odjavi se</button>
     </div>
     <div class="naslovna">
         <img class="naslovna image" src="../pictures/Food_header1.jpg">   
@@ -30,6 +30,28 @@
         <li><a data-toggle="tab"   href="#cekaju"> <a href="#/cekajuDostavljaca">Cekaju dostavljaca</a></li>
         <li><a data-toggle="tab" href="#nedostavljene"> <a href="#/nedostavljene">Nedostavljene porudzbine</a></li>
     </ul>
+
+<!-- Modal odjava-->
+        <div class="modal fade" id="odjava" role="dialog" >
+            <div class="modal-dialog" style="width: 300px;" >
+                <!-- Modal content -->
+            <div class="modal-content">
+                <div class="modal-header" style="padding:35px 50px;">
+                <h5 class="modal-title" id="exampleModalLabel">Odjavi se</h5>
+                </div>
+                <div class="modal-body" id="logovanje" style="padding:40px 50px;">
+                    <form role="form" method='get' @submit="logout">
+                      <div> <p> Da li ste sigurni da zelite da se odjavite?</p></div>
+                        <button type="submit" class="btn btn-danger btn-block"><span class="glyphicon glyphicon-off" ></span> Odjava</button>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                <button type="button" class="btn btn-danger btn-default pull-left"  data-dismiss="modal">Odustani</button>   
+                </div>
+            </div>
+            </div>
+        </div>
+
 
     <div class="tab-content" >
       
@@ -46,6 +68,7 @@
     <script src="../app/app.js"></script>
     <script src="../js/jquery.min.js"></script>
     <script src="../js/moment.min.js"></script>
+    <script src= "../js/logout.js" ></script>
     <script src="../app/dostavljacApp.js"></script>
     <script src="../app/dostavljacProfil.js"></script>
     <script src="../app/dostavljacIzmeniProfil.js"></script>
