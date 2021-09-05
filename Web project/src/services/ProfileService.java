@@ -42,7 +42,7 @@ public class ProfileService {
 		public Response saveProileChanges(UserDTO updatedUser) {
 
 			UsersDAO users = getUsers();
-			//users.changeUser(updatedUser);
+			users.changeUserProfile(updatedUser);
 			return Response.status(Response.Status.ACCEPTED).entity("SUCCESS CHANGE").build();
 			
 		}

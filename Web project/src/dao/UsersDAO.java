@@ -21,6 +21,7 @@ import com.fasterxml.jackson.databind.type.TypeFactory;
 import beans.Address;
 import beans.Customer;
 import beans.User;
+import dto.UserDTO;
 import dto.UserNewDTO;
 import dto.UserRegistrationDTO;
 import dto.UserSearchDTO;
@@ -206,5 +207,15 @@ public class UsersDAO {
 				}
 			}
 		return ret;
+	}
+	public void changeUserProfile(UserDTO updatedUser) {
+		User userChange = getUserByUsername(updatedUser.user.getUsername());
+		userChange.setName(updatedUser.user.getName());
+		userChange.setSurname(updatedUser.user.getSurname());
+		userChange.setGender(updatedUser.user.getGender());
+		userChange.setBirthday(updatedUser.user.getBirthday());
+		userChange.setRole(updatedUser.user.getRole());
+		userChange.setAddress(updatedUser.user.getAddress());
+		saveUsers();
 	}
 }

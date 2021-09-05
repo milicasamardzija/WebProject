@@ -53,8 +53,7 @@ public class UserService {
 		UsersDAO users = getUsers();
 		
 		User userForLogin = users.getUserByUsername(user.username);
-		System.out.println("HEJJJ");
-		System.out.println(userForLogin.getPassword());
+		
 		if(userForLogin == null) {
 			return Response.status(Response.Status.BAD_REQUEST).entity("Korisnicko ime je pogresno!Probajte ponovo!!").build();
 		}
@@ -177,11 +176,6 @@ public class UserService {
 	@Consumes(MediaType.APPLICATION_JSON)
 	public User getUser(UsernameDTO user) {
 		UsersDAO users = getUsers();
-		//System.out.println(user);
-		System.out.println("/////////////////////////////////");
-		System.out.println("OVDE SAM");
-		System.out.println(users.getUserByUsername(user.username).getSurname());
-		System.out.println("/////////////////////////////////");
 		return users.getUserByUsername(user.username);	
 	} 
 	
