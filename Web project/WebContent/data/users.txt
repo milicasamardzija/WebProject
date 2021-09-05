@@ -42,11 +42,20 @@
 	"gender" : 0,
 	"birthday" : "1999-05-11",
 	"role" : 3,
-	"address" : null,
+	"address" : {
+		"street" : "Marka Kraljevica",
+		 "number": 5, 
+		 "city":"Nis", 
+		 "zipCode" : 12548,
+		  "latitude": 0,
+		   "longitude" : 0},
 	"orderIds" : [],
 	"chartId" : -1,
-	"points": -1,
-	"typeCustomer" : null,
+	"points": 0,
+	"typeCustomer" : { 
+		"type" : 2,
+		"sale" : 0,
+		"points": 2000},
 	"idRestaurant" : 0
   }
 }

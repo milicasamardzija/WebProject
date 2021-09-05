@@ -1,42 +1,47 @@
-Vue.component("profil-dostavljac", {
+Vue.component("profil-menadzer", {
     data(){
         return{
-            dostavljac:null
+            menadzer:null
         }
     },
 template: `
 <section> 
             
             <div class="row content">
-                    <div class="col-sm-3 sidenav">
+                    <div class="col-sm-3 sidenav" >
                         <h3><small>Vase informacije na profilu:</small> <hr> </h3>
                         <img class= "img-responsive"src="../pictures/korisnik.png">
                     </div> 
                     <div class="col-sm-9">
                             <div class="informations" >
                                 
-                                <table>
+                                <table style="margin-top: 120px;">
                                 <tr>
                                     <td> Ime: </td>
-                                    <td> </td>
+                                    <td> {{menadzer.name}}</td>
                                     </tr>
                                 <tr> 
                                 <td>Prezime: </td>
+                                  <td> {{menadzer.surname}}</td>
                                 </tr>
                                 <tr> 
                                 <td> Korisnicko ime:</td>
+                                  <td> {{menadzer.username}}</td>
                                 </tr>
                                 <tr> 
                                 <td> Pol:</td>
+                                  <td> {{menadzer.gender}}</td>
                                 </tr>
                                 <tr> 
                                 <td>Datum rodjenja: </td>
+                                  <td> {{menadzer.birthday}}</td>
                                 </tr>
                                 <tr> 
                                 <td> Adresa:</td>
+                                <td> {{menadzer.address.street}} {{menadzer.address.number}}, grad {{menadzer.address.city}}  {{menadzer.address.zipCode}} </td>
                                 </tr>
                                 <tr> 
-                                <td>Broj telefona: </td>
+                                
                                 </tr>
                                 </table>
                                 <button type="button" class="btn btn-success" v-on:click="editProfile">Izmeni podatke</button>
@@ -48,10 +53,16 @@ template: `
 `,
 methods:{
     editProfile: function() {
-        router.push(`/izmeniProfilDostavljac`)
+        router.push(`/izmeniProfilMenadzer`)
     }
 },
 mounted(){
-
+	  axios.get("/WebShopREST/rest/profile/profileUser")
+        .then( response => {
+            this.menadzer = response.data
+        })
+        .catch(function(error){
+            console.log(error)
+        })
 },
 });

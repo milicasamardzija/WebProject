@@ -1,7 +1,7 @@
-Vue.component("profil-kupac", {
+Vue.component("profil-dostavljac", {
     data(){
         return{
-            kupac:null
+            dostavljac:null
         }
     },
 template: `
@@ -18,26 +18,29 @@ template: `
                                 <table>
                                 <tr>
                                     <td> Ime: </td>
-                                    <td> </td>
+                                    <td> {{dostavljac.name}}</td>
                                     </tr>
                                 <tr> 
                                 <td>Prezime: </td>
+                                <td> {{dostavljac.surname}} </td>
                                 </tr>
                                 <tr> 
                                 <td> Korisnicko ime:</td>
+                                <td> {{dostavljac.username}} </td>
                                 </tr>
                                 <tr> 
                                 <td> Pol:</td>
+                                <td> {{dostavljac.gender}} </td>
                                 </tr>
                                 <tr> 
                                 <td>Datum rodjenja: </td>
+                                <td> {{dostavljac.birthday}} </td>
                                 </tr>
                                 <tr> 
                                 <td> Adresa:</td>
+                                <td> {{menadzer.address.street}} {{menadzer.address.number}}, grad {{menadzer.address.city}}  {{menadzer.address.zipCode}} </td>
                                 </tr>
-                                <tr> 
-                                <td>Broj telefona: </td>
-                                </tr>
+                               
                                 </table>
                                 <button type="button" class="btn btn-success" v-on:click="editProfile">Izmeni podatke</button>
                             </div>
@@ -48,10 +51,16 @@ template: `
 `,
 methods:{
     editProfile: function() {
-        router.push(`/izmeniProfil`)
+        router.push(`/izmeniProfilDostavljac`)
     }
 },
 mounted(){
-
+    axios.get("/WebShopREST/rest/profile/profileUser")
+        .then( response => {
+            this.dostavljac = response.data
+        })
+        .catch(function(error){
+            console.log(error)
+        })
 },
 });

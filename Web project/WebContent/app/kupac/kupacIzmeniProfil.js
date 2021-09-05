@@ -1,7 +1,8 @@
 Vue.component("izmeniProfil-kupac", {
    
     data: {
-        
+        kupac: null,
+    
         mode: 'INFORMACIJE'
       
     
@@ -20,7 +21,7 @@ template: `
                                     <table>
                                         <tr>
                                             <td> Ime: </td>
-                                            <td> <input class="form-control" type="text"  > </td>
+                                            <td> <input class="form-control" type="text" > </td>
                                         </tr>
                                         <tr> 
                                             <td>Prezime: </td>
@@ -52,7 +53,7 @@ template: `
                                         <tr> 
                                            <button type="button" class="btn btn-danger" v-on:click="changePassword"> Promeni sifru </button>
                                         </tr>
-                                           <form id="izmena" v-bind:hidden="mode=='INFORMACIJE'">
+                                           <form id="izmena" v-bind:hidden="mode==='INFORMACIJE'">
                                            <table>
                                             <tr> 
                                                 <td> Stara sifra:  </td>
@@ -94,6 +95,13 @@ methods:{
     }
 },
 mounted(){
+    axios.get("/WebShopREST/rest/profile/profileUser")
+    .then( response => {
+        this.kupac = response.data
+    })
+    .catch(function(error){
+        console.log(error)
+    })
 
 },
 });
