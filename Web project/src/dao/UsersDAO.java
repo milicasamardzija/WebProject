@@ -63,7 +63,7 @@ public class UsersDAO {
 		BufferedReader in = null;
 		File file = null;
 		try {
-			file = new File(contextPath + "/data/users.txt");
+			file = new File("WebContent/data/users.txt");
 			in = new BufferedReader(new FileReader(file));
 
 			ObjectMapper objectMapper = new ObjectMapper();
@@ -109,7 +109,7 @@ public class UsersDAO {
 	
 	//ucitavanje korisnika u fajl
 	private void saveUsers() {
-		File f = new File(filePath + "/data/users.txt");
+		File f = new File("WebContent/data/users.txt");
 		FileWriter fileWriter = null;
 		try {
 			fileWriter = new FileWriter(f);
