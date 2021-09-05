@@ -1,0 +1,15 @@
+{"1" : {
+	    "id" : 1,
+	    "customerId" : "kupac",
+	    "restaurantId" : 1,
+	    "text" : "Bilo je prelepo",
+	    "grade" : 5.0
+	  },
+ "0" : {
+	    "id" : 0,
+	    "customerId" : "kupac",
+	    "restaurantId" : 0,
+	    "text" : "Bilo je lose",
+	    "grade" : 2.0
+	  }
+ }
