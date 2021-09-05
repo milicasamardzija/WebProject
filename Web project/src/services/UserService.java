@@ -15,6 +15,7 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
 import beans.User;
+import beans.UsernameDTO;
 import dao.UsersDAO;
 import dto.UserNewDTO;
 import dto.UserDTO;
@@ -52,7 +53,8 @@ public class UserService {
 		UsersDAO users = getUsers();
 		
 		User userForLogin = users.getUserByUsername(user.username);
-		
+		System.out.println("HEJJJ");
+		System.out.println(userForLogin.getPassword());
 		if(userForLogin == null) {
 			return Response.status(Response.Status.BAD_REQUEST).entity("Korisnicko ime je pogresno!Probajte ponovo!!").build();
 		}
@@ -173,9 +175,14 @@ public class UserService {
 	@Path("/getUser")
 	@Produces(MediaType.APPLICATION_JSON)
 	@Consumes(MediaType.APPLICATION_JSON)
-	public User getUser(User user) {
+	public User getUser(UsernameDTO user) {
 		UsersDAO users = getUsers();
-		return users.getUserByUsername(user.getUsername());	
+		//System.out.println(user);
+		System.out.println("/////////////////////////////////");
+		System.out.println("OVDE SAM");
+		System.out.println(users.getUserByUsername(user.username).getSurname());
+		System.out.println("/////////////////////////////////");
+		return users.getUserByUsername(user.username);	
 	} 
 	
 	private UsersDAO getUsers() {

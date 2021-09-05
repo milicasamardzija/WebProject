@@ -25,7 +25,7 @@ Vue.component("administrator-changeUser", {
         </tr>
         <tr>
           <td class="labela">Ime:</td>
-          <td><input class="form-control" type="text" placeholder="Ime" v-model="newUser.name"></td>
+          <td><input class="form-control" type="text" placeholder="Ime" v-bind="newUser.name"></td>
         </tr>
         <tr>
             <td class="labela">Prezime:</td>
@@ -101,23 +101,7 @@ Vue.component("administrator-changeUser", {
   },
   mounted() {
       this.user = this.$route.query.username,
-      axios.post("/WebShopREST/rest/user/getUser", {
-                  "deleted": this.user.deleted, 
-                  "blocked": this.user.blocked, 
-                  "username": this.user.username, 
-                  "password": this.user.password, 
-                  "name": this.user.name, 
-                  "surname": this.user.surname, 
-                  "gender": this.user.gender, 
-                  "birthday": this.user.birthday, 
-                  "role": this.user.role,
-                  "address": this.user.address,
-                  "orderIds": this.user.orderIds, 
-                  "chartId": this.user.chartId, 
-                  "points":  this.user.points,
-                  "typeCustomer":  this.user.typeCustomer,
-                  "idRestaurant":  this.user.idRestaurant
-                  })
+      axios.post("/WebShopREST/rest/user/getUser", {"username":''+this.user.username})
       .then( response => {
           this.newUser = response.data
       })

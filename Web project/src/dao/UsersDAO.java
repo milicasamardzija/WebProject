@@ -134,9 +134,19 @@ public class UsersDAO {
 	}
 	
 	public User getUserByUsername(String username) {
-		if(users.containsKey(username)) {
-			return users.get(username);
-		}
+		System.out.println("++++++++++++++++++");
+		System.out.println(username);
+		//System.out.println(users.values().toArray()[0].toString());
+		//System.out.println(users.containsKey(username));
+		System.out.println("++++++++++++++++++");
+		for (User user : getValues()) {
+			if(user.getUsername().equals(username)) {
+				System.out.println("====");
+				System.out.println(user.getUsername());
+				System.out.println("====");
+				return user;
+			}
+		}	
 		return null;
 	}
 	
