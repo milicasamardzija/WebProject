@@ -8,6 +8,9 @@ const ProfileAdminComponent = {template: '<administrator-profile></administrator
 const PretragaAdminComponent = {template: '<administrator-pretraga></administrator-pretraga>'}
 const FiltriranjeAdminComponent = {template: '<administrator-filtriranje></administrator-filtriranje>'}
 const SortiranjeAdminComponent = {template: '<administrator-sortiranje></administrator-sortiranje>'}
+const SortiranjeAdminSumnjiviComponent = {template: '<administratorSumnjivi-sortiranje></administratorSumnjivi-sortiranje>'}
+const FiltriranjeAdminSumnjiviComponent = {template: '<administratorSumnjivi-filtriranje></administratorSumnjivi-filtriranje>'}
+const PretragaAdminSumnjiviComponent = {template: '<administratorSumnjivi-pretraga></administratorSumnjivi-pretraga>'}
 
 const router = new VueRouter({
     mode: 'hash',
@@ -22,6 +25,9 @@ const router = new VueRouter({
         {path : '/pretraga', component:PretragaAdminComponent}, //pretraga korisnika
         {path : '/filtriranje', component:FiltriranjeAdminComponent}, //filtriranje korisnika
         {path : '/sortiranje', component:SortiranjeAdminComponent}, //sortiranje korisnika
+           {path : '/sumnjiviPretraga', component:PretragaAdminSumnjiviComponent},
+              {path : '/sumnjiviSort', component:SortiranjeAdminSumnjiviComponent},
+                 {path : '/sumnjiviFilter', component:FiltriranjeAdminSumnjiviComponent}, 
     ]
 })
 
