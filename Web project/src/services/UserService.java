@@ -20,6 +20,7 @@ import dto.UserNewDTO;
 import dto.UserDTO;
 import dto.UserLoginDTO;
 import dto.UserRegistrationDTO;
+import dto.UserSearchDTO;
 import enums.Role;
 
 @Path("/user")
@@ -53,35 +54,28 @@ public class UserService {
 		User userForLogin = users.getUserByUsername(user.username);
 		
 		if(userForLogin == null) {
-			System.out.println("Nema usera");
 			return Response.status(Response.Status.BAD_REQUEST).entity("Korisnicko ime je pogresno!Probajte ponovo!!").build();
 		}
 		
 		if(!userForLogin.getPassword().equals(user.password)) {
-			System.out.println("losa sifra");
 			return Response.status(Response.Status.BAD_REQUEST).entity("Lozinka koju ste uneli je pogresna!Probajte ponovo!!").build();
 		}
 		
 		request.getSession().setAttribute("loginUser", userForLogin); //kacimo sesiju za korisnika
 		
 		if(userForLogin.getRole().equals(Role.ADMINISTRATOR)) {
-			System.out.println("admin sam love you");
-			//return Response.status(Response.Status.ACCEPTED).entity("/WebShopREST/html/administrator_profil.html").build();
 			return Response.status(Response.Status.ACCEPTED).entity("/WebShopREST/html/admin_dashboard.html").build();
 		}
 		
 		if(userForLogin.getRole().equals(Role.MANAGER)) {
-			System.out.println("menadzer sam");
 			return Response.status(Response.Status.ACCEPTED).entity("/WebShopREST/html/menadzer_profil.html").build();
 		}
 		
 		if(userForLogin.getRole().equals(Role.DELIVERER)) {
-			System.out.println("dostavljac sam");
 			return Response.status(Response.Status.ACCEPTED).entity("/WebShopREST/html/dostavljac_profil.html").build();
 		}
 		
 		if(userForLogin.getRole().equals(Role.CUSTOMER)) {
-			System.out.println("kupac sam");
 			return Response.status(Response.Status.ACCEPTED).entity("/WebShopREST/html/kupac_profil.html").build();
 		}
 		
@@ -101,7 +95,6 @@ public class UserService {
 		}
 	
 		users.registerUser(user);
-		System.out.println(context.getRealPath(""));
 		return Response.status(Response.Status.ACCEPTED).entity("/WebShopREST/index.html").build();	//redirekcija na logovanje																			
 	}
 	
@@ -156,6 +149,16 @@ public class UserService {
 		return user;
 	} 
 	
+	//pretraga korisnika
+	@POST
+	@Path("/searchUsers")
+	@Consumes(MediaType.APPLICATION_JSON)
+	@Produces(MediaType.APPLICATION_JSON)
+	public Collection<User> searchUsers(UserSearchDTO user) {
+		UsersDAO users = getUsers();
+		return users.searchUsers(user);
+	}
+	
 	//izmena korisnika
 	@POST
 	@Path("/changeUser")
@@ -172,7 +175,6 @@ public class UserService {
 	@Consumes(MediaType.APPLICATION_JSON)
 	public User getUser(User user) {
 		UsersDAO users = getUsers();
-		System.out.println(users.getUserByUsername(user.getUsername()).getName());
 		return users.getUserByUsername(user.getUsername());	
 	} 
 	

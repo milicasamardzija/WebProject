@@ -18,10 +18,6 @@ import dto.UserDTO;
 @Path("/profile")
 public class ProfileService {
 
-	
-	
-	
-		
 		@Context
 		HttpServletRequest request;
 		@Context

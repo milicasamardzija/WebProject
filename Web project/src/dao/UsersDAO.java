@@ -23,6 +23,7 @@ import beans.Customer;
 import beans.User;
 import dto.UserNewDTO;
 import dto.UserRegistrationDTO;
+import dto.UserSearchDTO;
 import enums.CustomerType;
 import enums.Role;
 
@@ -186,5 +187,14 @@ public class UsersDAO {
 		
 	
 		saveUsers();
+	}
+	public Collection<User> searchUsers(UserSearchDTO searchParameters) {
+		ArrayList<User> ret = new ArrayList<User>();
+			for (User user : this.users.values()) {
+				if(user.getName().contains(searchParameters.name) || user.getSurname().contains(searchParameters.surname) || user.getUsername().contains(searchParameters.username)) {
+					ret.add(user);
+				}
+			}
+		return ret;
 	}
 }
