@@ -6,6 +6,9 @@ const UsersSuspeciousAdminComponent = {template: '<administrator-usersSuspecious
 const CommentsAdminComponent = {template: '<administrator-comments></administrator-comments>'}
 const ProfileAdminComponent = {template: '<administrator-profile></administrator-profile>'}
 const PretragaAdminComponent = {template: '<administrator-pretraga></administrator-pretraga>'}
+const FiltriranjeAdminComponent = {template: '<administrator-filtriranje></administrator-filtriranje>'}
+const SortiranjeAdminComponent = {template: '<administrator-sortiranje></administrator-sortiranje>'}
+
 const router = new VueRouter({
     mode: 'hash',
     routes:[
@@ -17,6 +20,8 @@ const router = new VueRouter({
         {path : '/komentari', component:CommentsAdminComponent}, //komentari
         {path : '/profil', component:ProfileAdminComponent}, //profil
         {path : '/pretraga', component:PretragaAdminComponent}, //pretraga korisnika
+        {path : '/filtriranje', component:FiltriranjeAdminComponent}, //filtriranje korisnika
+        {path : '/sortiranje', component:SortiranjeAdminComponent}, //sortiranje korisnika
     ]
 })
 
