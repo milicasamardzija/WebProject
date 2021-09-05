@@ -26,7 +26,14 @@
     "gender" : "MALE",
     "birthday" : 944006400000,
     "role" : "ADMINISTRATOR",
-    "address" : null,
+    "address" :  {
+      "street" : "Periceva",
+      "number" : 12,
+      "city" : "Novi Sad",
+      "zipCode" : 21000,
+      "latitude" : 0.0,
+      "longitude" : 0.0
+    },
     "orderIds" : [ ],
     "chartId" : -1,
     "points" : -1.0,

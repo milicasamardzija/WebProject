@@ -10,7 +10,7 @@ template: `
        
             <form action="#" >
             
-            <div class="row" style="margin-left: 50px;">
+        <div class="row" style="margin-left: 50px;">
             <div class="col-lg-12">
                 <div class="row">
                     <div class="col-lg-2 col-md-3 col-sm-12 p-0 search">
