@@ -43,40 +43,18 @@ template: `
     </div>
 </div>
 </div>
-
-
             <div class="rest tab-pane container active">
-                <div class="row-restaurants">
+                <div class="row-restaurants" v-for="restaurant in restaurants">
                     <div class = "col-with-picture">
                         <div class="col-picture">
                             <div class="imageRest"></div>
                         </div>
                     </div>
                     <div class="col-info">
-                        <h4 class="text">Naziv</h1>
-                        <h4 class="text">Tip</h1>
-                        <h4 class="text">Lokacija</h1>
-                        <h4 class="text">Procesna ocena</h1>
-                    </div>
-                    <div class="buttons">
-                        <div class="buttons btn-group-vertical">
-                            <button type="button" class="btn btn-secondary">Dodaj menazera</button>
-                            <button type="button" class="btn btn-secondary">Izmeni</button>
-                            <button type="button" class="btn btn-secondary">Izbrisi</button>
-                        </div>
-                    </div>
-                </div>
-                <div class="row-restaurants">
-                    <div class = "col-with-picture">
-                        <div class="col-picture">
-                            <div class="imageRest"></div>
-                        </div>
-                    </div>
-                    <div class="col-info">
-                        <h4 class="text">Naziv</h1>
-                        <h4 class="text">Tip</h1>
-                        <h4 class="text">Lokacija</h1>
-                        <h4 class="text">Procesna ocena</h1>
+                        <h4 class="text">Naziv {{restaurant.name}}</h4>
+                        <h4 class="text">Tip {{restaurant.type}}</h4>
+                        <h4 class="text">Lokacija {{restaurant.address.street}} {{restaurant.address.number}}, {{restaurant.address.city}}</h4>
+                        <h4 class="text">Procesna ocena</h4>
                     </div>
                     <div class="buttons">
                         <div class="buttons btn-group-vertical">
@@ -94,6 +72,12 @@ methods:{
 
 },
 mounted(){
-
+    axios.get("/WebShopREST/rest/restaurant/getAllRestaurants")
+      .then( response => {
+          this.restaurants = response.data
+      })
+      .catch(function(error){
+          console.log(error)
+      })
 },
 });
