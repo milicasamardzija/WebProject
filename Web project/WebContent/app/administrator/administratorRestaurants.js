@@ -37,8 +37,11 @@ template: `
             <button class="dropdown-item" type="button">Something else here</button>
             </div>
         </div>
-        <div class="col-lg-2 col-md-3 col-sm-12 btn-search">
+        <div class="col-lg-1 col-md-3 col-sm-12 btn-search">
             <button type="button" class="btn btn-danger wrn-btn">Pretrazi kombinovano</button>
+        </div>
+        <div class="col-lg-1 col-md-3 col-sm-12 btn-search">
+            <button v-on:click= "addRestaurant" style= "margin-left: 70px;width:50px" type="button" class="btn btn-danger wrn-btn  col-lg-1 col-md-3 col-sm-12"><span class="glyphicon glyphicon-plus"></span></button>
         </div>
     </div>
 </div>
@@ -80,4 +83,12 @@ mounted(){
           console.log(error)
       })
 },
+methods : {
+    addRestaurant : function () {
+        router.push(`/dodajRestoran`)
+    }, 
+    changeRestaurant : function () {
+      this.$router.push({path: `/izmeniRestoran`, query:{ id: this.selected.id}})
+    }
+    }
 });
