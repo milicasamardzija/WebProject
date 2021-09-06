@@ -18,7 +18,7 @@ import beans.User;
 import beans.UsernameDTO;
 import dao.UsersDAO;
 import dto.UserNewDTO;
-import dto.UserDTO;
+import dto.UserChangeDTO;
 import dto.UserLoginDTO;
 import dto.UserRegistrationDTO;
 import dto.UserSearchDTO;
@@ -106,12 +106,11 @@ public class UserService {
 	@POST
 	@Path("/blockUser")
 	@Produces(MediaType.TEXT_HTML)
-	@Consumes(MediaType.APPLICATION_JSON)
-	public Response blockUser(UserDTO user){
+	public Response blockUser(String username){
 		
 		if(isUserAdmin()) {
 			UsersDAO users = getUsers();
-			users.blockUserById(user.user.getUsername());
+			users.blockUserById(username);
 			
 			return Response
 					.status(Response.Status.ACCEPTED).entity("SUCCESS BLOCK")
@@ -122,25 +121,6 @@ public class UserService {
 				.entity("You do not have permission to access!").build();
 	}
 	
-	//treba proveriti za odgovor da li treba ovo da bude
-	@DELETE
-	@Path("/deleteUser")
-	@Produces(MediaType.TEXT_HTML)
-	@Consumes(MediaType.APPLICATION_JSON)
-	public Response deleteUser(UserDTO user){
-		
-		if(isUserAdmin()) {
-			UsersDAO users = getUsers();
-			users.deleteUserById(user.user.getUsername());
-			
-			return Response
-					.status(Response.Status.ACCEPTED).entity("DELETED")
-					.entity(getUsers().getValues())
-					.build();
-		}
-		return Response.status(403).type("text/plain")
-				.entity("You do not have permission to access!").build();
-	}
 	
 	//dodavanje korisnika
 	@POST
@@ -206,9 +186,11 @@ public class UserService {
 	@POST
 	@Path("/changeUser")
 	@Consumes(MediaType.APPLICATION_JSON)
-	public void changeUser(UserDTO user) {
+	public void changeUser(UserChangeDTO user) {
 		UsersDAO users = getUsers();
-		users.changeUser(user.user);	
+		System.out.println("POKUSAO SAM");
+		users.changeUser(user);	
+		System.out.println("IZMENIO SAM");
 	} 
 	
 	//prikaz korisnika

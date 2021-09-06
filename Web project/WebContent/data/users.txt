@@ -1,19 +1,47 @@
 {
+  "kupac" : {
+    "deleted" : false,
+    "blocked" : false,
+    "username" : "kupac",
+    "password" : "kupac",
+    "name" : "Marko",
+    "surname" : "Markovic",
+    "gender" : "MALE",
+    "birthday" : 926380800000,
+    "role" : "CUSTOMER",
+    "address" : {
+      "street" : "Marka Kraljevica",
+      "number" : 5,
+      "city" : "Nis",
+      "zipCode" : 12548,
+      "latitude" : 0.0,
+      "longitude" : 0.0
+    },
+    "orderIds" : [ ],
+    "chartId" : -1,
+    "points" : 0.0,
+    "typeCustomer" : {
+      "type" : "BRONZE",
+      "sale" : 0.0,
+      "points" : 2000.0
+    },
+    "idRestaurant" : 0
+  },
   "admin" : {
     "deleted" : false,
     "blocked" : false,
     "username" : "admin",
     "password" : "admin123",
-    "name" : "Aca",
-    "surname" : "Acic",
+    "name" : "BozePomoziiiii",
+    "surname" : "BozePomozi",
     "gender" : "MALE",
     "birthday" : 944006400000,
     "role" : "ADMINISTRATOR",
-    "address" :  {
-      "street" : "Periceva",
-      "number" : 12,
-      "city" : "Novi Sad",
-      "zipCode" : 21000,
+    "address" : {
+      "street" : "BozePomozi",
+      "number" : 5,
+      "city" : "BozePomozi",
+      "zipCode" : 5555,
       "latitude" : 0.0,
       "longitude" : 0.0
     },
@@ -39,32 +67,5 @@
     "points" : -1.0,
     "typeCustomer" : null,
     "idRestaurant" : 0
-  },
-  "kupac" : {
-	"deleted" : false,
-	"blocked" : false,
-	"username" : "kupac",
-	"password" : "kupac",
-	"name" : "Marko",
-	"surname" : "Markovic",
-	"gender" : 0,
-	"birthday" : "1999-05-11",
-	"role" : 3,
-	"address" : {
-		"street" : "Marka Kraljevica",
-		 "number": 5, 
-		 "city":"Nis", 
-		 "zipCode" : 12548,
-		  "latitude": 0,
-		   "longitude" : 0},
-	"orderIds" : [],
-	"chartId" : -1,
-	"points": 0,
-	"typeCustomer" : { 
-		"type" : 2,
-		"sale" : 0,
-		"points": 2000},
-	"idRestaurant" : 0
-}
-
+  }
 }
