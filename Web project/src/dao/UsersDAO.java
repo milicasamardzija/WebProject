@@ -183,7 +183,8 @@ public class UsersDAO {
 	public void deleteUserById(String username) {
 		User user = getUserByUsername(username);
 		if(user != null) {
-			users.remove(username);
+			user.setDeleted(true); //logicko brisanje
+			System.out.println(" vrednost polja deleted" + user.getDeleted());
 			saveUsers();
 		}	
 	}

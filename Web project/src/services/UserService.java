@@ -1,5 +1,7 @@
 package services;
 
+import java.lang.reflect.Array;
+import java.util.ArrayList;
 import java.util.Collection;
 
 import javax.servlet.ServletContext;
@@ -43,8 +45,13 @@ public class UserService {
 	@Produces(MediaType.APPLICATION_JSON)
 	public Collection<User> getAll() {
 		UsersDAO users = getUsers();
-		return users.getValues();
-		
+		ArrayList<User> ret = new ArrayList<User>();
+		for (User user : users.getValues()) {
+			if(!user.getDeleted()) {
+				ret.add(user);
+			}
+		}
+		return ret;
 	}
 	
 	@POST
@@ -123,23 +130,15 @@ public class UserService {
 	}
 	
 	//treba proveriti za odgovor da li treba ovo da bude
-	@DELETE
+	@POST
 	@Path("/deleteUser")
-	@Produces(MediaType.TEXT_HTML)
-	@Consumes(MediaType.APPLICATION_JSON)
-	public Response deleteUser(UserDTO user){
-		
-		if(isUserAdmin()) {
+
+	public void deleteUser(String username){
 			UsersDAO users = getUsers();
-			users.deleteUserById(user.user.getUsername());
-			
-			return Response
-					.status(Response.Status.ACCEPTED).entity("DELETED")
-					.entity(getUsers().getValues())
-					.build();
-		}
-		return Response.status(403).type("text/plain")
-				.entity("You do not have permission to access!").build();
+			System.out.println("IDEM NA BRISANJE NAKON OVOFGA");
+			System.out.println(username);
+			System.out.println("****************");
+			users.deleteUserById(username);
 	}
 	
 	//dodavanje korisnika

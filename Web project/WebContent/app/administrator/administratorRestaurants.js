@@ -7,6 +7,27 @@ Vue.component("administrator-restaurants", {
 template: `
 <div class="containerInfo">
 
+<!-- modal obrisi-->
+        <div class="modal fade" id="brisanje" role="dialog" >
+            <div class="modal-dialog" style="width: 300px;" >
+                <!-- Modal content -->
+            <div class="modal-content">
+                <div class="modal-header" style="padding:35px 50px;">
+                <h5 class="modal-title" id="exampleModalLabel">Odjavi se</h5>
+                </div>
+                <div class="modal-body" id="brisanje" style="padding:40px 50px;">
+                    <form role="form" method='get' @submit="delete">
+                      <div> <p> Da li ste sigurni da zelite da obrisete?</p></div>
+                        <button type="submit" class="btn btn-danger btn-block"><span class="glyphicon glyphicon-off"></span> Odjava</button>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                <button type="button" class="btn btn-danger btn-default pull-left"  data-dismiss="modal">Odustani</button>   
+                </div>
+            </div>
+            </div>
+        </div>
+
 <!--pretraga-->
 <div class="row" style="width:1400px !important; margin-left:30px;">
 <div class="col-lg-12">
@@ -60,7 +81,7 @@ template: `
                         <div class="buttons btn-group-vertical">
                             <button type="button" class="btn btn-secondary">Dodaj menazera</button>
                             <button type="button" class="btn btn-secondary">Izmeni</button>
-                            <button type="button" class="btn btn-secondary">Izbrisi</button>
+                            <button type="button" class="btn btn-secondary"  >Izbrisi</button>
                         </div>
                     </div>
                 </div>

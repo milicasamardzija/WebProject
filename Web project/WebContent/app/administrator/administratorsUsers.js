@@ -7,13 +7,18 @@ Vue.component("administrator-users", {
   },    
 template: `
 <div class="containerInfo">
-  
+ 
+
     <div class="container">
         <button style=" margin-left: 38%;"class="btn btn-success" type="button" v-on:click="search">PRETRAGA</button>
         <button class="btn btn-success" type="button" v-on:click="filter">FILTRIRANJE</button>
         <button class="btn btn-success" type="button" v-on:click="sort">SORTIRANJE</button>
         <button v-on:click= "addUser" style= "margin-left: 20px;" type="button" class="btn btn-danger wrn-btn  col-lg-1 col-md-3 col-sm-12"><span class="glyphicon glyphicon-plus"></span></button>
     </div>
+ 
+
+  
+
 
   <!--tabela-->
   <div id="users">
@@ -39,12 +44,34 @@ template: `
             <td>{{user.role}}</td>
             <div>
               <td><button type="button" class="btn btn-secondary" v-on:click="changeUser">Izmeni</button></td>
-              <td><button type="button" class="btn btn-secondary">Izbrisi</button></td>
+              <td><button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#brisanje" >Izbrisi</button></td>
             </div>
           </tr>
         </tbody>
     </table>
   </div>
+
+  <!-- modal obrisi-->
+  <div class="modal fade" id="brisanje" role="dialog" >
+          <div class="modal-dialog" style="width: 300px;" >
+              <!-- Modal content -->
+              <div class="modal-content">
+                  <div class="modal-header" style="padding:35px 50px;">
+                  <h5 class="modal-title" id="exampleModalLabel">Odjavi se</h5>
+                  </div>
+                  <div class="modal-body"  style="padding:40px 50px;">
+                      <form role="form" >
+                        <div> <p> Da li ste sigurni da zelite da obrisete?</p></div>
+                          <button type="button" class="btn btn-danger btn-block" v-on:click="deleteUser"><span class="glyphicon glyphicon-off"></span> Obrisi</button>
+                      </form>
+                  </div>
+                  <div class="modal-footer">
+                  <button type="button" class="btn btn-danger btn-default pull-left"  data-dismiss="modal">Odustani</button>   
+                  </div>
+              </div>
+          </div>
+  </div>
+
 </div>
 `,
   mounted() {
@@ -74,6 +101,15 @@ template: `
     },
     sort: function(){
         router.push(`/sortiranje`);
-    }
+    }, 
+    deleteUser: function(){
+            axios.post('/WebShopREST/rest/user/deleteUser', this.selected.username)
+            .then(response => {
+                router.push(`/korisnici`);
+            })
+            .catch(function(error){
+                console.log(error)
+            })
+        }
   }
   });
