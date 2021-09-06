@@ -60,9 +60,9 @@ template: `
                   <h5 class="modal-title" id="exampleModalLabel">Odjavi se</h5>
                   </div>
                   <div class="modal-body"  style="padding:40px 50px;">
-                      <form role="form" >
+                      <form role="form" @submit="deleteUser">
                         <div> <p> Da li ste sigurni da zelite da obrisete?</p></div>
-                          <button type="button" class="btn btn-danger btn-block" v-on:click="deleteUser"><span class="glyphicon glyphicon-off"></span> Obrisi</button>
+                          <button type="submit" class="btn btn-danger btn-block" v-on:click="deleteUser"><span class="glyphicon glyphicon-off"></span> Obrisi</button>
                       </form>
                   </div>
                   <div class="modal-footer">

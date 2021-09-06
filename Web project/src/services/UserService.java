@@ -130,15 +130,25 @@ public class UserService {
 	}
 	
 	//treba proveriti za odgovor da li treba ovo da bude
-	@POST
+/*	@POST
 	@Path("/deleteUser")
-
-	public void deleteUser(String username){
+	@Produces(MediaType.TEXT_HTML)
+	public Response deleteUser(String username){
 			UsersDAO users = getUsers();
 			System.out.println("IDEM NA BRISANJE NAKON OVOFGA");
 			System.out.println(username);
 			System.out.println("****************");
 			users.deleteUserById(username);
+			return Response.status(Response.Status.ACCEPTED).entity("/WebShopREST/admin_dashboard.html#/korisnici").build();
+			
+	} */
+	
+	@POST
+	@Path("/deleteUser")
+	public void deleteUser(String username){
+			UsersDAO users = getUsers();
+			users.deleteUserById(username);
+			
 	}
 	
 	//dodavanje korisnika

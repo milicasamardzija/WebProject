@@ -1,10 +1,12 @@
 package services;
 
+import java.util.ArrayList;
 import java.util.Collection;
 
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
 import javax.ws.rs.GET;
+import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.Context;
@@ -12,6 +14,7 @@ import javax.ws.rs.core.MediaType;
 
 import beans.Restaurant;
 import dao.RestaurantDAO;
+import dao.UsersDAO;
 
 @Path("/restaurant")
 public class RestaurantService {
@@ -40,7 +43,14 @@ public class RestaurantService {
 	@Produces(MediaType.APPLICATION_JSON)
 	public Collection<Restaurant> getAll() {
 		RestaurantDAO restaurantDAO = getRestaurantsDAO();
-		return restaurantDAO.getValues();
+		ArrayList<Restaurant> ret= new ArrayList<Restaurant>(); 
+		for (Restaurant restaurant : restaurantDAO.getValues()) {
+			if(!restaurant.getDeleted()) {
+				ret.add(restaurant);
+			}
+			
+		}
+		return ret;
 	}
 	
 	@GET
@@ -49,4 +59,12 @@ public class RestaurantService {
 		System.out.println("OVDE SAM");
 	}
 	
+	@POST
+	@Path("/deleteRestaurant")
+	public void deleteUser(String id){
+		System.out.println("ID JE " + id);
+			RestaurantDAO restaurants = getRestaurantsDAO();
+		restaurants.deleteRestaurantById(Integer.parseInt(id));
+			System.out.println("USPESNO IZBRISAN");
+	}
 }

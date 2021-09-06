@@ -90,30 +90,6 @@ public class RestaurantDAO {
 		}
 	}
 	
-	//ucitavanje restorana u fajl
-	private void saveComments() {
-		File f = new File("WebContent/data/restaurants.txt");
-		FileWriter fileWriter = null;
-		try {
-			fileWriter = new FileWriter(f);
-			ObjectMapper objectMapper = new ObjectMapper();
-			objectMapper.configure(SerializationFeature.INDENT_OUTPUT, true);
-			objectMapper.getFactory().configure(JsonGenerator.Feature.ESCAPE_NON_ASCII, true);
-			String string= objectMapper.writeValueAsString(this.restaurants);
-			fileWriter.write(string);
-			fileWriter.flush();
-		} catch (IOException e) {
-			e.printStackTrace();
-		} finally {
-			if (fileWriter != null) {
-				try {
-					fileWriter.close();
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		}
-	}
 
 	public Collection<Restaurant> getValues() {
 		return this.restaurants.values();
@@ -130,4 +106,42 @@ public class RestaurantDAO {
 		}
 		return null;
 	}
+	
+	
+	
+	public void deleteRestaurantById(int id) {
+		Restaurant restaurant = getByID(id);
+		if(restaurant !=null) {
+			restaurant.setDeleted(true);
+			saveRestaurants();
+			
+		}
+	}
+	
+	
+	//ucitavanje restorana u fajl
+	private void saveRestaurants() {
+		File f = new File("WebContent/data/restaurants.txt");
+		FileWriter fileWriter = null;
+		try {
+			fileWriter = new FileWriter(f);
+			ObjectMapper objectMapper = new ObjectMapper();
+			objectMapper.configure(SerializationFeature.INDENT_OUTPUT, true);
+			objectMapper.getFactory().configure(JsonGenerator.Feature.ESCAPE_NON_ASCII, true);
+			String stringRestaurants = objectMapper.writeValueAsString(this.restaurants);
+			fileWriter.write(stringRestaurants);
+			fileWriter.flush();
+		} catch (IOException e) {
+			e.printStackTrace();
+		} finally {
+			if (fileWriter != null) {
+				try {
+					fileWriter.close();
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		}
+	}
+	
 }

@@ -13,8 +13,18 @@ public class Restaurant {
 	private Status status;
 	private Address address;
 	private String link;
+	private Boolean deleted;
 	//slika-logo
 	
+	
+	public Boolean getDeleted() {
+		return deleted;
+	}
+
+	public void setDeleted(Boolean deleted) {
+		this.deleted = deleted;
+	}
+
 	public Restaurant() {};
 	
 	public int getId() {
@@ -60,7 +70,7 @@ public class Restaurant {
 		this.link = link;
 	}
 	public Restaurant(int id, String name, RestaurantType type, ArrayList<Integer> articalIds, Status status,
-			Address address, String link) {
+			Address address, String link, Boolean deleted) {
 		super();
 		this.id = id;
 		this.name = name;
@@ -69,6 +79,7 @@ public class Restaurant {
 		this.status = status;
 		this.address = address;
 		this.link = link;
+		this.deleted= deleted;
 	}
 	
 }
