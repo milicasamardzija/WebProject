@@ -43,4 +43,10 @@ public class RestaurantService {
 		return restaurantDAO.getValues();
 	}
 	
+	@GET
+	@Path("/get")
+	public void get() {
+		System.out.println("OVDE SAM");
+	}
+	
 }

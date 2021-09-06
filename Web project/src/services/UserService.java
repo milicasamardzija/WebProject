@@ -174,7 +174,7 @@ public class UserService {
 	
 	public CustomerType checkCustomer(String tip)
 	{
-		CustomerType type;
+		CustomerType type =null;
 		if(tip.equals("bronze")) {
 			type=CustomerType.BRONZE;
 		}
@@ -189,7 +189,7 @@ public class UserService {
 	
 	public Role checkUserType(String tip)
 	{
-		Role type;
+		Role type=null;
 		if(tip.equals("kupac")) {
 			type=Role.CUSTOMER;
 		}

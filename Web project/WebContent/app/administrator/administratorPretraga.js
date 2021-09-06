@@ -43,36 +43,33 @@ template: `
 
           <!--tabela-->
           <table class="table table-hover">
-          <thead>
-              <tr>
-              <th scope="col">Ime</th>
-              <th scope="col">Prezime</th>
-              <th scope="col">Korisnicko ime</th>
-              <th scope="col">Broj sakupljenih bodova</th>
-              <th scope="col">Uloga</th>
-              <th scope="col">Tip korisnika</th>
-              <th scope="col"></th>
-              </tr>
-          </thead>
-          <tbody>
-              <tr v-for="user in allUsers" v-on:click="getSelected(user)">
-              <td>{{user.name}}</td>
-              <td>{{user.surname}}</td>
-              <td>{{user.username}}</td>
-              <td>{{user.points}}</td>
-              <td>{{user.role}}</td>
-              <td>{{user.role}}</td>
-              <div>
-                  <td><button type="button" class="btn btn-secondary" v-on:click="changeUser">Izmeni</button></td>
-                  <td><button type="button" class="btn btn-secondary">Izbrisi</button></td>
-              </div>
-              </tr>
-          </tbody>
-
-
+                <thead>
+                    <tr>
+                    <th scope="col">Ime</th>
+                    <th scope="col">Prezime</th>
+                    <th scope="col">Korisnicko ime</th>
+                    <th scope="col">Broj sakupljenih bodova</th>
+                    <th scope="col">Uloga</th>
+                    <th scope="col">Tip korisnika</th>
+                    <th scope="col"></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr v-for="user in allUsers" v-on:click="getSelected(user)">
+                    <td>{{user.name}}</td>
+                    <td>{{user.surname}}</td>
+                    <td>{{user.username}}</td>
+                    <td>{{user.points}}</td>
+                    <td>{{user.role}}</td>
+                    <td>{{user.role}}</td>
+                    <div>
+                        <td><button type="button" class="btn btn-secondary" v-on:click="changeUser">Izmeni</button></td>
+                        <td><button type="button" class="btn btn-secondary">Izbrisi</button></td>
+                    </div>
+                    </tr>
+                </tbody>
+            </table>
         </div>
-
-
     </form>
          
   
