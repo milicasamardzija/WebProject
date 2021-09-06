@@ -6,50 +6,14 @@ Vue.component("administrator-usersSuspecious", {
     },    
 template: `
 <div class="containerInfo">
-<div class="search-bar">
-    <div class="container">
-        <form action="#" >
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="row">
-                        <div class="col-lg-2 col-md-3 col-sm-12 p-0 search">
-                            <input type="text" class="form-control search-slt" placeholder="Ime">
-                        </div>
-                        <div class="col-lg-2 col-md-3 col-sm-12 p-0 search" >
-                            <input type="text" class="form-control search-slt" placeholder="Prezime">
-                        </div>
-                        <div class="col-lg-2 col-md-3 col-sm-12 p-0 search" >
-                          <input type="text" class="form-control search-slt" placeholder="Korisnicko ime">
-                        </div>
-                        <div class="dropdown col-lg-2 col-md-3 col-sm-12 p-0 filt">
-                            <button class="btn btn-secondary dropdown-toggle filters" type="button" data-toggle="dropdown">
-                              Uloga
-                            </button>
-                            <div class="dropdown-menu">
-                              <button class="dropdown-item" type="button">Action</button>
-                              <button class="dropdown-item" type="button">Another action</button>
-                              <button class="dropdown-item" type="button">Something else here</button>
-                            </div>
-                          </div>
-                          <div class="dropdown col-lg-2 col-md-3 col-sm-12 p-0 filt">
-                            <button class="btn btn-secondary dropdown-toggle" type="button" data-toggle="dropdown" >
-                              Tip korisnika
-                            </button>
-                            <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
-                              <button class="dropdown-item" type="button">Action</button>
-                              <button class="dropdown-item" type="button">Another action</button>
-                              <button class="dropdown-item" type="button">Something else here</button>
-                            </div>
-                          </div>
-                        <div class="col-lg-2 col-md-3 col-sm-12 btn-search">
-                            <button type="button" class="btn btn-danger wrn-btn">Search</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </form>
+
+	    <div class="container">
+        <button style=" margin-left: 38%;"class="btn btn-success" type="button" v-on:click="search">PRETRAGA</button>
+        <button class="btn btn-success" type="button" v-on:click="filter">FILTRIRANJE</button>
+        <button class="btn btn-success" type="button" v-on:click="sort">SORTIRANJE</button>
+
     </div>
-</div>
+
 <div>
     <table class="table table-hover">
         <thead>
@@ -87,6 +51,14 @@ template: `
         })
     },
     methods : {
-		
+		search() {
+		router.push(`/sumnjiviPretraga`)
+	},
+		filter() {
+		router.push(`/sumnjiviFilter`)
+	},
+		sort() {
+		router.push(`/sumnjiviSort`)
+	}
 	}
 });

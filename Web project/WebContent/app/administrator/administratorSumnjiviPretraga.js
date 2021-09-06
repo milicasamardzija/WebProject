@@ -1,4 +1,4 @@
-Vue.component("administrator-pretraga", {  
+Vue.component("administratorSumnjivi-pretraga", {  
     data:function(){
         return{
         allUsers : [],
@@ -15,15 +15,15 @@ template: `
                 <table class="tableSearch" style="margin-top: 30px;">
                     <tr> 
                     <td> </td>
-                    <td><input type="text" placeholder="Ime" v-model="searchParameters.name" style="margin-left: 60px; height: 40px; width: 200px;" >  </td>
+                    <td><input type="text" placeholder="Ime" v-model="searchParameters.name" style="margin-left: 30px; height: 40px; width: 200px;" >  </td>
                     
                     <td style="width: 70px;"> </td>
 
-                    <td>  <input type="text" placeholder="Prezime" v-model="searchParameters.surname" style="margin-left: 60px; height: 40px; width: 200px;"></td>  
+                    <td>  <input type="text" placeholder="Prezime" v-model="searchParameters.surname" style="margin-left: 30px; height: 40px; width: 200px;"></td>  
                     <td style="width: 70px;"> </td>
                    
                 
-                    <td > <input  type="text" placeholder="Korisnicko ime" v-model="searchParameters.username" style="margin-left: 60px; height: 40px; width: 200px; "> </td>  
+                    <td > <input  type="text" placeholder="Korisnicko ime" v-model="searchParameters.username" style="margin-left: 30px; height: 40px; width: 200px; "> </td>  
 
                     <td style="width: 70px;"> </td>
                     
@@ -39,10 +39,10 @@ template: `
 
          
 
-            <h4><p> Korisnici koje odgovaraju kriterijumima pretrage: </p> </h4>
+            <h4 style="margin-left:70px"><p> Korisnici koje odgovaraju kriterijumima pretrage: </p> </h4>
 
           <!--tabela-->
-          <table class="table table-hover">
+          <table class="table table-hover" style="width:95%">
           <thead>
               <tr>
               <th scope="col">Ime</th>
@@ -55,18 +55,7 @@ template: `
               </tr>
           </thead>
           <tbody>
-              <tr v-for="user in allUsers" v-on:click="getSelected(user)">
-              <td>{{user.name}}</td>
-              <td>{{user.surname}}</td>
-              <td>{{user.username}}</td>
-              <td>{{user.points}}</td>
-              <td>{{user.role}}</td>
-              <td>{{user.role}}</td>
-              <div>
-                  <td><button type="button" class="btn btn-secondary" v-on:click="changeUser">Izmeni</button></td>
-                  <td><button type="button" class="btn btn-secondary">Izbrisi</button></td>
-              </div>
-              </tr>
+     
           </tbody>
 
 
@@ -81,7 +70,7 @@ template: `
 `,
 methods:{
     back: function() {
-        router.push(`/korisnici`)
+        router.push(`/sumnjiviKorisnici`)
     },
     show: function() {
         axios.post("/WebShopREST/rest/user/searchUsers", {

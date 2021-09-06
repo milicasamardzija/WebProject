@@ -50,7 +50,7 @@
 .row {
     margin-top: 20px;
     margin-bottom: 20px;
-    width: 2000px;
+    width: 1400px;
     height: 100px;
     opacity: 1.2;
     border-radius: 10px;
@@ -61,7 +61,7 @@
 
 .form-control {
     display: block;
-    width: 100%;
+    width:200px !important;
     padding: .375rem .75rem;
     font-size: 1rem;
     line-height: 1.5;
@@ -76,7 +76,7 @@
 .search {
     margin-left: 30px;
     margin-right: 20px;
-   
+
 }
 
 .filt {

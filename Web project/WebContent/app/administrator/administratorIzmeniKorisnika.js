@@ -1,14 +1,15 @@
 Vue.component("administrator-changeUser", {
     data:function(){
         return{
-            newUser:{}
+            newUser: {},
+            user: {}
         }
     },    
   template: `
   <div class="containerInfo t"> 
   <div class="information">
-    <form @submit='addUser'>
-      <table >
+    <form @submit="addUser" method="POST">
+      <table  >
         <tr >
           <td class="labela">Uloga:</td>
           <td><input class="form-check-input" type="radio" id="exampleRadios2" value="MANAGER" v-model="newUser.role" >
@@ -24,7 +25,7 @@ Vue.component("administrator-changeUser", {
         </tr>
         <tr>
           <td class="labela">Ime:</td>
-          <td><input class="form-control" type="text" placeholder="Ime" v-model="newUser.name"></td>
+          <td><input class="form-control" type="text" placeholder="Ime" v-bind="newUser.name"></td>
         </tr>
         <tr>
             <td class="labela">Prezime:</td>
@@ -67,7 +68,7 @@ Vue.component("administrator-changeUser", {
           <td><input class="form-control" type="text" placeholder="Postanski broj" v-model="newUser.zipCode"></td>
         </tr>
         <tr>
-          <td class="buttonForm"><button type="button" v-on:click="addUser" class="btn btn-success" >Sacuvaj</button></td>
+          <td class="buttonForm"><button type="button" v-on:click="changeUser" class="btn btn-success" >Sacuvaj</button></td>
         
         </tr>
    </table>
@@ -75,8 +76,37 @@ Vue.component("administrator-changeUser", {
   </div>
   </div>
   `,
-    methods : {
-      
-     
+  methods : {
+    changeUser: function(event){
+      event.preventDefault()
+      axios.post("/WebShopREST/rest/user/changeUser", {
+      "name":''+ this.newUser.name, 
+      "surname":''+ this.newUser.surname, 
+      "gender":''+ this.newUser.gender, 
+      "birthday":''+ this.newUser.birthday, 
+      "role":''+ this.newUser.role, 
+      "street":''+ this.newUser.street, 
+      "number":''+ this.newUser.number, 
+      "city":''+ this.newUser.city, 
+      "zipCode":''+ this.newUser.zipCode})
+      .then(
+        response => {
+          router.push(`/korisnici`);
+        } 
+      )
+      .catch(function(error){
+        console.log(error)
+    })
+    }
+  },
+  mounted() {
+      this.user = this.$route.query.username,
+      axios.post("/WebShopREST/rest/user/getUser", {"username":''+this.user.username})
+      .then( response => {
+          this.newUser = response.data
+      })
+      .catch(function(error){
+          console.log(error)
+      })
   }
-  });
+})

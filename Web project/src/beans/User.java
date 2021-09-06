@@ -172,4 +172,14 @@ public class User {
 		this.typeCustomer = typeCustomer;
 		this.idRestaurant = idRestaurant;
 	}
+
+	@Override
+	public String toString() {
+		return "User [deleted=" + deleted + ", blocked=" + blocked + ", username=" + username + ", password=" + password
+				+ ", name=" + name + ", surname=" + surname + ", gender=" + gender + ", birthday=" + birthday
+				+ ", role=" + role + ", address=" + address + ", orderIds=" + orderIds + ", chartId=" + chartId
+				+ ", points=" + points + ", typeCustomer=" + typeCustomer + ", idRestaurant=" + idRestaurant + "]";
+	}
+	
+	
 }
