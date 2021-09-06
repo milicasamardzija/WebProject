@@ -11,51 +11,52 @@ Vue.component("administrator-addRestaurant", {
                 <table class="t">
                     <tr>
                     <td class="labela">Naziv:</td>
-                    <td><input class="form-control" type="text" placeholder="Naziv"></td>
+                    <td><input class="form-control" type="text" placeholder="Naziv" v-model="restaurant.name"></td>
                     </tr>
                     <tr>
                     <td class="labela">Tip:</td>
-                    <td><select class="form-control">
-                        <option value="0">Italijanski</option>
-                        <option value="1">Kineski</option>
-                        <option value="2">Pica</option>
-                        <option value="3">Rostilj</option>
-                        <option value="4">Riblji</option>
-                        <option value="5">Veganski</option>
+                    <td><select class="form-control" v-model="restaurant.type">
+                        <option v-bind:value="0">Italijanski</option>
+                        <option v-bind:value="1">Kineski</option>
+                        <option v-bind:value="2">Pica</option>
+                        <option v-bind:value="3">Rostilj</option>
+                        <option v-bind:value="4">Riblji</option>
+                        <option v-bind:value="5">Veganski</option>
                     </select>
                     </td>
                     </tr>
                     <tr>
-                    <td class="labela">Adresa:</td>
-                    <td><input class="form-control" type="text" placeholder="Adresa"></td>
+                    <td class="labela">Ulica:</td>
+                    <td><input class="form-control" type="text" placeholder="Ulica" v-model="restaurant.street"></td>
                     <td class="buttonMap"><button type="button" class="btn btn-success"><i></i>Choose on map</button></td>
                     </tr>
                     <tr>
                     <td class="labela">Broj:</td>
-                    <td><input class="form-control" type="text" placeholder="Broj"></td>
+                    <td><input class="form-control" type="text" placeholder="Broj" v-model="restaurant.number"></td>
                     </tr>
                     <tr>
                     <td class="labela">Grad:</td>
-                    <td><input class="form-control" type="text" placeholder="Grad"></td>
+                    <td><input class="form-control" type="text" placeholder="Grad" v-model="restaurant.city"></td>
                     </tr>
                     <tr>
                     <td class="labela">Postanski broj:</td>
-                    <td><input class="form-control" type="text" placeholder="Postanski broj"></td>
+                    <td><input class="form-control" type="text" placeholder="Postanski broj" v-model="restaurant.zipCode"></td>
                     </tr>
                     <tr>
                     <td class="labela">Logo:</td>
-                    <td><input type="file"  onchange="encodeImageFileAsURL(this)"></td>
+                    <td><input type="file"  onchange="encodeImageFileAsURL(this)" v-model="restaurant.link"></td>
                     </tr>
                     <tr>
                     <td class="labela">Menadzer:</td>
-                    <td><select class="form-control">
-                        <option value="menadzer">...</option>
+                    <td><select class="form-control" v-model="restaurant.managerId">
+                        <option v-bind:value="menadzer">...</option>
+                        <option v-bind:value="menadzer">.masadba.</option>
                     </select></td>
                     <td class="buttonMap"><button type="button" class="btn btn-success"><i></i>Kreiraj novog menadzera</button></td>
                     </tr>
                     <tr>
-                    <td class="buttonForm"><button type="button" class="btn btn-success">Sacuvaj</button></td>
-                    <td class="buttonForm"><button type="button" class="btn btn-success">Otkazi</button></td>
+                    <td class="buttonForm"><button type="button" class="btn btn-success" v-on:click="addRestaurant">Sacuvaj</button></td>
+                    <td class="buttonForm"><button type="button" class="btn btn-success" v-on:click="otkazi">Otkazi</button></td>
                     </tr>
                 </table>
             </form>
@@ -65,16 +66,15 @@ Vue.component("administrator-addRestaurant", {
     methods : {
       addRestaurant: function(event){
         event.preventDefault()
-        axios.post("/WebShopREST/rest/user/addUser", {
-        "name":''+ this.newUser.name, 
-        "surname":''+ this.newUser.surname, 
-        "gender":''+ this.newUser.gender, 
-        "birthday":''+ this.newUser.birthday, 
-        "role":''+ this.newUser.role, 
-        "street":''+ this.newUser.street, 
-        "number":''+ this.newUser.number, 
-        "city":''+ this.newUser.city, 
-        "zipCode":''+ this.newUser.zipCode})
+        axios.post("/WebShopREST/rest/restaurant/addRestaurant", {
+        "name":''+ this.restaurant.name, 
+        "type":''+ this.restaurant.type, 
+        "street":''+ this.restaurant.street, 
+        "number":''+ this.restaurant.number, 
+        "city":''+ this.restaurant.city, 
+        "zipCode":''+ this.restaurant.zipCode,
+        "link":''+ this.restaurant.link, 
+        "managerId":''+ this.restaurant.managerId})
         .then(
           response => {
             router.push(`/`);

@@ -6,6 +6,7 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
 
@@ -17,7 +18,10 @@ import com.fasterxml.jackson.databind.introspect.VisibilityChecker;
 import com.fasterxml.jackson.databind.type.MapType;
 import com.fasterxml.jackson.databind.type.TypeFactory;
 
+import beans.Address;
 import beans.Restaurant;
+import dto.RestaurantNewDTO;
+import enums.Status;
 
 
 
@@ -96,11 +100,8 @@ public class RestaurantDAO {
 	}
 
 	public Restaurant getByID(int restaurantId) {
-		System.out.println("hejjjj");
-		System.out.println(this.restaurants.values().size());
 		for (Restaurant restaurant : this.restaurants.values()) {
 			if(restaurant.getId() == restaurantId) {
-				System.out.println("hej");
 				return restaurant;
 			}
 		}
@@ -142,6 +143,28 @@ public class RestaurantDAO {
 				}
 			}
 		}
+	}
+
+	public void addRestaurant(RestaurantNewDTO restaurant) {
+		Restaurant newRestaurant = new Restaurant(generateIdRestaurant(),restaurant.managerId, restaurant.name, restaurant.type, new ArrayList<Integer>(), Status.OPEN, new Address(restaurant.street, restaurant.number, restaurant.city, restaurant.zipCode, 0, 0), restaurant.link, false);
+		this.restaurants.put(newRestaurant.getId(), newRestaurant);
+		saveRestaurants();
+	}
+
+	private Integer generateIdRestaurant() {
+		int ret = 0;
+        for (Restaurant restaurantBig : this.getValues())
+        {
+            for (Restaurant restaurant : this.getValues())
+            {
+                if (ret == restaurant.getId())
+                {
+                    ++ret;
+                    break;
+                }
+            }
+        }
+        return ret;
 	}
 	
 }

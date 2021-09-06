@@ -5,6 +5,7 @@ import java.util.Collection;
 
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
+import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
@@ -15,6 +16,8 @@ import javax.ws.rs.core.MediaType;
 import beans.Restaurant;
 import dao.RestaurantDAO;
 import dao.UsersDAO;
+import dto.RestaurantNewDTO;
+import dto.UserNewDTO;
 
 @Path("/restaurant")
 public class RestaurantService {
@@ -58,6 +61,15 @@ public class RestaurantService {
 	public void get() {
 		System.out.println("OVDE SAM");
 	}
+	
+	//dodavanje restorana
+	@POST
+	@Path("/addRestaurant")
+	@Consumes(MediaType.APPLICATION_JSON)
+	public void addRestaurant(RestaurantNewDTO restaurant) {
+		RestaurantDAO restaurantDAO = getRestaurantsDAO();
+		restaurantDAO.addRestaurant(restaurant);
+	} 
 	
 	@POST
 	@Path("/deleteRestaurant")

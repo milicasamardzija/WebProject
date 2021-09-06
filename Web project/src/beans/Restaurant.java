@@ -7,6 +7,7 @@ import enums.Status;
 
 public class Restaurant {
 	private int id;
+	private String managerId;
 	private String name;
 	private RestaurantType type;
 	private ArrayList<Integer> articalIds;
@@ -69,10 +70,20 @@ public class Restaurant {
 	public void setLink(String link) {
 		this.link = link;
 	}
-	public Restaurant(int id, String name, RestaurantType type, ArrayList<Integer> articalIds, Status status,
+	
+	public String getManagerId() {
+		return managerId;
+	}
+
+	public void setManagerId(String managerId) {
+		this.managerId = managerId;
+	}
+
+	public Restaurant(int id,String managerId, String name, RestaurantType type, ArrayList<Integer> articalIds, Status status,
 			Address address, String link, Boolean deleted) {
 		super();
 		this.id = id;
+		this.managerId = managerId;
 		this.name = name;
 		this.type = type;
 		this.articalIds = articalIds;
