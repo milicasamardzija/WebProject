@@ -20,6 +20,7 @@ import beans.User;
 import beans.UsernameDTO;
 import dao.UsersDAO;
 import dto.UserNewDTO;
+import dto.ManagerAvailableDTO;
 import dto.UserChangeDTO;
 import dto.UserLoginDTO;
 import dto.UserRegistrationDTO;
@@ -144,6 +145,20 @@ public class UserService {
 		users.addUser(user);	
 		return user;
 	} 
+	
+	@GET
+	@Path("/getAvailableManagers")
+	@Produces(MediaType.APPLICATION_JSON)
+	public Collection<ManagerAvailableDTO> getAllAvailableManagers() {
+		UsersDAO users = getUsers();
+		ArrayList<ManagerAvailableDTO> ret = new ArrayList<ManagerAvailableDTO>();
+		for (User user : users.getValues()) {
+			if(!user.getDeleted() && user.getRole().equals(Role.MANAGER) && user.getIdRestaurant() == -1) {
+				ret.add(new ManagerAvailableDTO(user.getUsername(), user.getName(), user.getSurname()));
+			}
+		}
+		return ret;
+	}
 	
 	//pretraga korisnika
 	@POST

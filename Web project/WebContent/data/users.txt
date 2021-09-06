@@ -66,6 +66,23 @@
     "chartId" : -1,
     "points" : -1.0,
     "typeCustomer" : null,
-    "idRestaurant" : 0
+    "idRestaurant" : -1
+  },
+  "mika" : {
+    "deleted" : false,
+    "blocked" : false,
+    "username" : "mika",
+    "password" : "mika",
+    "name" : "Mirko",
+    "surname" : "Mirkovic",
+    "gender" : "MALE",
+    "birthday" : 926380800000,
+    "role" : "MANAGER",
+    "address" : null,
+    "orderIds" : [ ],
+    "chartId" : -1,
+    "points" : -1.0,
+    "typeCustomer" : null,
+    "idRestaurant" : -1
   }
 }

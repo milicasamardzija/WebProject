@@ -142,5 +142,41 @@
     },
     "link" : "logoPizza.png",
     "deleted" : false
+  },
+  "8" : {
+    "id" : 8,
+    "managerId" : "undefined",
+    "name" : "dgg",
+    "type" : "CHINESE",
+    "articalIds" : [ ],
+    "status" : "OPEN",
+    "address" : {
+      "street" : "gfdg",
+      "number" : 44,
+      "city" : "rger",
+      "zipCode" : 55,
+      "latitude" : 0.0,
+      "longitude" : 0.0
+    },
+    "link" : "novaind.png",
+    "deleted" : false
+  },
+  "9" : {
+    "id" : 9,
+    "managerId" : "mika",
+    "name" : "rwe",
+    "type" : "PIZZA",
+    "articalIds" : [ ],
+    "status" : "OPEN",
+    "address" : {
+      "street" : "tw",
+      "number" : 4,
+      "city" : "ert",
+      "zipCode" : 5,
+      "latitude" : 0.0,
+      "longitude" : 0.0
+    },
+    "link" : "logoPizza.png",
+    "deleted" : false
   }
 }

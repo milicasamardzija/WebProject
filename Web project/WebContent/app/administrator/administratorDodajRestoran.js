@@ -1,7 +1,8 @@
 Vue.component("administrator-addRestaurant", {
     data:function(){
         return{
-          restaurant:{}
+          restaurant:{},
+          managers:[]
         }
     },    
   template: `
@@ -49,8 +50,7 @@ Vue.component("administrator-addRestaurant", {
                     <tr>
                     <td class="labela">Menadzer:</td>
                     <td><select class="form-control" v-model="restaurant.managerId">
-                        <option v-bind:value="menadzer">...</option>
-                        <option v-bind:value="menadzer">fsdas</option>
+                        <option v-for="m in managers" v-bind:value="m.id">{{m.name}} {{m.surname}}</option>
                     </select></td>
                     <td class="buttonMap"><button type="button" class="btn btn-success"><i></i>Kreiraj novog menadzera</button></td>
                     </tr>
@@ -86,5 +86,14 @@ Vue.component("administrator-addRestaurant", {
         event.preventDefault()
         router.push(`/`);
       }
-  }
+    },
+    mounted(){
+        axios.get("/WebShopREST/rest/user/getAvailableManagers")
+        .then( response => {
+            this.managers = response.data
+        })
+        .catch(function(error){
+            console.log(error)
+        })
+    }
   });
