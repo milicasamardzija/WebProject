@@ -16,8 +16,14 @@ Vue.component("administrator-addRestaurant", {
                     <tr>
                     <td class="labela">Tip:</td>
                     <td><select class="form-control">
-                        <option>Izbaeri tip</option>
-                    </select></td>
+                        <option value="0">Italijanski</option>
+                        <option value="1">Kineski</option>
+                        <option value="2">Pica</option>
+                        <option value="3">Rostilj</option>
+                        <option value="4">Riblji</option>
+                        <option value="5">Veganski</option>
+                    </select>
+                    </td>
                     </tr>
                     <tr>
                     <td class="labela">Adresa:</td>
@@ -43,7 +49,7 @@ Vue.component("administrator-addRestaurant", {
                     <tr>
                     <td class="labela">Menadzer:</td>
                     <td><select class="form-control">
-                        <option>Izaberi menadzera</option>
+                        <option value="menadzer">...</option>
                     </select></td>
                     <td class="buttonMap"><button type="button" class="btn btn-success"><i></i>Kreiraj novog menadzera</button></td>
                     </tr>
