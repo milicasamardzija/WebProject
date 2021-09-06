@@ -8,9 +8,7 @@ Vue.component("administrator-restaurants", {
 template: `
 <div class="containerInfo">
 
-
-
-		<!--pretraga-->
+	<!--pretraga-->
 	<div class="row" style="width:1400px !important; margin-left:30px;">
 		<div class="col-lg-12">
 					    <div class="row" style="width:1400px !important;">
@@ -20,29 +18,29 @@ template: `
 										        <div class="col-lg-2 col-md-3 col-sm-12 p-0 search" >
 										            <input type="text" class="form-control search-slt" placeholder="Lokacija restorana">
 										        </div>
-									        <div class="dropdown col-lg-2 col-md-3 col-sm-12 p-0 filt">
-									            <button class="btn btn-secondary dropdown-toggle" type="button" data-toggle="dropdown" >
-									            Tip restorana
-									            </button>
-									            <span class="dropdown-menu" aria-labelledby="dropdownMenu2">
-									            <button class="dropdown-item" type="button">Action</button>
-									            <button class="dropdown-item" type="button">Another action</button>
-									            <button class="dropdown-item" type="button">Something else here</button>
-									            </span>
-									        </div>
-									        <div class="dropdown col-lg-2 col-md-3 col-sm-12 p-0 filt">
-									            <button class="btn btn-secondary dropdown-toggle filters" type="button" data-toggle="dropdown">
-									            Ocena restorana
-									            </button>
-									            <div class="dropdown-menu">
-									            <button class="dropdown-item" type="button">Action</button>
-									            <button class="dropdown-item" type="button">Another action</button>
-									            <button class="dropdown-item" type="button">Something else here</button>
-									            </div>
-										    </div>
-									        <div class="col-lg-2 col-md-3 col-sm-12 btn-search">
-									            <button type="button" class="btn btn-danger wrn-btn">Pretrazi kombinovano</button>
-									        </div>
+                                                <div class="dropdown col-lg-2 col-md-3 col-sm-12 p-0 filt">
+                                                    <button class="btn btn-secondary dropdown-toggle" type="button" data-toggle="dropdown" >
+                                                    Tip restorana
+                                                    </button>
+                                                    <span class="dropdown-menu" aria-labelledby="dropdownMenu2">
+                                                    <button class="dropdown-item" type="button">Action</button>
+                                                    <button class="dropdown-item" type="button">Another action</button>
+                                                    <button class="dropdown-item" type="button">Something else here</button>
+                                                    </span>
+                                                </div>
+                                                <div class="dropdown col-lg-2 col-md-3 col-sm-12 p-0 filt">
+                                                    <button class="btn btn-secondary dropdown-toggle filters" type="button" data-toggle="dropdown">
+                                                    Ocena restorana
+                                                    </button>
+                                                    <div class="dropdown-menu">
+                                                    <button class="dropdown-item" type="button">Action</button>
+                                                    <button class="dropdown-item" type="button">Another action</button>
+                                                    <button class="dropdown-item" type="button">Something else here</button>
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-2 col-md-3 col-sm-12 btn-search">
+                                                    <button type="button" class="btn btn-danger wrn-btn">Pretrazi kombinovano</button>
+                                                </div>
 					    </div>
 		</div>
 	</div>
@@ -73,32 +71,32 @@ template: `
 		             </div>
 	            
 
-               
-<!-- modal obrisi-->
-<div class="modal fade" id="brisanje" role="dialog" >
-        <div class="modal-dialog" style="width: 300px;" >
-            <!-- Modal content -->
-            <div class="modal-content">
-                <div class="modal-header" style="padding:35px 50px;">
-                <h5 class="modal-title" id="exampleModalLabel">Brisanje</h5>
-                </div>
-                <div class="modal-body"  style="padding:40px 50px;">
-                    <form role="form" @submit="deleteRestaurant">
-                      <div> <p> Da li ste sigurni da zelite da obrisete?</p></div>
-                        <button type="submit" class="btn btn-danger btn-block" v-on:click="deleteRestaurant"><span class="glyphicon glyphicon-off"></span> Obrisi</button>
-                    </form>
-                </div>
-                <div class="modal-footer">
-                <button type="button" class="btn btn-danger btn-default pull-left"  data-dismiss="modal">Odustani</button>   
-                </div>
-            </div>
-        </div>
-</div>      
-       
+                        
+            <!-- modal obrisi-->
+            <div class="modal fade" id="brisanje" role="dialog" >
+                    <div class="modal-dialog" style="width: 300px;" >
+                        <!-- Modal content -->
+                        <div class="modal-content">
+                            <div class="modal-header" style="padding:35px 50px;">
+                            <h5 class="modal-title" id="exampleModalLabel">Brisanje</h5>
+                            </div>
+                            <div class="modal-body"  style="padding:40px 50px;">
+                                <form role="form" @submit="deleteRestaurant">
+                                <div> <p> Da li ste sigurni da zelite da obrisete?</p></div>
+                                    <button type="submit" class="btn btn-danger btn-block" v-on:click="deleteRestaurant"><span class="glyphicon glyphicon-off"></span> Obrisi</button>
+                                </form>
+                            </div>
+                            <div class="modal-footer">
+                            <button type="button" class="btn btn-danger btn-default pull-left"  data-dismiss="modal">Odustani</button>   
+                            </div>
+                        </div>
+                    </div>
+            </div>     
+                
 </div>   
 `,
 methods:{
-	deleteRestaurant: function(){
+	    deleteRestaurant: function(){
             axios.post('/WebShopREST/rest/restaurant/deleteRestaurant', this.selected.id)
             .then(response => {
                 router.push(`/`);
@@ -107,10 +105,15 @@ methods:{
                 console.log(error)
             })
         }, 
-        
-      getSelected: function(restaurant){
-      this.selected= restaurant;
-      }
+        addRestaurant : function () {
+            router.push(`/dodajRestoran`)
+        }, 
+        changeRestaurant : function () {
+          this.$router.push({path: `/izmeniRestoran`, query:{ id: this.selected.id}})
+        },
+        getSelected: function(restaurant){
+        this.selected= restaurant;
+        }
 },
 mounted(){
     axios.get("/WebShopREST/rest/restaurant/getAllRestaurants")
@@ -120,5 +123,5 @@ mounted(){
       .catch(function(error){
           console.log(error)
       })
-},
+}
 });

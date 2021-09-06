@@ -21,7 +21,7 @@ import com.fasterxml.jackson.databind.type.TypeFactory;
 import beans.Address;
 import beans.Customer;
 import beans.User;
-import dto.UserDTO;
+import dto.UserChangeDTO;
 import dto.UserNewDTO;
 import dto.UserRegistrationDTO;
 import dto.UserSearchDTO;
@@ -188,16 +188,12 @@ public class UsersDAO {
 			saveUsers();
 		}	
 	}
-	public void changeUser(User user) {
-		User userChange = getUserByUsername(user.getUsername());
-		userChange.setName(user.getName());
-		userChange.setSurname(user.getSurname());
-		userChange.setGender(user.getGender());
-		userChange.setBirthday(user.getBirthday());
-		userChange.setRole(user.getRole());
-		userChange.setAddress(user.getAddress());
-		
-	
+	public void changeUser(UserChangeDTO user) {
+		User userChange = getUserByUsername(user.username);
+		userChange.setName(user.name);
+		userChange.setSurname(user.surname);
+		userChange.setAddress(new Address(user.street, user.number, user.city, user.zipCode));
+		System.out.println(user.name);
 		saveUsers();
 	}
 	public Collection<User> searchUsers(UserSearchDTO searchParameters) {
@@ -208,16 +204,6 @@ public class UsersDAO {
 				}
 			}
 		return ret;
-	}
-	public void changeUserProfile(UserDTO updatedUser) {
-		User userChange = getUserByUsername(updatedUser.user.getUsername());
-		userChange.setName(updatedUser.user.getName());
-		userChange.setSurname(updatedUser.user.getSurname());
-		userChange.setGender(updatedUser.user.getGender());
-		userChange.setBirthday(updatedUser.user.getBirthday());
-		userChange.setRole(updatedUser.user.getRole());
-		userChange.setAddress(updatedUser.user.getAddress());
-		saveUsers();
 	}
 	
 	public  Collection<User> filterUsers(String user) {

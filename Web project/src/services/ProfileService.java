@@ -13,7 +13,6 @@ import javax.ws.rs.core.Response;
 
 import beans.User;
 import dao.UsersDAO;
-import dto.UserDTO;
 
 @Path("/profile")
 public class ProfileService {
@@ -34,18 +33,7 @@ public class ProfileService {
 			User user = (User)request.getSession().getAttribute("loginUser");		
 			return user;
 		}
-		
-		@POST
-		@Path("/saveUserChanges")
-		@Produces(MediaType.TEXT_PLAIN)
-		@Consumes(MediaType.APPLICATION_JSON)
-		public Response saveProileChanges(UserDTO updatedUser) {
-
-			UsersDAO users = getUsers();
-			users.changeUserProfile(updatedUser);
-			return Response.status(Response.Status.ACCEPTED).entity("SUCCESS CHANGE").build();
-			
-		}
+	
 		
 		private UsersDAO getUsers() {
 			UsersDAO users = (UsersDAO)context.getAttribute("users");

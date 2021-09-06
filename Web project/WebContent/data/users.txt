@@ -1,6 +1,6 @@
 {
   "kupac" : {
-    "deleted" : true,
+    "deleted" : false,
     "blocked" : false,
     "username" : "kupac",
     "password" : "kupac",
@@ -32,8 +32,8 @@
     "blocked" : false,
     "username" : "admin",
     "password" : "admin123",
-    "name" : "Aca",
-    "surname" : "Acic",
+    "name" : "BozePomozi",
+    "surname" : "BozePomozi",
     "gender" : "MALE",
     "birthday" : 944006400000,
     "role" : "ADMINISTRATOR",
