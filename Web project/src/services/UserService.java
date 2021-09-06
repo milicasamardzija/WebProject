@@ -22,6 +22,8 @@ import dto.UserDTO;
 import dto.UserLoginDTO;
 import dto.UserRegistrationDTO;
 import dto.UserSearchDTO;
+import enums.CustomerType;
+import enums.RestaurantType;
 import enums.Role;
 
 @Path("/user")
@@ -158,6 +160,46 @@ public class UserService {
 	public Collection<User> searchUsers(UserSearchDTO user) {
 		UsersDAO users = getUsers();
 		return users.searchUsers(user);
+	}
+	
+	//filtriranje korisnika
+	@POST
+	@Path("/filterUsers")
+	@Consumes(MediaType.APPLICATION_JSON)
+	@Produces(MediaType.APPLICATION_JSON)
+	public Collection<User> filterUsers(String user) {
+		UsersDAO users = getUsers();
+		return users.filterUsers(user);
+	}
+	
+	public CustomerType checkCustomer(String tip)
+	{
+		CustomerType type;
+		if(tip.equals("bronze")) {
+			type=CustomerType.BRONZE;
+		}
+		if(tip.equals("silver")) {
+			type=CustomerType.SILVER;
+		}
+		 if(tip.equals("gold")) {
+			type=CustomerType.GOLD;
+		} 
+		return type;
+	}
+	
+	public Role checkUserType(String tip)
+	{
+		Role type;
+		if(tip.equals("kupac")) {
+			type=Role.CUSTOMER;
+		}
+		if(tip.equals("menadzer")) {
+			type=Role.MANAGER;
+		}
+		 if(tip.equals("dostavljac")) {
+			type=Role.DELIVERER;
+		} 
+		return type;
 	}
 	
 	//izmena korisnika

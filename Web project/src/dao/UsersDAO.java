@@ -218,4 +218,9 @@ public class UsersDAO {
 		userChange.setAddress(updatedUser.user.getAddress());
 		saveUsers();
 	}
+	
+	public  Collection<User> filterUsers(String user) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }
