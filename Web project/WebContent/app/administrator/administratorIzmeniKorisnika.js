@@ -13,7 +13,7 @@ Vue.component("administrator-changeUser", {
     },    
   template: `
   <div class="containerInfo t"> 
-    <div class="information">
+    <div class="information" >
       <form @submit='changeUser'>
         <table>
           <tr>
@@ -42,7 +42,7 @@ Vue.component("administrator-changeUser", {
           </tr>
           <tr>
             <td class="buttonForm"><button type="button" v-on:click="changeUser" class="btn btn-success">Sacuvaj</button></td> 
-            
+            <td class="buttonForm"><button type="button" v-on:click="otkazi" class="btn btn-success">Otkazi</button></td> 
           </tr>
         </table>
       </form> 

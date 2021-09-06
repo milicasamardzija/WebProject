@@ -51,9 +51,8 @@ template: `
             </div></td>
       </tr>
       <tr>
-        <td class="labela">Adresa:</td>
+        <td class="labela">Ulica:</td>
         <td><input class="form-control" type="text" placeholder="Adresa" v-model="newUser.street"></td>
-        <td class="buttonMap"><button type="button" class="btn btn-success"><i></i>Choose on map</button></td>
       </tr>
       <tr>
         <td class="labela">Broj:</td>
@@ -69,10 +68,10 @@ template: `
       </tr>
       <tr>
         <td class="buttonForm"><button type="button" v-on:click="addUser" class="btn btn-success" >Sacuvaj</button></td>
-      
+        <td class="buttonForm"><button type="button" v-on:click="otkazi" class="btn btn-success">Otkazi</button></td> 
       </tr>
  </table>
-  </form>     <td class="buttonForm"><button type="button" class="btn btn-success">Otkazi</button></td>
+  </form>     
 </div>
 </div>
 `,
@@ -95,6 +94,10 @@ template: `
         } 
       )
       .catch()
+    },
+    otkazi: function(event){
+      event.preventDefault()
+      router.push(`/korisnici`);
     }
 }
 });
