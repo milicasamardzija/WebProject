@@ -70,5 +70,77 @@
     },
     "link" : "C:\\fakepath\\pametna_bolnica_topics.png",
     "deleted" : false
+  },
+  "4" : {
+    "id" : 4,
+    "managerId" : "undefined",
+    "name" : "das",
+    "type" : "ITALIAN",
+    "articalIds" : [ ],
+    "status" : "OPEN",
+    "address" : {
+      "street" : "ddas",
+      "number" : 3,
+      "city" : "fdvs",
+      "zipCode" : 4343,
+      "latitude" : 0.0,
+      "longitude" : 0.0
+    },
+    "link" : "C:\\fakepath\\pizza.jpg",
+    "deleted" : false
+  },
+  "5" : {
+    "id" : 5,
+    "managerId" : "undefined",
+    "name" : "dfs",
+    "type" : "ITALIAN",
+    "articalIds" : [ ],
+    "status" : "OPEN",
+    "address" : {
+      "street" : " rger",
+      "number" : 5,
+      "city" : "gf",
+      "zipCode" : 4,
+      "latitude" : 0.0,
+      "longitude" : 0.0
+    },
+    "link" : "C:\\fakepath\\20180717_155517.jpg",
+    "deleted" : false
+  },
+  "6" : {
+    "id" : 6,
+    "managerId" : "undefined",
+    "name" : "fsds",
+    "type" : "ITALIAN",
+    "articalIds" : [ ],
+    "status" : "OPEN",
+    "address" : {
+      "street" : "ffs",
+      "number" : 4,
+      "city" : "gfgs",
+      "zipCode" : 4,
+      "latitude" : 0.0,
+      "longitude" : 0.0
+    },
+    "link" : "C:\\fakepath\\20180717_155517.jpg",
+    "deleted" : false
+  },
+  "7" : {
+    "id" : 7,
+    "managerId" : "undefined",
+    "name" : "sda",
+    "type" : "CHINESE",
+    "articalIds" : [ ],
+    "status" : "OPEN",
+    "address" : {
+      "street" : "das",
+      "number" : 3,
+      "city" : "fwfw",
+      "zipCode" : 4,
+      "latitude" : 0.0,
+      "longitude" : 0.0
+    },
+    "link" : "logoPizza.png",
+    "deleted" : false
   }
 }

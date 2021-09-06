@@ -44,13 +44,13 @@ Vue.component("administrator-addRestaurant", {
                     </tr>
                     <tr>
                     <td class="labela">Logo:</td>
-                    <td><input type="file"  onchange="encodeImageFileAsURL(this)" v-model="restaurant.link"></td>
+                    <td><input type="file" onchange="encodeImageFileAsURL(this)" v-model="restaurant.link"></td>
                     </tr>
                     <tr>
                     <td class="labela">Menadzer:</td>
                     <td><select class="form-control" v-model="restaurant.managerId">
                         <option v-bind:value="menadzer">...</option>
-                        <option v-bind:value="menadzer">.masadba.</option>
+                        <option v-bind:value="menadzer">fsdas</option>
                     </select></td>
                     <td class="buttonMap"><button type="button" class="btn btn-success"><i></i>Kreiraj novog menadzera</button></td>
                     </tr>

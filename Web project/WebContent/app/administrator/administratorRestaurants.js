@@ -54,7 +54,7 @@ template: `
 			                <div class="row-restaurants" v-for="restaurant in restaurants" v-on:click="getSelected(restaurant)" >
 			                    <div class = "col-with-picture">
 			                        <div class="col-picture">
-			                            <div class="imageRest"></div>
+			                            <div><img v-bind:src="'../pictures/'+restaurant.link"></div>
 			                        </div>
 			                    </div>
 			                    <div class="col-info">
