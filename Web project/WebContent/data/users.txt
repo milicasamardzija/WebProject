@@ -1,4 +1,32 @@
 {
+  "mika" : {
+    "deleted" : false,
+    "blocked" : false,
+    "username" : "mika",
+    "password" : "mika",
+    "name" : "Mirko",
+    "surname" : "Mirkovic",
+    "gender" : "MALE",
+    "birthday" : 926380800000,
+    "role" : "MANAGER",
+    "address" : {
+      "street" : "Jug Bogdana",
+      "number" : 15,
+      "city" : "Novi Sad",
+      "zipCode" : 21000,
+      "latitude" : 0.0,
+      "longitude" : 0.0
+    },
+    "orderIds" : [ ],
+    "chartId" : -1,
+    "points" : -1.0,
+    "typeCustomer" : {
+      "type" : "EMPLOYEE",
+      "sale" : -1.0,
+      "points" : -1.0
+    },
+    "idRestaurant" : -1
+  },
   "kupac" : {
     "deleted" : false,
     "blocked" : false,
@@ -48,7 +76,39 @@
     "orderIds" : [ ],
     "chartId" : -1,
     "points" : -1.0,
-    "typeCustomer" : null,
+    "typeCustomer" : {
+      "type" : "EMPLOYEE",
+      "sale" : -1.0,
+      "points" : -1.0
+    },
+    "idRestaurant" : -1
+  },
+  "ZikaZivic" : {
+    "deleted" : false,
+    "blocked" : false,
+    "username" : "ZikaZivic",
+    "password" : "ZikaZivic",
+    "name" : "Zika",
+    "surname" : "Zivic",
+    "gender" : "MALE",
+    "birthday" : 1593129600000,
+    "role" : "DELIVERER",
+    "address" : {
+      "street" : "Lilike Bem",
+      "number" : 1,
+      "city" : "Novi Sad",
+      "zipCode" : 21000,
+      "latitude" : 0.0,
+      "longitude" : 0.0
+    },
+    "orderIds" : [ ],
+    "chartId" : -1,
+    "points" : -1.0,
+    "typeCustomer" : {
+      "type" : "EMPLOYEE",
+      "sale" : -1.0,
+      "points" : -1.0
+    },
     "idRestaurant" : -1
   },
   "menadzer" : {
@@ -61,28 +121,22 @@
     "gender" : "MALE",
     "birthday" : 926380800000,
     "role" : "MANAGER",
-    "address" : null,
+    "address" : {
+      "street" : "Jevrejska",
+      "number" : 12,
+      "city" : "Novi Sad",
+      "zipCode" : 21000,
+      "latitude" : 0.0,
+      "longitude" : 0.0
+    },
     "orderIds" : [ ],
     "chartId" : -1,
     "points" : -1.0,
-    "typeCustomer" : null,
-    "idRestaurant" : -1
-  },
-  "mika" : {
-    "deleted" : false,
-    "blocked" : false,
-    "username" : "mika",
-    "password" : "mika",
-    "name" : "Mirko",
-    "surname" : "Mirkovic",
-    "gender" : "MALE",
-    "birthday" : 926380800000,
-    "role" : "MANAGER",
-    "address" : null,
-    "orderIds" : [ ],
-    "chartId" : -1,
-    "points" : -1.0,
-    "typeCustomer" : null,
+    "typeCustomer" : {
+      "type" : "EMPLOYEE",
+      "sale" : -1.0,
+      "points" : -1.0
+    },
     "idRestaurant" : -1
   }
 }
