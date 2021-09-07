@@ -200,8 +200,7 @@ public class UsersDAO {
 		userChange.setAddress(new Address(user.street, user.number, user.city, user.zipCode));
 		System.out.println(user.name);
 		saveUsers();
-	}
-	public Collection<User> searchUsers(UserSearchDTO searchParameters) {
+	}	public Collection<User> searchUsers(UserSearchDTO searchParameters) {
 		ArrayList<User> ret = new ArrayList<User>();
 			for (User user : this.users.values()) {
 				if(user.getName().contains(searchParameters.name) || user.getSurname().contains(searchParameters.surname) || user.getUsername().contains(searchParameters.username)) {

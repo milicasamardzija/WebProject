@@ -131,6 +131,7 @@ methods:{
             })
         },
     checkRole(role) {
+    this.allUsers=null,
      axios.post("/WebShopREST/rest/user/filterUsers", role)
       .then( response => {
           this.allUsers = response.data
@@ -141,6 +142,7 @@ methods:{
     
     },
      checkType(type) {
+       this.allUsers=null,
      axios.post("/WebShopREST/rest/user/filterType", type)
       .then( response => {
           this.allUsers = response.data

@@ -193,6 +193,7 @@ public class UserService {
 	//izmena korisnika
 	@POST
 	@Path("/changeUser")
+	@Produces(MediaType.TEXT_HTML)
 	@Consumes(MediaType.APPLICATION_JSON)
 	public void changeUser(UserChangeDTO user) {
 		UsersDAO users = getUsers();
@@ -201,6 +202,19 @@ public class UserService {
 		System.out.println("IZMENIO SAM");
 	} 
 	
+	/*//izmena korisnika
+	@POST
+	@Path("/changeUser")
+	@Produces(MediaType.TEXT_HTML)
+	@Consumes(MediaType.APPLICATION_JSON)
+	public Response changeUser(UserChangeDTO user) {
+		UsersDAO users = getUsers();
+		System.out.println("POKUSAO SAM");
+		users.changeUser(user);	
+		System.out.println("IZMENIO SAM");
+		return Response.status(Response.Status.ACCEPTED).entity("WebShopREST/html/admin_dashboard.html#/profil").build();
+	} 
+	*/
 	//sortiranje
 	@POST
 	@Path("/sortUser")
@@ -238,7 +252,6 @@ public class UserService {
 	
 	private boolean isUserAdmin() {
 		User user = (User) request.getSession().getAttribute("loginUser");
-		
 		if(user!= null) {
 			if(user.getRole().equals(Role.ADMINISTRATOR)) {
 				return true;
@@ -246,5 +259,6 @@ public class UserService {
 		}	
 		return false;
 	}
+	
 	
 }
