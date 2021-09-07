@@ -251,6 +251,34 @@
     },
     "idRestaurant" : 0
   },
+  "mmmhhhh" : {
+    "deleted" : false,
+    "blocked" : false,
+    "username" : "mmmhhhh",
+    "password" : "mmmhhhh",
+    "name" : "mmm",
+    "surname" : "hhhh",
+    "gender" : "MALE",
+    "birthday" : 1632355200000,
+    "role" : "MANAGER",
+    "address" : {
+      "street" : "ret",
+      "number" : 5,
+      "city" : "ee",
+      "zipCode" : 5,
+      "latitude" : 0.0,
+      "longitude" : 0.0
+    },
+    "orderIds" : [ ],
+    "chartId" : -1,
+    "points" : -1.0,
+    "typeCustomer" : {
+      "type" : "EMPLOYEE",
+      "sale" : -1.0,
+      "points" : -1.0
+    },
+    "idRestaurant" : 6
+  },
   "QQQEEEE" : {
     "deleted" : false,
     "blocked" : false,

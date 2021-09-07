@@ -113,6 +113,25 @@
     "deleted" : false,
     "grade" : -1.0
   },
+  "6" : {
+    "id" : 6,
+    "managerId" : "mmmhhhh",
+    "name" : "fffffffffffffffffffffff",
+    "type" : "ITALIAN",
+    "articalIds" : [ ],
+    "status" : "OPEN",
+    "address" : {
+      "street" : "rte",
+      "number" : 5,
+      "city" : "etr",
+      "zipCode" : 5,
+      "latitude" : 0.0,
+      "longitude" : 0.0
+    },
+    "link" : "piletina_sa_svezom_paprikom_i_tikvicama.jpg",
+    "deleted" : false,
+    "grade" : -1.0
+  },
   "9" : {
     "id" : 9,
     "managerId" : "mika",

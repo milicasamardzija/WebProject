@@ -11,14 +11,7 @@ Vue.component("administrator-addManager", {
   <div class="information">
     <form @submit='addUser'>
       <table class="t">
-        <tr>
-          <td class="labela">Uloga:</td>
-          <td><input class="form-check-input" type="radio" id="exampleRadios2" value="MANAGER" v-model="newUser.role" value="1" checked="checked">
-              <label class="form-check-label" for="exampleRadios2">
-                Menadzer
-              </label>
-          </td>
-        </tr>
+        
         <tr>
           <td class="labela">Ime:</td>
           <td><input class="form-control" type="text" placeholder="Ime" v-model="newUser.name"></td>
@@ -79,7 +72,7 @@ Vue.component("administrator-addManager", {
         "surname":''+ this.newUser.surname, 
         "gender":''+ this.newUser.gender, 
         "birthday":''+ this.newUser.birthday, 
-        "role":''+ this.newUser.role, 
+        "role":''+ 1, 
         "street":''+ this.newUser.street, 
         "number":''+ this.newUser.number, 
         "city":''+ this.newUser.city, 
