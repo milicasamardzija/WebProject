@@ -11,6 +11,17 @@ Vue.component("administrator-addRestaurant", {
             <form>
                 <table class="t">
                     <tr>
+                    <p style="margin-left: 5px;">Ovde unesite podatke o restoranu:</p>
+                    </tr>
+                    <tr>
+                    <td class="labela">Menadzer:</td>
+                    <td><select class="form-control" v-model="restaurant.managerId" placeholder="Kliknite za izbor menadzera">
+                        <option v-for="m in managers" v-bind:value="m.id">{{m.name}} {{m.surname}}</option>
+                    </select></td>
+                    <td class="buttonMap"><button type="button" class="btn btn-success"><i></i>Kreiraj novog menadzera</button></td>
+                    <td><p style="margin-left: 15px;margin-top: 8px;">*Ukoliko ne postoje slobodni menadzeri klikom na ovo dugme kreirajte novog menadzera.</p></td>
+                    </tr>
+                    <tr>
                     <td class="labela">Naziv:</td>
                     <td><input class="form-control" type="text" placeholder="Naziv" v-model="restaurant.name"></td>
                     </tr>
@@ -46,13 +57,6 @@ Vue.component("administrator-addRestaurant", {
                     <tr>
                     <td class="labela">Logo:</td>
                     <td><input type="file" onchange="encodeImageFileAsURL(this)" v-model="restaurant.link"></td>
-                    </tr>
-                    <tr>
-                    <td class="labela">Menadzer:</td>
-                    <td><select class="form-control" v-model="restaurant.managerId" placeholder="Kliknite za izbor menadzera">
-                        <option v-for="m in managers" v-bind:value="m.id">{{m.name}} {{m.surname}}</option>
-                    </select></td>
-                    <td class="buttonMap"><button type="button" class="btn btn-success"><i></i>Kreiraj novog menadzera</button></td>
                     </tr>
                     <tr>
                     <td class="buttonForm"><button type="button" class="btn btn-success" v-on:click="addRestaurant">Sacuvaj</button></td>
