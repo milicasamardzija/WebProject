@@ -61,7 +61,7 @@ template: `
 			                        <h4 style="width: 600px;" class="text">Naziv:  {{restaurant.name}}</h4>
 			                        <h4 style="width: 600px;" class="text">Tip:  {{restaurant.type}}</h4>
 			                        <h4 style="width: 600px;" class="text">Lokacija:  {{restaurant.address.street}} {{restaurant.address.number}}, {{restaurant.address.city}}</h4>
-			                        <h4 style="width: 600px;" class="text">Prosecna ocena: </h4>
+			                        <h4 style="width: 600px;" class="text">Prosecna ocena: {{restaurant.grade}}</h4>
 			                    </div>
 			                    <div class="buttons">
 			                        <div class="buttons btn-group-vertical">

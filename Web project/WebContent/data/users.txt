@@ -138,5 +138,33 @@
       "points" : -1.0
     },
     "idRestaurant" : -1
+  },
+  "koja" : {
+    "deleted" : false,
+    "blocked" : false,
+    "username" : "koja",
+    "password" : "koja",
+    "name" : "Pavle",
+    "surname" : "Kojic",
+    "gender" : "MALE",
+    "birthday" : 926380800000,
+    "role" : "MANAGER",
+    "address" : {
+      "street" : "Jug Bogdana",
+      "number" : 15,
+      "city" : "Novi Sad",
+      "zipCode" : 21000,
+      "latitude" : 0.0,
+      "longitude" : 0.0
+    },
+    "orderIds" : [ ],
+    "chartId" : -1,
+    "points" : -1.0,
+    "typeCustomer" : {
+      "type" : "EMPLOYEE",
+      "sale" : -1.0,
+      "points" : -1.0
+    },
+    "idRestaurant" : 2
   }
 }

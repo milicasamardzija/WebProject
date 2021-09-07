@@ -193,7 +193,7 @@ public class UsersDAO {
 	public Collection<User> searchUsers(UserSearchDTO searchParameters) {
 		ArrayList<User> ret = new ArrayList<User>();
 			for (User user : this.users.values()) {
-				if(user.getName().contains(searchParameters.name) || user.getSurname().contains(searchParameters.surname) || user.getUsername().contains(searchParameters.username)) {
+				if(user.getName().toLowerCase().contains(searchParameters.name.toLowerCase()) || user.getSurname().toLowerCase().contains(searchParameters.surname.toLowerCase()) || user.getUsername().toLowerCase().contains(searchParameters.username.toLowerCase())) {
 					ret.add(user);
 				}
 			}
