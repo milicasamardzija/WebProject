@@ -165,9 +165,6 @@ public class UsersDAO {
 			user.setBlocked(true);
 			saveUsers();
 		}
-		System.out.println(username);
-		System.out.println(user.getUsername());
-		System.out.println(user.getBlocked());
 	}
 	
 	public Collection<User> getValues() {
@@ -179,7 +176,6 @@ public class UsersDAO {
 		User user = getUserByUsername(username);
 		if(user != null) {
 			user.setDeleted(true); //logicko brisanje
-			System.out.println(" vrednost polja deleted" + user.getDeleted());
 			saveUsers();
 		}	
 	}
@@ -189,7 +185,6 @@ public class UsersDAO {
 		userChange.setName(user.name);
 		userChange.setSurname(user.surname);
 		userChange.setAddress(new Address(user.street, user.number, user.city, user.zipCode));
-		System.out.println(user.name);
 		saveUsers();
 	}
 	
@@ -205,6 +200,15 @@ public class UsersDAO {
 	
 	public  Collection<User> filterUsers(String user) {
 		// TODO Auto-generated method stub
+		return null;
+	}
+	
+	public User getManagerByRestaurant(int idRestaurant) {
+		for (User user : this.getValues()) {
+			if(user.getIdRestaurant() == idRestaurant) {
+				return user;
+			}
+		}
 		return null;
 	}
 }

@@ -4,7 +4,7 @@
     "blocked" : false,
     "username" : "mika",
     "password" : "mika",
-    "name" : "Mirko",
+    "name" : "MirkoOOO",
     "surname" : "Mirkovic",
     "gender" : "MALE",
     "birthday" : 926380800000,
@@ -32,7 +32,7 @@
     "blocked" : true,
     "username" : "efwrre",
     "password" : "efwrre",
-    "name" : "efwr",
+    "name" : "AAAAA",
     "surname" : "re",
     "gender" : "MALE",
     "birthday" : 1632441600000,
@@ -56,7 +56,7 @@
     "idRestaurant" : -1
   },
   "daddada" : {
-    "deleted" : false,
+    "deleted" : true,
     "blocked" : true,
     "username" : "daddada",
     "password" : "daddada",
@@ -112,7 +112,7 @@
     "idRestaurant" : -1
   },
   "koja" : {
-    "deleted" : false,
+    "deleted" : true,
     "blocked" : false,
     "username" : "koja",
     "password" : "koja",
@@ -417,6 +417,6 @@
       "sale" : -1.0,
       "points" : -1.0
     },
-    "idRestaurant" : -1
+    "idRestaurant" : 4
   }
 }

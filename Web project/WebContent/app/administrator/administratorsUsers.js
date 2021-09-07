@@ -84,12 +84,12 @@ template: `
       })
   },
   methods : {
-  addUser : function () {
-      router.push(`/dodajKorisnika`)
-  }, 
-  changeUser : function () {
-    this.$router.push({path: `/izmeniKorisnika`, query:{ username: this.selected}})
-  },
+    addUser : function () {
+        router.push(`/dodajKorisnika`)
+    }, 
+    changeUser : function () {
+      this.$router.push({path: `/izmeniKorisnika`, query:{ username: this.selected}})
+    },
     search: function(){
     router.push(`/pretraga`);
     },

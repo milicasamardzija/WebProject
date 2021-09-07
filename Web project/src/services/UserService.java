@@ -1,13 +1,11 @@
 package services;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Collection;
 
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
 import javax.ws.rs.Consumes;
-import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
@@ -26,7 +24,6 @@ import dto.UserLoginDTO;
 import dto.UserRegistrationDTO;
 import dto.UserSearchDTO;
 import enums.CustomerType;
-import enums.RestaurantType;
 import enums.Role;
 
 @Path("/user")
@@ -67,6 +64,14 @@ public class UserService {
 			}
 		}
 		return ret;
+	}
+	
+	@POST
+	@Path("/getManager")
+	@Produces(MediaType.APPLICATION_JSON)
+	public User getManager(String idRestaurant) {
+		UsersDAO users = getUsers();
+		return users.getManagerByRestaurant(Integer.parseInt(idRestaurant));
 	}
 	
 	@POST

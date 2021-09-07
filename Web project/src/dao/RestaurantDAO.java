@@ -20,6 +20,8 @@ import com.fasterxml.jackson.databind.type.TypeFactory;
 
 import beans.Address;
 import beans.Restaurant;
+import beans.User;
+import dto.RestaurantChangeDTO;
 import dto.RestaurantNewDTO;
 import enums.Status;
 
@@ -176,6 +178,16 @@ public class RestaurantDAO {
             }
         }
         return ret;
+	}
+
+	public void changeRestaurant(RestaurantChangeDTO restaurant) {
+		Restaurant restaurantChange = getByID(restaurant.id);
+		restaurantChange.setName(restaurant.name);
+		restaurantChange.setType(restaurant.type);
+		restaurantChange.setAddress(new Address(restaurant.street, restaurant.number, restaurant.city, restaurant.zipCode));
+		restaurantChange.setLink(restaurant.link);
+		restaurantChange.setManagerId(restaurant.managerId);
+		saveRestaurants();
 	}
 	
 }

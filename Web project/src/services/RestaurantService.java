@@ -15,9 +15,12 @@ import javax.ws.rs.core.MediaType;
 
 import beans.Restaurant;
 import beans.User;
+import beans.UsernameDTO;
 import dao.RestaurantDAO;
 import dao.UsersDAO;
+import dto.RestaurantChangeDTO;
 import dto.RestaurantNewDTO;
+import dto.UserChangeDTO;
 
 
 @Path("/restaurant")
@@ -64,7 +67,6 @@ public class RestaurantService {
 	public void addRestaurant(RestaurantNewDTO restaurant) {
 		String managerId[] = restaurant.getManagerId().split(" ");
 		restaurant.setManagerId(managerId[0] + managerId[1]);
-		System.out.println(restaurant.getManagerId());
 		RestaurantDAO restaurantDAO = getRestaurantsDAO();
 		Restaurant newRestaurant = restaurantDAO.addRestaurant(restaurant);
 		addRestaurantToManager(newRestaurant);
@@ -77,6 +79,25 @@ public class RestaurantService {
 		user.setIdRestaurant(newRestaurant.getId());
 		usersDAO.saveUsers();
 	}
+	
+	//izmena restorana
+	@POST
+	@Path("/changeRestaurant")
+	@Consumes(MediaType.APPLICATION_JSON)
+	public void changeRestaurant(RestaurantChangeDTO restaurant) {
+		RestaurantDAO restaurantDAO = getRestaurantsDAO();
+		restaurantDAO.changeRestaurant(restaurant);	
+	} 
+		
+	//prikaz restorana
+	@POST
+	@Path("/getRestaurant")
+	@Produces(MediaType.APPLICATION_JSON)
+	public Restaurant getUser(String idRestautrant) {
+		RestaurantDAO restaurantDAO = getRestaurantsDAO();
+		return restaurantDAO.getByID(Integer.parseInt(idRestautrant));	
+	} 
+		
 
 	@POST
 	@Path("/deleteRestaurant")
