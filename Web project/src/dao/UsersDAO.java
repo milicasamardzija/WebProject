@@ -1,5 +1,6 @@
 package dao;
 
+import java.awt.List;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -8,7 +9,11 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.HashMap;
+
+
 
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.core.JsonGenerator;
@@ -206,8 +211,115 @@ public class UsersDAO {
 		return ret;
 	}
 	
-	public  Collection<User> filterUsers(String user) {
-		// TODO Auto-generated method stub
-		return null;
+	public  Collection<User> filterUsersByRole(String userRole) {
+		Role role=checkUserRole(userRole);
+	
+		ArrayList<User> ret= new ArrayList<User>();
+		for(User user : this.users.values()) {
+			if(user.getRole().equals(role)) {
+				ret.add(user);
+			}
+		}
+		
+		return ret;
 	}
+	
+	public CustomerType checkCustomer(String tip)
+	{
+		CustomerType type =null;
+		if(tip.equals("bronze")) {
+			type=CustomerType.BRONZE;
+		}
+		if(tip.equals("silver")) {
+			type=CustomerType.SILVER;
+		}
+		 if(tip.equals("gold")) {
+			type=CustomerType.GOLD;
+		} 
+		return type;
+	}
+	
+	public Role checkUserRole(String tip)
+	{
+		Role role=null;
+		if(tip.equals("kupac")) {
+			role=Role.CUSTOMER;
+		}
+		if(tip.equals("menadzer")) {
+			role=Role.MANAGER;
+		}
+		 if(tip.equals("dostavljac")) {
+			 role=Role.DELIVERER;
+		} 
+		return role;
+	}
+	
+	
+	public Collection<User> filterUsersByType(String userType) {
+		CustomerType type=checkCustomer(userType);
+	    ArrayList<User> ret= new ArrayList<User>();
+		
+		for(User user : this.users.values()) {
+			if(user.getTypeCustomer() !=null && user.getTypeCustomer().getType().equals(type) ) {	
+				ret.add(user);
+			}
+		}
+		
+		return ret;
+	}
+	
+	//sortiranje 
+	public Collection<User> sortUsers(String type) {
+		ArrayList<User> ret= new ArrayList<User>();
+		for(User user : users.values()) {
+			ret.add(user);
+		}
+		 if(type.equals("imeRastuce")) {
+			 Collections.sort(ret, new Comparator<User>(){
+				    public int compare(User s1, User s2) {
+				        return s1.getName().compareToIgnoreCase(s2.getName());
+				    }
+				});
+		 }
+		 if(type.equals("imeOpadajuce")) {
+			 Collections.sort(ret, new Comparator<User>(){
+				    public int compare(User s1, User s2) {
+				        return s2.getName().compareToIgnoreCase(s1.getName());
+				    }
+				});
+		 }
+		 if(type.equals("prezimeRastuce")) {
+			 Collections.sort(ret, new Comparator<User>(){
+				    public int compare(User s1, User s2) {
+				        return s1.getSurname().compareToIgnoreCase(s2.getSurname());
+				    }
+				});
+		 }
+		 if(type.equals("korisnickoImeRastuce")) {
+			 Collections.sort(ret, new Comparator<User>(){
+				    public int compare(User s1, User s2) {
+				        return s1.getUsername().compareToIgnoreCase(s2.getUsername());
+				    }
+				});
+		 }
+
+		 if(type.equals("prezimeOpadajuce")) {
+			 Collections.sort(ret, new Comparator<User>(){
+				    public int compare(User s1, User s2) {
+				        return s2.getSurname().compareToIgnoreCase(s1.getSurname());
+				    }
+				});
+		 }
+
+		 if(type.equals("korisnickoImeOpadajuce")) {
+			 Collections.sort(ret, new Comparator<User>(){
+				    public int compare(User s1, User s2) {
+				        return s2.getUsername().compareToIgnoreCase(s1.getUsername());
+				    }
+				});
+		 }
+		return ret;
+	}
+
+
 }

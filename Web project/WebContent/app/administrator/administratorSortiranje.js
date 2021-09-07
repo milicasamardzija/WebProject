@@ -2,7 +2,7 @@ Vue.component("administrator-sortiranje", {
     data:function(){
         return{
         allUsers : [],
-        searchParameters : {}
+        selected : {}
     }
 },
 template: `
@@ -20,12 +20,12 @@ template: `
                             </button>
             
                             <span class="dropdown-menu" aria-labelledby="dropdownMenu2" >
-                            <button class="dropdown-item" type="button">Imenu rastuce</button>
-                            <button class="dropdown-item" type="button">Imenu opadajuce</button>
-                            <button class="dropdown-item" type="button">Prezimenu rastuce</button>
-                            <button class="dropdown-item" type="button">Prezimenu opadajuce</button>
-                            <button class="dropdown-item" type="button">Korisnickom imenu rastuce</button>
-                            <button class="dropdown-item" type="button">Korisnickom imenu opadajuce</button>
+                            <button class="dropdown-item" type="button" v-on:click="sortUser('imeRastuce')">Imenu rastuce</button>
+                            <button class="dropdown-item" type="button" v-on:click="sortUser('imeOpadajuce')">Imenu opadajuce</button>
+                            <button class="dropdown-item" type="button" v-on:click="sortUser('prezimeRastuce')">Prezimenu rastuce</button>
+                            <button class="dropdown-item" type="button" v-on:click="sortUser('prezimeOpadajuce')">Prezimenu opadajuce</button>
+                            <button class="dropdown-item" type="button" v-on:click="sortUser('korisnickoImeRastuce')">Korisnickom imenu rastuce</button>
+                            <button class="dropdown-item" type="button" v-on:click="sortUser('korisnickoImeOpadajuce')">Korisnickom imenu opadajuce</button>
 
                             </span>
                         </td> 
@@ -54,12 +54,46 @@ template: `
               </tr>
           </thead>
           <tbody>
-             
+          <tr v-for="user in allUsers" >
+          <td>{{user.name}}</td>
+          <td>{{user.surname}}</td>
+          <td>{{user.username}}</td>
+          <td>{{user.points}}</td>
+          <td>{{user.role}}</td>
+          <td>{{user.role}}</td>
+          <div>
+            <td><button type="button" class="btn btn-secondary" v-on:click="changeUser">Izmeni</button></td>
+            <td><button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#brisanje" >Izbrisi</button></td>
+          </div>
+        </tr>
           </tbody>
 
 
-        </div>
+ 
+          <!-- modal obrisi-->
+  <div class="modal fade" id="brisanje" role="dialog" >
+          <div class="modal-dialog" style="width: 300px;" >
+              <!-- Modal content -->
+              <div class="modal-content">
+                  <div class="modal-header" style="padding:35px 50px;">
+                  <h5 class="modal-title" id="exampleModalLabel">Odjavi se</h5>
+                  </div>
+                  <div class="modal-body"  style="padding:40px 50px;">
+                      <form role="form" @submit="deleteUser">
+                        <div> <p> Da li ste sigurni da zelite da obrisete?</p></div>
+                          <button type="submit" class="btn btn-danger btn-block" v-on:click="deleteUser"><span class="glyphicon glyphicon-off"></span> Obrisi</button>
+                      </form>
+                  </div>
+                  <div class="modal-footer">
+                  <button type="button" class="btn btn-danger btn-default pull-left"  data-dismiss="modal">Odustani</button>   
+                  </div>
+              </div>
+          </div>
+  </div>
 
+
+
+ </div>
 
     </form>
          
@@ -71,9 +105,28 @@ methods:{
     back: function() {
         router.push(`/korisnici`)
     },
-    show: function() {
-      
-    }
+     
+    deleteUser: function(){
+        axios.post('/WebShopREST/rest/user/deleteUser', this.selected.username)
+        .then(response => {
+            router.push(`/korisnici`);
+        })
+        .catch(function(error){
+            console.log(error)
+        })
+    },
+sortUser(type) {
+    this.allUsers = null,
+    axios.post("/WebShopREST/rest/user/sortUser", type)
+    .then( response => {
+        this.allUsers = response.data
+    })
+    .catch(function(error){
+        console.log(error)
+    })
+
+}
+ 
 },
 mounted(){
 

@@ -13,7 +13,7 @@ const FiltriranjeAdminSumnjiviComponent = {template: '<administratorSumnjivi-fil
 const PretragaAdminSumnjiviComponent = {template: '<administratorSumnjivi-pretraga></administratorSumnjivi-pretraga>'}
 const ChangeRestaurantAdminComponent = {template: '<administrator-changeRestaurant></administrator-changeRestaurant>'}
 const AddRestaurantAdminComponent = {template: '<administrator-addRestaurant></administrator-addRestaurant>'}
-
+const IzmeniProfilComponent = {template: '<izmeniProfil-administrator></izmeniProfil-administrator>'}
 const router = new VueRouter({
     mode: 'hash',
     routes:[
@@ -32,6 +32,8 @@ const router = new VueRouter({
         {path : '/sumnjiviFilter', component:FiltriranjeAdminSumnjiviComponent}, 
         {path : '/izmeniRestoran', component: ChangeRestaurantAdminComponent}, //izmena restorana
         {path : '/dodajRestoran', component: AddRestaurantAdminComponent}, //dodaj restoran
+        {path : '/izmeniProfil', component:  IzmeniProfilComponent},
+   
     ]
 })
 

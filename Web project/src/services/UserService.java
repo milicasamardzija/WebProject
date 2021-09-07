@@ -133,6 +133,7 @@ public class UserService {
 	@Path("/deleteUser")
 	public void deleteUser(String username){
 			UsersDAO users = getUsers();
+			System.out.println("USERNAME ZA BRISANJE  " +username);
 			users.deleteUserById(username);	
 	}
 	
@@ -173,41 +174,20 @@ public class UserService {
 	//filtriranje korisnika
 	@POST
 	@Path("/filterUsers")
-	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.APPLICATION_JSON)
-	public Collection<User> filterUsers(String user) {
+	public Collection<User> filterUsersByRole(String user) {
+		System.out.println(user);
 		UsersDAO users = getUsers();
-		return users.filterUsers(user);
+		return users.filterUsersByRole(user);
 	}
-	
-	public CustomerType checkCustomer(String tip)
-	{
-		CustomerType type =null;
-		if(tip.equals("bronze")) {
-			type=CustomerType.BRONZE;
-		}
-		if(tip.equals("silver")) {
-			type=CustomerType.SILVER;
-		}
-		 if(tip.equals("gold")) {
-			type=CustomerType.GOLD;
-		} 
-		return type;
-	}
-	
-	public Role checkUserType(String tip)
-	{
-		Role type=null;
-		if(tip.equals("kupac")) {
-			type=Role.CUSTOMER;
-		}
-		if(tip.equals("menadzer")) {
-			type=Role.MANAGER;
-		}
-		 if(tip.equals("dostavljac")) {
-			type=Role.DELIVERER;
-		} 
-		return type;
+
+	@POST
+	@Path("/filterType")
+	@Produces(MediaType.APPLICATION_JSON)
+	public Collection<User> filterUsersByType(String userType) {
+		System.out.println(userType);
+		UsersDAO users = getUsers();
+		return users.filterUsersByType(userType);
 	}
 	
 	//izmena korisnika
@@ -221,6 +201,17 @@ public class UserService {
 		System.out.println("IZMENIO SAM");
 	} 
 	
+	//sortiranje
+	@POST
+	@Path("/sortUser")
+	@Produces(MediaType.APPLICATION_JSON)
+	public Collection<User> sortUser(String user) {
+		UsersDAO users = getUsers();
+		return users.sortUsers(user);	
+	
+	} 
+	
+	
 	//prikaz korisnika
 	@POST
 	@Path("/getUser")
@@ -230,6 +221,7 @@ public class UserService {
 		UsersDAO users = getUsers();
 		return users.getUserByUsername(user.username);	
 	} 
+	
 	
 	private UsersDAO getUsers() {
 		UsersDAO users = (UsersDAO)context.getAttribute("users");
@@ -242,6 +234,7 @@ public class UserService {
 	
 		return users;
 	}
+	
 	
 	private boolean isUserAdmin() {
 		User user = (User) request.getSession().getAttribute("loginUser");
