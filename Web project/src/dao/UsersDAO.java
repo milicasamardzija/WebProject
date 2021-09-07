@@ -135,16 +135,8 @@ public class UsersDAO {
 	}
 	
 	public User getUserByUsername(String username) {
-		System.out.println("++++++++++++++++++");
-		System.out.println(username);
-		//System.out.println(users.values().toArray()[0].toString());
-		//System.out.println(users.containsKey(username));
-		System.out.println("++++++++++++++++++");
 		for (User user : getValues()) {
 			if(user.getUsername().equals(username)) {
-				System.out.println("====");
-				System.out.println(user.getUsername());
-				System.out.println("====");
 				return user;
 			}
 		}	
@@ -154,7 +146,7 @@ public class UsersDAO {
 	//dodavanje novog korisnika(menadzer ili dostavljac)
 	//username i password su mu ime i prezime spojeno na pocetku
 	public void addUser(UserNewDTO user) {
-		getUsers().put(user.name+user.surname, new User(false, false, user.name+user.surname, user.name+user.surname, user.name, user.surname, user.gender, user.birthday, user.role, new Address(user.street, user.number, user.city, user.zipCode), new ArrayList<Integer>(), 0, 0, new Customer(), 0));
+		getUsers().put(user.name+user.surname, new User(false, false, user.name+user.surname, user.name+user.surname, user.name, user.surname, user.gender, user.birthday, user.role, new Address(user.street, user.number, user.city, user.zipCode), new ArrayList<Integer>(), -1, -1, new Customer(CustomerType.EMPLOYEE, -1, -1), -1));
 		saveUsers();
 	}
 		
@@ -188,6 +180,7 @@ public class UsersDAO {
 			saveUsers();
 		}	
 	}
+	
 	public void changeUser(UserChangeDTO user) {
 		User userChange = getUserByUsername(user.username);
 		userChange.setName(user.name);
@@ -196,6 +189,7 @@ public class UsersDAO {
 		System.out.println(user.name);
 		saveUsers();
 	}
+	
 	public Collection<User> searchUsers(UserSearchDTO searchParameters) {
 		ArrayList<User> ret = new ArrayList<User>();
 			for (User user : this.users.values()) {

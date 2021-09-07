@@ -145,10 +145,11 @@ public class RestaurantDAO {
 		}
 	}
 
-	public void addRestaurant(RestaurantNewDTO restaurant) {
-		Restaurant newRestaurant = new Restaurant(generateIdRestaurant(),restaurant.managerId, restaurant.name, restaurant.type, new ArrayList<Integer>(), Status.OPEN, new Address(restaurant.street, restaurant.number, restaurant.city, restaurant.zipCode, 0, 0), generateLink(restaurant.link), false);
+	public Restaurant addRestaurant(RestaurantNewDTO restaurant) {
+		Restaurant newRestaurant = new Restaurant(generateIdRestaurant(),restaurant.managerId, restaurant.name, restaurant.type, new ArrayList<Integer>(), Status.OPEN, new Address(restaurant.street, restaurant.number, restaurant.city, restaurant.zipCode, 0, 0), generateLink(restaurant.link), false, -1);
 		this.restaurants.put(newRestaurant.getId(), newRestaurant);
 		saveRestaurants();
+		return newRestaurant;
 	}
 
 	private String generateLink(String link) {

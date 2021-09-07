@@ -15,9 +15,17 @@ public class Restaurant {
 	private Address address;
 	private String link;
 	private Boolean deleted;
-	//slika-logo
+	private double grade;
 	
 	
+	public double getGrade() {
+		return grade;
+	}
+
+	public void setGrade(double grade) {
+		this.grade = grade;
+	}
+
 	public Boolean getDeleted() {
 		return deleted;
 	}
@@ -80,7 +88,7 @@ public class Restaurant {
 	}
 
 	public Restaurant(int id,String managerId, String name, RestaurantType type, ArrayList<Integer> articalIds, Status status,
-			Address address, String link, Boolean deleted) {
+			Address address, String link, Boolean deleted, double grade) {
 		super();
 		this.id = id;
 		this.managerId = managerId;
@@ -91,6 +99,7 @@ public class Restaurant {
 		this.address = address;
 		this.link = link;
 		this.deleted= deleted;
+		this.grade = grade;
 	}
 	
 }

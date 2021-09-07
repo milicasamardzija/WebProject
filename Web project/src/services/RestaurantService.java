@@ -14,10 +14,11 @@ import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
 
 import beans.Restaurant;
+import beans.User;
 import dao.RestaurantDAO;
 import dao.UsersDAO;
 import dto.RestaurantNewDTO;
-import dto.UserNewDTO;
+
 
 @Path("/restaurant")
 public class RestaurantService {
@@ -56,27 +57,39 @@ public class RestaurantService {
 		return ret;
 	}
 	
-	@GET
-	@Path("/get")
-	public void get() {
-		System.out.println("OVDE SAM");
-	}
-	
 	//dodavanje restorana
 	@POST
 	@Path("/addRestaurant")
 	@Consumes(MediaType.APPLICATION_JSON)
 	public void addRestaurant(RestaurantNewDTO restaurant) {
 		RestaurantDAO restaurantDAO = getRestaurantsDAO();
-		restaurantDAO.addRestaurant(restaurant);
+		Restaurant newRestaurant = restaurantDAO.addRestaurant(restaurant);
+		addRestaurantToManager(newRestaurant);
 	} 
 	
+	//dodavanje restorana menadzeru
+	private void addRestaurantToManager(Restaurant newRestaurant) {
+		UsersDAO usersDAO = getUsersDAO();
+		User user = usersDAO.getUserByUsername(newRestaurant.getManagerId());
+		user.setIdRestaurant(newRestaurant.getId());
+	}
+
 	@POST
 	@Path("/deleteRestaurant")
 	public void deleteUser(String id){
-		System.out.println("ID JE " + id);
-			RestaurantDAO restaurants = getRestaurantsDAO();
+		RestaurantDAO restaurants = getRestaurantsDAO();
 		restaurants.deleteRestaurantById(Integer.parseInt(id));
-			System.out.println("USPESNO IZBRISAN");
+	}
+	
+	private UsersDAO getUsersDAO() {
+		UsersDAO users = (UsersDAO)context.getAttribute("users");
+		
+		if (users == null) {
+			String contextPath = context.getRealPath("");
+			users = new UsersDAO(contextPath);
+			context.setAttribute("users", users);
+		}
+	
+		return users;
 	}
 }
