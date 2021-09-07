@@ -11,4 +11,13 @@ public class RestaurantNewDTO {
 	public int zipCode;
 	public String link;
 	public String managerId;
+	
+	public String getManagerId() {
+		return managerId;
+	}
+	public void setManagerId(String managerId) {
+		this.managerId = managerId;
+	}
+	
+	
 }

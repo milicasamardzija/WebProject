@@ -110,7 +110,7 @@ public class UsersDAO {
 	}
 	
 	//ucitavanje korisnika u fajl
-	private void saveUsers() {
+	public void saveUsers() {
 		File f = new File("WebContent/data/users.txt");
 		FileWriter fileWriter = null;
 		try {

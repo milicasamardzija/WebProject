@@ -62,6 +62,9 @@ public class RestaurantService {
 	@Path("/addRestaurant")
 	@Consumes(MediaType.APPLICATION_JSON)
 	public void addRestaurant(RestaurantNewDTO restaurant) {
+		String managerId[] = restaurant.getManagerId().split(" ");
+		restaurant.setManagerId(managerId[0] + managerId[1]);
+		System.out.println(restaurant.getManagerId());
 		RestaurantDAO restaurantDAO = getRestaurantsDAO();
 		Restaurant newRestaurant = restaurantDAO.addRestaurant(restaurant);
 		addRestaurantToManager(newRestaurant);
@@ -72,6 +75,7 @@ public class RestaurantService {
 		UsersDAO usersDAO = getUsersDAO();
 		User user = usersDAO.getUserByUsername(newRestaurant.getManagerId());
 		user.setIdRestaurant(newRestaurant.getId());
+		usersDAO.saveUsers();
 	}
 
 	@POST

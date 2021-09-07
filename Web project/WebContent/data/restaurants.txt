@@ -56,6 +56,63 @@
     "deleted" : false,
     "grade" : 4.2
   },
+  "3" : {
+    "id" : 3,
+    "managerId" : "AnaMasic",
+    "name" : "Sarajevski cevap",
+    "type" : "BARBECUE",
+    "articalIds" : [ ],
+    "status" : "OPEN",
+    "address" : {
+      "street" : "Mise Dimitrijevica",
+      "number" : 2,
+      "city" : "Beograd",
+      "zipCode" : 22000,
+      "latitude" : 0.0,
+      "longitude" : 0.0
+    },
+    "link" : "4_0.png",
+    "deleted" : false,
+    "grade" : -1.0
+  },
+  "4" : {
+    "id" : 4,
+    "managerId" : "aaaabbbb",
+    "name" : "JEEEEEEJ",
+    "type" : "ITALIAN",
+    "articalIds" : [ ],
+    "status" : "OPEN",
+    "address" : {
+      "street" : "fd",
+      "number" : 4,
+      "city" : "gdf",
+      "zipCode" : 5,
+      "latitude" : 0.0,
+      "longitude" : 0.0
+    },
+    "link" : "kinezi.png",
+    "deleted" : false,
+    "grade" : -1.0
+  },
+  "5" : {
+    "id" : 5,
+    "managerId" : "QQQEEEE",
+    "name" : "ssssssssssss",
+    "type" : "ITALIAN",
+    "articalIds" : [ ],
+    "status" : "OPEN",
+    "address" : {
+      "street" : "DSDF",
+      "number" : 4,
+      "city" : "FSD",
+      "zipCode" : 4,
+      "latitude" : 0.0,
+      "longitude" : 0.0
+    },
+    "link" : "novaind.png",
+    "deleted" : false,
+    "grade" : -1.0
+  },
   "9" : {
     "id" : 9,
     "managerId" : "mika",
