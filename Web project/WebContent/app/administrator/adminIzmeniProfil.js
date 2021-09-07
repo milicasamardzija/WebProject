@@ -49,8 +49,9 @@ template:
                                         <tr> 
                                            <button type="button" class="btn btn-danger" v-on:click="changePassword"> Promeni sifru </button>
                                         </tr>
-                                           <form id="izmena" v-bind:hidden="mode==='INFORMACIJE'">
+                                           
                                            <table>
+                                           <form id="izmena" v-bind:hidden="mode==='INFORMACIJE'">
                                             <tr> 
                                                 <td> Stara sifra:  </td>
                                                 <td> <input class="form-control" type="password"></td> 
@@ -66,20 +67,22 @@ template:
                                             <tr> 
                                                 <td>Nova sifra: </td>
                                                 <td> <input class="form-control" type="password"></td> 
-                                             </tr>
+                                             </tr> 
+                                             </form>
                                             </table>
-                                            </form>
-                                       
+                                           
+                                             <tr>  <td><button type="button" class="btn btn-success" v-on:click="changeProfile">Sacuvaj izmene</button> </td>
+                                             <td style="width:15px"> </td>       
+                                             <td>  <button type="button" class="btn btn-success" v-on:click="otkazi">Otkazi</button></td>
+                                             </tr>
                                     </table>
-                                <button type="submit" class="btn btn-success" v-on:click="changeProfile">Sacuvaj izmene</button>
+                               
                             </form>
-                            <button type="button" class="btn btn-success" v-on:click="otkazi">Otkazi</button>
+                           
                         </div>
                     </div>    
  </div>
-        
-           
-
+  
 `,
 methods:{
     changeProfile: function(event){

@@ -49,7 +49,7 @@
     "blocked" : false,
     "username" : "admin",
     "password" : "admin123",
-    "name" : "Aleksa",
+    "name" : "Aleksaaaaa",
     "surname" : "Arsic",
     "gender" : "MALE",
     "birthday" : 944006400000,
