@@ -216,7 +216,7 @@ public class UsersDAO {
 	
 		ArrayList<User> ret= new ArrayList<User>();
 		for(User user : this.users.values()) {
-			if(user.getRole().equals(role)) {
+			if(user.getRole().equals(role) && !user.getDeleted()) {
 				ret.add(user);
 			}
 		}
@@ -260,7 +260,7 @@ public class UsersDAO {
 	    ArrayList<User> ret= new ArrayList<User>();
 		
 		for(User user : this.users.values()) {
-			if(user.getTypeCustomer() !=null && user.getTypeCustomer().getType().equals(type) ) {	
+			if(user.getTypeCustomer() !=null && user.getTypeCustomer().getType().equals(type) && !user.getDeleted() ) {	
 				ret.add(user);
 			}
 		}
@@ -272,7 +272,9 @@ public class UsersDAO {
 	public Collection<User> sortUsers(String type) {
 		ArrayList<User> ret= new ArrayList<User>();
 		for(User user : users.values()) {
+			if(!user.getDeleted()) {
 			ret.add(user);
+		}
 		}
 		 if(type.equals("imeRastuce")) {
 			 Collections.sort(ret, new Comparator<User>(){
