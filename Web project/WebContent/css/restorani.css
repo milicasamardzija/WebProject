@@ -26,7 +26,7 @@
 }
 
 .buttons {
-    margin-left: 150px;
+   width: 100px !important;
     margin-top: 20px;
 }
 

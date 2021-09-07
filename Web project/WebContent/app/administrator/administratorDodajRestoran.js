@@ -16,7 +16,7 @@ Vue.component("administrator-addRestaurant", {
                     </tr>
                     <tr>
                     <td class="labela">Tip:</td>
-                    <td><select class="form-control" v-model="restaurant.type">
+                    <td><select class="form-control" v-model="restaurant.type" placeholder="Kliknite za izbor tipa">
                         <option v-bind:value="0">Italijanski</option>
                         <option v-bind:value="1">Kineski</option>
                         <option v-bind:value="2">Pica</option>
@@ -49,7 +49,7 @@ Vue.component("administrator-addRestaurant", {
                     </tr>
                     <tr>
                     <td class="labela">Menadzer:</td>
-                    <td><select class="form-control" v-model="restaurant.managerId">
+                    <td><select class="form-control" v-model="restaurant.managerId" placeholder="Kliknite za izbor menadzera">
                         <option v-for="m in managers" v-bind:value="m.id">{{m.name}} {{m.surname}}</option>
                     </select></td>
                     <td class="buttonMap"><button type="button" class="btn btn-success"><i></i>Kreiraj novog menadzera</button></td>

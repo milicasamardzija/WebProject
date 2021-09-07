@@ -50,7 +50,7 @@ template: `
 		
 		
 		
-		            <div class="rest tab-pane container active">
+		            <div class=" tab-pane container active">
 			                <div class="row-restaurants" v-for="restaurant in restaurants" v-on:click="getSelected(restaurant)" >
 			                    <div class = "col-with-picture">
 			                        <div class="col-picture">
@@ -58,16 +58,15 @@ template: `
 			                        </div>
 			                    </div>
 			                    <div class="col-info">
-			                        <h4 class="text">Naziv:  {{restaurant.name}}</h4>
-			                        <h4 class="text">Tip:  {{restaurant.type}}</h4>
-			                        <h4 class="text">Lokacija:  {{restaurant.address.street}} {{restaurant.address.number}}, {{restaurant.address.city}}</h4>
-			                        <h4 class="text">Prosecna ocena: </h4>
+			                        <h4 style="width: 600px;" class="text">Naziv:  {{restaurant.name}}</h4>
+			                        <h4 style="width: 600px;" class="text">Tip:  {{restaurant.type}}</h4>
+			                        <h4 style="width: 600px;" class="text">Lokacija:  {{restaurant.address.street}} {{restaurant.address.number}}, {{restaurant.address.city}}</h4>
+			                        <h4 style="width: 600px;" class="text">Prosecna ocena: </h4>
 			                    </div>
 			                    <div class="buttons">
 			                        <div class="buttons btn-group-vertical">
-			                            <button type="button" class="btn btn-secondary" style="padding-top:10px;">Dodaj menazera</button>
-			                            <button type="button" class="btn btn-secondary" style="padding-top:10px;">Izmeni</button>
-			                            <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#brisanje" v-on:click="getSelected(restaurant)" style="padding-top:10px;">Izbrisi</button>
+			                            <button style="width:100px;" type="button" class="btn btn-secondary" style="padding-top:10px;">Izmeni</button>
+			                            <button style="width:100px;" type="button" class="btn btn-secondary" data-toggle="modal" data-target="#brisanje" v-on:click="getSelected(restaurant)" style="padding-top:10px;">Izbrisi</button>
 			                        </div>
 			                    </div>
 			                </div>
