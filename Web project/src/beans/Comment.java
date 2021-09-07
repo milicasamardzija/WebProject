@@ -6,6 +6,7 @@ public class Comment {
 	private int restaurantId;
 	private String text;
 	private double grade;
+	private Boolean approved;
 	
 	public Comment() {};
 	
@@ -39,13 +40,14 @@ public class Comment {
 	public void setGrade(double grade) {
 		this.grade = grade;
 	}
-	public Comment(int id, String customerId, int restaurantId, String text, double grade) {
+	public Comment(int id, String customerId, int restaurantId, String text, double grade, Boolean approved) {
 		super();
 		this.id = id;
 		this.customerId = customerId;
 		this.restaurantId = restaurantId;
 		this.text = text;
 		this.grade = grade;
+		this.approved = approved;
 	}
 	
 	

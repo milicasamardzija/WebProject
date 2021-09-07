@@ -1,7 +1,8 @@
 Vue.component("administrator-usersSuspecious", {
     data:function(){
         return{
-            allUsers: null
+          allUsers: [],
+          selected:{}
         }
     },    
 template: `
@@ -14,7 +15,6 @@ template: `
 
     </div>
 
-<div>
     <table class="table table-hover">
         <thead>
           <tr>
@@ -28,21 +28,24 @@ template: `
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td>Mark</td>
-            <td>Otto</td>
-            <td>moto</td>
-            <td>5000</td>
-            <td>kupac</td>
-            <td>zlatni</td>
-            <td><button type="button" class="btn btn-secondary">Blokiraj</button></td>
-          </tr>
+        <tr v-for="user in allUsers" v-on:click="getSelected(user)">
+        <td>{{user.name}}</td>
+        <td>{{user.surname}}</td>
+        <td>{{user.username}}</td>
+        <td>{{user.points}}</td>
+        <td>{{user.role}}</td>
+        <td>{{user.typeCustomer.type}}</td>
+        <div>
+          <td><button type="button" class="btn btn-secondary" v-on:click="blockUser">Blokiraj</button></td>
+        </div>
+      </tr>
         </tbody>
       </table>
+
 </div>
 `,
     mounted() {
-        axios.get("/WebShopREST/rest/user/getAllUsersSuspecious")
+        axios.get("/WebShopREST/rest/user/getAllSuspiciousUsers")
         .then( response => {
             this.allUsers = response.data
         })
@@ -53,12 +56,24 @@ template: `
     methods : {
 		search() {
 		router.push(`/sumnjiviPretraga`)
-	},
+	  },
 		filter() {
 		router.push(`/sumnjiviFilter`)
-	},
+	  },
 		sort() {
 		router.push(`/sumnjiviSort`)
-	}
+	  },
+    getSelected: function(user){
+      this.selected = user;
+    },
+    blockUser: function(event){
+      axios.post('/WebShopREST/rest/user/blockUser', this.selected.username)
+            .then(response => {
+                router.push(`/sumnjivikorisnici`);
+            })
+            .catch(function(error){
+                console.log(error)
+            })
+    }
 	}
 });

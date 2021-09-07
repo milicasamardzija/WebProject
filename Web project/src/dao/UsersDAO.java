@@ -165,6 +165,9 @@ public class UsersDAO {
 			user.setBlocked(true);
 			saveUsers();
 		}
+		System.out.println(username);
+		System.out.println(user.getUsername());
+		System.out.println(user.getBlocked());
 	}
 	
 	public Collection<User> getValues() {

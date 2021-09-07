@@ -29,7 +29,7 @@
   },
   "efwrre" : {
     "deleted" : false,
-    "blocked" : false,
+    "blocked" : true,
     "username" : "efwrre",
     "password" : "efwrre",
     "name" : "efwr",
@@ -57,7 +57,7 @@
   },
   "daddada" : {
     "deleted" : false,
-    "blocked" : false,
+    "blocked" : true,
     "username" : "daddada",
     "password" : "daddada",
     "name" : "dad",
@@ -253,7 +253,7 @@
   },
   "mmmhhhh" : {
     "deleted" : false,
-    "blocked" : false,
+    "blocked" : true,
     "username" : "mmmhhhh",
     "password" : "mmmhhhh",
     "name" : "mmm",
@@ -365,7 +365,7 @@
   },
   "AAABBB" : {
     "deleted" : false,
-    "blocked" : false,
+    "blocked" : true,
     "username" : "AAABBB",
     "password" : "AAABBB",
     "name" : "AAA",

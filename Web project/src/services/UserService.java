@@ -55,6 +55,20 @@ public class UserService {
 		return ret;
 	}
 	
+	@GET
+	@Path("/getAllSuspiciousUsers")
+	@Produces(MediaType.APPLICATION_JSON)
+	public Collection<User> getAllSuspicious() {
+		UsersDAO users = getUsers();
+		ArrayList<User> ret = new ArrayList<User>();
+		for (User user : users.getValues()) {
+			if(!user.getDeleted() && !user.getBlocked()) {
+				ret.add(user);
+			}
+		}
+		return ret;
+	}
+	
 	@POST
 	@Path("/login")
 	@Produces(MediaType.TEXT_HTML)
@@ -113,20 +127,9 @@ public class UserService {
 	//treba proveriti za odgovor da li treba ovo da bude
 	@POST
 	@Path("/blockUser")
-	@Produces(MediaType.TEXT_HTML)
-	public Response blockUser(String username){
-		
-		if(isUserAdmin()) {
-			UsersDAO users = getUsers();
-			users.blockUserById(username);
-			
-			return Response
-					.status(Response.Status.ACCEPTED).entity("SUCCESS BLOCK")
-					.entity(getUsers().getValues())
-					.build();
-		}
-		return Response.status(403).type("text/plain")
-				.entity("You do not have permission to access!").build();
+	public void blockUser(String username){
+		UsersDAO users = getUsers();
+		users.blockUserById(username);
 	}
 	
 	@POST
