@@ -120,7 +120,7 @@
     "blocked" : false,
     "username" : "ZikaZivic",
     "password" : "ZikaZivic",
-    "name" : "Zika",
+    "name" : "Zikaaaa",
     "surname" : "Zivic",
     "gender" : "MALE",
     "birthday" : 1593129600000,

@@ -1,7 +1,5 @@
 Vue.component("izmeniProfil-administrator", {
-   
     data:function(){
-         mode: "INFORMACIJE"
         return{
            user: {}
         }
@@ -28,7 +26,7 @@ template:
                                         </tr>
                                         <tr> 
                                             <td> Korisnicko ime:</td>
-                                            <td> <input class="form-control" type="text"  v-model="user.username" v-bind:value="username" > </td>
+                                            <td> <input class="form-control" type="text"  v-model="user.username" v-bind:value="username" >{{username}} </td>
                                         </tr>
                                         <tr> 
                                             <td> Pol:</td>
@@ -71,7 +69,7 @@ template:
                                              </form>
                                             </table>
                                            
-                                             <tr>  <td><button type="button" class="btn btn-success" v-on:click="changeProfile">Sacuvaj izmene</button> </td>
+                                             <tr><td><button type="button" class="btn btn-success" v-on:click="changeProfile">Sacuvaj izmene</button> </td>
                                              <td style="width:15px"> </td>       
                                              <td>  <button type="button" class="btn btn-success" v-on:click="otkazi">Otkazi</button></td>
                                              </tr>
