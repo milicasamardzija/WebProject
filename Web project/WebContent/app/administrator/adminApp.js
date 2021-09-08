@@ -19,6 +19,8 @@ const RestaurantAdminComponent = {template: '<administrator-restaurant></adminis
 const IzmeniProfilComponent = {template: '<izmeniProfil-administrator></izmeniProfil-administrator>'}
 const RestaurantCommentsAdminComponent = {template: '<administrator-restaurantComments></administrator-restaurantComments>'}
 
+const IndexComponent = {template: '<indexRestorani></indexRestorani>'}
+
 const router = new VueRouter({
 
     mode: 'hash',
@@ -43,6 +45,8 @@ const router = new VueRouter({
         {path : '/izmeniProfil', component:  IzmeniProfilComponent},
         {path : '/restoran', component: RestaurantAdminComponent}, //restoran
         {path : '/prikaziKomentareRestoranaAdmin', component: RestaurantCommentsAdminComponent}, //restoran komentari
+
+        {path : '/', component: IndexComponent}, //index
     ]
 })
 
