@@ -54,7 +54,7 @@ template: `
 			                <div class="row-restaurants" v-for="restaurant in restaurants" v-on:click="getSelected(restaurant)" >
 			                    <div class = "col-with-picture">
 			                        <div class="col-picture">
-			                            <div><img v-bind:src="'../pictures/'+restaurant.link" style="height:250px !important; width:300px !important"></div>
+			                            <div><img v-bind:src="'../pictures/'+restaurant.link" style="height:250px !important; width:300px !important" v-on:click="goToRestaurant"></div>
 			                        </div>
 			                    </div>
 			                    <div class="col-info">
@@ -117,6 +117,9 @@ methods:{
         },
         getSelected: function(restaurant){
         this.selected= restaurant;
+        },
+        goToRestaurant : function () {
+            this.$router.push({path: `/restoran`, query:{ id: this.selected.id}})
         }
 },
 mounted(){

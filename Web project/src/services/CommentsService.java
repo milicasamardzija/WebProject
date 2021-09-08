@@ -6,6 +6,7 @@ import java.util.Collection;
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
 import javax.ws.rs.GET;
+import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.Context;
@@ -38,12 +39,25 @@ public class CommentsService {
 		Collection<Comment> comments =  commentsDAO.getValues();
 		
 		for (Comment comment : comments) {
-			System.out.println(comment.getId());
-			System.out.println(restaurantsDAO.getByID(comment.getRestaurantId()).getName());
-			System.out.println(comment.getCustomerId());
-			System.out.println(comment.getText());
-			System.out.println(comment.getGrade());
 			ret.add(new CommentDTO(comment.getId(),restaurantsDAO.getByID(comment.getRestaurantId()).getName(),comment.getCustomerId(),comment.getText(), comment.getGrade()));
+		}
+		
+		return ret;
+	}
+	
+	@POST
+	@Path("/getCommentsForRestaurant")
+	@Produces(MediaType.APPLICATION_JSON)
+	public Collection<CommentDTO> getAllCommentsRestaurant(String idRestaurant) {
+		ArrayList<CommentDTO> ret = new ArrayList<CommentDTO>();
+		CommentsDAO commentsDAO = getCommentsDAO();
+		RestaurantDAO restaurantsDAO = getRestaurantsDAO();
+		Collection<Comment> comments =  commentsDAO.getValues();
+		
+		for (Comment comment : comments) {
+			if (comment.getRestaurantId() == Integer.parseInt(idRestaurant) && comment.getApproved()) {
+				ret.add(new CommentDTO(comment.getId(),restaurantsDAO.getByID(comment.getRestaurantId()).getName(),comment.getCustomerId(),comment.getText(), comment.getGrade()));
+			}
 		}
 		
 		return ret;

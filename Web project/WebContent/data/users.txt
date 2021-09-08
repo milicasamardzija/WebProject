@@ -1,21 +1,4 @@
 {
-  "mika" : {
-    "deleted" : true,
-    "blocked" : false,
-    "username" : "mika",
-    "password" : "mika",
-    "name" : "Rade",
-    "surname" : "Jovanovic",
-    "gender" : "MALE",
-    "birthday" : 926380800000,
-    "role" : "MANAGER",
-    "address" : null,
-    "orderIds" : [ ],
-    "chartId" : -1,
-    "points" : -1.0,
-    "typeCustomer" : null,
-    "idRestaurant" : -1
-  },
   "kupac" : {
     "deleted" : false,
     "blocked" : false,
@@ -83,7 +66,7 @@
     "surname" : "Arsic",
     "gender" : "MALE",
     "birthday" : 926380800000,
-    "role" : "MANAGER",
+    "role" : 0,
     "address" : {
       "street" : "Jug Bogdana",
       "number" : 15,
@@ -217,6 +200,6 @@
       "points" : 2000.0
     },
     "idRestaurant" : 0,
-    "suspecious" : false
+    "suspecious" : true
   }
 }
