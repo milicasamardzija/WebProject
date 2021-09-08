@@ -59,7 +59,7 @@ public class UserService {
 		UsersDAO users = getUsers();
 		ArrayList<User> ret = new ArrayList<User>();
 		for (User user : users.getValues()) {
-			if(!user.getDeleted() && !user.getBlocked()) {
+			if(!user.getDeleted() && !user.getBlocked() && user.getSuspecious()) {
 				ret.add(user);
 			}
 		}
