@@ -18,6 +18,7 @@ import beans.User;
 import dao.OrderDAO;
 import dao.RestaurantDAO;
 import dto.OrderDTO;
+import enums.OrderStatus;
 
 @Path("/order")
 public class OrderService {
@@ -95,5 +96,21 @@ public class OrderService {
 		return restaurants;
 	}
 	
+	//iscitavanje porudzbina za dostavljaca
+	@GET
+	@Path("/getAllOrdersForDelivererOnWait")
+	@Produces(MediaType.APPLICATION_JSON)
+	public Collection<OrderDTO> getAllOrdersForDelivererOnWait(){
+		ArrayList<OrderDTO> ret= new ArrayList<OrderDTO>();
+		OrderDAO ordersDAO = getOrders();
+		Collection<Order> orders = ordersDAO.getValues();		
+		
+		for(Order order : orders) {
+			if(!order.getDeleted()  && order.getStatus().equals(OrderStatus.CEKA_DOSTAVLJACA)) {
+			ret.add(new OrderDTO(order.getId(), findNameRestaurant(order.getId()), order.getDate(), order.getPrice(), order.getIdCustomer(), order.getStatus(), order.getDeleted()));
+			}
+		}
+		return ret;
+	}
 	
 }

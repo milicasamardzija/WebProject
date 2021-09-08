@@ -15,7 +15,13 @@ public class Order {
 	private String idCustomer;
 	private OrderStatus status;
 	private Boolean deleted;
-	
+	private String idDeliverer; 
+	public String getIdDeliverer() {
+		return idDeliverer;
+	}
+	public void setIdDeliverer(String idDeliverer) {
+		this.idDeliverer = idDeliverer;
+	}
 	public Boolean getDeleted() {
 		return deleted;
 	}
@@ -65,7 +71,7 @@ public class Order {
 		this.status = status;
 	}
 	public Order(int id, ArrayList<Integer> articalIds, int retaurantId, Date date, double price, String idCustomer,
-			OrderStatus status, Boolean deleted) {
+			OrderStatus status, Boolean deleted, String idD) {
 		super();
 		this.id = id;
 		this.articalIds = articalIds;
@@ -75,6 +81,7 @@ public class Order {
 		this.idCustomer = idCustomer;
 		this.status = status;
 		this.deleted=deleted;
+		this.idDeliverer=idD;
 	}
 	public Order() {
 		super();
