@@ -61,7 +61,7 @@ methods:{
         this.selectedArtical = artical;
         },
         showComments: function() {
-            router.push(`/prikaziKomentareRestorana`)
+            this.$router.push({path: `/prikaziKomentareRestoranaAdmin`, query:{ id: this.idRestaurant}})
         }
 },
 mounted(){

@@ -17,6 +17,7 @@ const AddManagerAdminComponent = {template: '<administrator-addManager></adminis
 const AddRestaurantWithManagerAdminComponent = {template: '<administrator-addRestaurantWithManager></administrator-addRestaurantWithManager>'}
 const RestaurantAdminComponent = {template: '<administrator-restaurant></administrator-restaurant>'}
 const IzmeniProfilComponent = {template: '<izmeniProfil-administrator></izmeniProfil-administrator>'}
+const RestaurantCommentsAdminComponent = {template: '<administrator-restaurantComments></administrator-restaurantComments>'}
 
 const router = new VueRouter({
 
@@ -41,6 +42,7 @@ const router = new VueRouter({
         {path : '/dodajRestoranSaMenadzerom', component: AddRestaurantWithManagerAdminComponent}, //dodaj restoran sa menadzerom
         {path : '/izmeniProfil', component:  IzmeniProfilComponent},
         {path : '/restoran', component: RestaurantAdminComponent}, //restoran
+        {path : '/prikaziKomentareRestoranaAdmin', component: RestaurantCommentsAdminComponent}, //restoran komentari
     ]
 })
 
