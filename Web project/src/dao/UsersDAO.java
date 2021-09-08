@@ -110,7 +110,7 @@ public class UsersDAO {
 	}
 	
 	//ucitavanje korisnika u fajl
-	private void saveUsers() {
+	public void saveUsers() {
 		File f = new File("WebContent/data/users.txt");
 		FileWriter fileWriter = null;
 		try {
@@ -135,16 +135,8 @@ public class UsersDAO {
 	}
 	
 	public User getUserByUsername(String username) {
-		System.out.println("++++++++++++++++++");
-		System.out.println(username);
-		//System.out.println(users.values().toArray()[0].toString());
-		//System.out.println(users.containsKey(username));
-		System.out.println("++++++++++++++++++");
 		for (User user : getValues()) {
 			if(user.getUsername().equals(username)) {
-				System.out.println("====");
-				System.out.println(user.getUsername());
-				System.out.println("====");
 				return user;
 			}
 		}	
@@ -154,7 +146,7 @@ public class UsersDAO {
 	//dodavanje novog korisnika(menadzer ili dostavljac)
 	//username i password su mu ime i prezime spojeno na pocetku
 	public void addUser(UserNewDTO user) {
-		getUsers().put(user.name+user.surname, new User(false, false, user.name+user.surname, user.name+user.surname, user.name, user.surname, user.gender, user.birthday, user.role, new Address(user.street, user.number, user.city, user.zipCode), new ArrayList<Integer>(), 0, 0, new Customer(), 0, false));
+		getUsers().put(user.name+user.surname, new User(false, false, user.name+user.surname, user.name+user.surname, user.name, user.surname, user.gender, user.birthday, user.role, new Address(user.street, user.number, user.city, user.zipCode), new ArrayList<Integer>(), -1, -1, new Customer(CustomerType.EMPLOYEE, -1, -1), -1,false));
 		saveUsers();
 	}
 		
@@ -184,22 +176,22 @@ public class UsersDAO {
 		User user = getUserByUsername(username);
 		if(user != null) {
 			user.setDeleted(true); //logicko brisanje
-			System.out.println(" vrednost polja deleted" + user.getDeleted());
 			saveUsers();
 		}	
 	}
+	
 	public void changeUser(UserChangeDTO user) {
 		User userChange = getUserByUsername(user.username);
 		userChange.setName(user.name);
 		userChange.setSurname(user.surname);
 		userChange.setAddress(new Address(user.street, user.number, user.city, user.zipCode));
-		System.out.println(user.name);
 		saveUsers();
 	}
+	
 	public Collection<User> searchUsers(UserSearchDTO searchParameters) {
 		ArrayList<User> ret = new ArrayList<User>();
 			for (User user : this.users.values()) {
-				if(user.getName().contains(searchParameters.name) || user.getSurname().contains(searchParameters.surname) || user.getUsername().contains(searchParameters.username)) {
+				if(user.getName().toLowerCase().contains(searchParameters.name.toLowerCase()) || user.getSurname().toLowerCase().contains(searchParameters.surname.toLowerCase()) || user.getUsername().toLowerCase().contains(searchParameters.username.toLowerCase())) {
 					ret.add(user);
 				}
 			}
@@ -208,6 +200,15 @@ public class UsersDAO {
 	
 	public  Collection<User> filterUsers(String user) {
 		// TODO Auto-generated method stub
+		return null;
+	}
+	
+	public User getManagerByRestaurant(int idRestaurant) {
+		for (User user : this.getValues()) {
+			if(user.getIdRestaurant() == idRestaurant) {
+				return user;
+			}
+		}
 		return null;
 	}
 }

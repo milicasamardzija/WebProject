@@ -20,6 +20,8 @@ import com.fasterxml.jackson.databind.type.TypeFactory;
 
 import beans.Address;
 import beans.Restaurant;
+import beans.User;
+import dto.RestaurantChangeDTO;
 import dto.RestaurantNewDTO;
 import enums.Status;
 
@@ -145,10 +147,11 @@ public class RestaurantDAO {
 		}
 	}
 
-	public void addRestaurant(RestaurantNewDTO restaurant) {
-		Restaurant newRestaurant = new Restaurant(generateIdRestaurant(),restaurant.managerId, restaurant.name, restaurant.type, new ArrayList<Integer>(), Status.OPEN, new Address(restaurant.street, restaurant.number, restaurant.city, restaurant.zipCode, 0, 0), generateLink(restaurant.link), false);
+	public Restaurant addRestaurant(RestaurantNewDTO restaurant) {
+		Restaurant newRestaurant = new Restaurant(generateIdRestaurant(),restaurant.managerId, restaurant.name, restaurant.type, new ArrayList<Integer>(), Status.OPEN, new Address(restaurant.street, restaurant.number, restaurant.city, restaurant.zipCode, 0, 0), generateLink(restaurant.link), false, -1);
 		this.restaurants.put(newRestaurant.getId(), newRestaurant);
 		saveRestaurants();
+		return newRestaurant;
 	}
 
 	private String generateLink(String link) {
@@ -175,6 +178,16 @@ public class RestaurantDAO {
             }
         }
         return ret;
+	}
+
+	public void changeRestaurant(RestaurantChangeDTO restaurant) {
+		Restaurant restaurantChange = getByID(restaurant.id);
+		restaurantChange.setName(restaurant.name);
+		restaurantChange.setType(restaurant.type);
+		restaurantChange.setAddress(new Address(restaurant.street, restaurant.number, restaurant.city, restaurant.zipCode));
+		restaurantChange.setLink(restaurant.link);
+		restaurantChange.setManagerId(restaurant.managerId);
+		saveRestaurants();
 	}
 	
 }

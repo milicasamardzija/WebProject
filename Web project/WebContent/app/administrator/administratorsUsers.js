@@ -41,7 +41,7 @@ template: `
             <td>{{user.username}}</td>
             <td>{{user.points}}</td>
             <td>{{user.role}}</td>
-            <td>{{user.role}}</td>
+            <td>{{user.typeCustomer.type}}</td>
             <div>
               <td><button type="button" class="btn btn-secondary" v-on:click="changeUser">Izmeni</button></td>
               <td><button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#brisanje" >Izbrisi</button></td>
@@ -84,12 +84,12 @@ template: `
       })
   },
   methods : {
-  addUser : function () {
-      router.push(`/dodajKorisnika`)
-  }, 
-  changeUser : function () {
-    this.$router.push({path: `/izmeniKorisnika`, query:{ username: this.selected}})
-  },
+    addUser : function () {
+        router.push(`/dodajKorisnika`)
+    }, 
+    changeUser : function () {
+      this.$router.push({path: `/izmeniKorisnika`, query:{ username: this.selected}})
+    },
     search: function(){
     router.push(`/pretraga`);
     },

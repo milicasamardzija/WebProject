@@ -3,13 +3,15 @@
 	    "customerId" : "kupac",
 	    "restaurantId" : 1,
 	    "text" : "Bilo je prelepo",
-	    "grade" : 5.0
+	    "grade" : 5.0,
+	    "approved" : false
 	  },
  "0" : {
 	    "id" : 0,
 	    "customerId" : "kupac",
 	    "restaurantId" : 0,
 	    "text" : "Bilo je lose",
-	    "grade" : 2.0
+	    "grade" : 2.0,
+	    "approved" : true
 	  }
  }

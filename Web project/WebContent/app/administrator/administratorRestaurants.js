@@ -61,11 +61,11 @@ template: `
 			                        <h4 style="width: 600px;" class="text">Naziv:  {{restaurant.name}}</h4>
 			                        <h4 style="width: 600px;" class="text">Tip:  {{restaurant.type}}</h4>
 			                        <h4 style="width: 600px;" class="text">Lokacija:  {{restaurant.address.street}} {{restaurant.address.number}}, {{restaurant.address.city}}</h4>
-			                        <h4 style="width: 600px;" class="text">Prosecna ocena: </h4>
+			                        <h4 style="width: 600px;" class="text">Prosecna ocena: {{restaurant.grade}}</h4>
 			                    </div>
 			                    <div class="buttons">
 			                        <div class="buttons btn-group-vertical">
-			                            <button style="width:100px;" type="button" class="btn btn-secondary" style="padding-top:10px;">Izmeni</button>
+			                            <button style="width:100px;" type="button" class="btn btn-secondary" style="padding-top:10px;" v-on:click="changeRestaurant">Izmeni</button>
 			                            <button style="width:100px;" type="button" class="btn btn-secondary" data-toggle="modal" data-target="#brisanje" v-on:click="getSelected(restaurant)" style="padding-top:10px;">Izbrisi</button>
 			                        </div>
 			                    </div>

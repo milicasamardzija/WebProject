@@ -1,8 +1,8 @@
-Vue.component("administrator-addRestaurant", {
+Vue.component("administrator-addRestaurantWithManager", {
     data:function(){
         return{
-          restaurant:{},
-          managers:[]
+          restaurant : {},
+          managerId : null
         }
     },    
   template: `
@@ -15,11 +15,7 @@ Vue.component("administrator-addRestaurant", {
                     </tr>
                     <tr>
                     <td class="labela">Menadzer:</td>
-                    <td><select class="form-control" v-model="restaurant.managerId" placeholder="Kliknite za izbor menadzera">
-                        <option v-for="m in managers" v-bind:value="m.id">{{m.name}} {{m.surname}}</option>
-                    </select></td>
-                    <td class="buttonMap"><button type="button" class="btn btn-success" v-on:click="dodajMenadzera">Kreiraj novog menadzera</button></td>
-                    <td><p style="margin-left: 15px;margin-top: 8px;">*Ukoliko ne postoje slobodni menadzeri klikom na ovo dugme kreirajte novog menadzera.</p></td>
+                    <td><p>{{managerId}}</p></td>
                     </tr>
                     <tr>
                     <td class="labela">Naziv:</td>
@@ -78,7 +74,7 @@ Vue.component("administrator-addRestaurant", {
         "city":''+ this.restaurant.city, 
         "zipCode":''+ this.restaurant.zipCode,
         "link":''+ this.restaurant.link, 
-        "managerId":''+ this.restaurant.managerId})
+        "managerId":''+ this.managerId})
         .then(
           response => {
             router.push(`/`);
@@ -88,20 +84,10 @@ Vue.component("administrator-addRestaurant", {
       },
       otkazi: function(event){
         event.preventDefault()
-        router.push(`/`);
-      },
-      dodajMenadzera: function(event){
-        event.preventDefault()
-        router.push(`/dodajMenadzera`);
+        router.push(`/`)
       }
     },
     mounted(){
-        axios.get("/WebShopREST/rest/user/getAvailableManagers")
-        .then( response => {
-            this.managers = response.data
-        })
-        .catch(function(error){
-            console.log(error)
-        })
+        this.managerId = this.$route.query.id
     }
   });

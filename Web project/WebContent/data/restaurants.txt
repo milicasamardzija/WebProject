@@ -1,7 +1,7 @@
 {
   "0" : {
     "id" : 0,
-    "managerId" : null,
+    "managerId" : "mika",
     "name" : "Karibik",
     "type" : "PIZZA",
     "articalIds" : [ 0, 1, 3 ],
@@ -15,12 +15,13 @@
       "longitude" : 0.0
     },
     "link" : "12.png",
-    "deleted" : true
+    "deleted" : true,
+    "grade" : 5.0
   },
   "1" : {
     "id" : 1,
-    "managerId" : null,
-    "name" : "Caio",
+    "managerId" : "mika",
+    "name" : "Karibik",
     "type" : "PIZZA",
     "articalIds" : [ 0, 1, 2 ],
     "status" : "OPEN",
@@ -33,97 +34,103 @@
       "longitude" : 0.0
     },
     "link" : "12.png",
-    "deleted" : true
+    "deleted" : true,
+    "grade" : 3.0
   },
   "2" : {
     "id" : 2,
-    "managerId" : null,
-    "name" : "BozePomozi",
+    "managerId" : "mika",
+    "name" : "BozePomoziHVALA",
     "type" : "ITALIAN",
     "articalIds" : [ ],
     "status" : "OPEN",
     "address" : {
-      "street" : "BozePomozi",
-      "number" : 5,
-      "city" : "BozePomozi",
-      "zipCode" : 5555,
+      "street" : "",
+      "number" : 0,
+      "city" : "",
+      "zipCode" : 0,
       "latitude" : 0.0,
       "longitude" : 0.0
     },
     "link" : "indij.png",
-    "deleted" : false
+    "deleted" : false,
+    "grade" : 4.2
+  },
+  "3" : {
+    "id" : 3,
+    "managerId" : "AAABBB",
+    "name" : "Sarajevski cevap",
+    "type" : "MEXICAN",
+    "articalIds" : [ ],
+    "status" : "OPEN",
+    "address" : {
+      "street" : "Mise Dimitrijevica",
+      "number" : 4,
+      "city" : "Beograd",
+      "zipCode" : 22000,
+      "latitude" : 0.0,
+      "longitude" : 0.0
+    },
+    "link" : "4_0.png",
+    "deleted" : false,
+    "grade" : -1.0
   },
   "4" : {
     "id" : 4,
-    "managerId" : "undefined",
-    "name" : "das",
+    "managerId" : "AcaPeric",
+    "name" : "JEEEEEEJ",
     "type" : "ITALIAN",
     "articalIds" : [ ],
     "status" : "OPEN",
     "address" : {
-      "street" : "ddas",
-      "number" : 3,
-      "city" : "fdvs",
-      "zipCode" : 4343,
+      "street" : "aaa",
+      "number" : 56,
+      "city" : "tert",
+      "zipCode" : 1,
       "latitude" : 0.0,
       "longitude" : 0.0
     },
-    "link" : "12.png",
-    "deleted" : false
+    "link" : "kinezi.png",
+    "deleted" : false,
+    "grade" : -1.0
   },
   "5" : {
     "id" : 5,
-    "managerId" : "undefined",
-    "name" : "dfs",
+    "managerId" : "QQQEEEE",
+    "name" : "ssssssssssss",
     "type" : "ITALIAN",
     "articalIds" : [ ],
     "status" : "OPEN",
     "address" : {
-      "street" : " rger",
+      "street" : "DSDF",
+      "number" : 4,
+      "city" : "FSD",
+      "zipCode" : 4,
+      "latitude" : 0.0,
+      "longitude" : 0.0
+    },
+    "link" : "novaind.png",
+    "deleted" : false,
+    "grade" : -1.0
+  },
+  "6" : {
+    "id" : 6,
+    "managerId" : "mmmhhhh",
+    "name" : "fffffffffffffffffffffff",
+    "type" : "ITALIAN",
+    "articalIds" : [ ],
+    "status" : "OPEN",
+    "address" : {
+      "street" : "rte",
       "number" : 5,
-      "city" : "gf",
-      "zipCode" : 4,
+      "city" : "etr",
+      "zipCode" : 5,
       "latitude" : 0.0,
       "longitude" : 0.0
     },
-    "link" : "slika1.jpg",
-    "deleted" : false
-  },
-  "7" : {
-    "id" : 7,
-    "managerId" : "undefined",
-    "name" : "sda",
-    "type" : "CHINESE",
-    "articalIds" : [ ],
-    "status" : "OPEN",
-    "address" : {
-      "street" : "das",
-      "number" : 3,
-      "city" : "fwfw",
-      "zipCode" : 4,
-      "latitude" : 0.0,
-      "longitude" : 0.0
-    },
-    "link" : "logoPizza.png",
-    "deleted" : false
-  },
-  "8" : {
-    "id" : 8,
-    "managerId" : "undefined",
-    "name" : "dgg",
-    "type" : "CHINESE",
-    "articalIds" : [ ],
-    "status" : "OPEN",
-    "address" : {
-      "street" : "gfdg",
-      "number" : 44,
-      "city" : "rger",
-      "zipCode" : 55,
-      "latitude" : 0.0,
-      "longitude" : 0.0
-    },
-    "link" : "naslo.png",
-    "deleted" : false
+    "link" : "piletina_sa_svezom_paprikom_i_tikvicama.jpg",
+    "deleted" : false,
+    "grade" : -1.0
   },
   "9" : {
     "id" : 9,
@@ -141,6 +148,7 @@
       "longitude" : 0.0
     },
     "link" : "logoPizza.png",
-    "deleted" : false
+    "deleted" : false,
+    "grade" : 5.0
   }
 }

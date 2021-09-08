@@ -2,7 +2,8 @@ package dto;
 
 import enums.RestaurantType;
 
-public class RestaurantNewDTO {
+public class RestaurantChangeDTO {
+	public int id;
 	public String name;
 	public RestaurantType type;
 	public String street;
@@ -11,13 +12,4 @@ public class RestaurantNewDTO {
 	public int zipCode;
 	public String link;
 	public String managerId;
-	
-	public String getManagerId() {
-		return managerId;
-	}
-	public void setManagerId(String managerId) {
-		this.managerId = managerId;
-	}
-	
-	
 }
