@@ -154,7 +154,7 @@ public class UsersDAO {
 	//dodavanje novog korisnika(menadzer ili dostavljac)
 	//username i password su mu ime i prezime spojeno na pocetku
 	public void addUser(UserNewDTO user) {
-		getUsers().put(user.name+user.surname, new User(false, false, user.name+user.surname, user.name+user.surname, user.name, user.surname, user.gender, user.birthday, user.role, new Address(user.street, user.number, user.city, user.zipCode), new ArrayList<Integer>(), 0, 0, new Customer(), 0));
+		getUsers().put(user.name+user.surname, new User(false, false, user.name+user.surname, user.name+user.surname, user.name, user.surname, user.gender, user.birthday, user.role, new Address(user.street, user.number, user.city, user.zipCode), new ArrayList<Integer>(), 0, 0, new Customer(), 0, false));
 		saveUsers();
 	}
 		
@@ -162,7 +162,7 @@ public class UsersDAO {
 	//da li se chartId dodaje ovde??
 	//podestiti bodvanje za Customer!!! - lupila sam ovde
 	public void registerUser(UserRegistrationDTO user) {
-		getUsers().put(user.username, new User(false, false, user.username, user.password, user.name, user.surname, user.gender, user.birthday, Role.CUSTOMER, new Address(user.street, user.number, user.city, user.zipCode), new ArrayList<Integer>(), -1, 0, new Customer(CustomerType.BRONZE,0.1,2000), -1));
+		getUsers().put(user.username, new User(false, false, user.username, user.password, user.name, user.surname, user.gender, user.birthday, Role.CUSTOMER, new Address(user.street, user.number, user.city, user.zipCode), new ArrayList<Integer>(), -1, 0, new Customer(CustomerType.BRONZE,0.1,2000), -1, false));
 		saveUsers();
 	}
 	

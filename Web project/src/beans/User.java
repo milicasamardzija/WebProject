@@ -27,6 +27,16 @@ public class User {
 	
 	//menadzer
 	private int idRestaurant;
+	
+	private Boolean suspecious;
+
+	public Boolean getSuspecious() {
+		return suspecious;
+	}
+
+	public void setSuspecious(Boolean suspecious) {
+		this.suspecious = suspecious;
+	}
 
 	public Boolean getDeleted() {
 		return deleted;
@@ -154,7 +164,7 @@ public class User {
 
 	public User(Boolean deleted, Boolean blocked, String username, String password, String name, String surname,
 			Gender gender, Date birthday, Role role, Address address, ArrayList<Integer> orderIds, int chartId,
-			double points, Customer typeCustomer, int idRestaurant) {
+			double points, Customer typeCustomer, int idRestaurant, Boolean suspecious) {
 		super();
 		this.deleted = deleted;
 		this.blocked = blocked;
@@ -171,6 +181,7 @@ public class User {
 		this.points = points;
 		this.typeCustomer = typeCustomer;
 		this.idRestaurant = idRestaurant;
+		this.suspecious = suspecious;
 	}
 
 	@Override

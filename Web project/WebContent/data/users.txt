@@ -25,7 +25,8 @@
       "sale" : 0.0,
       "points" : 2000.0
     },
-    "idRestaurant" : 0
+    "idRestaurant" : 0,
+    "suspecious" : false
   },
   "admin" : {
     "deleted" : true,
@@ -49,7 +50,8 @@
     "chartId" : -1,
     "points" : -1.0,
     "typeCustomer" : null,
-    "idRestaurant" : -1
+    "idRestaurant" : -1,
+    "suspecious" : false
   },
   "menadzer" : {
     "deleted" : false,
@@ -66,7 +68,8 @@
     "chartId" : -1,
     "points" : -1.0,
     "typeCustomer" : null,
-    "idRestaurant" : -1
+    "idRestaurant" : -1,
+    "suspecious" : false
   },
   "mika" : {
     "deleted" : false,
@@ -83,6 +86,7 @@
     "chartId" : -1,
     "points" : -1.0,
     "typeCustomer" : null,
-    "idRestaurant" : -1
+    "idRestaurant" : -1,
+    "suspecious" : false
   }
 }
