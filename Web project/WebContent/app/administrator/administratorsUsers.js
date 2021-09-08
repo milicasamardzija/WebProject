@@ -10,11 +10,19 @@ template: `
  
 
     <div class="container">
-        <button style=" margin-left: 38%;"class="btn btn-success" type="button" v-on:click="search">PRETRAGA</button>
-        <button class="btn btn-success" type="button" v-on:click="filter">FILTRIRANJE</button>
-        <button class="btn btn-success" type="button" v-on:click="sort">SORTIRANJE</button>
-        <button v-on:click= "addUser" style= "margin-left: 20px;" type="button" class="btn btn-danger wrn-btn  col-lg-1 col-md-3 col-sm-12"><span class="glyphicon glyphicon-plus"></span></button>
-    </div>
+    <table style=" margin-left: 35%;"> 
+    <tr>
+    <td> <button  class="btn btn-success" type="button" v-on:click="search">PRETRAGA</button></td> 
+   <td style="width: 20px"> </td>
+    <td> <button  class="btn btn-success" type="button" v-on:click="filter">FILTRIRANJE</button> </td>
+    <td style="width: 20px"> </td>
+    <td style="width: 700px"> <button class="btn btn-success" type="button" v-on:click="sort">SORTIRANJE</button></td>
+    <td >  <button v-on:click= "addUser"  type="button" class="btn btn-danger wrn-btn"><span class="glyphicon glyphicon-plus"></span></button> </td>
+     
+    </tr>
+       
+   </table>
+        </div>
  
 
   
