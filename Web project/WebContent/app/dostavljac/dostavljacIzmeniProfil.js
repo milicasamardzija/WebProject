@@ -31,7 +31,16 @@ template: `
                                         </tr>
                                         <tr> 
                                             <td> Pol:</td>
-                                            <td> <input class="form-control" type="radio"v-model="user.gender" v-bind:value="gender" ></td>
+                                            <td><input class="form-check-input" type="radio" id="exampleRadios2" value="gender" v-bind:value="gender" v-model="user.gender" >
+                                                <label class="form-check-label" for="exampleRadios2">
+                                                {{gender}}
+                                                </label>
+                                            </td>
+                                            <td><input class="form-check-input" type="radio" id="exampleRadios2" value="gender"  v-model="user.gender" v-bind:value="gender">
+                                                <label class="form-check-label" for="exampleRadios2">
+                                                {{gender}}
+                                                </label>
+                                             </td>
                                         </tr>
                                         <tr> 
                                             <td>Datum rodjenja: </td>
@@ -93,7 +102,7 @@ methods:{
       "zipCode":''+ this.user.address.zipCode})
       .then(
         response => {
-          router.push(`/profil`);
+          router.push(`/profilDostavljac`);
         } 
       )
       .catch(function(error){
@@ -102,7 +111,7 @@ methods:{
     },
     otkazi: function(event){
       event.preventDefault()
-      router.push(`/profil`);
+      router.push(`/profilDostavljac`);
     },
     changePassword: function(){
         this.mode=true
