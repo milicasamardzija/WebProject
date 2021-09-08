@@ -1,33 +1,4 @@
 {
-  "kupac" : {
-    "deleted" : false,
-    "blocked" : false,
-    "username" : "kupac",
-    "password" : "kupac",
-    "name" : "Tihomir",
-    "surname" : "Sijan",
-    "gender" : "MALE",
-    "birthday" : 926380800000,
-    "role" : "CUSTOMER",
-    "address" : {
-      "street" : "Jug Bogdana",
-      "number" : 15,
-      "city" : "Novi Sad",
-      "zipCode" : 21000,
-      "latitude" : 0.0,
-      "longitude" : 0.0
-    },
-    "orderIds" : [ ],
-    "chartId" : -1,
-    "points" : -1.0,
-    "typeCustomer" : {
-      "type" : "EMPLOYEE",
-      "sale" : -1.0,
-      "points" : -1.0
-    },
-    "idRestaurant" : 0,
-    "suspecious" : false
-  },
   "efwrre" : {
     "deleted" : false,
     "blocked" : true,
@@ -57,16 +28,45 @@
     "idRestaurant" : -1,
     "suspecious" : false
   },
+  "kupac" : {
+    "deleted" : false,
+    "blocked" : false,
+    "username" : "kupac",
+    "password" : "kupac",
+    "name" : "Tihomir",
+    "surname" : "Sijan",
+    "gender" : "MALE",
+    "birthday" : 926380800000,
+    "role" : "CUSTOMER",
+    "address" : {
+      "street" : "Jug Bogdana",
+      "number" : 15,
+      "city" : "Novi Sad",
+      "zipCode" : 21000,
+      "latitude" : 0.0,
+      "longitude" : 0.0
+    },
+    "orderIds" : [ ],
+    "chartId" : -1,
+    "points" : -1.0,
+    "typeCustomer" : {
+      "type" : "EMPLOYEE",
+      "sale" : -1.0,
+      "points" : -1.0
+    },
+    "idRestaurant" : 0,
+    "suspecious" : false
+  },
   "admin" : {
     "deleted" : true,
     "blocked" : false,
     "username" : "admin",
     "password" : "admin123",
-    "name" : "Aleksaaaaa",
+    "name" : "Aleksa",
     "surname" : "Arsic",
     "gender" : "MALE",
     "birthday" : 926380800000,
-    "role" : 0,
+    "role" : "ADMINISTRATOR",
     "address" : {
       "street" : "Jug Bogdana",
       "number" : 15,
@@ -192,7 +192,7 @@
       "longitude" : 0.0
     },
     "orderIds" : [ ],
-    "chartId" : -1, 
+    "chartId" : -1,
     "points" : 0.0,
     "typeCustomer" : {
       "type" : "BRONZE",
