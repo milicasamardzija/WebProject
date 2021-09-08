@@ -6,6 +6,7 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
 
@@ -19,7 +20,11 @@ import com.fasterxml.jackson.databind.type.TypeFactory;
 
 import beans.Order;
 import beans.Restaurant;
+import beans.User;
 import dto.OrderDTO;
+import enums.CustomerType;
+import enums.OrderStatus;
+import enums.Role;
 
 
 public class OrderDAO {
@@ -100,6 +105,40 @@ public class OrderDAO {
 		return this.orders.values();
 	}
 	
+	public  Collection<Order> filterOrdersByTupe(String orderType) {
+		OrderStatus status=checkOrderType(orderType);
+		ArrayList<Order> ret= new ArrayList<Order>();
+		for(Order order : this.orders.values()) {
+			if(order.getStatus().equals(status) && !order.getDeleted()) {
+				ret.add(order);
+			}
+		}	
+		return ret;
+	}
+	
+	private OrderStatus checkOrderType(String userType) {
+		OrderStatus status=null;
+		if(userType.equals("obrada")) {
+			status=OrderStatus.OBRADA;
+		}
+		if(userType.equals("priprema")) {
+			status=OrderStatus.U_PRIPREMI;
+		}
+		 if(userType.equals("ceka")) {
+			 status=OrderStatus.CEKA_DOSTAVLJACA;
+		} 
+		 if(userType.equals("transport")) {
+			 status=OrderStatus.U_TRANSPORTU;
+		} 
+		 if(userType.equals("dostavljena")) {
+			 status=OrderStatus.DOSTAVLJENA;
+		} 
+		 if(userType.equals("otkazana")) {
+			 status=OrderStatus.OTKAZANA;
+		} 
+		return status;
+	}
+
 	public Order getByIdOrder(int idOrder) {
 		for(Order order : this.getValues()) {
 			if(order.getId() == idOrder) {
@@ -125,10 +164,19 @@ public class OrderDAO {
 		}
 		return null;
 	}
+	
+	public void changeStatus(int id) {
+		Order order = getByIdOrder(id);
+		if(order.getStatus().equals(OrderStatus.OBRADA)) {
+			order.setStatus(OrderStatus.OTKAZANA);
+			saveOrders();
+		}
+		
+	}
 
 	//upis u fajl
 	private void saveOrders() {
-		File f = new File("WebContent/data/restaurants.txt");
+		File f = new File("WebContent/data/orders.txt");
 		FileWriter fileWriter = null;
 		try {
 			fileWriter = new FileWriter(f);
@@ -150,6 +198,7 @@ public class OrderDAO {
 			}
 		}
 	}
+	
 	
 	public Order addOrder(OrderDTO order) {
 		Order newOrder ;

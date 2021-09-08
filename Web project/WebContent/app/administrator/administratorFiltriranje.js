@@ -2,7 +2,6 @@ Vue.component("administrator-filtriranje", {
     data:function(){
         return{
         allUsers : [],
-     
         selected:{}
     }
 },

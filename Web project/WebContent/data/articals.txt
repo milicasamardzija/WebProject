@@ -20,5 +20,27 @@
     "description" : "sunka, kecap, sampinjoni",
     "link" : "12.png",
     "deleted" : false
+  },
+   "2" : {
+    "id" : 2,
+    "name" : "hamburger",
+    "price" : 250,
+    "type" : 1,
+    "idRestaurant" : 0,
+    "quantity" : 300,
+    "description" : "sunka, kecap, sampinjoni",
+    "link" : "12.png",
+    "deleted" : false
+  }, 
+   "3" : {
+    "id" : 3,
+    "name" : "pomfrit",
+    "price" : 200,
+    "type" : 1,
+    "idRestaurant" : 0,
+    "quantity" : 500,
+    "description" : "sunka, kecap, sampinjoni",
+    "link" : "12.png",
+    "deleted" : false
   }
  }
