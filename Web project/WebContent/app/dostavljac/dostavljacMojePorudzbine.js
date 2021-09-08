@@ -1,14 +1,17 @@
-Vue.component("cekaju-dostavljaca", {
+Vue.component("porudbine-moje", {
     data: function() {  
         return {
         orders: []
         }
     },
 template: `
-<section> 
-            
-<div class="containerInfo">
-       
+<div class="container" style=" margin-top: 20px; margin-left: 20px; margin-right: 10px;">
+
+    <button style=" margin-left: 38%;"class="btn btn-success" type="button" v-on:click="search">PRETRAGA</button>
+    <button class="btn btn-success" type="button" v-on:click="filter">FILTRIRANJE</button>
+    <button class="btn btn-success" type="button" v-on:click="sorth">SORTIRANJE</button>
+
+    <h3 style=" margin-left: 60px;"> <small> Trenutno stanje svih Vasih porudzbina: </small> <hr></h3>             
     <!--tabela-->
     <div>
         <table class="table table-hover">
@@ -34,29 +37,20 @@ template: `
             </tbody>
         </table>
     </div>  
-
 </div>
-           
-</section>
 `,
 methods:{
-    search: function(){
-    router.push(`/dostavljacPretraga`);
-    },
-    filter: function(){
-    router.push(`/dostavljacFiltriranje`);
-    },
-    sorth: function(){
-        router.push(`/dostavljacSortiranje`);
-    } 
+    getSelected: function(order){
+        this.selected = order;
+      }
 },
 mounted(){
-    axios.get("/WebShopREST/rest/order/getAllOrdersForDelivererOnWait")
+    axios.get("/WebShopREST/rest/order/getAllOrdersForDeliverer")
     .then( response => {
         this.orders = response.data
     })
     .catch(function(error){
         console.log(error)
     })
-}
+},
 });

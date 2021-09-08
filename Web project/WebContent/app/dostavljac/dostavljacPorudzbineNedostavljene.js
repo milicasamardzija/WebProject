@@ -1,4 +1,4 @@
-Vue.component("cekaju-dostavljaca", {
+Vue.component("nedostavljene-dostavljac", {
     data: function() {  
         return {
         orders: []
@@ -9,6 +9,10 @@ template: `
             
 <div class="containerInfo">
        
+    <button style=" margin-left: 38%;"class="btn btn-success" type="button" v-on:click="search">PRETRAGA</button>
+    <button class="btn btn-success" type="button" v-on:click="filter">FILTRIRANJE</button>
+    <button class="btn btn-success" type="button" v-on:click="sorth">SORTIRANJE</button>
+
     <!--tabela-->
     <div>
         <table class="table table-hover">
@@ -51,7 +55,7 @@ methods:{
     } 
 },
 mounted(){
-    axios.get("/WebShopREST/rest/order/getAllOrdersForDelivererOnWait")
+    axios.get("/WebShopREST/rest/order/getAllOrdersForDelivererNotDelivered")
     .then( response => {
         this.orders = response.data
     })

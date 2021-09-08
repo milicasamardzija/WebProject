@@ -5,8 +5,6 @@ Vue.component("profil-dostavljac", {
         }
     },
 template: `
-<section> 
-            
             <div class="row content">
                     <div class="col-sm-3 sidenav">
                         <h3><small>Vase informacije na profilu:</small> <hr> </h3>
@@ -38,7 +36,7 @@ template: `
                                 </tr>
                                 <tr> 
                                 <td> Adresa:</td>
-                                <td> {{menadzer.address.street}} {{menadzer.address.number}}, grad {{menadzer.address.city}}  {{menadzer.address.zipCode}} </td>
+                                <td> {{dostavljac.address.street}} {{dostavljac.address.number}}, grad {{dostavljac.address.city}}  {{dostavljac.address.zipCode}} </td>
                                 </tr>
                                
                                 </table>
@@ -46,8 +44,6 @@ template: `
                             </div>
                     </div>
             </div>
-           
-</section>
 `,
 methods:{
     editProfile: function() {
