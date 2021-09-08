@@ -1,0 +1,24 @@
+{
+  "0" : {
+    "id" : 0,
+    "name" : "margarita",
+    "price" : 760,
+    "type" : 1,
+    "idRestaurant" : 0,
+    "quantity" : 500,
+    "description" : "sunka, kecap, sampinjoni",
+    "link" : "12.png",
+    "deleted" : false
+  },
+  "1" : {
+    "id" : 1,
+    "name" : "giros",
+    "price" : 300,
+    "type" : 1,
+    "idRestaurant" : 0,
+    "quantity" : 500,
+    "description" : "sunka, kecap, sampinjoni",
+    "link" : "12.png",
+    "deleted" : false
+  }
+ }
