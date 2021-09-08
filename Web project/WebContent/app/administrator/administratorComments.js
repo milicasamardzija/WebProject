@@ -14,13 +14,9 @@ template: `
             <h4 class="media-heading">{{comment.restaurantName}}</h4>
             <p style="font-weight: 300; font-style: italic;">{{comment.username}}</p>
             <p>{{comment.text}}</p>
-            <p>
+            <span v-for="g in comment.grade">
                 <span class="fa fa-star checked"></span>
-                <span class="fa fa-star checked"></span>
-                <span class="fa fa-star checked"></span>
-                <span class="fa fa-star"></span>
-                <span class="fa fa-star"></span>
-            </p>
+                </span>
             </div>
         </div>
         <hr>
