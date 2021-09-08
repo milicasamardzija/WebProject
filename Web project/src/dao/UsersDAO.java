@@ -27,6 +27,7 @@ import beans.Address;
 import beans.Customer;
 import beans.User;
 import dto.UserChangeDTO;
+import dto.UserChangeProfileDTO;
 import dto.UserNewDTO;
 import dto.UserRegistrationDTO;
 import dto.UserSearchDTO;
@@ -186,7 +187,17 @@ public class UsersDAO {
 			saveUsers();
 		}	
 	}
-	
+	//menja podatke na profilu
+	public void changeUser(UserChangeProfileDTO user) {
+		User userChange = getUserByUsername(user.username);
+		userChange.setName(user.name);
+		userChange.setSurname(user.surname);
+		userChange.setAddress(new Address(user.street, user.number, user.city, user.zipCode));
+		userChange.setGender(user.gender);
+		saveUsers();
+
+	}
+	//admnistrator menja podatke
 	public void changeUser(UserChangeDTO user) {
 		User userChange = getUserByUsername(user.username);
 		userChange.setName(user.name);

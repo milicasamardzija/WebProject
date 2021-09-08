@@ -31,14 +31,14 @@ template: `
                                         </tr>
                                         <tr> 
                                             <td> Pol:</td>
-                                            <td><input class="form-check-input" type="radio" id="exampleRadios2" value="gender" v-bind:value="gender" v-model="user.gender" >
+                                            <td><input class="form-check-input" type="radio" id="exampleRadios2" value="MALE"  v-model="user.gender" >
                                                 <label class="form-check-label" for="exampleRadios2">
-                                                {{gender}}
+                                                Muski
                                                 </label>
                                             </td>
-                                            <td><input class="form-check-input" type="radio" id="exampleRadios2" value="gender"  v-model="user.gender" v-bind:value="gender">
+                                            <td><input class="form-check-input" type="radio" id="exampleRadios2" value="FEMALE"  v-model="user.gender" >
                                                 <label class="form-check-label" for="exampleRadios2">
-                                                {{gender}}
+                                                Zenski
                                                 </label>
                                              </td>
                                         </tr>
@@ -92,14 +92,15 @@ template: `
 methods:{
     changeProfile: function(event){
       event.preventDefault()
-      axios.post("/WebShopREST/rest/user/changeUser", {
+      axios.post("/WebShopREST/rest/profile/changeUser", {
       "username":''+ this.user.username,
       "name":''+ this.user.name, 
       "surname":''+ this.user.surname,  
       "street":''+ this.user.address.street, 
       "number":''+ this.user.address.number, 
       "city":''+ this.user.address.city, 
-      "zipCode":''+ this.user.address.zipCode})
+      "zipCode":''+ this.user.address.zipCode,
+      "gender":''+ this.user.gender})
       .then(
         response => {
           router.push(`/profilDostavljac`);

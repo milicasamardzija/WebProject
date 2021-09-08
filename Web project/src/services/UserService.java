@@ -18,7 +18,7 @@ import beans.UsernameDTO;
 import dao.UsersDAO;
 import dto.UserNewDTO;
 import dto.ManagerAvailableDTO;
-import dto.UserChangeDTO;
+import dto.UserChangeProfileDTO;
 import dto.UserLoginDTO;
 import dto.UserRegistrationDTO;
 import dto.UserSearchDTO;
@@ -201,7 +201,7 @@ public class UserService {
 	@Path("/changeUser")
 	@Produces(MediaType.TEXT_HTML)
 	@Consumes(MediaType.APPLICATION_JSON)
-	public void changeUser(UserChangeDTO user) {
+	public void changeUser(UserChangeProfileDTO user) {
 		UsersDAO users = getUsers();
 		System.out.println("POKUSAO SAM");
 		users.changeUser(user);	

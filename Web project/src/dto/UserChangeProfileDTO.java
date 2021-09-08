@@ -2,7 +2,7 @@ package dto;
 
 import enums.Gender;
 
-public class UserChangeDTO {
+public class UserChangeProfileDTO {
 	public String username;
 	public String name;
 	public String surname;
@@ -10,4 +10,5 @@ public class UserChangeDTO {
 	public int number;
 	public String city;
 	public int zipCode;
+	public Gender gender;
 }

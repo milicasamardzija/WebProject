@@ -20,7 +20,7 @@ import dao.RestaurantDAO;
 import dao.UsersDAO;
 import dto.RestaurantChangeDTO;
 import dto.RestaurantNewDTO;
-import dto.UserChangeDTO;
+import dto.UserChangeProfileDTO;
 
 
 @Path("/restaurant")
