@@ -1,0 +1,29 @@
+{
+"0" :{
+	"id": 0,
+	"articalIds":[0,1,2,3],
+	"retaurantId":0,
+	"date":926380800000,
+	"idCustomer":"kupac",
+	"status":"OBRADA",
+	"deleted":false
+},
+"1" :{
+	"id": 1,
+	"articalIds":[0,1,2,3],
+	"retaurantId":1,
+	"date":926380800000,
+	"idCustomer":"kupac",
+	"status":"U_PRIPREMI",
+	"deleted":false
+},
+ "2" :{
+	"id": 2,
+	"articalIds":[0,1,2,3],
+	"retaurantId":2,
+	"date":926380800000,
+	"idCustomer":"menadzer",
+	"status":"CEKA_DOSTAVLJACA",
+	"deleted":false
+}
+}

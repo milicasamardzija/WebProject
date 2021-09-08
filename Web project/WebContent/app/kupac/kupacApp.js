@@ -7,6 +7,8 @@ const NedostavljeneComponent= {template: '<nedostavljene-kupac></nedostavljne-ku
 const PrikazOdabranogRestorana= {template: '<odabraniRestoran-kupac></odabraniRestoran-kupac>'}
 const KomentariRestorana= {template: '<komentariRestoran-kupac></komentariRestoran-kupac>'}
 
+
+
 const router = new VueRouter({
     mode: 'hash',
     routes:[
@@ -18,6 +20,7 @@ const router = new VueRouter({
         {path : '/nedostavljene', component: NedostavljeneComponent}, //nedostavjnee porudzbine
         {path : '/prikaziRestoran', component: PrikazOdabranogRestorana}, //prikaz restorana koji je oznacen za porucivanje
         {path : '/prikaziKomentareRestorana', component: KomentariRestorana}, //komentari za odredjeni restoran 
+        
     ]
 })
 

@@ -21,7 +21,7 @@
   "1" : {
     "id" : 1,
     "managerId" : "mika",
-    "name" : "Karibik",
+    "name" : "Toscana",
     "type" : "PIZZA",
     "articalIds" : [ 0, 1, 2 ],
     "status" : "OPEN",

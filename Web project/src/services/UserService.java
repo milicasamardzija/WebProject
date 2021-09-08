@@ -13,7 +13,6 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
-
 import beans.User;
 import beans.UsernameDTO;
 import dao.UsersDAO;
@@ -23,7 +22,6 @@ import dto.UserChangeDTO;
 import dto.UserLoginDTO;
 import dto.UserRegistrationDTO;
 import dto.UserSearchDTO;
-import enums.CustomerType;
 import enums.Role;
 
 @Path("/user")
@@ -223,6 +221,7 @@ public class UserService {
 		return Response.status(Response.Status.ACCEPTED).entity("WebShopREST/html/admin_dashboard.html#/profil").build();
 	} 
 	*/
+	
 	//sortiranje
 	@POST
 	@Path("/sortUser")
@@ -253,7 +252,6 @@ public class UserService {
 			users = new UsersDAO(contextPath);
 			context.setAttribute("users", users);
 		}
-	
 		return users;
 	}
 	

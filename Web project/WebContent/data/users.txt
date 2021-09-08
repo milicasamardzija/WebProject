@@ -25,7 +25,7 @@
     "surname" : "Sijan",
     "gender" : "MALE",
     "birthday" : 926380800000,
-    "role" : "MANAGER",
+    "role" : "CUSTOMER",
     "address" : {
       "street" : "Jug Bogdana",
       "number" : 15,
@@ -74,25 +74,7 @@
     "idRestaurant" : -1,
     "suspecious" : false
   },
-  "daddada" : {
-    "deleted" : true,
-    "blocked" : true,
-    "username" : "daddada",
-    "password" : "daddada",
-    "name" : "dad",
-    "surname" : "dada",
-    "gender" : "MALE",
-    "birthday" : 1631059200000,
-    "role" : "MANAGER",
-    "address" : {
-      "street" : "dqde",
-      "number" : 4,
-      "city" : "fwwe",
-      "zipCode" : 4,
-      "latitude" : 0.0,
-      "suspecious" : false
-  },
-  "koja" : {
+  "admin" : {
     "deleted" : true,
     "blocked" : false,
     "username" : "admin",
@@ -208,11 +190,11 @@
     "idRestaurant" : -1,
     "suspecious" : false
   },
-  "kupac" : {
+  "marko" : {
     "deleted" : false,
     "blocked" : false,
-    "username" : "kupac",
-    "password" : "kupac",
+    "username" : "marko",
+    "password" : "marko",
     "name" : "Marko",
     "surname" : "Markovic",
     "gender" : "MALE",
@@ -227,7 +209,7 @@
       "longitude" : 0.0
     },
     "orderIds" : [ ],
-    "chartId" : -1,
+    "chartId" : -1, 
     "points" : 0.0,
     "typeCustomer" : {
       "type" : "BRONZE",

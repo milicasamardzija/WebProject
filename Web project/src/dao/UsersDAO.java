@@ -140,8 +140,10 @@ public class UsersDAO {
 	}
 	
 	public User getUserByUsername(String username) {
+		System.out.println(username);
 		for (User user : getValues()) {
 			if(user.getUsername().equals(username)) {
+				System.out.println(user.getUsername());
 				return user;
 			}
 		}	
