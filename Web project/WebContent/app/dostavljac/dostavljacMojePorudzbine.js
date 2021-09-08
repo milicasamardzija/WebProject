@@ -30,9 +30,6 @@ template: `
                     <td>{{order.date}}</td>
                     <td>{{order.price}}</td>
                     <td>{{order.status}}</td>
-                    <div>
-                    <td><button type="button" class="btn btn-secondary" >Izbrisi</button></td>
-                    </div>
                 </tr>
             </tbody>
         </table>

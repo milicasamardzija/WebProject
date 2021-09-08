@@ -28,7 +28,7 @@ template: `
                     <td>{{order.price}}</td>
                     <td>{{order.status}}</td>
                     <div>
-                    <td><button type="button" class="btn btn-secondary" >Izbrisi</button></td>
+                    <td><button type="button" class="btn btn-secondary" >Zahtev za porudzbinu</button></td>
                     </div>
                 </tr>
             </tbody>
