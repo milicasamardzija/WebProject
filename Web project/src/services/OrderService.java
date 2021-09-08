@@ -84,7 +84,15 @@ public class OrderService {
 			}
 		}
 		return ret;
-		
+	}
+	
+	@POST
+	@Path("/changeToDelivered")
+	@Produces(MediaType.APPLICATION_JSON)
+	public Collection<OrderDTO> changeToDelivered(String id){
+		OrderDAO ordersDAO = getOrders();		
+		return ordersDAO.changeToDelivered(id);
+			
 	}
 	
 	@GET

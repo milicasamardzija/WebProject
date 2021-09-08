@@ -6,8 +6,13 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
+
+import javax.servlet.ServletContext;
+import javax.servlet.http.HttpServletRequest;
+import javax.ws.rs.core.Context;
 
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.core.JsonGenerator;
@@ -18,12 +23,17 @@ import com.fasterxml.jackson.databind.type.MapType;
 import com.fasterxml.jackson.databind.type.TypeFactory;
 
 import beans.Order;
-import beans.Restaurant;
 import dto.OrderDTO;
+import enums.OrderStatus;
 
 
 public class OrderDAO {
 
+	@Context
+	HttpServletRequest request;
+	@Context
+	ServletContext context;
+	
 	private HashMap<Integer, Order> orders;
 
 	public HashMap<Integer, Order> getOrders() {
@@ -171,6 +181,42 @@ public class OrderDAO {
             }
         }
         return ret;
+	}
+
+	public Collection<OrderDTO> changeToDelivered(String id) {
+		ArrayList<OrderDTO> ret= new ArrayList<OrderDTO>();
+		
+		Collection<Order> orders = this.getValues();
+		for(Order order : orders) {
+			if(order.getId() == Integer.parseInt(id)) {
+				order.setStatus(OrderStatus.DOSTAVLJENA);
+				this.saveOrders();
+			}
+		}
+		
+		Collection<Order> ordersChanged = getValues();		
+		
+		for(Order order : ordersChanged) {
+			ret.add(new OrderDTO(order.getId(), findNameRestaurant(order.getId()), order.getDate(), order.getPrice(), order.getIdCustomer(), order.getStatus(), order.getDeleted()));
+		}
+		
+		return ret;
+	}
+	
+	private String findNameRestaurant(int id) {
+		RestaurantDAO restaurantsDAO = getRestaurantsDAO();
+		return restaurantsDAO.getByID(id).getName();
+	}
+	
+	private RestaurantDAO getRestaurantsDAO() {
+		RestaurantDAO restaurants = (RestaurantDAO)context.getAttribute("restaurants");
+		
+		if (restaurants == null) {
+			restaurants = new RestaurantDAO();
+			context.setAttribute("restaurants", restaurants);
+		}
+	
+		return restaurants;
 	}
 	
 }

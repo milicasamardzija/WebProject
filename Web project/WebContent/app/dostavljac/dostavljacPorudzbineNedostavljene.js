@@ -1,7 +1,8 @@
 Vue.component("nedostavljene-dostavljac", {
     data: function() {  
         return {
-        orders: []
+        orders: [],
+        selected:{}
         }
     },
 template: `
@@ -26,13 +27,13 @@ template: `
                 </tr>
             </thead>
             <tbody>
-                <tr v-for="order in orders" v-on:click="getSelected(order)">
+                <tr v-for="order in orders"  v-on:click="getSelected(order)">
                     <td>{{order.restaurantName}}</td>
                     <td>{{order.date}}</td>
                     <td>{{order.price}}</td>
                     <td>{{order.status}}</td>
                     <div>
-                    <td><button type="button" class="btn btn-secondary" >Dostavljeno</button></td>
+                    <td><button type="button" class="btn btn-secondary" v-if="order.status == 'U_TRANSPORTU'" v-on:click="dostavi" >Dostavljeno</button></td>
                     </div>
                 </tr>
             </tbody>
@@ -52,7 +53,19 @@ methods:{
     },
     sorth: function(){
         router.push(`/dostavljacSortiranje`);
-    } 
+    } ,
+    dostavi: function(event){
+        axios.post("/WebShopREST/rest/order/changeToDelivered", this.selected.id)
+        .then( response => {
+            this.orders = response.data
+        })
+        .catch(function(error){
+            console.log(error)
+        })
+    },
+    getSelected: function(order){
+    this.selected = order;
+    }
 },
 mounted(){
     axios.get("/WebShopREST/rest/order/getAllOrdersForDelivererNotDelivered")
