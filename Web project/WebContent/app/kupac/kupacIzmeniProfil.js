@@ -45,7 +45,7 @@ template:
                                         </tr>
                                         <tr> 
                                             <td>Datum rodjenja: </td>
-                                            <td> <h6>datum rodjenja nije moguce menjati</h6> </td>
+                                            <td> <input type="date" class="form-control" v-model="user.birthday"> </td>
                                         </tr>
                                         <tr> 
                                             <td> Adresa:</td>
@@ -112,10 +112,17 @@ mounted(){
     axios.get("/WebShopREST/rest/profile/profileUser")
     .then( response => {
         this.user = response.data
+        this.user.birthday = moment(this.user.birthday).format('YYYY-MM-DD')
     })
     .catch(function(error){
         console.log(error)
     })
 
 },
+filters: {
+    dateFormat: function(value, format){
+        var parsed = moment(value);
+        return parsed.format(format)
+    }
+}
 });

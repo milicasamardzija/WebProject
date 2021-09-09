@@ -34,7 +34,7 @@ template: `
                                 </tr>
                                 <tr> 
                                 <td>Datum rodjenja: </td>
-                                <td> {{kupac.birthday}} </td>
+                                <td> {{kupac.birthday | dateFormat('DD.MM.YYYY.')}} </td>
                                 </tr>
                                 <tr> 
                                     <td> Adresa:</td>
@@ -71,4 +71,10 @@ mounted(){
             console.log(error)
         })
 },
+filters: {
+    dateFormat: function(value, format){
+        var parsed = moment(value);
+        return parsed.format(format)
+    }
+}
 });
