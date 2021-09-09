@@ -87,18 +87,19 @@ public class OrderDTO {
 		this.deleted = deleted;
 		this.idDeliverer=idD;
 	}
-	//proba bez artikala
+	
 	public OrderDTO(Integer id, String restaurantName, Date date, double price,
-			String idCustomer, OrderStatus status, Boolean deleted) {
+			String idCustomer, OrderStatus status, Boolean deleted, String idD) {
 		super();
 		this.id = id;
-	
+		
 		this.restaurantName = restaurantName;
 		this.date = date;
 		this.price = price;
 		this.idCustomer = idCustomer;
 		this.status = status;
 		this.deleted = deleted;
+		this.idDeliverer=idD;
 	}
 
 }
