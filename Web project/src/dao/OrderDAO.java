@@ -8,6 +8,8 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.HashMap;
 
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
@@ -24,6 +26,7 @@ import beans.User;
 import dto.OrderDTO;
 import enums.CustomerType;
 import enums.OrderStatus;
+import enums.RestaurantType;
 import enums.Role;
 
 
@@ -104,19 +107,34 @@ public class OrderDAO {
 	public Collection<Order> getValues(){
 		return this.orders.values();
 	}
-	
-	public  Collection<Order> filterOrdersByTupe(String orderType) {
-		OrderStatus status=checkOrderType(orderType);
-		ArrayList<Order> ret= new ArrayList<Order>();
-		for(Order order : this.orders.values()) {
-			if(order.getStatus().equals(status) && !order.getDeleted()) {
-				ret.add(order);
-			}
-		}	
-		return ret;
+
+	public RestaurantType checkRestaurantType(String userType) {
+		RestaurantType status=null;
+		if(userType.equals("italijanski")) {
+			status=RestaurantType.ITALIAN;
+		}
+		if(userType.equals("pecenje")) {
+			status=RestaurantType.BARBECUE;
+		}
+		 if(userType.equals("kineski")) {
+			 status=RestaurantType.CHINESE;
+		} 
+		 if(userType.equals("riblji")) {
+			 status=RestaurantType.FISH;
+		} 
+		 if(userType.equals("meksicki")) {
+			 status=RestaurantType.MEXICAN;
+		} 
+		 if(userType.equals("pica")) {
+			 status=RestaurantType.PIZZA;
+		} 
+		 if(userType.equals("vege")) {
+			 status=RestaurantType.VEGE;
+		} 
+		return status;
 	}
 	
-	private OrderStatus checkOrderType(String userType) {
+	public OrderStatus checkOrderType(String userType) {
 		OrderStatus status=null;
 		if(userType.equals("obrada")) {
 			status=OrderStatus.OBRADA;
@@ -138,6 +156,8 @@ public class OrderDAO {
 		} 
 		return status;
 	}
+	
+
 
 	public Order getByIdOrder(int idOrder) {
 		for(Order order : this.getValues()) {

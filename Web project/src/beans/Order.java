@@ -5,23 +5,31 @@ import java.util.Date;
 
 
 import enums.OrderStatus;
+import enums.RestaurantType;
 
 public class Order {
 	private int id; // karaktera
 	private ArrayList<Integer> articalIds; // ArticalChart!!
 	private int retaurantId;
 	private Date date; //datum i vreme
-	private double price;
+	private int price;
 	private String idCustomer;
 	private OrderStatus status;
 	private Boolean deleted;
 	private String idDeliverer;
+	private RestaurantType restaurantType;
 	
 	public String getIdDeliverer() {
 		return idDeliverer;
 	}
 	public void setIdDeliverer(String idDeliverer) {
 		this.idDeliverer = idDeliverer;
+	}
+	public RestaurantType getRestaurantType() {
+		return restaurantType;
+	}
+	public void setRestaurantType(RestaurantType restaurantType) {
+		this.restaurantType = restaurantType;
 	}
 	public Boolean getDeleted() {
 		return deleted;
@@ -53,10 +61,10 @@ public class Order {
 	public void setDate(Date date) {
 		this.date = date;
 	}
-	public double getPrice() {
+	public int getPrice() {
 		return price;
 	}
-	public void setPrice(double price) {
+	public void setPrice(int price) {
 		this.price = price;
 	}
 	public String getIdCustomer() {
@@ -71,8 +79,8 @@ public class Order {
 	public void setStatus(OrderStatus status) {
 		this.status = status;
 	}
-	public Order(int id, ArrayList<Integer> articalIds, int retaurantId, Date date, double price, String idCustomer,
-			OrderStatus status, Boolean deleted, String idDeliverer) {
+	public Order(int id, ArrayList<Integer> articalIds, int retaurantId, Date date, int price, String idCustomer,
+			OrderStatus status, Boolean deleted, String idDeliverer, RestaurantType type) {
 		super();
 		this.id = id;
 		this.articalIds = articalIds;
@@ -83,6 +91,7 @@ public class Order {
 		this.status = status;
 		this.deleted=deleted;
 		this.idDeliverer=idDeliverer;
+		this.restaurantType=type;
 	}
 	public Order() {
 		super();

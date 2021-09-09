@@ -3,6 +3,7 @@ package dto;
 import java.util.ArrayList;
 import java.util.Date;
 import enums.OrderStatus;
+import enums.RestaurantType;
 
 public class OrderDTO {
 
@@ -11,12 +12,19 @@ public class OrderDTO {
 	public ArrayList<String> artikli;
 	public String restaurantName;
 	public Date date;
-	public double price;
+	public int price;
 	public String idCustomer;
 	public OrderStatus status;
 	public Boolean deleted;
 	public String idDeliverer;
+	public RestaurantType restaurantType;
 	
+	public RestaurantType getRestaurantType() {
+		return restaurantType;
+	}
+	public void setRestaurantType(RestaurantType restaurantType) {
+		this.restaurantType = restaurantType;
+	}
 	public String getIdDeliverer() {
 		return idDeliverer;
 	}
@@ -56,10 +64,10 @@ public class OrderDTO {
 	public void setDate(Date date) {
 		this.date = date;
 	}
-	public double getPrice() {
+	public int getPrice() {
 		return price;
 	}
-	public void setPrice(double price) {
+	public void setPrice(int price) {
 		this.price = price;
 	}
 	public String getIdCustomer() {
@@ -74,8 +82,9 @@ public class OrderDTO {
 	public void setStatus(OrderStatus status) {
 		this.status = status;
 	}
-	public OrderDTO(Integer id, ArrayList<String> artikli, String restaurantName, Date date, double price,
-			String idCustomer, OrderStatus status, Boolean deleted, String idDeliverer) {
+	public OrderDTO(Integer id, ArrayList<String> artikli, String restaurantName, Date date, int price,
+			String idCustomer, OrderStatus status, Boolean deleted, String idDeliverer, RestaurantType
+			type) {
 		super();
 		this.id = id;
 		this.artikli = artikli;
@@ -86,6 +95,7 @@ public class OrderDTO {
 		this.status = status;
 		this.deleted = deleted;
 		this.idDeliverer=idDeliverer;
+		this.restaurantType= type;
 	}
 
 
