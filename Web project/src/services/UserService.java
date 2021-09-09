@@ -199,13 +199,10 @@ public class UserService {
 	//izmena korisnika
 	@POST
 	@Path("/changeUser")
-	@Produces(MediaType.TEXT_HTML)
 	@Consumes(MediaType.APPLICATION_JSON)
 	public void changeUser(UserChangeDTO user) {
 		UsersDAO users = getUsers();
-		System.out.println("POKUSAO SAM");
 		users.changeUser(user);	
-		System.out.println("IZMENIO SAM");
 	} 
 	
 	/*//izmena korisnika

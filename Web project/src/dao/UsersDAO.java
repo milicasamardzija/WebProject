@@ -26,6 +26,7 @@ import com.fasterxml.jackson.databind.type.TypeFactory;
 import beans.Address;
 import beans.Customer;
 import beans.User;
+import dto.ChangeUserProfileDTO;
 import dto.UserChangeDTO;
 import dto.UserNewDTO;
 import dto.UserRegistrationDTO;
@@ -140,10 +141,8 @@ public class UsersDAO {
 	}
 	
 	public User getUserByUsername(String username) {
-		System.out.println(username);
 		for (User user : getValues()) {
 			if(user.getUsername().equals(username)) {
-				System.out.println(user.getUsername());
 				return user;
 			}
 		}	
@@ -193,7 +192,6 @@ public class UsersDAO {
 		userChange.setSurname(user.surname);
 		userChange.setAddress(new Address(user.street, user.number, user.city, user.zipCode));
 		saveUsers();
-
 	}
 	
 	public Collection<User> searchUsers(UserSearchDTO searchParameters) {
@@ -323,6 +321,15 @@ public class UsersDAO {
 				});
 		 }
 		return ret;
+	}
+	public void changeUserProfile(ChangeUserProfileDTO user) {
+		User userChange = getUserByUsername(user.username);
+		userChange.setName(user.name);
+		userChange.setSurname(user.surname);
+		userChange.setAddress(new Address(user.street, user.number, user.city, user.zipCode));
+		userChange.setGender(user.gender);
+		userChange.setBirthday(user.birthday);
+		saveUsers();
 	}
 
 
