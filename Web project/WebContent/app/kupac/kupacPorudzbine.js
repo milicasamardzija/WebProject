@@ -4,36 +4,84 @@ Vue.component("porudbine-kupac", {
         kupac:{},
         orders: [],
         idKupca: null, 
-        selected:{}
+        selected:{},
+        mode: true
         }
     },
 template: `
-<div class="container" style=" margin-top: 20px; margin-left: 20px; margin-right: 10px;">
+<div class="container" style=" margin-top: 20px; margin-left: 40px; margin-right: 10px;">
   
 <div>
-<table  style=" margin:25px 25px;"> 
+<table  style=" margin:25px 25px; font-size:1.1 em;"> 
 <tr>
-    <td  > <input type="text" placeholder="naziv restorana" > </td>
+    <td  > <input type="text" placeholder="naziv restorana" style="height:32px;"> </td>
     <td style="padding: 12px;"> Cena od: </td> 
-    <td style="padding: 12px;"> <input type="text" placeholder="pocetni iznos" ></td> 
+    <td style="padding: 12px;"> <input type="text" placeholder="pocetni iznos" style="height:32px;"></td> 
     <td style="padding: 12px;"> do: </td> 
-    <td style="padding: 12px;"> <input type="text" placeholder="krajnji iznos" ></td> 
+    <td style="padding: 12px;"> <input type="text" placeholder="krajnji iznos" style="height:32px;"></td> 
     <td style="padding: 12px;"> Datum od: </td>
-    <td style="padding: 12px;"> <input type="date" ></td> 
+    <td style="padding: 12px;"> <input type="date" style="height:32px;"></td> 
     <td style="padding: 12px;"> do: </td> 
-    <td style="padding: 12px;"> <input type="date" ></td> 
+    <td style="padding: 12px;"> <input type="date" style="height:32px;"></td> 
     <td> <button class="btn btn-danger" type="button" >Nadji</button> </td>
 
 </tr>
 
+</table>
 
+<table style=" margin:25px 25px; font-size:1.1 em;"> 
+<tr> 
+        <td style="width:450px !important;"><p> Ukoliko zelite da filtrirate prikaz, odaberite odgovarajuci tip restorana </p></td>  
+    
+        <td > <button class="btn btn-secondary dropdown-toggle" type="button" data-toggle="dropdown" > Tip restorana </button>                  
+            <span class="dropdown-menu" aria-labelledby="dropdownMenu2">
+            <button class="dropdown-item" type="button" value="ITALIAN">Italijanski</button>
+            <button class="dropdown-item" type="button" value="CHINESE">Kineski</button>
+            <button class="dropdown-item" type="button" value="PIZZA">Pica</button>
+            <button class="dropdown-item" type="button" value="BARBECUE">Rostilj</button>
+            <button class="dropdown-item" type="button" value="FISH">Riblji</button>
+            <button class="dropdown-item" type="button" value="VEGE">Veganski</button>
+            </span>
+        </td>
+        <td style="width:20px;"> </td>
+      <td > <p> ili status porudzbine </p></td>  
+      <td style="width:20px;"> </td>
+      <td > <button class="btn btn-secondary dropdown-toggle" type="button" data-toggle="dropdown" > Tip porudzbine </button>                  
+            <span class="dropdown-menu" aria-labelledby="dropdownMenu2">
+            <button class="dropdown-item" type="button" value="O">Otkazana</button>
+            <button class="dropdown-item" type="button" value="Dostavljena">Dostavljena</button>
+            <button class="dropdown-item" type="button" >Obradjuje se</button>
+            <button class="dropdown-item" type="button" >Ceka dostavljaca</button>
+            <button class="dropdown-item" type="button" >U transportu</button>
+            <button class="dropdown-item" type="button">Dostavljena</button>
+            <button class="dropdown-item" type="button">Nedostavljena</button>
+            </span>
+        </td>
+    </tr>
+</table>
 
-
-
+<table style=" margin:25px 25px; font-size:1.1 em;"> 
+<tr> 
+        <td style="width:450px !important;"><p> Ukoliko zelite da sortirate prikaz, odaberite odgovarajuci kriterijum  </p></td>  
+    
+        <td > <button class="btn btn-secondary dropdown-toggle" type="button" data-toggle="dropdown" > Sortiraj porudzbine  </button>                  
+            <span class="dropdown-menu" aria-labelledby="dropdownMenu2">
+            <button class="dropdown-item" type="button" value="ITALIAN">Nazivu restorana rastuce</button>
+            <button class="dropdown-item" type="button" value="CHINESE">Nazivu restorana opadajuce</button>
+            <button class="dropdown-item" type="button" value="PIZZA">Ceni porudzbine rastuce</button>
+            <button class="dropdown-item" type="button" value="BARBECUE">Ceni porudzbine opadajuce</button>
+            <button class="dropdown-item" type="button" value="FISH">Datumu porudzbine rastuce</button>
+            <button class="dropdown-item" type="button" value="VEGE">Datumu porudzbine opadajuce</button>
+            </span>
+        </td>
+        
+    </tr>
 </table>
 </div>
+
+
   <!--tabela-->
-  <div > 
+  <div v-if="mode" > 
   <h3 style=" margin-left: 60px;"> <small> Trenutno stanje svih Vasih porudzbina: </small> <hr></h3>
     <table class="table table-hover">
         <thead>
