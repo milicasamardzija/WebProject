@@ -1,5 +1,17 @@
 <html> 
 <!-- Slideshow container -->
+<script>
+  function checkType(type){
+      this.restaurants=null,
+      axios.post("/WebShopREST/rest/restaurant/filterType", type)
+      .then( response => {
+          this.allUsers = response.data
+      })
+      .catch(function(error){
+          console.log(error)
+      })
+  }
+  </script>
 <head> 
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -229,6 +241,7 @@
     <script src="js/vue-router.js"></script>
     <script src="js/axios.js"></script>
     <script src="app/app.js"></script>
+    <script src="app/pocetna.js"></script>
     <script src="app/administrator/adminApp.js"></script>
     <script src="js/jquery.min.js"></script>
     <script src="js/moment.min.js"></script>
