@@ -12,13 +12,13 @@ const KomentariRestorana= {template: '<komentariRestoran-kupac></komentariRestor
 const router = new VueRouter({
     mode: 'hash',
     routes:[
+        {path : '/', component: PrikaziRestoraneComponent},//prikaz svih restorana
         {path : '/profil', component: ProfilKupacComponent}, //profil
         {path : '/izmeniProfil', component: IzmeniProfilComponent}, //izmena profila
-        {path : '/', component: PrikaziRestoraneComponent},//prikaz svih restorana
         {path : '/korpa', component: KorpaComponent}, //moja korpa 
         {path : '/porudzbine', component: PorudzbineComponent},//prethodne porudzbine
         {path : '/nedostavljene', component: NedostavljeneComponent}, //nedostavjnee porudzbine
-        {path : '/prikaziRestoran', component: PrikazOdabranogRestorana}, //prikaz restorana koji je oznacen za porucivanje
+        {path : '/restoran', component: PrikazOdabranogRestorana}, //prikaz restorana koji je oznacen za porucivanje
         {path : '/prikaziKomentareRestorana', component: KomentariRestorana}, //komentari za odredjeni restoran 
         
     ]
