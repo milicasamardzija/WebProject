@@ -9,11 +9,32 @@ Vue.component("porudbine-kupac", {
     },
 template: `
 <div class="container" style=" margin-top: 20px; margin-left: 20px; margin-right: 10px;">
-  <h3 style=" margin-left: 60px;"> <small> Trenutno stanje svih Vasih porudzbina: </small> <hr></h3>          
-       
   
+<div>
+<table  style=" margin:25px 25px;"> 
+<tr>
+    <td  > <input type="text" placeholder="naziv restorana" > </td>
+    <td style="padding: 12px;"> Cena od: </td> 
+    <td style="padding: 12px;"> <input type="text" placeholder="pocetni iznos" ></td> 
+    <td style="padding: 12px;"> do: </td> 
+    <td style="padding: 12px;"> <input type="text" placeholder="krajnji iznos" ></td> 
+    <td style="padding: 12px;"> Datum od: </td>
+    <td style="padding: 12px;"> <input type="date" ></td> 
+    <td style="padding: 12px;"> do: </td> 
+    <td style="padding: 12px;"> <input type="date" ></td> 
+    <td> <button class="btn btn-danger" type="button" >Nadji</button> </td>
+
+</tr>
+
+
+
+
+
+</table>
+</div>
   <!--tabela-->
-  <div >
+  <div > 
+  <h3 style=" margin-left: 60px;"> <small> Trenutno stanje svih Vasih porudzbina: </small> <hr></h3>
     <table class="table table-hover">
         <thead>
           <tr>
@@ -88,6 +109,7 @@ methods:{
             console.log(error)
         })
     }
+    
 },
 mounted(){
     axios.get("/WebShopREST/rest/profile/profileUser")
