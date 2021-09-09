@@ -21,6 +21,8 @@ import dao.UsersDAO;
 import dto.RestaurantChangeDTO;
 import dto.RestaurantNewDTO;
 import dto.UserChangeDTO;
+import enums.CustomerType;
+import enums.Role;
 
 
 @Path("/restaurant")
@@ -104,6 +106,15 @@ public class RestaurantService {
 	public void deleteUser(String id){
 		RestaurantDAO restaurants = getRestaurantsDAO();
 		restaurants.deleteRestaurantById(Integer.parseInt(id));
+	}
+	
+	
+	@POST
+	@Path("/filterType")
+	@Produces(MediaType.APPLICATION_JSON)
+	public Collection<Restaurant> filterByType(String type) {
+		RestaurantDAO restaurantsDAO = getRestaurantsDAO();
+		return restaurantsDAO.filterUsersByType(type);
 	}
 	
 	private UsersDAO getUsersDAO() {

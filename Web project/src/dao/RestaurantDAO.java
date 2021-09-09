@@ -23,6 +23,9 @@ import beans.Restaurant;
 import beans.User;
 import dto.RestaurantChangeDTO;
 import dto.RestaurantNewDTO;
+import enums.CustomerType;
+import enums.RestaurantType;
+import enums.Role;
 import enums.Status;
 
 
@@ -188,6 +191,42 @@ public class RestaurantDAO {
 		restaurantChange.setLink(restaurant.link);
 		restaurantChange.setManagerId(restaurant.managerId);
 		saveRestaurants();
+	}
+	
+	
+	private RestaurantType checkTypeRestaurant(String type)
+	{
+		RestaurantType ret =null;
+		if(type.equals("ITALIAN")) {
+			ret=RestaurantType.ITALIAN;
+		}
+		if(type.equals("CHINESE")) {
+			ret=RestaurantType.CHINESE;
+		}
+		 if(type.equals("PIZZA")) {
+			 ret=RestaurantType.PIZZA;
+		} 
+		 if(type.equals("BARBECUE")) {
+			ret=RestaurantType.PIZZA;
+		}
+		if(type.equals("FISH")) {
+			ret=RestaurantType.FISH;
+		}
+		if(type.equals("VEGE")) {
+			ret=RestaurantType.VEGE;
+		} 
+		return ret;
+	}
+
+	public Collection<Restaurant> filterUsersByType(String type) {
+		RestaurantType typeRestaurant = checkTypeRestaurant(type);
+		ArrayList<Restaurant> ret = new ArrayList<Restaurant>();
+		for(Restaurant restaurant : this.restaurants.values()) {
+			if(restaurant.getType().equals(typeRestaurant)) {
+				ret.add(restaurant);
+			}
+		}
+		return null;
 	}
 	
 }
