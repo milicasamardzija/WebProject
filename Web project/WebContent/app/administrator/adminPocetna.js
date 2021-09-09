@@ -65,7 +65,7 @@ methods:{
             this.$router.push({path: `/prikaziKomentareRestoranaAdminPocetna`, query:{ id: this.idRestaurant}})
         },
         back: function() {
-            window.location.reload(true)
+            window.location.href = "index.html"
         }
 },
 mounted(){
