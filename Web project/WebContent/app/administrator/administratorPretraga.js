@@ -88,7 +88,19 @@ methods:{
       .catch(function(error){
           console.log(error)
       })
-    }
+    }, 
+    changeUser : function () {
+      this.$router.push({path: `/izmeniKorisnika`, query:{ username: this.selected}})
+    },
+    deleteUser: function(){
+            axios.post('/WebShopREST/rest/user/deleteUser', this.selected.username)
+            .then(response => {
+                router.push(`/korisnici`);
+            })
+            .catch(function(error){
+                console.log(error)
+            })
+        }
 },
 mounted(){
     
