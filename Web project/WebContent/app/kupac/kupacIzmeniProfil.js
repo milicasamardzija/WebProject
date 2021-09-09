@@ -32,7 +32,16 @@ template:
                                         </tr>
                                         <tr> 
                                             <td> Pol:</td>
-                                            <td> <h6>pol nije moguce menjati</h6> </td>
+                                            <td><input class="form-check-input" type="radio" id="exampleRadios2" value="MALE"  v-model="user.gender" >
+                                                <label class="form-check-label" for="exampleRadios2">
+                                                Muski
+                                                </label>
+                                            </td>
+                                            <td><input class="form-check-input" type="radio" id="exampleRadios2" value="FEMALE"  v-model="user.gender" >
+                                                <label class="form-check-label" for="exampleRadios2">
+                                                Zenski
+                                                </label>
+                                             </td>
                                         </tr>
                                         <tr> 
                                             <td>Datum rodjenja: </td>
@@ -48,7 +57,7 @@ template:
                                         <tr> 
                                            <button type="button" class="btn btn-danger" v-on:click="changePassword"> Promeni sifru </button>
                                         </tr>
-                                        <div v-if="mode">
+                                        <div v-if="mode" stylep="top-margin:5px;">
                                            <form id="izmena">
                                            <table>
                                             <tr> 
