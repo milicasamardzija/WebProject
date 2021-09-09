@@ -95,14 +95,17 @@ methods:{
        this.mode=true
     }, 
     changeProfile: function(){
-        axios.post("/WebShopREST/rest/user/changeUser", {
+        axios.post("/WebShopREST/rest/profile/changeProfile", {
             "username":''+ this.user.username,
             "name":''+ this.user.name, 
             "surname":''+ this.user.surname,  
             "street":''+ this.user.address.street, 
             "number":''+ this.user.address.number, 
             "city":''+ this.user.address.city, 
-            "zipCode":''+ this.user.address.zipCode})
+            "zipCode":''+ this.user.address.zipCode,
+            "gender":''+ this.user.gender,
+            "birthday":''+ this.user.birthday
+        })
         .then( response => {
             router.push(`/profil`)
         })

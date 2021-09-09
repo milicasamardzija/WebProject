@@ -33,10 +33,10 @@
     "blocked" : false,
     "username" : "kupac",
     "password" : "kupac",
-    "name" : "Tihomir",
+    "name" : "Tihomiric",
     "surname" : "Sijan",
     "gender" : "MALE",
-    "birthday" : 926380800000,
+    "birthday" : 925257600000,
     "role" : "CUSTOMER",
     "address" : {
       "street" : "Jug Bogdana",
