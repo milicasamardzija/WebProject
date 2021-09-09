@@ -1,4 +1,4 @@
-const IndexComponent = {template: '<indexRest></indexRest>'}
+const IndexComponent = {template: '<index-rest></index-rest>'}
 
 const router = new VueRouter({
     mode: 'hash',
@@ -7,7 +7,7 @@ const router = new VueRouter({
     ]
 })
 
-var App = new Vue({
+var index = new Vue({
     router,
     el: '#IDInd'
 });

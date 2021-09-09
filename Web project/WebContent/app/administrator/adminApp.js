@@ -19,7 +19,9 @@ const RestaurantAdminComponent = {template: '<administrator-restaurant></adminis
 const IzmeniProfilComponent = {template: '<izmeniProfil-administrator></izmeniProfil-administrator>'}
 const RestaurantCommentsAdminComponent = {template: '<administrator-restaurantComments></administrator-restaurantComments>'}
 
-const IndexComponent = {template: '<indexRestorani></indexRestorani>'}
+const PocetnaComponent = {template: '<administrator-pocetna></administrator-pocetna>'}
+const RestaurantCommentsAdminComponentPocetna = {template: '<administrator-restaurantCommentsPocetna></administrator-restaurantCommentsPocetna>'}
+
 
 const router = new VueRouter({
 
@@ -46,7 +48,8 @@ const router = new VueRouter({
         {path : '/restoran', component: RestaurantAdminComponent}, //restoran
         {path : '/prikaziKomentareRestoranaAdmin', component: RestaurantCommentsAdminComponent}, //restoran komentari
 
-        {path : '/', component: IndexComponent}, //index
+        {path : '/pocetna', component: PocetnaComponent}, //restoran pocetna
+        {path : '/prikaziKomentareRestoranaAdminPocetna', component: RestaurantCommentsAdminComponentPocetna}, //restoran komentari pocetna
     ]
 })
 
