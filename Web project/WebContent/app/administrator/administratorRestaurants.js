@@ -2,7 +2,8 @@ Vue.component("administrator-restaurants", {
     data(){
         return{
             restaurants:[], 
-            selected:null
+            selected:null,
+            search:{}
         }
     },
 template: `
@@ -12,20 +13,24 @@ template: `
 	<div class="row" style="width:1400px !important; margin-left:30px;">
 		<div class="col-lg-12">
 					    <div class="row" style="width:1400px !important;">
+                        <form>
 										        <div class="col-lg-2 col-md-3 col-sm-12 p-0 search">
-										            <input type="text" class="form-control search-slt" placeholder="Naziv restorana">
+										            <input type="text" class="form-control search-slt" placeholder="Naziv restorana" v-model="search.name">
 										        </div>
 										        <div class="col-lg-2 col-md-3 col-sm-12 p-0 search" >
-										            <input type="text" class="form-control search-slt" placeholder="Lokacija restorana">
+										            <input type="text" class="form-control search-slt" placeholder="Lokacija restorana"  v-model="search.location">
 										        </div>
                                                 <div class="dropdown col-lg-2 col-md-3 col-sm-12 p-0 filt">
                                                     <button class="btn btn-secondary dropdown-toggle" type="button" data-toggle="dropdown" >
                                                     Tip restorana
                                                     </button>
                                                     <span class="dropdown-menu" aria-labelledby="dropdownMenu2">
-                                                    <button class="dropdown-item" type="button">Action</button>
-                                                    <button class="dropdown-item" type="button">Another action</button>
-                                                    <button class="dropdown-item" type="button">Something else here</button>
+                                                    <button class="dropdown-item" type="button" value="ITALIAN" v-model="search.type">Italijanski</button>
+                                                    <button class="dropdown-item" type="button" value="CHINESE" v-model="search.type">Kineski</button>
+                                                    <button class="dropdown-item" type="button" value="PIZZA" v-model="search.type">Pica</button>
+                                                    <button class="dropdown-item" type="button" value="BARBECUE" v-model="search.type">Rostilj</button>
+                                                    <button class="dropdown-item" type="button" value="FISH" v-model="search.type">Riblji</button>
+                                                    <button class="dropdown-item" type="button" value="VEGE" v-model="search.type">Veganski</button>
                                                     </span>
                                                 </div>
                                                 <div class="dropdown col-lg-2 col-md-3 col-sm-12 p-0 filt">
@@ -33,17 +38,22 @@ template: `
                                                     Ocena restorana
                                                     </button>
                                                     <div class="dropdown-menu">
-                                                    <button class="dropdown-item" type="button">Action</button>
-                                                    <button class="dropdown-item" type="button">Another action</button>
-                                                    <button class="dropdown-item" type="button">Something else here</button>
+                                                    <span class="dropdown-menu" aria-labelledby="dropdownMenu2">
+                                                    <button class="dropdown-item" type="button" value="5" v-model="search.grade">5</button>
+                                                    <button class="dropdown-item" type="button" value="4" v-model="search.grade">4</button>
+                                                    <button class="dropdown-item" type="button" value="3" v-model="search.grade">3</button>
+                                                    <button class="dropdown-item" type="button" value="2" v-model="search.grade">2</button>
+                                                    <button class="dropdown-item" type="button" value="1" v-model="search.grade">1</button>
+                                                    </span>
                                                     </div>
                                                 </div>
                                                 <div class="col-lg-1 col-md-3 col-sm-12 btn-search">
-                                                    <button type="button" class="btn btn-danger wrn-btn">Pretrazi kombinovano</button>
+                                                    <button type="button" class="btn btn-danger wrn-btn" v-on:click="kombinovanaPretraga">Pretrazi kombinovano</button>
                                                 </div>
                                                 <div class="col-lg-1 col-md-3 col-sm-12 btn-search">
                                                     <button v-on:click= "addRestaurant" style= "margin-left: 70px; width:40px" type="button" class="btn btn-danger wrn-btn  col-lg-1 col-md-3 col-sm-12"><span class="glyphicon glyphicon-plus"></span></button>
                                                 </div>
+                        </form>
 					    </div>
 		</div>
 	</div>
