@@ -4,16 +4,16 @@
     "blocked" : true,
     "username" : "efwrre",
     "password" : "efwrre",
-    "name" : "AAAAA",
-    "surname" : "re",
+    "name" : "Anastasija",
+    "surname" : "Rapaic",
     "gender" : "MALE",
     "birthday" : 1632441600000,
     "role" : "MANAGER",
     "address" : {
-      "street" : "ter",
+      "street" : "Terij",
       "number" : 4,
-      "city" : "ger",
-      "zipCode" : 4,
+      "city" : "Negotin",
+      "zipCode" : 45487,
       "latitude" : 0.0,
       "longitude" : 0.0
     },
@@ -50,9 +50,9 @@
     "chartId" : -1,
     "points" : -1.0,
     "typeCustomer" : {
-      "type" : "EMPLOYEE",
-      "sale" : -1.0,
-      "points" : -1.0
+      "type" : "BRONZE",
+      "sale" : 0.0,
+      "points" : 200.0
     },
     "idRestaurant" : 0,
     "suspecious" : false

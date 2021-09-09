@@ -15,7 +15,14 @@ public class OrderDTO {
 	public String idCustomer;
 	public OrderStatus status;
 	public Boolean deleted;
+	public String idDeliverer;
 	
+	public String getIdDeliverer() {
+		return idDeliverer;
+	}
+	public void setIdDeliverer(String idDeliverer) {
+		this.idDeliverer = idDeliverer;
+	}
 	public Boolean getDeleted() {
 		return deleted;
 	}
@@ -68,7 +75,7 @@ public class OrderDTO {
 		this.status = status;
 	}
 	public OrderDTO(Integer id, ArrayList<String> artikli, String restaurantName, Date date, double price,
-			String idCustomer, OrderStatus status, Boolean deleted) {
+			String idCustomer, OrderStatus status, Boolean deleted, String idDeliverer) {
 		super();
 		this.id = id;
 		this.artikli = artikli;
@@ -78,19 +85,8 @@ public class OrderDTO {
 		this.idCustomer = idCustomer;
 		this.status = status;
 		this.deleted = deleted;
+		this.idDeliverer=idDeliverer;
 	}
-	//proba bez artikala
-	public OrderDTO(Integer id, String restaurantName, Date date, double price,
-			String idCustomer, OrderStatus status, Boolean deleted) {
-		super();
-		this.id = id;
-	
-		this.restaurantName = restaurantName;
-		this.date = date;
-		this.price = price;
-		this.idCustomer = idCustomer;
-		this.status = status;
-		this.deleted = deleted;
-	}
+
 
 }

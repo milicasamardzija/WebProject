@@ -1,13 +1,12 @@
 Vue.component("izmeniProfil-kupac", {
    
-    data: {
-        kupac: null,
-    
-        mode: 'INFORMACIJE'
-      
-    
+    data: function() {
+        return{
+        user: null,
+        mode: 'INFORMACIJE'}
     },
-template: `
+template: 
+`
 <section> 
             
             <div class="row content">
@@ -21,15 +20,15 @@ template: `
                                     <table>
                                         <tr>
                                             <td> Ime: </td>
-                                            <td> <input class="form-control" type="text" > </td>
+                                            <td> <input class="form-control" type="text" v-model="user.name" v-bind:value="name" > {{name}}</td>
                                         </tr>
                                         <tr> 
                                             <td>Prezime: </td>
-                                            <td> <input class="form-control" type="text" > </td>
+                                            <td> <input class="form-control" type="text" v-model="user.surname" v-bind:value="surname"> {{surname}}</td>
                                         </tr>
                                         <tr> 
                                             <td> Korisnicko ime:</td>
-                                            <td> <input class="form-control" type="text" > </td>
+                                            <td> <input class="form-control" type="text" v-model="user.username" v-bind:value="username">{{username}} </td>
                                         </tr>
                                         <tr> 
                                             <td> Pol:</td>
@@ -41,19 +40,15 @@ template: `
                                         </tr>
                                         <tr> 
                                             <td> Adresa:</td>
-                                            <td> <input class="form-control" type="text" placeholder="ulica" ></td>
-                                            <td> <input class="form-control" type="text" placeholder="broj" style="width:70px" ></td>
-                                            <td> <input class="form-control" type="text" placeholder="grad" style="width:120px"></td>
-                                            <td> <input class="form-control" type="text" placeholder="postanski broj" style="width:115px" ></td>
-                                        </tr>
-                                        <tr> 
-                                            <td>Broj telefona: </td>
-                                            <td> <input class="form-control" type="text"></td> 
+                                            <td> <input class="form-control" type="text" placeholder="ulica" v-model="user.address.street" v-bind:value="user.address.street"> {{street}}</td>
+                                            <td> <input class="form-control" type="text" placeholder="broj" style="width:70px" v-model="user.address.number" v-bind:value="user.address.number"></td>
+                                            <td> <input class="form-control" type="text" placeholder="grad" style="width:120px" v-model="user.address.city" v-bind:value="user.address.city"></td>
+                                            <td> <input class="form-control" type="text" placeholder="postanski broj" style="width:115px" v-model="user.address.zipCode" v-bind:value="user.address.zipCode" ></td>
                                         </tr>
                                         <tr> 
                                            <button type="button" class="btn btn-danger" v-on:click="changePassword"> Promeni sifru </button>
                                         </tr>
-                                           <form id="izmena" v-bind:hidden="mode==='INFORMACIJE'">
+                                           <form id="izmena" v-bind:hidden="mode=='INFORMACIJE'">
                                            <table>
                                             <tr> 
                                                 <td> Stara sifra:  </td>
@@ -78,7 +73,7 @@ template: `
                                     </table>
 
                             </form>
-                            <button type="button" class="btn btn-success" v-on:click="openProfile">Sacuvaj izmene</button>
+                            <button type="button" class="btn btn-success" v-on:click="changeProfile">Sacuvaj izmene</button>
                         </div>
                     </div>    
             </div>
@@ -92,12 +87,25 @@ methods:{
     }, 
     changePassword: function(){
        this.mode='PASSWORD'
+    }, 
+    changeProfile: function(){
+        axios.post("/WebShopREST/rest/user/changeUser", {
+            "username":''+ this.user.username,
+            "name":''+ this.user.name, 
+            "surname":''+ this.user.surname,  
+            "street":''+ this.user.address.street, 
+            "number":''+ this.user.address.number, 
+            "city":''+ this.user.address.city, 
+            "zipCode":''+ this.user.address.zipCode})
+        .then( response => {
+            router.push(`/profil`)
+        })
     }
 },
 mounted(){
     axios.get("/WebShopREST/rest/profile/profileUser")
     .then( response => {
-        this.kupac = response.data
+        this.user = response.data
     })
     .catch(function(error){
         console.log(error)

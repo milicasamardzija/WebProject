@@ -3,7 +3,8 @@ Vue.component("porudbine-kupac", {
         return {
         kupac:{},
         orders: [],
-        idKupca: null
+        idKupca: null, 
+        selected:{}
         }
     },
 template: `
@@ -32,19 +33,60 @@ template: `
         
             <div>
 
-              <td><button type="button" class="btn btn-secondary" >Izbrisi</button></td>
+              <td><button type="button" class="btn btn-secondary" v-if="order.status == 'OBRADA'" v-on:click="changeStatus()" >Otkazi</button>
+               <button type="button" class="btn btn-secondary" v-if="order.status != 'OBRADA'" v-on:click="getSelected(order)" data-toggle="modal" data-target="#brisanje" >Izbrisi</button>  </td>
             </div>
           </tr>
         </tbody>
     </table>
   </div>
-           
+   
+  
+  <!-- modal obrisi-->
+  <div class="modal fade" id="brisanje" role="dialog" >
+          <div class="modal-dialog" style="width: 300px;" >
+              <!-- Modal content -->
+              <div class="modal-content">
+                  <div class="modal-header" style="padding:35px 50px;">
+                  <h5 class="modal-title" id="exampleModalLabel">Odjavi se</h5>
+                  </div>
+                  <div class="modal-body"  style="padding:40px 50px;">
+                      <form role="form" @submit="deleteOrder">
+                        <div> <p> Da li ste sigurni da zelite da obrisete?</p></div>
+                          <button type="submit" class="btn btn-danger btn-block" v-on:click="deleteOrder"><span class="glyphicon glyphicon-off"></span> Obrisi</button>
+                      </form>
+                  </div>
+                  <div class="modal-footer">
+                  <button type="button" class="btn btn-danger btn-default pull-left"  data-dismiss="modal">Odustani</button>   
+                  </div>
+              </div>
+          </div>
+  </div>
+  
 </div>
 `,
 methods:{
     getSelected: function(order){
         this.selected = order;
-      }
+      }, 
+    deleteOrder() {
+        axios.post("/WebShopREST/rest/order/deleteOrder", this.selected.id )
+        .then(response => {
+            router.push(`/porudzbine`);
+        })
+        .catch(function(error){
+            console.log(error)
+        })
+    }, 
+    changeStatus() {
+        axios.post("/WebShopREST/rest/order/changeStatus", this.selected.id)
+        .then(response => {
+            router.push(`/porudzbine`);
+        })
+        .catch(function(error){
+            console.log(error)
+        })
+    }
 },
 mounted(){
     axios.get("/WebShopREST/rest/profile/profileUser")
@@ -54,7 +96,7 @@ mounted(){
     .catch(function(error){
         console.log(error)
     }),
-    axios.post("/WebShopREST/rest/order/getOrders")
+    axios.get("/WebShopREST/rest/order/getOrders")
     .then( response => {
         this.orders = response.data
     })
