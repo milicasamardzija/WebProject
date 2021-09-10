@@ -1,17 +1,34 @@
-{"1" : {
-	    "id" : 1,
-	    "customerId" : "kupac",
-	    "restaurantId" : 3,
-	    "text" : "Bilo je prelepo",
-	    "grade" : 5,
-	    "approved" : false
-	  },
- "0" : {
-	    "id" : 0,
-	    "customerId" : "kupac",
-	    "restaurantId" : 3,
-	    "text" : "Bilo je lose",
-	    "grade" : 2,
-	    "approved" : true
-	  }
- }
+{
+  "0" : {
+    "id" : 0,
+    "customerId" : "kupac",
+    "restaurantId" : 2,
+    "text" : "Bilo je lose",
+    "grade" : 2,
+    "approved" : true
+  },
+  "1" : {
+    "id" : 1,
+    "customerId" : "kupac",
+    "restaurantId" : 2,
+    "text" : "Bilo je prelepo",
+    "grade" : 5,
+    "approved" : true
+  },
+  "2" : {
+    "id" : 2,
+    "customerId" : "kupac",
+    "restaurantId" : 2,
+    "text" : "Bilo je najbolje",
+    "grade" : 5,
+    "approved" : true
+  },
+  "3" : {
+    "id" : 3,
+    "customerId" : "kupac",
+    "restaurantId" : 2,
+    "text" : "Bilo je uzasno",
+    "grade" : 2,
+    "approved" : false
+  }
+}

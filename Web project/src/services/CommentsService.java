@@ -12,7 +12,9 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
 
+
 import beans.Comment;
+import beans.User;
 import dao.CommentsDAO;
 import dao.RestaurantDAO;
 import dto.CommentDTO;
@@ -61,6 +63,34 @@ public class CommentsService {
 		}
 		
 		return ret;
+	}
+	
+	@GET
+	@Path("/getAllCommentsManager")
+	@Produces(MediaType.APPLICATION_JSON)
+	public Collection<CommentDTO> getAllCommentsManager() {
+		ArrayList<CommentDTO> ret = new ArrayList<CommentDTO>();
+		CommentsDAO commentsDAO = getCommentsDAO();
+		RestaurantDAO restaurantsDAO = getRestaurantsDAO();
+		Collection<Comment> comments =  commentsDAO.getValues();
+		User user = (User)request.getSession().getAttribute("loginUser");	
+		
+		for (Comment comment : comments) {
+			if (comment.getRestaurantId() == user.getIdRestaurant()) {
+				ret.add(new CommentDTO(comment.getId(),restaurantsDAO.getByID(comment.getRestaurantId()).getName(),comment.getCustomerId(),comment.getText(), comment.getGrade(),comment.getApproved()));
+			}
+		}
+		
+		return ret;
+	}
+	
+	@POST
+	@Path("/approveComment")
+	@Produces(MediaType.APPLICATION_JSON)
+	public Collection<Comment> approveComment(String idComment) {
+		CommentsDAO commentsDAO = getCommentsDAO();
+		return commentsDAO.approveComment(idComment);
+		
 	}
 	
 	private CommentsDAO getCommentsDAO() {

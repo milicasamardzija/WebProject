@@ -89,7 +89,7 @@ public class CommentsDAO {
 	}
 	
 	//ucitavanje korisnika u fajl
-	private void saveComments() {
+	public void saveComments() {
 		File f = new File("WebContent/data/comments.txt");
 		FileWriter fileWriter = null;
 		try {
@@ -115,5 +115,18 @@ public class CommentsDAO {
 
 	public Collection<Comment> getValues() {
 		return this.comments.values();
+	}
+
+
+	public Collection<Comment> approveComment(String idComment) {
+           Collection<Comment> comments =  this.getValues();
+		
+			for (Comment comment : comments) {
+				if (comment.getId() == Integer.parseInt(idComment)) {
+					comment.setApproved(true);
+				}
+			}
+			this.saveComments();
+			return this.getValues();
 	}
 }

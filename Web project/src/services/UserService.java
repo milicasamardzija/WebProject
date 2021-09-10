@@ -63,7 +63,7 @@ public class UserService {
 		for (User user : users.getValues()) {
 			if(!user.getDeleted()) {
 				for(Order order : getOrders().getValues()) {
-					if(order.getIdCustomer().equals(user.getUsername()) && order.getRetaurantId() == user.getIdRestaurant() && !ret.contains(order)) {
+					if(order.getIdCustomer().equals(user.getUsername()) && order.getRetaurantId() == userLogin.getIdRestaurant() && !ret.contains(user)) {
 						ret.add(user);
 					}
 				}
