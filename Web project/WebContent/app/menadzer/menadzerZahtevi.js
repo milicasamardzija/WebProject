@@ -10,12 +10,12 @@ template: `
     
         <h3 style=" margin-left: 30px;"> <small> Trenutno stanje svih Vasih porudzbina: </small> <hr></h3>
         <table class="table table-hover" >
-            <thead v-if= "orders != null">
+            <thead >
             <tr>
                 <th scope="col">Datum kreiranja</th>
                 <th scope="col">Ukupna cena</th>
                 <th scope="col">Status porudzbine</th>
-                <th scope="col">Dostavljac</th>
+                <th scope="col">Dostavljac potencijalni</th>
                 <th scope="col"> </th>
             </tr>
             </thead>
@@ -24,10 +24,8 @@ template: `
                 <td>{{order.date | dateFormat('DD.MM.YYYY.')}}</td>
                 <td>{{order.price}}</td>
                 <td>{{order.status}}</td>
-                <td>{{order.idDeliverer}}</td>
-                <div>
-                <td><button type="button" class="btn btn-secondary" v-if="order.status == 'CEKA_DOSTAVLJACA'" v-on:click="changeStatus(order.id)" >Odobri</button>
-                </div>
+                <td>{{order.potencialDeliverer}}</td>
+                <td><button type="button" class="btn btn-secondary" v-if="order.status == 'CEKA_DOSTAVLJACA'" v-on:click="changeStatus(order.id)" >Odobri</button></td>
             </tr>
             </tbody>
         </table>
@@ -39,7 +37,7 @@ methods:{
     changeStatus(id) {
         axios.post("/WebShopREST/rest/order/changeDeliverer", id)
         .then(response => {
-            this.orders = response.data
+            router.push(`/zahtevi`)
         })
         .catch(function(error){
             console.log(error)
@@ -49,7 +47,7 @@ methods:{
 mounted(){
     axios.get("/WebShopREST/rest/order/getRequirements")
     .then( response => {
-        this.orders = response.data
+       this.orders=response.data
     })
     .catch(function(error){
         console.log(error)

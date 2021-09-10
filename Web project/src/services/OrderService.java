@@ -93,6 +93,24 @@ public class OrderService {
 	}
 	
 	@GET
+	@Path("/getRequirements")
+	@Produces(MediaType.APPLICATION_JSON)
+	public Collection<OrderDTO> getRequirements(){
+		ArrayList<OrderDTO> ret= new ArrayList<OrderDTO>();
+		OrderDAO ordersDAO = getOrders();
+		Collection<Order> orders = ordersDAO.getValues();
+		User user = (User)request.getSession().getAttribute("loginUser");		
+		
+		for(Order order : orders) {
+			if(!order.getDeleted() && order.getRetaurantId() == user.getIdRestaurant() && order.getIdDeliverer().equals("x") && !order.getPotencialDeliverer().equals("x") && order.getStatus() == OrderStatus.CEKA_DOSTAVLJACA) {
+			ret.add(new OrderDTO(order.getId(), findOrderArticals(order.getArticalIds()), findNameRestaurant(order.getId()), order.getDate(), order.getPrice(), order.getIdCustomer(), order.getStatus(), order.getDeleted(),order.getPotencialDeliverer(), order.getIdDeliverer(), order.getRestaurantType()));
+			}
+		}
+		return ret;
+		
+	}
+	
+	@GET
 	@Path("/getOrdersForRestaurant")
 	@Produces(MediaType.APPLICATION_JSON)
 	public Collection<OrderDTO> getOrdersForRestaurant(){
@@ -102,8 +120,6 @@ public class OrderService {
 		User user = (User)request.getSession().getAttribute("loginUser");		
 		
 		for(Order order : orders) {
-			System.out.println(order.getRetaurantId());
-			System.out.println(user.getIdRestaurant());
 			if(!order.getDeleted() && order.getRetaurantId() == user.getIdRestaurant()) {
 			ret.add(new OrderDTO(order.getId(), findOrderArticals(order.getArticalIds()), findNameRestaurant(order.getId()), order.getDate(), order.getPrice(), order.getIdCustomer(), order.getStatus(), order.getDeleted(),order.getPotencialDeliverer(), order.getIdDeliverer(), order.getRestaurantType()));
 			}
@@ -111,6 +127,7 @@ public class OrderService {
 		return ret;
 		
 	}
+	
 	
 	@POST
 	@Path("/deleteOrder")
@@ -325,6 +342,7 @@ public class OrderService {
 			return ret;
 		}
 		
+
 		@POST 
 		@Path("/askForDelivery")
 		@Produces(MediaType.APPLICATION_JSON)
@@ -374,6 +392,7 @@ public class OrderService {
 			} return ret;*/
 			return dao.getValues();
 		}
+
 		
 	private OrderDAO getOrders() {
 		OrderDAO orders = (OrderDAO)context.getAttribute("orders");
@@ -447,7 +466,23 @@ public class OrderService {
 		
 	}
 
-	
+
+	//dostavljanje porudzbine kod dostavljaca
+	@POST
+	@Path("/changeDeliverer")
+	public void changeDeliverer(String idOrder){
+		OrderDAO ordersDAO = getOrders();		
+		ordersDAO.changeDeliverer(Integer.parseInt(idOrder)); 		
+	}
+
+	@POST
+	@Path("/changeToDelivered")
+	@Produces(MediaType.APPLICATION_JSON)
+	public void changeToDelivered(String id){
+		OrderDAO ordersDAO = getOrders();		
+		changeToDeliveredStatus(id); //salje se id porudzbine
+			
+	}
 
 
 	//iscitavanje onih na cekanju

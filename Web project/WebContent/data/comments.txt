@@ -29,6 +29,6 @@
     "restaurantId" : 2,
     "text" : "Bilo je uzasno",
     "grade" : 2,
-    "approved" : false
+    "approved" : true
   }
 }

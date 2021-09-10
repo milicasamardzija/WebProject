@@ -15,7 +15,7 @@
   "1" : {
     "id" : 1,
     "articalIds" : [ 0, 1, 2, 3 ],
-    "retaurantId" : 1,
+    "retaurantId" : 2,
     "date" : 226380800000,
     "price" : 500,
     "idCustomer" : "kupac",
@@ -34,14 +34,14 @@
     "idCustomer" : "kupac",
     "status" : "CEKA_DOSTAVLJACA",
     "deleted" : false,
-    "idDeliverer" : "x",
+    "idDeliverer" : "ZikaZivic",
     "restaurantType" : "BARBECUE",
     "potencialDeliverer" : "x"
   },
   "3" : {
     "id" : 3,
     "articalIds" : [ 0 ],
-    "retaurantId" : 0,
+    "retaurantId" : 2,
     "date" : 326380800000,
     "price" : 50,
     "idCustomer" : "kupac",
@@ -67,11 +67,13 @@
   "5" : {
     "id" : 5,
     "articalIds" : [ 0 ],
-    "retaurantId" : 0,
+    "retaurantId" : 2,
     "date" : 326380800000,
     "price" : 950,
     "idCustomer" : "kupac",
-    "status" : "DOSTAVLJENA",
+
+    "status" : "U_TRANSPORTU",
+
     "deleted" : false,
     "idDeliverer" : "ZikaZivic",
     "restaurantType" : "ITALIAN",
@@ -80,13 +82,13 @@
   "6" : {
     "id" : 6,
     "articalIds" : [ 0 ],
-    "retaurantId" : 0,
+    "retaurantId" : 2,
     "date" : 326380800000,
     "price" : 850,
     "idCustomer" : "kupac",
     "status" : "U_TRANSPORTU",
     "deleted" : false,
-    "idDeliverer" : "ZikaZivic",
+    "idDeliverer" : "x",
     "restaurantType" : "VEGE",
     "potencialDeliverer" : "ZikaZivic"
   }
