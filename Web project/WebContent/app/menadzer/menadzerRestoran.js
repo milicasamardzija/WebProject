@@ -36,15 +36,24 @@ template: `
                     <div class="row-artical">
                         <div class="column" v-for="artical in articals" v-on:click="getSelectedArtical(artical)">
                             <div class="card">
-                            <img v-bind:src="'../pictures/'+  artical.link" style="height:280px !important; width:320px !important" >
+                            <img v-bind:src="'../pictures/'+  artical.link" style="height:200px !important; width:230px !important" >
                                 <div class="container">
-                                    <h2>{{artical.name}}</h2>
+                                    <h3 style="font-weight: bold;">{{artical.name}}</h3>
                                     <p class="title">{{artical.type}}</p>
                                     <p>Cena: {{artical.price}} din</p>
                                     <p>Gramaza: {{artical.quantity}}g</p>
                                     <p>Opis: {{artical.description}}</p>
-                                    <button class="button" v-on:click="izmeni(artical.id)">Izmeni</button>
-                                    <button class="button" v-on:click="izbrisi(artical.id)">Izbrisi</button>
+
+                                    <table style=" margin-left: 2px;width:300px">
+                                    <tr>
+                                      <td> <button style="width:70px;" class="button" v-on:click="izmeni(artical.id)" >Izmeni</button></td>
+                                    
+                                    <td> <button class="button" style="width:70px;" v-on:click="izbrisi(artical.id)" >Izbrisi</button></td>
+                                    </tr>
+                                    
+                                     </table> 
+                                    
+                                    
                                 </div>
                             </div>
                         </div>
