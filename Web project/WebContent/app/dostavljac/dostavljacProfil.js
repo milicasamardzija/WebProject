@@ -14,32 +14,32 @@ template: `
                     <div class="col-sm-9">
                             <div class="informations" >
                                 
-                                <table>
-                                    <tr>
+                                <table style="margin-top: 120px;">
+                                    <tr style="height: 25px;">
                                         <td> Ime: </td>
                                         <td> {{dostavljac.name}}</td>
                                         </tr>
-                                    <tr> 
+                                    <tr style="height: 25px;"> 
                                     <td>Prezime: </td>
                                     <td> {{dostavljac.surname}} </td>
                                     </tr>
-                                    <tr> 
+                                    <tr style="height: 25px;"> 
                                     <td> Korisnicko ime:</td>
                                     <td> {{dostavljac.username}} </td>
                                     </tr>
-                                    <tr> 
+                                    <tr style="height: 25px;"> 
                                     <td> Pol:</td>
                                     <td> {{dostavljac.gender}} </td>
                                     </tr>
-                                    <tr> 
+                                    <tr style="height: 25px;"> 
                                     <td>Datum rodjenja: </td>
                                     <td> {{dostavljac.birthday | dateFormat('DD.MM.YYYY.')}} </td>
                                     
-                                    <tr> 
+                                    <tr style="height: 25px;"> 
                                     <td> Adresa:</td>
                                     <td> {{dostavljac.address.street}} {{dostavljac.address.number}}, grad {{dostavljac.address.city}}  {{dostavljac.address.zipCode}} </td>
                                     </tr>
-                                
+                                <tr style="height: 25px;">  </tr> 
                                 </table>
                                 <button type="button" class="btn btn-success" v-on:click="editProfile">Izmeni podatke</button>
                             </div>

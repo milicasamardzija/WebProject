@@ -121,7 +121,7 @@
     "username" : "ZikaZivic",
     "password" : "ZikaZivic",
     "name" : "Zika",
-    "surname" : "Zivic",
+    "surname" : "Zivojinovic",
     "gender" : "MALE",
     "birthday" : 1593129600000,
     "role" : "DELIVERER",

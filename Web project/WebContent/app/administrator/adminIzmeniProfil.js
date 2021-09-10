@@ -57,7 +57,7 @@ template:
                                         <tr> 
                                            <button type="button" class="btn btn-danger" v-on:click="changePassword"> Promeni sifru </button>
                                         </tr>
-                                           
+                                    </table> 
                                         <div v-if="mode" stylep="top-margin:5px;">
                                         <form id="izmena">
                                         <table>
@@ -76,12 +76,13 @@ template:
                                         </table>
                                         </form>
                                         </div>
-                                           
+                                        <table>   
+                                        <tr style="height:10px;"> </tr>
                                              <tr>  <td><button type="button" class="btn btn-success" v-on:click="changeProfile">Sacuvaj izmene</button> </td>
                                              <td style="width:15px"> </td>       
                                              <td>  <button type="button" class="btn btn-success" v-on:click="otkazi">Otkazi</button></td>
                                              </tr>
-                                    </table>
+                                        </table>
                                
                             </form>
                            

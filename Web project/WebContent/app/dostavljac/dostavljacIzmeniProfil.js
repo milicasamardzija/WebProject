@@ -44,7 +44,7 @@ template: `
                                         </tr>
                                         <tr> 
                                             <td>Datum rodjenja: </td>
-                                            <td><input class="form-control" type="date"v-model="user.birtday" v-bind:value="birtday" > </td>
+                                            <td><input class="form-control" type="date" v-model="user.birthday" > </td>
                                         </tr>
                                         <tr> 
                                         <td> Adresa:</td>
@@ -56,7 +56,9 @@ template: `
                                         <tr> 
                                            <button type="button" class="btn btn-danger" v-on:click="changePassword"> Promeni sifru </button>
                                         </tr>
-                                           <form id="izmena" v-if="mode==true">
+                                        </table>
+                                        <div v-if="mode"> 
+                                           <form id="izmena" >
                                            <table>
                                             <tr> 
                                                 <td> Stara sifra:  </td>
@@ -70,18 +72,17 @@ template: `
                                                 <td> Ponovo unesite novu sifru:  </td>
                                                 <td> <input class="form-control" type="password"></td> 
                                             </tr>
-                                            <tr> 
-                                            <td>Nova sifra: </td>
-                                            <td> <input class="form-control" type="password"></td> 
-                                            </tr>
+                                            
                                            </table>
                                            </form>
-                                       
+                                           </div>
+                                       <table>
+                                       <tr style="height:10px;"> </tr>
                                            <tr><td><button type="button" class="btn btn-success" v-on:click="changeProfile">Sacuvaj izmene</button> </td>
                                            <td style="width:15px"> </td>       
                                            <td>  <button type="button" class="btn btn-success" v-on:click="otkazi">Otkazi</button></td>
                                            </tr>  
-                                    </table>
+                                   </table>
 
                             </form>
                         </div>
@@ -92,7 +93,7 @@ template: `
 methods:{
     changeProfile: function(event){
       event.preventDefault()
-      axios.post("/WebShopREST/rest/profile/changeUser", {
+      axios.post("/WebShopREST/rest/profile/changeProfile", {
       "username":''+ this.user.username,
       "name":''+ this.user.name, 
       "surname":''+ this.user.surname,  
@@ -100,7 +101,8 @@ methods:{
       "number":''+ this.user.address.number, 
       "city":''+ this.user.address.city, 
       "zipCode":''+ this.user.address.zipCode,
-      "gender":''+ this.user.gender})
+      "gender":''+ this.user.gender, 
+      "birthday":''+ this.user.birthday})
       .then(
         response => {
           router.push(`/profilDostavljac`);
@@ -122,9 +124,16 @@ mounted(){
     axios.get("/WebShopREST/rest/profile/profileUser")
     .then( response => {
         this.user = response.data
+        this.user.birthday = moment(this.user.birthday).format('YYYY-MM-DD')
     })
     .catch(function(error){
         console.log(error)
     })
+},
+filters: {
+    dateFormat: function(value, format){
+        var parsed = moment(value);
+        return parsed.format(format)
+    }
 }
 });
