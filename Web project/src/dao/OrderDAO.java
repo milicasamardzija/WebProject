@@ -23,6 +23,7 @@ import com.fasterxml.jackson.databind.type.TypeFactory;
 import beans.Order;
 import beans.Restaurant;
 import beans.User;
+import dao.RestaurantDAO;
 import dto.OrderDTO;
 import enums.CustomerType;
 import enums.OrderStatus;
@@ -191,11 +192,10 @@ public class OrderDAO {
 			order.setStatus(OrderStatus.OTKAZANA);
 			saveOrders();
 		}
-		
 	}
 
 	//upis u fajl
-	private void saveOrders() {
+	public void saveOrders() {
 		File f = new File("WebContent/data/orders.txt");
 		FileWriter fileWriter = null;
 		try {
@@ -242,4 +242,10 @@ public class OrderDAO {
         return ret;
 	}
 	
+			
+	
+			
+		
+
+			
 }

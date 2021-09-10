@@ -231,4 +231,103 @@ public class OrderService {
 		return articals;
 	}
 	
+	
+	
+	//milicaa
+	@GET
+	@Path("/getAllOrdersForDeliverer")
+	@Produces(MediaType.APPLICATION_JSON)
+	public Collection<OrderDTO> getAllOrdersForDeliverer(){
+		ArrayList<OrderDTO> ret= new ArrayList<OrderDTO>();
+		OrderDAO ordersDAO = getOrders();
+		Collection<Order> orders = ordersDAO.getValues();
+		User user = (User)request.getSession().getAttribute("loginUser");		
+		
+		for(Order order : orders) {
+			if(!order.getDeleted() && order.getIdDeliverer().equals(user.getUsername())) {
+			ret.add(new OrderDTO(order.getId(), findOrderArticals(order.getArticalIds()),findNameRestaurant(order.getId()), order.getDate(), order.getPrice(), order.getIdCustomer(), order.getStatus(), order.getDeleted(), order.getIdDeliverer(), order.getRestaurantType()));
+			}
+		}
+		return ret;
+		
+	}
+
+
+
+
+	@GET
+	@Path("/getAllOrdersForDelivererNotDelivered")
+	@Produces(MediaType.APPLICATION_JSON)
+	public Collection<OrderDTO> getAllOrdersForDelivererNotDelivered(){
+		ArrayList<OrderDTO> ret= new ArrayList<OrderDTO>();
+		OrderDAO ordersDAO = getOrders();
+		Collection<Order> orders = ordersDAO.getValues();
+		User user = (User)request.getSession().getAttribute("loginUser");		
+		System.out.println(user.getUsername());
+		
+		for(Order order : orders) {
+			System.out.println((order.getStatus()));System.out.println(order.getIdDeliverer());
+			if(!order.getDeleted() && order.getIdDeliverer().equals(user.getUsername()) && order.getStatus() != OrderStatus.DOSTAVLJENA) {
+			ret.add(new OrderDTO(order.getId(), findOrderArticals(order.getArticalIds()), findNameRestaurant(order.getId()), order.getDate(), order.getPrice(), order.getIdCustomer(), order.getStatus(), order.getDeleted(),order.getIdDeliverer(), order.getRestaurantType() ));
+			}
+		}
+		return ret;
+		
+	}
+
+	@POST
+	@Path("/changeToDelivered")
+	@Produces(MediaType.APPLICATION_JSON)
+	public Collection<OrderDTO> changeToDelivered(String id){
+		OrderDAO ordersDAO = getOrders();		
+		return changeToDeliveredStatus(id);
+			
+	}
+
+
+	//iscitavanje porudzbina za dostavljaca
+
+	@GET
+	@Path("/getAllOrdersForDelivererOnWait")
+	@Produces(MediaType.APPLICATION_JSON)
+	public Collection<OrderDTO> getAllOrdersForDelivererOnWait(){
+		ArrayList<OrderDTO> ret= new ArrayList<OrderDTO>();
+		OrderDAO ordersDAO = getOrders();
+		Collection<Order> orders = ordersDAO.getValues();		
+		
+		for(Order order : orders) {
+			if(!order.getDeleted()  && order.getStatus().equals(OrderStatus.CEKA_DOSTAVLJACA)) {
+			ret.add(new OrderDTO(order.getId(), findOrderArticals(order.getArticalIds()), findNameRestaurant(order.getId()), order.getDate(), order.getPrice(), order.getIdCustomer(), order.getStatus(), order.getDeleted(), order.getIdDeliverer(), order.getRestaurantType()));
+			}
+		}
+		return ret;
+	}
+
+	
+//iz dao aliipak ovde
+	//milicino
+	public Collection<OrderDTO> changeToDeliveredStatus(String id) {
+		ArrayList<OrderDTO> ret= new ArrayList<OrderDTO>();
+		OrderDAO dao = new OrderDAO();
+		Collection<Order> orders = dao.getValues();
+		for(Order order : orders) {
+			if(order.getId() == Integer.parseInt(id)) {
+				order.setStatus(OrderStatus.DOSTAVLJENA);
+				dao.saveOrders();
+			}
+		}
+		
+		Collection<Order> ordersChanged = dao.getValues();		
+		
+		for(Order order : ordersChanged) {
+			ret.add(new OrderDTO(order.getId(),findOrderArticals(order.getArticalIds()), findNameRestaurant(order.getId()), order.getDate(), order.getPrice(), order.getIdCustomer(), order.getStatus(), order.getDeleted(), order.getIdDeliverer(), order.getRestaurantType()));
+		}
+		
+		return ret;
+	}
+	
+	
+
+
+	
 }
