@@ -2,11 +2,11 @@
   "0" : {
     "id" : 0,
     "articalIds" : [ 0, 1, 2, 3 ],
-    "retaurantId" : 2,
+    "retaurantId" : 1,
     "date" : 926380800000,
     "price" : 100,
     "idCustomer" : "kupac",
-    "status" : "U_TRANSPORTU",
+    "status" : "CEKA_DOSTAVLJACA",
     "deleted" : false,
     "idDeliverer" : "ZikaZivic",
     "restaurantType" : "ITALIAN"
@@ -18,7 +18,7 @@
     "date" : 926380800000,
     "price" : 500,
     "idCustomer" : "kupac",
-    "status" : "U_PRIPREMI",
+    "status" : "CEKA_DOSTAVLJACA",
     "deleted" : false,
     "idDeliverer" : "ZikaZivic",
     "restaurantType" : "ITALIAN"

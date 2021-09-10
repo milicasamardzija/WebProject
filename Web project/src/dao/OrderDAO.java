@@ -8,9 +8,11 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.Collections;
-import java.util.Comparator;
 import java.util.HashMap;
+
+import javax.servlet.ServletContext;
+import javax.servlet.http.HttpServletRequest;
+import javax.ws.rs.core.Context;
 
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.core.JsonGenerator;
@@ -21,16 +23,18 @@ import com.fasterxml.jackson.databind.type.MapType;
 import com.fasterxml.jackson.databind.type.TypeFactory;
 
 import beans.Order;
-import beans.Restaurant;
 import beans.User;
 import dto.OrderDTO;
-import enums.CustomerType;
 import enums.OrderStatus;
 import enums.RestaurantType;
-import enums.Role;
 
 
 public class OrderDAO {
+	
+	@Context
+	HttpServletRequest request;
+	@Context
+	ServletContext context;
 
 	private HashMap<Integer, Order> orders;
 
@@ -241,5 +245,27 @@ public class OrderDAO {
         }
         return ret;
 	}
+
+	public Collection<Order> changeStatusManager(int id) {
+		Order order = getByIdOrder(id);
+		if(order.getStatus().equals(OrderStatus.U_PRIPREMI)) {
+			order.setStatus(OrderStatus.CEKA_DOSTAVLJACA);
+			saveOrders();
+		}
+		return getOrdersManager();
+	}
+	
+	public Collection<Order> getOrdersManager() {
+		User user = (User)request.getSession().getAttribute("loginUser");		
+		ArrayList<Order> ret = new ArrayList<Order>();
+		
+		for(Order order : this.getValues()) {
+			if(!order.getDeleted() && order.getRetaurantId() == user.getIdRestaurant()) {
+			ret.add(order);
+			}
+		}
+		return ret;
+	}
+	
 	
 }

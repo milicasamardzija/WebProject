@@ -92,7 +92,7 @@ methods:{
     changeStatus(id) {
         axios.post("/WebShopREST/rest/order/changeStatusManager", id)
         .then(response => {
-            router.push(`/porudzbine`);
+            this.orders = response.data
         })
         .catch(function(error){
             console.log(error)

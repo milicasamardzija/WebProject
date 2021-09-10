@@ -103,6 +103,13 @@ public class OrderService {
 	 ordersDAO.changeStatus(Integer.parseInt(id));
 	}
 	
+	@POST
+	@Path("/changeStatusManager")
+	public Collection<Order> changeStatusManager(String id) {
+	 OrderDAO ordersDAO = getOrders();
+	 return ordersDAO.changeStatusManager(Integer.parseInt(id));
+	}
+	
 	private String findNameRestaurant(int id) {
 		RestaurantDAO restaurantsDAO = getRestaurantsDAO();
 		return restaurantsDAO.getByID(id).getName();
