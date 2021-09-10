@@ -13,8 +13,11 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
+
+import beans.Order;
 import beans.User;
 import beans.UsernameDTO;
+import dao.OrderDAO;
 import dao.UsersDAO;
 import dto.UserNewDTO;
 import dto.ManagerAvailableDTO;
@@ -45,6 +48,25 @@ public class UserService {
 		for (User user : users.getValues()) {
 			if(!user.getDeleted()) {
 				ret.add(user);
+			}
+		}
+		return ret;
+	}
+	
+	@GET
+	@Path("/getAllUsersForRestaurant")
+	@Produces(MediaType.APPLICATION_JSON)
+	public Collection<User> getAllUsersForRestaurant() {
+		UsersDAO users = getUsers();
+		User userLogin = (User) request.getSession().getAttribute("loginUser");
+		ArrayList<User> ret = new ArrayList<User>();
+		for (User user : users.getValues()) {
+			if(!user.getDeleted()) {
+				for(Order order : getOrders().getValues()) {
+					if(order.getIdCustomer().equals(user.getUsername()) && order.getRetaurantId() == user.getIdRestaurant() && !ret.contains(order)) {
+						ret.add(user);
+					}
+				}
 			}
 		}
 		return ret;
@@ -205,20 +227,6 @@ public class UserService {
 		users.changeUser(user);	
 	} 
 	
-	/*//izmena korisnika
-	@POST
-	@Path("/changeUser")
-	@Produces(MediaType.TEXT_HTML)
-	@Consumes(MediaType.APPLICATION_JSON)
-	public Response changeUser(UserChangeDTO user) {
-		UsersDAO users = getUsers();
-		System.out.println("POKUSAO SAM");
-		users.changeUser(user);	
-		System.out.println("IZMENIO SAM");
-		return Response.status(Response.Status.ACCEPTED).entity("WebShopREST/html/admin_dashboard.html#/profil").build();
-	} 
-	*/
-	
 	//sortiranje
 	@POST
 	@Path("/sortUser")
@@ -263,5 +271,12 @@ public class UserService {
 		return false;
 	}
 	
-	
+	private OrderDAO getOrders() {
+		OrderDAO orders = (OrderDAO)context.getAttribute("orders");
+		if(orders == null) {
+			orders= new OrderDAO();
+			context.setAttribute("orders", orders);
+		}
+		return orders;
+	}
 }
