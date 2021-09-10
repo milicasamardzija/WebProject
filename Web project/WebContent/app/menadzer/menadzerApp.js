@@ -4,6 +4,7 @@ const RestoranComponent = {template: '<restoran-menadzer></restoran-menadzer>'}
 const DodajArtikalComponent = {template: '<dodajArtikal-menadzer></dodajArtikal-menadzer>'}
 const IzmeniArtikalComponent = {template: '<izmeniArtikal-menadzer></izmeniArtikal-menadzer>'}
 const UsersComponent = {template: '<menadzer-users></menadzer-users>'}
+const OrdersComponent = {template: '<porudbine-menadzer></porudbine-menadzer>'}
 
 const router = new VueRouter({
     mode: 'hash',
@@ -14,6 +15,7 @@ const router = new VueRouter({
         {path : '/dodajArtikal', component: DodajArtikalComponent},
         {path : '/izmeniArtikal', component: IzmeniArtikalComponent},
         {path : '/korisnici', component: UsersComponent},
+        {path : '/porudzbine', component: OrdersComponent},
     ]
 })
 

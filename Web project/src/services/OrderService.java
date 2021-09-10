@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.Comparator;
-import java.util.Iterator;
 import java.util.stream.Collectors;
 
 import javax.servlet.ServletContext;
@@ -45,30 +44,44 @@ public class OrderService {
 		ArrayList<OrderDTO> ret= new ArrayList<OrderDTO>();
 		OrderDAO ordersDAO = getOrders();
 		Collection<Order> orders = ordersDAO.getValues();
-		System.out.println("UZIMAM PORUDZBINE");
 		for(Order order : orders) {
-			
-			System.out.println("ID ORDER: " + order.getId());
 			ret.add(new OrderDTO(order.getId(),findOrderArticals(order.getArticalIds()), findNameRestaurant(order.getId()), order.getDate(), order.getPrice(), order.getIdCustomer(), order.getStatus(), order.getDeleted(), order.getIdDeliverer(), order.getRestaurantType()));
 			
+		}
+		return ret;
+	}
+	
+	@GET
+	@Path("/getOrders")
+	@Produces(MediaType.APPLICATION_JSON)
+	public Collection<OrderDTO> getOrdersAll(){
+		ArrayList<OrderDTO> ret= new ArrayList<OrderDTO>();
+		OrderDAO ordersDAO = getOrders();
+		Collection<Order> orders = ordersDAO.getValues();
+		User user = (User)request.getSession().getAttribute("loginUser");		
+		
+		for(Order order : orders) {
+			if(!order.getDeleted() && order.getIdCustomer().equals(user.getUsername())) {
+			ret.add(new OrderDTO(order.getId(), findOrderArticals(order.getArticalIds()), findNameRestaurant(order.getId()), order.getDate(), order.getPrice(), order.getIdCustomer(), order.getStatus(), order.getDeleted(), order.getIdDeliverer(), order.getRestaurantType()));
+			}
 		}
 		return ret;
 		
 	}
 	
 	@GET
-	@Path("/getOrders")
-	//@Consumes(MediaType.TEXT_HTML)
+	@Path("/getOrdersForRestaurant")
 	@Produces(MediaType.APPLICATION_JSON)
-	public Collection<OrderDTO> getOrdersAll(){
+	public Collection<OrderDTO> getOrdersForRestaurant(){
 		ArrayList<OrderDTO> ret= new ArrayList<OrderDTO>();
 		OrderDAO ordersDAO = getOrders();
-		//RestaurantDAO restaurantsDAO = getRestaurantsDAO();
 		Collection<Order> orders = ordersDAO.getValues();
 		User user = (User)request.getSession().getAttribute("loginUser");		
 		
 		for(Order order : orders) {
-			if(!order.getDeleted() && order.getIdCustomer().equals(user.getUsername())) {
+			System.out.println(order.getRetaurantId());
+			System.out.println(user.getIdRestaurant());
+			if(!order.getDeleted() && order.getRetaurantId() == user.getIdRestaurant()) {
 			ret.add(new OrderDTO(order.getId(), findOrderArticals(order.getArticalIds()), findNameRestaurant(order.getId()), order.getDate(), order.getPrice(), order.getIdCustomer(), order.getStatus(), order.getDeleted(), order.getIdDeliverer(), order.getRestaurantType()));
 			}
 		}
