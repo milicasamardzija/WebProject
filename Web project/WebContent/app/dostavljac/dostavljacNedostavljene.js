@@ -118,11 +118,12 @@ methods:{
 dostavi(id){
     axios.post("/WebShopREST/rest/order/changeToDelivered", id)
     .then(response => {
-       this.orders = response.data
+      router.push(`/nedostavljenePorudzbine`)
     })
     .catch(function(error){
         console.log(error)
     })
+
 }, 
 filterTypeRestaurant: function(type) {
     this.orders=null,

@@ -9,7 +9,8 @@
     "status" : "OTKAZANA",
     "deleted" : false,
     "idDeliverer" : "ZikaZivic",
-    "restaurantType" : "PIZZA"
+    "restaurantType" : "PIZZA",
+    "potencialDeliverer" : "ZikaZivic"
   },
   "1" : {
     "id" : 1,
@@ -20,20 +21,22 @@
     "idCustomer" : "kupac",
     "status" : "U_PRIPREMI",
     "deleted" : false,
-    "idDeliverer" : "ZikaZivic",
-    "restaurantType" : "ITALIAN"
+    "idDeliverer" : "x",
+    "restaurantType" : "ITALIAN",
+    "potencialDeliverer" : "x"
   },
   "2" : {
     "id" : 2,
     "articalIds" : [ 0, 1, 2, 3 ],
     "retaurantId" : 2,
     "date" : 326380800000,
-    "price" : 50,
+    "price" : 150,
     "idCustomer" : "kupac",
     "status" : "CEKA_DOSTAVLJACA",
     "deleted" : false,
-    "idDeliverer" : "ZikaZivic",
-    "restaurantType" : "ITALIAN"
+    "idDeliverer" : "x",
+    "restaurantType" : "BARBECUE",
+    "potencialDeliverer" : "ZikaZivic"
   },
   "3" : {
     "id" : 3,
@@ -44,19 +47,47 @@
     "idCustomer" : "kupac",
     "status" : "CEKA_DOSTAVLJACA",
     "deleted" : false,
-    "idDeliverer" : "ZikaZivic",
-    "restaurantType" : "ITALIAN"
+    "idDeliverer" : "x",
+    "restaurantType" : "FISH",
+    "potencialDeliverer" : "x"
   },
   "4" : {
     "id" : 4,
-    "articalIds" : [ 0, 0,0 ],
+    "articalIds" : [ 0, 0, 0 ],
     "retaurantId" : 0,
     "date" : 326380800000,
     "price" : 600,
     "idCustomer" : "marko",
-    "status" : "U_TRANSPORTU",
+    "status" : "DOSTAVLJENA",
     "deleted" : false,
     "idDeliverer" : "ivan",
-    "restaurantType" : "ITALIAN"
+    "restaurantType" : "ITALIAN",
+    "potencialDeliverer" : "ivan"
+  },
+  "5" : {
+    "id" : 5,
+    "articalIds" : [ 0 ],
+    "retaurantId" : 0,
+    "date" : 326380800000,
+    "price" : 950,
+    "idCustomer" : "kupac",
+    "status" : "OBRADA",
+    "deleted" : false,
+    "idDeliverer" : "ZikaZivic",
+    "restaurantType" : "ITALIAN",
+    "potencialDeliverer" : "ZikaZivic"
+  },
+  "6" : {
+    "id" : 6,
+    "articalIds" : [ 0 ],
+    "retaurantId" : 0,
+    "date" : 326380800000,
+    "price" : 850,
+    "idCustomer" : "kupac",
+    "status" : "DOSTAVLJENA",
+    "deleted" : false,
+    "idDeliverer" : "ZikaZivic",
+    "restaurantType" : "VEGE",
+    "potencialDeliverer" : "ZikaZivic"
   }
 }

@@ -16,6 +16,13 @@ public class OrderDTO {
 	public String idCustomer;
 	public OrderStatus status;
 	public Boolean deleted;
+	public String potencialDeliverer;
+	public String getPotencialDeliverer() {
+		return potencialDeliverer;
+	}
+	public void setPotencialDeliverer(String potencialDeliverer) {
+		this.potencialDeliverer = potencialDeliverer;
+	}
 	public String idDeliverer;
 	public RestaurantType restaurantType;
 	
@@ -83,7 +90,7 @@ public class OrderDTO {
 		this.status = status;
 	}
 	public OrderDTO(Integer id, ArrayList<String> artikli, String restaurantName, Date date, int price,
-			String idCustomer, OrderStatus status, Boolean deleted, String idDeliverer, RestaurantType
+			String idCustomer, OrderStatus status, Boolean deleted, String potencial, String idDeliverer, RestaurantType
 			type) {
 		super();
 		this.id = id;
@@ -96,6 +103,7 @@ public class OrderDTO {
 		this.deleted = deleted;
 		this.idDeliverer=idDeliverer;
 		this.restaurantType= type;
+		this.potencialDeliverer=potencial;
 	}
 
 

@@ -151,7 +151,7 @@ methods:{
     }, 
     changeStatus() {
        
-        axios.post("/WebShopREST/rest/order/changeStatus", this.selected.id)
+        axios.post("/WebShopREST/rest/order/changeStatusCancel", this.selected.id)
         .then(response => {
             router.push(`/porudzbine`);
         })

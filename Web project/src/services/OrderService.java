@@ -49,7 +49,7 @@ public class OrderService {
 		for(Order order : orders) {
 			
 			System.out.println("ID ORDER: " + order.getId());
-			ret.add(new OrderDTO(order.getId(),findOrderArticals(order.getArticalIds()), findNameRestaurant(order.getId()), order.getDate(), order.getPrice(), order.getIdCustomer(), order.getStatus(), order.getDeleted(), order.getIdDeliverer(), order.getRestaurantType()));
+			ret.add(new OrderDTO(order.getId(), findOrderArticals(order.getArticalIds()),findNameRestaurant(order.getId()), order.getDate(), order.getPrice(), order.getIdCustomer(), order.getStatus(), order.getDeleted(),order.getPotencialDeliverer(), order.getIdDeliverer(), order.getRestaurantType()));
 			
 		}
 		return ret;
@@ -69,7 +69,7 @@ public class OrderService {
 		
 		for(Order order : orders) {
 			if(!order.getDeleted() && order.getIdCustomer().equals(user.getUsername())) {
-			ret.add(new OrderDTO(order.getId(), findOrderArticals(order.getArticalIds()), findNameRestaurant(order.getId()), order.getDate(), order.getPrice(), order.getIdCustomer(), order.getStatus(), order.getDeleted(), order.getIdDeliverer(), order.getRestaurantType()));
+			ret.add(new OrderDTO(order.getId(), findOrderArticals(order.getArticalIds()),findNameRestaurant(order.getId()), order.getDate(), order.getPrice(), order.getIdCustomer(), order.getStatus(), order.getDeleted(),order.getPotencialDeliverer(), order.getIdDeliverer(), order.getRestaurantType()));
 			}
 		}
 		return ret;
@@ -89,7 +89,7 @@ public class OrderService {
 		for(Order order : orders) {
 			if(!order.getDeleted() && order.getIdDeliverer().equals(user.getUsername()) && order.getStatus() != OrderStatus.CEKA_DOSTAVLJACA ) {
 				System.out.println("TU SAM TRAAZIM");
-			ret.add(new OrderDTO(order.getId(), findOrderArticals(order.getArticalIds()), findNameRestaurant(order.getId()), order.getDate(), order.getPrice(), order.getIdCustomer(), order.getStatus(), order.getDeleted(), order.getIdDeliverer(), order.getRestaurantType()));
+			ret.add(new OrderDTO(order.getId(), findOrderArticals(order.getArticalIds()),findNameRestaurant(order.getId()), order.getDate(), order.getPrice(), order.getIdCustomer(), order.getStatus(), order.getDeleted(),order.getPotencialDeliverer(), order.getIdDeliverer(), order.getRestaurantType()));
 			}
 		}
 		return ret;
@@ -103,11 +103,12 @@ public class OrderService {
 		ordersDAO.deleteOrderById(Integer.parseInt(id));	
 	}
 	
+	//otkazivanje porudzbine kod kupca
 	@POST
-	@Path("/changeStatus")
+	@Path("/changeStatusCancel")
 	public void changeStatus(String id) {
 	 OrderDAO ordersDAO = getOrders();
-	 ordersDAO.changeStatus(Integer.parseInt(id));
+	 ordersDAO.changeStatusCancel(Integer.parseInt(id));
 	}
 	
 	private String findNameRestaurant(int id) {
@@ -190,7 +191,7 @@ public class OrderService {
 		
 		for(Order order : orders) {
 			if(!order.getDeleted() && order.getIdCustomer().equals(user.getUsername()) && order.getStatus() != OrderStatus.DOSTAVLJENA && order.getStatus() != OrderStatus.OTKAZANA ) {
-			ret.add(new OrderDTO(order.getId(), findOrderArticals(order.getArticalIds()), findNameRestaurant(order.getId()), order.getDate(), order.getPrice(), order.getIdCustomer(), order.getStatus(), order.getDeleted(), order.getIdDeliverer(), order.getRestaurantType()));
+			ret.add(new OrderDTO(order.getId(), findOrderArticals(order.getArticalIds()),findNameRestaurant(order.getId()), order.getDate(), order.getPrice(), order.getIdCustomer(), order.getStatus(), order.getDeleted(),order.getPotencialDeliverer(), order.getIdDeliverer(), order.getRestaurantType()));
 			}
 		}
 		return ret;	
@@ -301,6 +302,15 @@ public class OrderService {
 			return ret;
 		}
 		
+		@POST 
+		@Path("/askForDelivery")
+  public void askForDelivery(String idOrder) {
+	  User deliverer = (User)request.getSession().getAttribute("loginUser");		//imam id deliverera
+	  OrderDAO dao= getOrders();
+	  dao.askForDeliver(deliverer.getUsername(), Integer.parseInt(idOrder));
+	  
+  }
+		
 	private OrderDAO getOrders() {
 		OrderDAO orders = (OrderDAO)context.getAttribute("orders");
 		if(orders == null) {
@@ -343,7 +353,7 @@ public class OrderService {
 		
 		for(Order order : orders) {
 			if(!order.getDeleted() && order.getIdDeliverer().equals(user.getUsername())) {
-			ret.add(new OrderDTO(order.getId(), findOrderArticals(order.getArticalIds()),findNameRestaurant(order.getId()), order.getDate(), order.getPrice(), order.getIdCustomer(), order.getStatus(), order.getDeleted(), order.getIdDeliverer(), order.getRestaurantType()));
+			ret.add(new OrderDTO(order.getId(), findOrderArticals(order.getArticalIds()),findNameRestaurant(order.getId()), order.getDate(), order.getPrice(), order.getIdCustomer(), order.getStatus(), order.getDeleted(),order.getPotencialDeliverer(), order.getIdDeliverer(), order.getRestaurantType()));
 			}
 		}
 		return ret;
@@ -366,19 +376,20 @@ public class OrderService {
 		for(Order order : orders) {
 			System.out.println((order.getStatus()));System.out.println(order.getIdDeliverer());
 			if(!order.getDeleted() && order.getIdDeliverer().equals(user.getUsername()) && order.getStatus() != OrderStatus.DOSTAVLJENA &&order.getStatus() != OrderStatus.OTKAZANA && order.getStatus() != OrderStatus.CEKA_DOSTAVLJACA ) {
-			ret.add(new OrderDTO(order.getId(), findOrderArticals(order.getArticalIds()), findNameRestaurant(order.getId()), order.getDate(), order.getPrice(), order.getIdCustomer(), order.getStatus(), order.getDeleted(),order.getIdDeliverer(), order.getRestaurantType() ));
+			ret.add(new OrderDTO(order.getId(), findOrderArticals(order.getArticalIds()),findNameRestaurant(order.getId()), order.getDate(), order.getPrice(), order.getIdCustomer(), order.getStatus(), order.getDeleted(),order.getPotencialDeliverer(), order.getIdDeliverer(), order.getRestaurantType()));
 			}
 		}
 		return ret;
 		
 	}
 
+	//dostavljanje porudzbine kod dostavljaca
 	@POST
 	@Path("/changeToDelivered")
 	@Produces(MediaType.APPLICATION_JSON)
-	public Collection<OrderDTO> changeToDelivered(String id){
+	public void changeToDelivered(String id){
 		OrderDAO ordersDAO = getOrders();		
-		return changeToDeliveredStatus(id); //salje se id porudzbine
+		changeToDeliveredStatus(id); //salje se id porudzbine
 			
 	}
 
@@ -394,7 +405,7 @@ public class OrderService {
 		
 		for(Order order : orders) {
 			if(!order.getDeleted()  && order.getStatus().equals(OrderStatus.CEKA_DOSTAVLJACA)) {
-			ret.add(new OrderDTO(order.getId(), findOrderArticals(order.getArticalIds()), findNameRestaurant(order.getId()), order.getDate(), order.getPrice(), order.getIdCustomer(), order.getStatus(), order.getDeleted(), order.getIdDeliverer(), order.getRestaurantType()));
+			ret.add(new OrderDTO(order.getId(), findOrderArticals(order.getArticalIds()),findNameRestaurant(order.getId()), order.getDate(), order.getPrice(), order.getIdCustomer(), order.getStatus(), order.getDeleted(),order.getPotencialDeliverer(), order.getIdDeliverer(), order.getRestaurantType()));
 			}
 		}
 		return ret;
@@ -494,8 +505,8 @@ public class OrderService {
 	
 //iz dao ali ipak ovde
 	//milicino
-	public Collection<OrderDTO> changeToDeliveredStatus(String id) {
-		ArrayList<OrderDTO> ret= new ArrayList<OrderDTO>();
+	public void changeToDeliveredStatus(String id) {
+		//ArrayList<OrderDTO> ret= new ArrayList<OrderDTO>();
 		OrderDAO dao = new OrderDAO();
 		Collection<Order> orders = dao.getValues();
 		for(Order order : orders) {
@@ -504,11 +515,11 @@ public class OrderService {
 				dao.saveOrders();
 			}
 		}
-		Collection<Order> ordersChanged = dao.getValues();		
+		/*Collection<Order> ordersChanged = dao.getValues();		
 		for(Order order : ordersChanged) {
 			ret.add(new OrderDTO(order.getId(),findOrderArticals(order.getArticalIds()), findNameRestaurant(order.getId()), order.getDate(), order.getPrice(), order.getIdCustomer(), order.getStatus(), order.getDeleted(), order.getIdDeliverer(), order.getRestaurantType()));
-		}
-		return ret;
+		} return ret;*/
+		
 	}
 	
 	

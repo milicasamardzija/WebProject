@@ -1,7 +1,8 @@
 Vue.component("cekaju-dostavljaca", {
     data: function() {  
         return {
-            orders: []
+            orders: [],
+            user:{}
             }
     },
 template: `
@@ -87,7 +88,7 @@ template: `
           
             <div>
 
-              <td><button type="button" class="btn btn-secondary" v-on:click="zaduziZaDostavu()">Zatrazi</button>
+              <td><button type="button" class="btn btn-secondary" v-if="order.potencialDeliverer != user.username" v-on:click="zaduziZaDostavu(order.id)">Zatrazi</button>
                </div>
           </tr>
         </tbody>
@@ -131,14 +132,20 @@ methods:{
         })
     },
     zaduziZaDostavu: function(id){
-
+        axios.post("/WebShopREST/rest/order/askForDelivery", id)
+        .then(response => {
+       router.push(`/cekajuDostavljaca`)
+        })
+        .catch(function(error){
+            console.log(error)
+        })
     }
     
 },
 mounted(){
     axios.get("/WebShopREST/rest/profile/profileUser")
     .then( response => {
-        this.kupac = response.data
+        this.user = response.data
     })
     .catch(function(error){
         console.log(error)
