@@ -7,8 +7,8 @@
     "price" : 100,
     "idCustomer" : "kupac",
     "status" : "OTKAZANA",
-    "deleted" : false,
-    "idDeliverer":"ZikaZivic", 
+    "deleted" : true,
+    "idDeliverer" : "ZikaZivic",
     "restaurantType" : "PIZZA"
   },
   "1" : {
@@ -20,19 +20,19 @@
     "idCustomer" : "kupac",
     "status" : "U_PRIPREMI",
     "deleted" : false,
-    "idDeliverer":"ZikaZivic",
-     "restaurantType" : "ITALIAN"
+    "idDeliverer" : "ZikaZivic",
+    "restaurantType" : "ITALIAN"
   },
   "2" : {
     "id" : 2,
     "articalIds" : [ 0, 1, 2, 3 ],
     "retaurantId" : 2,
     "date" : 926380800000,
-    "price" :50,
+    "price" : 50,
     "idCustomer" : "kupac",
     "status" : "CEKA_DOSTAVLJACA",
     "deleted" : false,
-    "idDeliverer":"ZikaZivic",
-     "restaurantType" : "ITALIAN"
+    "idDeliverer" : "ZikaZivic",
+    "restaurantType" : "ITALIAN"
   }
 }

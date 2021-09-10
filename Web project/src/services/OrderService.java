@@ -180,69 +180,16 @@ public class OrderService {
 					    }
 					});
 			 }
-			 
 			 if(type.equals("opadajuce")) {
-				/* System.out.println(type);
-				 Collections.sort(myOrders, new Comparator<OrderDTO>(){
-					    public int compare(OrderDTO s1, OrderDTO s2) {
-					    	if(s1.getPrice() > s2.getPrice() ) {
-					    		return s2.getPrice();
-					    	}
-							return s1.getPrice();
-					      
-					    }
-					});*/
 				 myOrders = (ArrayList<OrderDTO>) myOrders.stream().sorted(Comparator.comparingInt(OrderDTO::getPrice).reversed()).collect(Collectors.toList());
 			 }
 			 if(type.equals("rastuce")) {
-				/* System.out.println(type);
-				 Collections.sort(myOrders, new Comparator<OrderDTO>(){
-					    public int compare(OrderDTO s1, OrderDTO s2) {
-					    	if(s1.getPrice() < s2.getPrice() ) {
-					    		System.out.println("1");
-					    		return s1.getPrice();
-					    	}
-					    	System.out.println("2");
-							return s2.getPrice();
-					      
-					    }
-					});*/
 				 myOrders = (ArrayList<OrderDTO>) myOrders.stream().sorted(Comparator.comparingInt(OrderDTO::getPrice)).collect(Collectors.toList());
 			 }
-			 
-			 for (OrderDTO orderDTO : myOrders) {
-				System.out.println(orderDTO.getPrice());
-			}
-			 
 			 return myOrders;
 		}
 	
-/*	@POST
-	@Path("/sortOrdersByPrice")
-	@Produces(MediaType.APPLICATION_JSON)
-	public Collection<OrderDTO> sortByPrice(String type){
-		ArrayList<OrderDTO> myOrders=(ArrayList<OrderDTO>) getOrdersAll(); 
-		ArrayList<OrderDTO> ret= new ArrayList<OrderDTO>();
-		int i=0;
-		for(OrderDTO orderBig: myOrders) {
-			for(OrderDTO order : myOrders) {
-				if(type.equals("rastuce")) {
-			      if(order.getPrice() > i ) {
-				    ret.add(order);
-				    i = order.getPrice();
-				  }
-			  } else {
-				  if(order.getPrice()<i) {
-					  ret.add(order);
-					  i = order.getPrice();
-				  }
-			    }
-		    }
-	    }
-		return ret;	
-	}
-	
-	*/
+
 	private OrderDAO getOrders() {
 		OrderDAO orders = (OrderDAO)context.getAttribute("orders");
 		if(orders == null) {
