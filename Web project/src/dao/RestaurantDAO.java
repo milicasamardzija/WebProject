@@ -235,12 +235,27 @@ public class RestaurantDAO {
 
 	public Collection<Restaurant> searchMix(RestaurantSearchMixDTO parameters) {
 		ArrayList<Restaurant> ret = new ArrayList<Restaurant>();
-		for(Restaurant restaurant : this.restaurants.values()) {
-			if(restaurant.getType().equals(parameters.type) && restaurant.getName().toLowerCase().contains(parameters.name.toLowerCase()) && (restaurant.getGrade() == Integer.parseInt(parameters.grade)) && (restaurant.getAddress().getCity().toLowerCase().contains(parameters.location.toLowerCase()) || restaurant.getAddress().getStreet().toLowerCase().contains(parameters.location.toLowerCase()) )) 
-			{
-				ret.add(restaurant);
+		
+		//if(!parameters.name.equals("") && !parameters.location.equals("") && !parameters.grade.equals("") && parameters.type != null) {
+			for(Restaurant restaurant : this.restaurants.values()) {
+				if(restaurant.getType().equals(parameters.type) && restaurant.getName().toLowerCase().contains(parameters.name.toLowerCase()) && (restaurant.getGrade() == Integer.parseInt(parameters.grade)) && (restaurant.getAddress().getCity().toLowerCase().contains(parameters.location.toLowerCase()) || restaurant.getAddress().getStreet().toLowerCase().contains(parameters.location.toLowerCase()) )) 
+				{
+					ret.add(restaurant);
+				}
 			}
-		}
+		//}
+		
+		//if(!parameters.name.equals("") && !parameters.location.equals("") && !parameters.grade.equals("") && parameters.type != null) {
+			/*for(Restaurant restaurant : this.restaurants.values()) {
+				if(restaurant.getType().equals(parameters.type) && restaurant.getName().toLowerCase().contains(parameters.name.toLowerCase()) && (restaurant.getGrade() == Integer.parseInt(parameters.grade)) && (restaurant.getAddress().getCity().toLowerCase().contains(parameters.location.toLowerCase()) || restaurant.getAddress().getStreet().toLowerCase().contains(parameters.location.toLowerCase()) )) 
+				{
+					ret.add(restaurant);
+				}
+			}*/
+		//}
+		
+		
+		
 		return ret;
 	}
 
