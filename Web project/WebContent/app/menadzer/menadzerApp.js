@@ -6,6 +6,7 @@ const IzmeniArtikalComponent = {template: '<izmeniArtikal-menadzer></izmeniArtik
 const UsersComponent = {template: '<menadzer-users></menadzer-users>'}
 const OrdersComponent = {template: '<porudbine-menadzer></porudbine-menadzer>'}
 const CommentsComponent = {template: '<menadzer-comments></menadzer-comments>'}
+const RequirementComponent = {template: '<menadzer-requirement></menadzer-requirement>'}
 
 const router = new VueRouter({
     mode: 'hash',
@@ -18,6 +19,7 @@ const router = new VueRouter({
         {path : '/korisnici', component: UsersComponent},
         {path : '/porudzbine', component: OrdersComponent},
         {path : '/komentari', component: CommentsComponent},
+        {path : '/zahtevi', component: RequirementComponent},
     ]
 })
 
