@@ -17,44 +17,45 @@ import com.fasterxml.jackson.databind.introspect.VisibilityChecker;
 import com.fasterxml.jackson.databind.type.MapType;
 import com.fasterxml.jackson.databind.type.TypeFactory;
 
-import beans.ArticalChart;
+import beans.Chart;
 
-public class ArticalChartDAO {
+
+public class ChartDAO {
 	
-	private HashMap<Integer,ArticalChart> articals;
+	private HashMap<Integer,Chart> charts;
 
-	public HashMap<Integer, ArticalChart> getArticals() {
-		return articals;
+	public HashMap<Integer, Chart> getCharts() {
+		return charts;
 	}
 
-	public void setArticals(HashMap<Integer, ArticalChart> articals) {
-		this.articals = articals;
+	public void setCharts(HashMap<Integer, Chart> charts) {
+		this.charts = charts;
 	}
 	
 	
-	public ArticalChartDAO() {
-		this.setArticals(new HashMap<Integer, ArticalChart>());
+	public ChartDAO() {
+		this.setCharts(new HashMap<Integer, Chart>());
 		
-		loadArticals();
+		loadCharts();
 	}
 	
 	//ucitavanje artikala iz fajla
 	@SuppressWarnings("unchecked")
-	private void loadArticals() {
+	private void loadCharts() {
 		FileWriter fileWriter = null;
 		BufferedReader in = null;
 		File file = null;
 		try {
-			file = new File("WebContent/data/articalCharts.txt");
+			file = new File("WebContent/data/charts.txt");
 			in = new BufferedReader(new FileReader(file));
 
 			ObjectMapper objectMapper = new ObjectMapper();
 			objectMapper.setVisibilityChecker(
 					VisibilityChecker.Std.defaultInstance().withFieldVisibility(JsonAutoDetect.Visibility.ANY));
 			TypeFactory factory = TypeFactory.defaultInstance();
-			MapType type = factory.constructMapType(HashMap.class, Integer.class, ArticalChart.class);
+			MapType type = factory.constructMapType(HashMap.class, Integer.class, Chart.class);
 			objectMapper.getFactory().configure(JsonGenerator.Feature.ESCAPE_NON_ASCII, true);
-			this.articals = ((HashMap<Integer, ArticalChart>) objectMapper.readValue(file, type));
+			this.charts = ((HashMap<Integer, Chart>) objectMapper.readValue(file, type));
 		} catch (FileNotFoundException fnfe) {
 			try {
 				file.createNewFile();
@@ -62,7 +63,7 @@ public class ArticalChartDAO {
 				ObjectMapper objectMapper = new ObjectMapper();
 				objectMapper.configure(SerializationFeature.INDENT_OUTPUT, true);
 				objectMapper.getFactory().configure(JsonGenerator.Feature.ESCAPE_NON_ASCII, true);
-				String string = objectMapper.writeValueAsString(articals);
+				String string = objectMapper.writeValueAsString(charts);
 				fileWriter.write(string);
 			} catch (IOException e) {
 				e.printStackTrace();
@@ -90,14 +91,14 @@ public class ArticalChartDAO {
 	}
 	
 
-	public Collection<ArticalChart> getValues() {
-		return this.articals.values();
+	public Collection<Chart> getValues() {
+		return this.charts.values();
 	}
 
-	public ArticalChart getByID(int articalId) {
-		for (ArticalChart artical : this.articals.values()) {
-			if(artical.getIdArtical() == articalId) {
-				return artical;
+	public Chart getByID(int id) {
+		for (Chart chart : this.charts.values()) {
+			if(chart.getId() == id) {
+				return chart;
 			}
 		}
 		return null;
@@ -106,14 +107,14 @@ public class ArticalChartDAO {
 	
 	//ucitavanje artikala u fajl
 	private void saveArticals() {
-		File f = new File("WebContent/data/articalsChart.txt");
+		File f = new File("WebContent/data/charts.txt");
 		FileWriter fileWriter = null;
 		try {
 			fileWriter = new FileWriter(f);
 			ObjectMapper objectMapper = new ObjectMapper();
 			objectMapper.configure(SerializationFeature.INDENT_OUTPUT, true);
 			objectMapper.getFactory().configure(JsonGenerator.Feature.ESCAPE_NON_ASCII, true);
-			String stringRestaurants = objectMapper.writeValueAsString(this.articals);
+			String stringRestaurants = objectMapper.writeValueAsString(this.charts);
 			fileWriter.write(stringRestaurants);
 			fileWriter.flush();
 		} catch (IOException e) {
@@ -131,11 +132,11 @@ public class ArticalChartDAO {
 	
 	private int generateIdArtical() {
 		int ret = 0;
-        for (ArticalChart articalBig : this.getValues())
+        for (Chart chartBig : this.getValues())
         {
-            for (ArticalChart artical : this.getValues())
+            for (Chart chart : this.getValues())
             {
-                if (ret == artical.getIdArtical())
+                if (ret == chart.getId())
                 {
                     ++ret;
                     break;
@@ -144,4 +145,5 @@ public class ArticalChartDAO {
         }
         return ret;
 	}
+	
 }

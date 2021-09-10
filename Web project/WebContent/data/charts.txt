@@ -1,0 +1,8 @@
+{
+  "0" : {
+    "id" : 0,
+    "articalsIds" :[0,1],
+    "idCustomer" : "kupac",
+    "price" : 200
+  }
+ }

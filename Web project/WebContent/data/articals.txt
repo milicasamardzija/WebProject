@@ -1,7 +1,7 @@
 {
   "0" : {
     "id" : 0,
-    "name" : "margaritaaa",
+    "name" : "margarita",
     "price" : 760.0,
     "type" : "FOOD",
     "idRestaurant" : 2,
