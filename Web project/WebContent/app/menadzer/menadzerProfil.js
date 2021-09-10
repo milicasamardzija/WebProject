@@ -33,8 +33,9 @@ template: `
                                   <td> {{menadzer.gender}}</td>
                                 </tr>
                                 <tr> 
-                                <td>Datum rodjenja: </td>
-                                  <td> {{menadzer.birthday}}</td>
+                                <tr> 
+                                    <td>Datum rodjenja: </td>
+                                    <td> {{menadzer.birthday | dateFormat('DD.MM.YYYY.')}} </td>
                                 </tr>
                                 <tr> 
                                 <td> Adresa:</td>
@@ -64,5 +65,11 @@ mounted(){
         .catch(function(error){
             console.log(error)
         })
-},
+        },
+        filters: {
+            dateFormat: function(value, format){
+                var parsed = moment(value);
+                return parsed.format(format)
+            }
+        }
 });

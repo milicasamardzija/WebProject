@@ -152,10 +152,10 @@
     "name" : "Ana",
     "surname" : "Masic",
     "gender" : "FEMALE",
-    "birthday" : 1632960000000,
+    "birthday" : 1267056000000,
     "role" : "MANAGER",
     "address" : {
-      "street" : "Guduliceva",
+      "street" : "Gudulicev",
       "number" : 4,
       "city" : "Novi Sad",
       "zipCode" : 21000,
@@ -170,7 +170,7 @@
       "sale" : -1.0,
       "points" : -1.0
     },
-    "idRestaurant" : -1,
+    "idRestaurant" : 2,
     "suspecious" : false
   },
   "marko" : {
