@@ -118,6 +118,15 @@ public class RestaurantService {
 		return restaurantDAO.getByID(Integer.parseInt(idRestautrant));	
 	} 
 		
+	//prikaz restorana za menadzera
+	@GET
+	@Path("/getRestaurantManager")
+	@Produces(MediaType.APPLICATION_JSON)
+	public Restaurant getRestaurantManager() {
+		RestaurantDAO restaurantDAO = getRestaurantsDAO();
+		User user = (User)request.getSession().getAttribute("loginUser");	
+		return restaurantDAO.getByID(user.getIdRestaurant());	
+	}
 
 	@POST
 	@Path("/deleteRestaurant")

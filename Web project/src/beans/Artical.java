@@ -11,7 +11,7 @@ public class Artical {
 	private double quantity;
 	private String description;
 	private String link;
-	private Boolean deleted;
+	private boolean deleted;
 	
 	public Boolean getDeleted() {
 		return deleted;
@@ -69,7 +69,7 @@ public class Artical {
 	}
 	
 	public Artical(int id, String name, double price, ArticalType type, int idRestaurant, double quantity,
-			String description, String link, Boolean deleted) {
+			String description, String link, boolean deleted) {
 		super();
 		this.id = id;
 		this.name = name;

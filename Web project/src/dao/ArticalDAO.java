@@ -18,6 +18,8 @@ import com.fasterxml.jackson.databind.type.MapType;
 import com.fasterxml.jackson.databind.type.TypeFactory;
 
 import beans.Artical;
+import beans.Restaurant;
+import dto.ArticalDTO;
 
 public class ArticalDAO {
 
@@ -128,6 +130,35 @@ public class ArticalDAO {
 			}
 		}
 	}
+	
+	private int generateIdArtical() {
+		int ret = 0;
+        for (Artical articalBig : this.getValues())
+        {
+            for (Artical artical : this.getValues())
+            {
+                if (ret == artical.getId())
+                {
+                    ++ret;
+                    break;
+                }
+            }
+        }
+        return ret;
+	}
 
+	public void addArtical(ArticalDTO artical) {
+		int id = generateIdArtical();
+		this.articals.put(id, new Artical(id, artical.name, artical.price, artical.type, artical.idRestaurant,artical.quantity, artical.description, generateLink(artical.link),false));
+		this.saveArticals();
+	}
 
+	private String generateLink(String link) {
+		String ret="";
+		//C:\fakepath\20180717_155517.jpg
+		String path[] = link.split("fakepath");
+		ret = path[1].substring(1);
+		
+		return ret;
+	}
 }
