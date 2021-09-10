@@ -340,6 +340,40 @@ public class OrderService {
 	  }
 	  return ret;
   }
+		//dostavljanje porudzbine kod dostavljaca
+		@POST
+		@Path("/changeToDelivered")
+		@Produces(MediaType.APPLICATION_JSON)
+		public  Collection<OrderDTO> changeToDelivered(String id){
+		 Collection<Order> changed=	changeToDeliveredStatus(id); //salje se id porudzbine
+		 ArrayList<OrderDTO> ret= new ArrayList<OrderDTO>();
+			 for(Order o : changed) {
+				  if(o.getStatus().equals(OrderStatus.U_TRANSPORTU)) {
+				  ret.add(new OrderDTO(o.getId(),findOrderArticals(o.getArticalIds()),findNameRestaurant(o.getRetaurantId()),o.getDate(), o.getPrice(),o.getIdCustomer(), o.getStatus(),o.getDeleted(),o.getPotencialDeliverer(),o.getIdDeliverer(), o.getRestaurantType()));
+				  }
+			  }
+			  return ret;
+		}
+		
+		
+		//iz dao ali ipak ovde
+		//milicino
+		public Collection<Order> changeToDeliveredStatus(String id) {
+			
+			OrderDAO dao = getOrders();
+			Collection<Order> orders = dao.getValues();
+			for(Order order : orders) {
+				if(order.getId() == Integer.parseInt(id)) {
+					order.setStatus(OrderStatus.DOSTAVLJENA);
+					dao.saveOrders();
+				}
+			}
+			/*Collection<Order> ordersChanged = dao.getValues();		
+			for(Order order : ordersChanged) {
+				ret.add(new OrderDTO(order.getId(),findOrderArticals(order.getArticalIds()), findNameRestaurant(order.getId()), order.getDate(), order.getPrice(), order.getIdCustomer(), order.getStatus(), order.getDeleted(), order.getIdDeliverer(), order.getRestaurantType()));
+			} return ret;*/
+			return dao.getValues();
+		}
 		
 	private OrderDAO getOrders() {
 		OrderDAO orders = (OrderDAO)context.getAttribute("orders");
@@ -405,7 +439,7 @@ public class OrderService {
 		
 		for(Order order : orders) {
 			System.out.println((order.getStatus()));System.out.println(order.getIdDeliverer());
-			if(!order.getDeleted() && order.getIdDeliverer().equals(user.getUsername()) && order.getStatus() != OrderStatus.DOSTAVLJENA &&order.getStatus() != OrderStatus.OTKAZANA && order.getStatus() != OrderStatus.CEKA_DOSTAVLJACA ) {
+			if(!order.getDeleted() && order.getIdDeliverer().equals(user.getUsername()) && order.getStatus() == OrderStatus.U_TRANSPORTU ) {
 			ret.add(new OrderDTO(order.getId(), findOrderArticals(order.getArticalIds()),findNameRestaurant(order.getId()), order.getDate(), order.getPrice(), order.getIdCustomer(), order.getStatus(), order.getDeleted(),order.getPotencialDeliverer(), order.getIdDeliverer(), order.getRestaurantType()));
 			}
 		}
@@ -413,15 +447,7 @@ public class OrderService {
 		
 	}
 
-	//dostavljanje porudzbine kod dostavljaca
-	@POST
-	@Path("/changeToDelivered")
-	@Produces(MediaType.APPLICATION_JSON)
-	public void changeToDelivered(String id){
-		OrderDAO ordersDAO = getOrders();		
-		changeToDeliveredStatus(id); //salje se id porudzbine
-			
-	}
+	
 
 
 	//iscitavanje onih na cekanju
@@ -533,24 +559,7 @@ public class OrderService {
 			
 			
 	
-//iz dao ali ipak ovde
-	//milicino
-	public void changeToDeliveredStatus(String id) {
-		//ArrayList<OrderDTO> ret= new ArrayList<OrderDTO>();
-		OrderDAO dao = new OrderDAO();
-		Collection<Order> orders = dao.getValues();
-		for(Order order : orders) {
-			if(order.getId() == Integer.parseInt(id)) {
-				order.setStatus(OrderStatus.DOSTAVLJENA);
-				dao.saveOrders();
-			}
-		}
-		/*Collection<Order> ordersChanged = dao.getValues();		
-		for(Order order : ordersChanged) {
-			ret.add(new OrderDTO(order.getId(),findOrderArticals(order.getArticalIds()), findNameRestaurant(order.getId()), order.getDate(), order.getPrice(), order.getIdCustomer(), order.getStatus(), order.getDeleted(), order.getIdDeliverer(), order.getRestaurantType()));
-		} return ret;*/
-		
-	}
+
 	
 	
 

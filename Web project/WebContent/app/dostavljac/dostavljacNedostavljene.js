@@ -116,9 +116,10 @@ methods:{
         this.selected = order;
       }, 
 dostavi(id){
+    this.orders=null,
     axios.post("/WebShopREST/rest/order/changeToDelivered", id)
     .then(response => {
-      router.push(`/nedostavljenePorudzbine`)
+        this.orders = response.data
     })
     .catch(function(error){
         console.log(error)
