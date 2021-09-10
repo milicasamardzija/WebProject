@@ -79,7 +79,7 @@ mounted(){
         .catch(function(error){
             console.log(error)
         }),
-        axios.get("/WebShopREST/rest/artical/getAllArticals")
+        axios.post("/WebShopREST/rest/artical/getAllArticals", this.idRestaurant)
         .then( response => {
             this.articals = response.data
         })

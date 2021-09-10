@@ -343,18 +343,18 @@ public class OrderService {
 		}
 		
 
-		@POST 
-		@Path("/askForDelivery")
-		@Produces(MediaType.APPLICATION_JSON)
-  public Collection<OrderDTO> askForDelivery(String idOrder) {
-	  User deliverer = (User)request.getSession().getAttribute("loginUser");		//imam id deliverera
-	  OrderDAO dao= getOrders();
-     Collection<Order> changed = dao.askForDeliver(deliverer.getUsername(), Integer.parseInt(idOrder));
-	  ArrayList<OrderDTO> ret= new ArrayList<OrderDTO>();
-	  for(Order o : changed) {
-		  if(o.getStatus().equals(OrderStatus.CEKA_DOSTAVLJACA)) {
-		  ret.add(new OrderDTO(o.getId(),findOrderArticals(o.getArticalIds()),findNameRestaurant(o.getRetaurantId()),o.getDate(), o.getPrice(),o.getIdCustomer(), o.getStatus(),o.getDeleted(),o.getPotencialDeliverer(),o.getIdDeliverer(), o.getRestaurantType()));
-	  }
+	@POST 
+	@Path("/askForDelivery")
+	@Produces(MediaType.APPLICATION_JSON)
+     public Collection<OrderDTO> askForDelivery(String idOrder) {
+	   User deliverer = (User)request.getSession().getAttribute("loginUser");		//imam id deliverera
+	   OrderDAO dao= getOrders();
+       Collection<Order> changed = dao.askForDeliver(deliverer.getUsername(), Integer.parseInt(idOrder));
+	   ArrayList<OrderDTO> ret= new ArrayList<OrderDTO>();
+		  for(Order o : changed) {
+			  if(o.getStatus().equals(OrderStatus.CEKA_DOSTAVLJACA)) {
+			  ret.add(new OrderDTO(o.getId(),findOrderArticals(o.getArticalIds()),findNameRestaurant(o.getRetaurantId()),o.getDate(), o.getPrice(),o.getIdCustomer(), o.getStatus(),o.getDeleted(),o.getPotencialDeliverer(),o.getIdDeliverer(), o.getRestaurantType()));
+		  }
 	  }
 	  return ret;
   }
@@ -475,14 +475,14 @@ public class OrderService {
 		ordersDAO.changeDeliverer(Integer.parseInt(idOrder)); 		
 	}
 
-	@POST
+	/*@POST
 	@Path("/changeToDelivered")
 	@Produces(MediaType.APPLICATION_JSON)
 	public void changeToDelivered(String id){
 		OrderDAO ordersDAO = getOrders();		
 		changeToDeliveredStatus(id); //salje se id porudzbine
 			
-	}
+	}*/
 
 
 	//iscitavanje onih na cekanju

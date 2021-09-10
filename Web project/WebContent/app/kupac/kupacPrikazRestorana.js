@@ -51,7 +51,7 @@ template: `
 			                <div class="row-restaurants" v-for="restaurant in restaurants" v-on:click="getSelected(restaurant)" >
 			                    <div class = "col-with-picture">
 			                        <div class="col-picture">
-			                            <div><img v-bind:src="'../pictures/'+restaurant.link" style="height:250px !important; width:300px !important" v-on:click="goToRestaurant"></div>
+			                            <div><img v-bind:src="'../pictures/'+restaurant.link" style="height:250px !important; width:300px !important" v-on:click="goToRestaurant(restaurant.id)"></div>
 			                        </div>
 			                    </div>
 			                    <div class="col-info">
@@ -62,7 +62,7 @@ template: `
 			                    </div>
 			                    <div class="buttons">
 			                        <div class="buttons btn-group-vertical">
-			                            <button style="width:100px; margin-top:10px;" type="button" class="btn btn-secondary" v-on:click="goToRestaurant">Porucivanje</button>
+			                            <button style="width:100px; margin-top:10px;" type="button" class="btn btn-secondary" v-on:click="goToRestaurant(restaurant.id)">Porucivanje</button>
 			                        </div>
 			                    </div>
 			                </div>
@@ -73,8 +73,8 @@ methods:{
         getSelected: function(restaurant){
         this.selected= restaurant;
         },
-        goToRestaurant : function () {
-            this.$router.push({path: `/restoran`, query:{ id: this.selected.id}})
+        goToRestaurant : function (idR) {
+            this.$router.push({path: `/restoran`, query:{ id: idR}})
         }
 },
 mounted(){

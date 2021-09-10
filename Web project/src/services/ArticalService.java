@@ -63,6 +63,22 @@ public class ArticalService {
 	}
 	
 	@POST
+	@Path("/getAllArticals")
+	@Produces(MediaType.APPLICATION_JSON)
+	public Collection<Artical> getAllArticals(String idRestaurant) {
+		ArticalDAO articalDAO = getArticalDAO();
+		ArrayList<Artical> ret= new ArrayList<Artical>(); 
+		
+		for (Artical artical : articalDAO.getValues()) {
+			if(!artical.getDeleted() && artical.getIdRestaurant() == Integer.parseInt(idRestaurant)) {
+				ret.add(artical);
+			}
+			
+		}
+		return ret;
+	}
+	
+	@POST
 	@Path("/getArtical")
 	@Produces(MediaType.APPLICATION_JSON)
 	public Artical getArtical(String id) {
