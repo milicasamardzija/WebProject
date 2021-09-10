@@ -148,7 +148,7 @@ deleteOrder() {
 }, 
 filterTypeRestaurant: function(type) {
     this.orders=null,
-    axios.post("/WebShopREST/rest/order/filterRestaurantTypeOrders", type)
+    axios.post("/WebShopREST/rest/order/filterDelivererRestaurantTypeOrders", type)
     .then(response => {
        this.orders = response.data
     })
@@ -158,7 +158,7 @@ filterTypeRestaurant: function(type) {
 },
 sortOrders: function(type) {
     this.orders=null,
-    axios.post("/WebShopREST/rest/order/sortOrders", type)
+    axios.post("/WebShopREST/rest/order/sortDelivererOrders", type)
     .then(response => {
        this.orders = response.data
     })
@@ -168,7 +168,7 @@ sortOrders: function(type) {
 }
 },
 mounted(){
-    axios.get("/WebShopREST/rest/order/getAllOrdersForDeliverer")
+    axios.get("/WebShopREST/rest/order/getDelivererOrders")
     .then( response => {
         this.orders = response.data
     })

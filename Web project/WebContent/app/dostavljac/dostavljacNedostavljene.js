@@ -45,9 +45,7 @@ template: `
       <td style="width:20px;"> </td>
       <td > <button class="btn btn-secondary dropdown-toggle" type="button" data-toggle="dropdown" > Tip porudzbine </button>                  
             <span class="dropdown-menu" aria-labelledby="dropdownMenu2">
-            <button class="dropdown-item" type="button" v-on:click="filterTypeOrders('otkazana')">Otkazana</button>
             <button class="dropdown-item" type="button" v-on:click="filterTypeOrders('obrada')">Obradjuje se</button>
-            <button class="dropdown-item" type="button" v-on:click="filterTypeOrders('ceka')">Ceka dostavljaca</button>
             <button class="dropdown-item" type="button" v-on:click="filterTypeOrders('transport')">U transportu</button>
             <button class="dropdown-item" type="button" v-on:click="filterTypeOrders('dostavljena')">Dostavljena</button>
             <button class="dropdown-item" type="button" v-on:click="filterTypeOrders('priprema')">U pripremi</button>
@@ -100,8 +98,7 @@ template: `
             <td>{{order.restaurantType}}</td>
           
             <div>
-
-              <td><button type="button" class="btn btn-secondary" v-if="order.status == 'U_TRANSPORTU'" v-on:click="dostavi" >Dostavljeno</button>
+              <td><button type="button" class="btn btn-secondary" v-if="order.status == 'U_TRANSPORTU'" v-on:click="dostavi(order.id)" >Dostavljeno</button>
                </td>
                </div>
           </tr>
@@ -118,12 +115,18 @@ methods:{
     getSelected: function(order){
         this.selected = order;
       }, 
-dostavi(){
-    
+dostavi(id){
+    axios.post("/WebShopREST/rest/order/changeToDelivered", id)
+    .then(response => {
+       this.orders = response.data
+    })
+    .catch(function(error){
+        console.log(error)
+    })
 }, 
 filterTypeRestaurant: function(type) {
     this.orders=null,
-    axios.post("/WebShopREST/rest/order/filterRestaurantTypeOrders", type)
+    axios.post("/WebShopREST/rest/order/filterDelivererRestaurantTypeOrders", type)
     .then(response => {
        this.orders = response.data
     })
@@ -132,8 +135,8 @@ filterTypeRestaurant: function(type) {
     })
 },
 sortOrders: function(type) {
-    this.orders=null,
-    axios.post("/WebShopREST/rest/order/sortOrders", type)
+    
+    axios.post("/WebShopREST/rest/order/sortDelivererUndeliveredOrders", type)
     .then(response => {
        this.orders = response.data
     })

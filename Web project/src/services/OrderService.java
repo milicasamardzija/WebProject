@@ -56,9 +56,9 @@ public class OrderService {
 		
 	}
 	
+	//porudzbine za ulogovanog usera
 	@GET
 	@Path("/getOrders")
-	//@Consumes(MediaType.TEXT_HTML)
 	@Produces(MediaType.APPLICATION_JSON)
 	public Collection<OrderDTO> getOrdersAll(){
 		ArrayList<OrderDTO> ret= new ArrayList<OrderDTO>();
@@ -69,6 +69,26 @@ public class OrderService {
 		
 		for(Order order : orders) {
 			if(!order.getDeleted() && order.getIdCustomer().equals(user.getUsername())) {
+			ret.add(new OrderDTO(order.getId(), findOrderArticals(order.getArticalIds()), findNameRestaurant(order.getId()), order.getDate(), order.getPrice(), order.getIdCustomer(), order.getStatus(), order.getDeleted(), order.getIdDeliverer(), order.getRestaurantType()));
+			}
+		}
+		return ret;
+		
+	}
+	//porudzbine za ulogovanog dostavljaca
+	@GET
+	@Path("/getDelivererOrders")
+	@Produces(MediaType.APPLICATION_JSON)
+	public Collection<OrderDTO> getOrdersDeliverer(){
+		ArrayList<OrderDTO> ret= new ArrayList<OrderDTO>();
+		OrderDAO ordersDAO = getOrders();
+		//RestaurantDAO restaurantsDAO = getRestaurantsDAO();
+		Collection<Order> orders = ordersDAO.getValues();
+		User user = (User)request.getSession().getAttribute("loginUser");		
+		
+		for(Order order : orders) {
+			if(!order.getDeleted() && order.getIdDeliverer().equals(user.getUsername()) && order.getStatus() != OrderStatus.CEKA_DOSTAVLJACA ) {
+				System.out.println("TU SAM TRAAZIM");
 			ret.add(new OrderDTO(order.getId(), findOrderArticals(order.getArticalIds()), findNameRestaurant(order.getId()), order.getDate(), order.getPrice(), order.getIdCustomer(), order.getStatus(), order.getDeleted(), order.getIdDeliverer(), order.getRestaurantType()));
 			}
 		}
@@ -141,16 +161,32 @@ public class OrderService {
 		return ret;
 	}
 	
+	//filtrira porudzbine po dostavljacu
+	@POST 
+	@Path("/filterDelivererRestaurantTypeOrders")
+	@Produces(MediaType.APPLICATION_JSON)
+	public Collection<OrderDTO> filterDeliverersOrdersbyTypeRestaurant(String typeRestaurant){
+		ArrayList<OrderDTO> ret= new ArrayList<OrderDTO>();
+		OrderDAO orderDAO= new OrderDAO();
+		RestaurantType type=orderDAO.checkRestaurantType(typeRestaurant);
+		ArrayList<OrderDTO> myOrders=(ArrayList<OrderDTO>) getOrdersDeliverer(); //dostavljaceve 
+		for(OrderDTO order : myOrders) {
+			if(order.getRestaurantType().equals(type) && !order.getDeleted()) {
+			ret.add(order);
+			}
+		}
+		return ret;
+	}
 	
+	//za kupca njegove porudzbine
 	@GET
 	@Path("/getUndeliveredOrders")
-	//@Consumes(MediaType.TEXT_HTML)
 	@Produces(MediaType.APPLICATION_JSON)
 	public Collection<OrderDTO> getUndelivered(){
 		ArrayList<OrderDTO> ret= new ArrayList<OrderDTO>();
-		OrderDAO ordersDAO = getOrders();
-		Collection<Order> orders = ordersDAO.getValues();
-		User user = (User)request.getSession().getAttribute("loginUser");		
+		OrderDAO ordersDAO = getOrders(); //sve porudzbine
+		Collection<Order> orders = ordersDAO.getValues(); //sve porudzbine
+		User user = (User)request.getSession().getAttribute("loginUser");		//dobijam ulogovanog dostavljaca
 		
 		for(Order order : orders) {
 			if(!order.getDeleted() && order.getIdCustomer().equals(user.getUsername()) && order.getStatus() != OrderStatus.DOSTAVLJENA && order.getStatus() != OrderStatus.OTKAZANA ) {
@@ -160,7 +196,7 @@ public class OrderService {
 		return ret;	
 	}
 	
-	//sortiranje
+	//sortiranje svih porudzbina kupca
 	@POST
 	@Path("/sortOrders")
 	@Produces(MediaType.APPLICATION_JSON)
@@ -203,7 +239,68 @@ public class OrderService {
 			 return myOrders;
 		}
 	
+	//sortiranje SVIH dostavljacevih porudzbina
+		@POST
+		@Path("/sortDelivererOrders")
+		@Produces(MediaType.APPLICATION_JSON)
+		public Collection<OrderDTO> sortDelivererOrders(String type) {
+			ArrayList<OrderDTO> myOrders=(ArrayList<OrderDTO>) getOrdersDeliverer(); //uzimam sve  porudzbine ulogovanog
+				if(type.equals("imeRastuce")) {
+					 Collections.sort(myOrders, new Comparator<OrderDTO>(){
+						    public int compare(OrderDTO s1, OrderDTO s2) {
+						        return s1.getRestaurantName().compareToIgnoreCase(s2.getRestaurantName());
+						    }
+						});
+				 }
+				 if(type.equals("imeOpadajuce")) {
+					 Collections.sort(myOrders, new Comparator<OrderDTO>(){
+						    public int compare(OrderDTO s1, OrderDTO s2) {
+						        return s2.getRestaurantName().compareToIgnoreCase(s1.getRestaurantName());
+						    }
+						});
+				 }
+				 if(type.equals("opadajuce")) {
+					 myOrders = (ArrayList<OrderDTO>) myOrders.stream().sorted(Comparator.comparingInt(OrderDTO::getPrice).reversed()).collect(Collectors.toList());
+				 }
+				 if(type.equals("rastuce")) {
+					 myOrders = (ArrayList<OrderDTO>) myOrders.stream().sorted(Comparator.comparingInt(OrderDTO::getPrice)).collect(Collectors.toList());
+				 }
+				 if(type.equals("datumRastuce")) {
+					 Collections.sort(myOrders, new Comparator<OrderDTO>(){
+						    public int compare(OrderDTO s1, OrderDTO s2) {
+						        return s1.getDate().compareTo(s2.getDate());
+						    }
+						});
+				 }
+				if(type.equals("datumOpadajuce")) {
+					 Collections.sort(myOrders, new Comparator<OrderDTO>(){
+						    public int compare(OrderDTO s1, OrderDTO s2) {
+						        return s2.getDate().compareTo(s1.getDate());
+						    }
+						});
+				 }
+				 return myOrders;
+			}
+	
+		
 
+		//filtrira porudzbine po na cekanju po tipu restorana
+		@POST 
+		@Path("/filterRestaurantTypeOnWaitOrders")
+		@Produces(MediaType.APPLICATION_JSON)
+		public Collection<OrderDTO> filterOnWaitOrdersTypeRestaurant(String typeRestaurant){
+			ArrayList<OrderDTO> ret= new ArrayList<OrderDTO>();
+			OrderDAO orderDAO= new OrderDAO();
+			RestaurantType type=orderDAO.checkRestaurantType(typeRestaurant);
+			ArrayList<OrderDTO> myOrders=(ArrayList<OrderDTO>)this.getAllOrdersForDelivererOnWait(); //dostavljaceve 
+			for(OrderDTO order : myOrders) {
+				if(order.getRestaurantType().equals(type) && !order.getDeleted()) {
+				ret.add(order);
+				}
+			}
+			return ret;
+		}
+		
 	private OrderDAO getOrders() {
 		OrderDAO orders = (OrderDAO)context.getAttribute("orders");
 		if(orders == null) {
@@ -234,6 +331,7 @@ public class OrderService {
 	
 	
 	//milicaa
+	//sve porudzbine ulogovanog dostavljaca
 	@GET
 	@Path("/getAllOrdersForDeliverer")
 	@Produces(MediaType.APPLICATION_JSON)
@@ -254,7 +352,7 @@ public class OrderService {
 
 
 
-
+//sve porudzbine ulogovanog dostavljaca koje nisu dostavljene 
 	@GET
 	@Path("/getAllOrdersForDelivererNotDelivered")
 	@Produces(MediaType.APPLICATION_JSON)
@@ -267,7 +365,7 @@ public class OrderService {
 		
 		for(Order order : orders) {
 			System.out.println((order.getStatus()));System.out.println(order.getIdDeliverer());
-			if(!order.getDeleted() && order.getIdDeliverer().equals(user.getUsername()) && order.getStatus() != OrderStatus.DOSTAVLJENA) {
+			if(!order.getDeleted() && order.getIdDeliverer().equals(user.getUsername()) && order.getStatus() != OrderStatus.DOSTAVLJENA &&order.getStatus() != OrderStatus.OTKAZANA && order.getStatus() != OrderStatus.CEKA_DOSTAVLJACA ) {
 			ret.add(new OrderDTO(order.getId(), findOrderArticals(order.getArticalIds()), findNameRestaurant(order.getId()), order.getDate(), order.getPrice(), order.getIdCustomer(), order.getStatus(), order.getDeleted(),order.getIdDeliverer(), order.getRestaurantType() ));
 			}
 		}
@@ -280,13 +378,12 @@ public class OrderService {
 	@Produces(MediaType.APPLICATION_JSON)
 	public Collection<OrderDTO> changeToDelivered(String id){
 		OrderDAO ordersDAO = getOrders();		
-		return changeToDeliveredStatus(id);
+		return changeToDeliveredStatus(id); //salje se id porudzbine
 			
 	}
 
 
-	//iscitavanje porudzbina za dostavljaca
-
+	//iscitavanje onih na cekanju
 	@GET
 	@Path("/getAllOrdersForDelivererOnWait")
 	@Produces(MediaType.APPLICATION_JSON)
@@ -302,9 +399,100 @@ public class OrderService {
 		}
 		return ret;
 	}
-
 	
-//iz dao aliipak ovde
+	//sortiranje porudzbina na cekanju
+	//sortiranje SVIH NA CEKANJU porudzbina
+			@POST
+			@Path("/sortDelivererOnWaitOrders")
+			@Produces(MediaType.APPLICATION_JSON)
+			public Collection<OrderDTO> sortDelivererOnWaitOrders(String type) {
+			//	ArrayList<OrderDTO> allOrders= (ArrayList<OrderDTO>) getAll(); //uzimam sve  porudzbine ulogovanog
+				ArrayList<OrderDTO> ret = new ArrayList<OrderDTO>(getAllOrdersForDelivererOnWait());
+					if(type.equals("imeRastuce")) {
+						 Collections.sort(ret, new Comparator<OrderDTO>(){
+							    public int compare(OrderDTO s1, OrderDTO s2) {
+							        return s1.getRestaurantName().compareToIgnoreCase(s2.getRestaurantName());
+							    }
+							});
+					 }
+					 if(type.equals("imeOpadajuce")) {
+						 Collections.sort(ret, new Comparator<OrderDTO>(){
+							    public int compare(OrderDTO s1, OrderDTO s2) {
+							        return s2.getRestaurantName().compareToIgnoreCase(s1.getRestaurantName());
+							    }
+							});
+					 }
+					 if(type.equals("opadajuce")) {
+						 ret = (ArrayList<OrderDTO>) ret.stream().sorted(Comparator.comparingInt(OrderDTO::getPrice).reversed()).collect(Collectors.toList());
+					 }
+					 if(type.equals("rastuce")) {
+						 ret = (ArrayList<OrderDTO>) ret.stream().sorted(Comparator.comparingInt(OrderDTO::getPrice)).collect(Collectors.toList());
+					 }
+					 if(type.equals("datumRastuce")) {
+						 Collections.sort(ret, new Comparator<OrderDTO>(){
+							    public int compare(OrderDTO s1, OrderDTO s2) {
+							        return s1.getDate().compareTo(s2.getDate());
+							    }
+							});
+					 }
+					if(type.equals("datumOpadajuce")) {
+						 Collections.sort(ret, new Comparator<OrderDTO>(){
+							    public int compare(OrderDTO s1, OrderDTO s2) {
+							        return s2.getDate().compareTo(s1.getDate());
+							    }
+							});
+					 }
+					 return ret;
+				}
+
+	//sortiranje porudzbina na cekanju
+	//sortiranje SVIH NA CEKANJU porudzbina
+	@POST
+	@Path("/sortDelivererUndeliveredOrders")
+	@Produces(MediaType.APPLICATION_JSON)
+	public Collection<OrderDTO> sortDelivererUndeliveredOrders(String type) {
+	ArrayList<OrderDTO> ret = new ArrayList<OrderDTO>(getAllOrdersForDelivererNotDelivered());
+			if(type.equals("imeRastuce")) {
+			 Collections.sort(ret, new Comparator<OrderDTO>(){
+			    public int compare(OrderDTO s1, OrderDTO s2) {
+							    return s1.getRestaurantName().compareToIgnoreCase(s2.getRestaurantName());
+								  }
+							});
+				 }
+							 if(type.equals("imeOpadajuce")) {
+								 Collections.sort(ret, new Comparator<OrderDTO>(){
+									    public int compare(OrderDTO s1, OrderDTO s2) {
+									        return s2.getRestaurantName().compareToIgnoreCase(s1.getRestaurantName());
+									    }
+									});
+							 }
+							 if(type.equals("opadajuce")) {
+								 ret = (ArrayList<OrderDTO>) ret.stream().sorted(Comparator.comparingInt(OrderDTO::getPrice).reversed()).collect(Collectors.toList());
+							 }
+							 if(type.equals("rastuce")) {
+								 ret = (ArrayList<OrderDTO>) ret.stream().sorted(Comparator.comparingInt(OrderDTO::getPrice)).collect(Collectors.toList());
+							 }
+							 if(type.equals("datumRastuce")) {
+								 Collections.sort(ret, new Comparator<OrderDTO>(){
+									    public int compare(OrderDTO s1, OrderDTO s2) {
+									        return s1.getDate().compareTo(s2.getDate());
+									    }
+									});
+							 }
+							if(type.equals("datumOpadajuce")) {
+								 Collections.sort(ret, new Comparator<OrderDTO>(){
+									    public int compare(OrderDTO s1, OrderDTO s2) {
+									        return s2.getDate().compareTo(s1.getDate());
+									    }
+									});
+							 }
+							 return ret;
+						}
+
+			
+			
+	
+//iz dao ali ipak ovde
 	//milicino
 	public Collection<OrderDTO> changeToDeliveredStatus(String id) {
 		ArrayList<OrderDTO> ret= new ArrayList<OrderDTO>();
@@ -316,13 +504,10 @@ public class OrderService {
 				dao.saveOrders();
 			}
 		}
-		
 		Collection<Order> ordersChanged = dao.getValues();		
-		
 		for(Order order : ordersChanged) {
 			ret.add(new OrderDTO(order.getId(),findOrderArticals(order.getArticalIds()), findNameRestaurant(order.getId()), order.getDate(), order.getPrice(), order.getIdCustomer(), order.getStatus(), order.getDeleted(), order.getIdDeliverer(), order.getRestaurantType()));
 		}
-		
 		return ret;
 	}
 	

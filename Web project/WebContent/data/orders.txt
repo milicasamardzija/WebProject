@@ -34,5 +34,29 @@
     "deleted" : false,
     "idDeliverer" : "ZikaZivic",
     "restaurantType" : "ITALIAN"
+  },
+  "3" : {
+    "id" : 3,
+    "articalIds" : [ 0 ],
+    "retaurantId" : 0,
+    "date" : 326380800000,
+    "price" : 50,
+    "idCustomer" : "kupac",
+    "status" : "CEKA_DOSTAVLJACA",
+    "deleted" : false,
+    "idDeliverer" : "ZikaZivic",
+    "restaurantType" : "ITALIAN"
+  },
+  "4" : {
+    "id" : 4,
+    "articalIds" : [ 0, 0,0 ],
+    "retaurantId" : 0,
+    "date" : 326380800000,
+    "price" : 600,
+    "idCustomer" : "marko",
+    "status" : "U_TRANSPORTU",
+    "deleted" : false,
+    "idDeliverer" : "ivan",
+    "restaurantType" : "ITALIAN"
   }
 }
