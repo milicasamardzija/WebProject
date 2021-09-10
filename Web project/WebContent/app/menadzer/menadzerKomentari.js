@@ -17,7 +17,7 @@ template: `
                 <span class="fa fa-star checked"></span>
                 </span>
             </div>
-            <button type="button" class="btn btn-secondary" v-if="!comment.approved" v-on:click="changeStatus(comment.id)" >Odbori</button>
+            <button type="button" class="btn btn-secondary" v-if="!comment.approved" v-on:click="changeStatus(comment.id)" >Odobri</button>
         </div>
         <hr>
     </div>   

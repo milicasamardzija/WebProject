@@ -23,6 +23,7 @@ import com.fasterxml.jackson.databind.introspect.VisibilityChecker;
 import com.fasterxml.jackson.databind.type.MapType;
 import com.fasterxml.jackson.databind.type.TypeFactory;
 
+import beans.Comment;
 import beans.Order;
 import beans.User;
 import dao.RestaurantDAO;
@@ -191,6 +192,40 @@ public class OrderDAO {
 		
 	}
 	
+	public void changeDeliverer(int id) {
+		ArrayList<OrderDTO> ret = new ArrayList<OrderDTO>();
+		Collection<Order> orders = this.getValues();
+			
+		for (Order order : orders) {
+			if (order.getId() == id) {
+				order.setIdDeliverer(order.getPotencialDeliverer());
+				order.setStatus(OrderStatus.U_TRANSPORTU);
+			}
+		}
+		
+		this.saveOrders();
+		
+		/*for (Order order : orders) {
+			ret.add(new OrderDTO(order.getId(), findOrderArticals(order.getArticalIds()), findNameRestaurant(order.getId()), order.getDate(), order.getPrice(), order.getIdCustomer(), order.getStatus(), order.getDeleted(),order.getPotencialDeliverer(), order.getIdDeliverer(), order.getRestaurantType()));
+		}
+		
+		return ret;*/
+	}
+	
+	private String findNameRestaurant(int id) {
+		RestaurantDAO restaurantsDAO = getRestaurantsDAO();
+		return restaurantsDAO.getByID(id).getName();
+	}
+	
+	private RestaurantDAO getRestaurantsDAO() {
+		RestaurantDAO restaurants = (RestaurantDAO)context.getAttribute("restaurants");
+		if (restaurants == null) {
+			restaurants = new RestaurantDAO();
+			context.setAttribute("restaurants", restaurants);
+		}
+		return restaurants;
+	}
+	
 	public void deleteOrderById(int id) {
 		Order order = getByIdOrder(id);
 		if(order != null && !order.getDeleted()) {
@@ -281,6 +316,17 @@ public class OrderDAO {
 		for(Order order : this.getValues()) {
 			if(!order.getDeleted() && order.getRetaurantId() == user.getIdRestaurant()) {
 			ret.add(order);
+			}
+		}
+		return ret;
+	}
+
+	private ArrayList<String> findOrderArticals(ArrayList<Integer> ids) {
+		ArrayList<String> ret= new ArrayList<String>();
+		ArticalDAO articalDAO= new ArticalDAO();
+		for(int id : ids) {
+			if(!articalDAO.getByID(id).getDeleted()) {
+				ret.add(articalDAO.getByID(id).getName());
 			}
 		}
 		return ret;
