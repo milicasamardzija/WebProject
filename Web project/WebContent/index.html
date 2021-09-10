@@ -1,5 +1,17 @@
 <html> 
 <!-- Slideshow container -->
+<script>
+  function checkType(type){
+      this.restaurants=null,
+      axios.post("/WebShopREST/rest/restaurant/filterType", type)
+      .then( response => {
+          this.allUsers = response.data
+      })
+      .catch(function(error){
+          console.log(error)
+      })
+  }
+  </script>
 <head> 
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -155,9 +167,12 @@
                           Tip restorana </button>
                      
                               <span class="dropdown-menu" aria-labelledby="dropdownMenu2">
-                              <button class="dropdown-item" type="button">Action</button>
-                              <button class="dropdown-item" type="button">Another action</button>
-                              <button class="dropdown-item" type="button">Something else here</button>
+                              <button class="dropdown-item" type="button" value="ITALIAN" v-on:click="checkType('ITALIAN')">Italijanski</button>
+                              <button class="dropdown-item" type="button" value="CHINESE" v-on:click="checkType('CHINESE')">Kineski</button>
+                              <button class="dropdown-item" type="button" value="PIZZA" v-on:click="checkType('PIZZA')">Pica</button>
+                              <button class="dropdown-item" type="button" value="BARBECUE" v-on:click="checkType('BARBECUE')">Rostilj</button>
+                              <button class="dropdown-item" type="button" value="FISH" v-on:click="checkType('FISH')">Riblji</button>
+                              <button class="dropdown-item" type="button" value="VEGE" v-on:click="checkType('VEGE')">Veganski</button>
                               </span> </td>
                             <td style="width: 25px;"> </td>
                               <td style="width:150px "> <p> ili status restorana</p></td>
@@ -226,6 +241,7 @@
     <script src="js/vue-router.js"></script>
     <script src="js/axios.js"></script>
     <script src="app/app.js"></script>
+    <script src="app/pocetna.js"></script>
     <script src="app/administrator/adminApp.js"></script>
     <script src="js/jquery.min.js"></script>
     <script src="js/moment.min.js"></script>

@@ -15,12 +15,12 @@ import javax.ws.rs.core.MediaType;
 
 import beans.Restaurant;
 import beans.User;
-import beans.UsernameDTO;
 import dao.RestaurantDAO;
 import dao.UsersDAO;
 import dto.RestaurantChangeDTO;
 import dto.RestaurantNewDTO;
-import dto.UserChangeDTO;
+import dto.RestaurantSearchMixDTO;
+import dto.UserSearchDTO;
 
 
 @Path("/restaurant")
@@ -88,6 +88,16 @@ public class RestaurantService {
 		RestaurantDAO restaurantDAO = getRestaurantsDAO();
 		restaurantDAO.changeRestaurant(restaurant);	
 	} 
+	
+	//pretraga korisnika
+	@POST
+	@Path("/searchMix")
+	@Consumes(MediaType.APPLICATION_JSON)
+	@Produces(MediaType.APPLICATION_JSON)
+	public Collection<Restaurant> searchUsers(RestaurantSearchMixDTO restaurant) {
+		RestaurantDAO restaurantDAO = getRestaurantsDAO();
+		return restaurantDAO.searchMix(restaurant);
+	}
 		
 	//prikaz restorana
 	@POST
@@ -104,6 +114,15 @@ public class RestaurantService {
 	public void deleteUser(String id){
 		RestaurantDAO restaurants = getRestaurantsDAO();
 		restaurants.deleteRestaurantById(Integer.parseInt(id));
+	}
+	
+	
+	@POST
+	@Path("/filterType")
+	@Produces(MediaType.APPLICATION_JSON)
+	public Collection<Restaurant> filterByType(String type) {
+		RestaurantDAO restaurantsDAO = getRestaurantsDAO();
+		return restaurantsDAO.filterUsersByType(type);
 	}
 	
 	private UsersDAO getUsersDAO() {

@@ -105,7 +105,9 @@ methods:{
     back: function() {
         router.push(`/korisnici`)
     },
-     
+    changeUser : function () {
+        this.$router.push({path: `/izmeniKorisnika`, query:{ username: this.selected}})
+      },
     deleteUser: function(){
         axios.post('/WebShopREST/rest/user/deleteUser', this.selected.username)
         .then(response => {
@@ -115,7 +117,7 @@ methods:{
             console.log(error)
         })
     },
-sortUser(type) {
+    sortUser(type) {
     this.allUsers = null,
     axios.post("/WebShopREST/rest/user/sortUser", type)
     .then( response => {

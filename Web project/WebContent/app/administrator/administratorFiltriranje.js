@@ -119,6 +119,9 @@ methods:{
     show: function() {
       
     }, 
+    changeUser : function () {
+        this.$router.push({path: `/izmeniKorisnika`, query:{ username: this.selected}})
+    },
      
     deleteUser: function(){
             axios.post('/WebShopREST/rest/user/deleteUser', this.selected.username)

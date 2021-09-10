@@ -1,8 +1,9 @@
 Vue.component("administrator-pretraga", {  
     data:function(){
         return{
-        allUsers : [],
-        searchParameters : {}
+        allUsers : null,
+        searchParameters : {},
+        filter: false
     }
 },
 template: `
@@ -26,7 +27,7 @@ template: `
                 </table> 
             
             <!--tabela-->
-            <div>
+            <div v-if="filter">
                 <h4><p> Korisnici koje odgovaraju kriterijumima pretrage: </p> </h4>
                 <table class="table table-hover">
                     <thead>
@@ -61,28 +62,47 @@ template: `
 `,
 methods:{
     back: function() {
+        this.allUsers = null
         router.push(`/korisnici`)
     },
     show: function() {
+        this.allUsers = null
+        this.filter = false
         axios.post("/WebShopREST/rest/user/searchUsers", {
             "name":''+ this.searchParameters.name, 
             "surname":''+ this.searchParameters.surname, 
             "username":''+ this.searchParameters.username})
         .then( response => {
+            this.filter = true
             this.allUsers = response.data
         })
         .catch(function(error){
             console.log(error)
         })
-    }
-},
-mounted(){
-    axios.get("/WebShopREST/rest/user/getAllUsers")
+    },
+    getAll: function(){
+        axios.get("/WebShopREST/rest/user/getAllUsers")
       .then( response => {
           this.allUsers = response.data
       })
       .catch(function(error){
           console.log(error)
       })
+    }, 
+    changeUser : function () {
+      this.$router.push({path: `/izmeniKorisnika`, query:{ username: this.selected}})
+    },
+    deleteUser: function(){
+            axios.post('/WebShopREST/rest/user/deleteUser', this.selected.username)
+            .then(response => {
+                router.push(`/korisnici`);
+            })
+            .catch(function(error){
+                console.log(error)
+            })
+        }
+},
+mounted(){
+    
 },
 });

@@ -3,7 +3,7 @@
     "id" : 0,
     "managerId" : "mika",
     "name" : "Karibik",
-    "type" : "PIZZA",
+    "type" : "ITALIAN",
     "articalIds" : [ 0, 1, 3 ],
     "status" : "OPEN",
     "address" : {
@@ -15,14 +15,14 @@
       "longitude" : 0.0
     },
     "link" : "12.png",
-    "deleted" : true,
-    "grade" : 5.0
+    "deleted" : false,
+    "grade" : 5
   },
   "1" : {
     "id" : 1,
     "managerId" : "mika",
     "name" : "Toscana",
-    "type" : "ITALIAN",
+    "type" : "VEGE",
     "articalIds" : [ 0, 1, 2 ],
     "status" : "OPEN",
     "address" : {
@@ -35,14 +35,14 @@
     },
     "link" : "12.png",
     "deleted" : true,
-    "grade" : 3.0
+    "grade" : 3
   },
   "2" : {
     "id" : 2,
     "managerId" : "mika",
     "name" : "BozePomoziHVALA",
     "type" : "ITALIAN",
-    "articalIds" : [1,2,3 ],
+    "articalIds" : [ ],
     "status" : "OPEN",
     "address" : {
       "street" : "",
@@ -54,14 +54,14 @@
     },
     "link" : "indij.png",
     "deleted" : false,
-    "grade" : 4.2
+    "grade" : 4
   },
   "3" : {
     "id" : 3,
     "managerId" : "AAABBB",
     "name" : "Sarajevski cevap",
     "type" : "MEXICAN",
-    "articalIds" : [ 1,2,3],
+    "articalIds" : [ ],
     "status" : "OPEN",
     "address" : {
       "street" : "Mise Dimitrijevica",
@@ -73,14 +73,14 @@
     },
     "link" : "4_0.png",
     "deleted" : false,
-    "grade" : -1.0
+    "grade" : 1
   },
   "4" : {
     "id" : 4,
     "managerId" : "AcaPeric",
     "name" : "JEEEEEEJ",
-    "type" : "ITALIAN",
-    "articalIds" : [1,2,3 ],
+    "type" : "VEGE",
+    "articalIds" : [ ],
     "status" : "OPEN",
     "address" : {
       "street" : "aaa",
@@ -92,14 +92,14 @@
     },
     "link" : "kinezi.png",
     "deleted" : false,
-    "grade" : -1.0
+    "grade" : 3
   },
   "5" : {
     "id" : 5,
     "managerId" : "QQQEEEE",
     "name" : "ssssssssssss",
     "type" : "ITALIAN",
-    "articalIds" : [1,1,1 ],
+    "articalIds" : [ ],
     "status" : "OPEN",
     "address" : {
       "street" : "DSDF",
@@ -111,14 +111,14 @@
     },
     "link" : "novaind.png",
     "deleted" : false,
-    "grade" : -1.0
+    "grade" : 1
   },
   "6" : {
     "id" : 6,
     "managerId" : "mmmhhhh",
     "name" : "fffffffffffffffffffffff",
     "type" : "ITALIAN",
-    "articalIds" : [1 ],
+    "articalIds" : [ ],
     "status" : "OPEN",
     "address" : {
       "street" : "rte",
@@ -130,14 +130,14 @@
     },
     "link" : "piletina_sa_svezom_paprikom_i_tikvicama.jpg",
     "deleted" : false,
-    "grade" : -1.0
+    "grade" : 1
   },
   "9" : {
     "id" : 9,
     "managerId" : "mika",
     "name" : "rwe",
     "type" : "PIZZA",
-    "articalIds" : [ 1],
+    "articalIds" : [ ],
     "status" : "OPEN",
     "address" : {
       "street" : "tw",
@@ -149,6 +149,6 @@
     },
     "link" : "logoPizza.png",
     "deleted" : false,
-    "grade" : 5.0
+    "grade" : 5
   }
 }

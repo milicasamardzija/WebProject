@@ -15,14 +15,14 @@ public class Restaurant {
 	private Address address;
 	private String link;
 	private Boolean deleted;
-	private double grade;
+	private int grade;
 	
 	
-	public double getGrade() {
+	public int getGrade() {
 		return grade;
 	}
 
-	public void setGrade(double grade) {
+	public void setGrade(int grade) {
 		this.grade = grade;
 	}
 
@@ -88,7 +88,7 @@ public class Restaurant {
 	}
 
 	public Restaurant(int id,String managerId, String name, RestaurantType type, ArrayList<Integer> articalIds, Status status,
-			Address address, String link, Boolean deleted, double grade) {
+			Address address, String link, Boolean deleted, int grade) {
 		super();
 		this.id = id;
 		this.managerId = managerId;
