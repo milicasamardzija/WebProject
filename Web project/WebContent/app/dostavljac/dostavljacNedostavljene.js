@@ -40,18 +40,7 @@ template: `
             <button class="dropdown-item" type="button" v-on:click="filterTypeRestaurant('vege')">Veganski</button>
             </span>
         </td>
-        <td style="width:20px;"> </td>
-      <td > <p> ili status porudzbine </p></td>  
-      <td style="width:20px;"> </td>
-      <td > <button class="btn btn-secondary dropdown-toggle" type="button" data-toggle="dropdown" > Tip porudzbine </button>                  
-            <span class="dropdown-menu" aria-labelledby="dropdownMenu2">
-            <button class="dropdown-item" type="button" v-on:click="filterTypeOrders('obrada')">Obradjuje se</button>
-            <button class="dropdown-item" type="button" v-on:click="filterTypeOrders('transport')">U transportu</button>
-            <button class="dropdown-item" type="button" v-on:click="filterTypeOrders('dostavljena')">Dostavljena</button>
-            <button class="dropdown-item" type="button" v-on:click="filterTypeOrders('priprema')">U pripremi</button>
-            </span>
-        </td>
-    </tr>
+
 </table>
 
 <table style=" margin:25px 25px; font-size:1.1 em;"> 
