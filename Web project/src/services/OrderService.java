@@ -327,11 +327,18 @@ public class OrderService {
 		
 		@POST 
 		@Path("/askForDelivery")
-  public void askForDelivery(String idOrder) {
+		@Produces(MediaType.APPLICATION_JSON)
+  public Collection<OrderDTO> askForDelivery(String idOrder) {
 	  User deliverer = (User)request.getSession().getAttribute("loginUser");		//imam id deliverera
 	  OrderDAO dao= getOrders();
-	  dao.askForDeliver(deliverer.getUsername(), Integer.parseInt(idOrder));
-	  
+     Collection<Order> changed = dao.askForDeliver(deliverer.getUsername(), Integer.parseInt(idOrder));
+	  ArrayList<OrderDTO> ret= new ArrayList<OrderDTO>();
+	  for(Order o : changed) {
+		  if(o.getStatus().equals(OrderStatus.CEKA_DOSTAVLJACA)) {
+		  ret.add(new OrderDTO(o.getId(),findOrderArticals(o.getArticalIds()),findNameRestaurant(o.getRetaurantId()),o.getDate(), o.getPrice(),o.getIdCustomer(), o.getStatus(),o.getDeleted(),o.getPotencialDeliverer(),o.getIdDeliverer(), o.getRestaurantType()));
+	  }
+	  }
+	  return ret;
   }
 		
 	private OrderDAO getOrders() {
@@ -423,7 +430,7 @@ public class OrderService {
 	@Produces(MediaType.APPLICATION_JSON)
 	public Collection<OrderDTO> getAllOrdersForDelivererOnWait(){
 		ArrayList<OrderDTO> ret= new ArrayList<OrderDTO>();
-		OrderDAO ordersDAO = getOrders();
+		OrderDAO ordersDAO = getOrders(); //uzimam ih iz konteksta
 		Collection<Order> orders = ordersDAO.getValues();		
 		
 		for(Order order : orders) {

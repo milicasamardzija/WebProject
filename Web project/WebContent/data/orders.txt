@@ -23,7 +23,7 @@
     "deleted" : false,
     "idDeliverer" : "x",
     "restaurantType" : "ITALIAN",
-    "potencialDeliverer" : "x"
+    "potencialDeliverer" : "ZikaZivic"
   },
   "2" : {
     "id" : 2,
@@ -49,7 +49,7 @@
     "deleted" : false,
     "idDeliverer" : "x",
     "restaurantType" : "FISH",
-    "potencialDeliverer" : "x"
+    "potencialDeliverer" : "ZikaZivic"
   },
   "4" : {
     "id" : 4,

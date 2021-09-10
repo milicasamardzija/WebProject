@@ -132,9 +132,10 @@ methods:{
         })
     },
     zaduziZaDostavu: function(id){
+        this.orders=null;
         axios.post("/WebShopREST/rest/order/askForDelivery", id)
         .then(response => {
-       router.push(`/cekajuDostavljaca`)
+       this.orders =response.data
         })
         .catch(function(error){
             console.log(error)

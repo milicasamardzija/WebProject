@@ -90,7 +90,8 @@ public class OrderDTO {
 		this.status = status;
 	}
 	public OrderDTO(Integer id, ArrayList<String> artikli, String restaurantName, Date date, int price,
-			String idCustomer, OrderStatus status, Boolean deleted, String potencial, String idDeliverer, RestaurantType
+			String idCustomer, OrderStatus status, Boolean deleted, String potencial, String idDeliverer,
+			RestaurantType
 			type) {
 		super();
 		this.id = id;

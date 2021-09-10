@@ -53,6 +53,7 @@ public class OrderDAO {
 		this.orders = orders;
 	}
 	public OrderDAO() {
+		this.setOrders(new HashMap<Integer, Order>());
 		loadOrders();
 	}
 	
@@ -175,10 +176,11 @@ public class OrderDAO {
 	}
 	
 	//zatrazi dostavu
-	public void askForDeliver(String idDeliver, int idOrder) {
+	public Collection<Order> askForDeliver(String idDeliver, int idOrder) {
 		Order order=getByIdOrder(idOrder); //nasla sam je ;
 		order.setPotencialDeliverer(idDeliver);
 		saveOrders(); //sacuvaj sve 
+		return this.getValues(); //zelim da mi se vrate te izmenjene porudzbine nad kojima sam radila
 	}
 	
 	//odobri dostavu dostavu 
