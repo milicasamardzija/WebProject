@@ -33,20 +33,12 @@
 	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/osgi-resource-locator-1.0.1.jar"/>
 	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/persistence-api-1.0.jar"/>
 	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/validation-api-1.1.0.Final.jar"/>
-<<<<<<< Updated upstream
 	<classpathentry kind="lib" path="C:/Users/caja/Desktop/apache-tomcat-8.0.47/lib/tomcat-jni.jar">
-=======
-	<classpathentry kind="lib" path="C:/Users/neven/Downloads/apache-tomcat-8.0.47/lib/tomcat-jni.jar">
->>>>>>> Stashed changes
 		<attributes>
 			<attribute name="javadoc_location" value="https://tomcat.apache.org/tomcat-8.0-doc/api/"/>
 		</attributes>
 	</classpathentry>
-<<<<<<< Updated upstream
 	<classpathentry kind="lib" path="C:/Users/caja/Desktop/apache-tomcat-8.0.47/lib/servlet-api.jar">
-=======
-	<classpathentry kind="lib" path="C:/Users/neven/Downloads/apache-tomcat-8.0.47/lib/servlet-api.jar">
->>>>>>> Stashed changes
 		<attributes>
 			<attribute name="javadoc_location" value="https://docs.oracle.com/javaee/6/api/"/>
 		</attributes>
