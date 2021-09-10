@@ -22,7 +22,7 @@
     "id" : 1,
     "managerId" : "mika",
     "name" : "Toscana",
-    "type" : "PIZZA",
+    "type" : "ITALIAN",
     "articalIds" : [ 0, 1, 2 ],
     "status" : "OPEN",
     "address" : {
@@ -42,7 +42,7 @@
     "managerId" : "mika",
     "name" : "BozePomoziHVALA",
     "type" : "ITALIAN",
-    "articalIds" : [ ],
+    "articalIds" : [1,2,3 ],
     "status" : "OPEN",
     "address" : {
       "street" : "",
@@ -61,7 +61,7 @@
     "managerId" : "AAABBB",
     "name" : "Sarajevski cevap",
     "type" : "MEXICAN",
-    "articalIds" : [ ],
+    "articalIds" : [ 1,2,3],
     "status" : "OPEN",
     "address" : {
       "street" : "Mise Dimitrijevica",
@@ -80,7 +80,7 @@
     "managerId" : "AcaPeric",
     "name" : "JEEEEEEJ",
     "type" : "ITALIAN",
-    "articalIds" : [ ],
+    "articalIds" : [1,2,3 ],
     "status" : "OPEN",
     "address" : {
       "street" : "aaa",
@@ -99,7 +99,7 @@
     "managerId" : "QQQEEEE",
     "name" : "ssssssssssss",
     "type" : "ITALIAN",
-    "articalIds" : [ ],
+    "articalIds" : [1,1,1 ],
     "status" : "OPEN",
     "address" : {
       "street" : "DSDF",
@@ -118,7 +118,7 @@
     "managerId" : "mmmhhhh",
     "name" : "fffffffffffffffffffffff",
     "type" : "ITALIAN",
-    "articalIds" : [ ],
+    "articalIds" : [1 ],
     "status" : "OPEN",
     "address" : {
       "street" : "rte",
@@ -137,7 +137,7 @@
     "managerId" : "mika",
     "name" : "rwe",
     "type" : "PIZZA",
-    "articalIds" : [ ],
+    "articalIds" : [ 1],
     "status" : "OPEN",
     "address" : {
       "street" : "tw",

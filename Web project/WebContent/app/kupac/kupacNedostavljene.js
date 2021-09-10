@@ -10,6 +10,7 @@ template: `
 <div class="container" style=" margin-top: 20px; margin-left: 20px; margin-right: 10px;">
   <h3 style=" margin-left: 60px;"> <small> Trenutno stanje svih Vasih porudzbina: </small> <hr></h3>          
        
+  
   <!--tabela-->
   <div >
     <table class="table table-hover">

@@ -14,7 +14,7 @@ template: `
 <div>
 <table  style=" margin:25px 25px; font-size:1.1 em;"> 
 <tr>
-    <td  > <input type="text" placeholder="naziv restorana" style="height:32px;"> </td>
+    <td > <input type="text" placeholder="naziv restorana" style="height:32px;"> </td>
     <td style="padding: 12px;"> Cena od: </td> 
     <td style="padding: 12px;"> <input type="text" placeholder="pocetni iznos" style="height:32px;"></td> 
     <td style="padding: 12px;"> do: </td> 
@@ -35,12 +35,12 @@ template: `
     
         <td > <button class="btn btn-secondary dropdown-toggle" type="button" data-toggle="dropdown" > Tip restorana </button>                  
             <span class="dropdown-menu" aria-labelledby="dropdownMenu2">
-            <button class="dropdown-item" type="button" value="ITALIAN">Italijanski</button>
-            <button class="dropdown-item" type="button" value="CHINESE">Kineski</button>
-            <button class="dropdown-item" type="button" value="PIZZA">Pica</button>
-            <button class="dropdown-item" type="button" value="BARBECUE">Rostilj</button>
-            <button class="dropdown-item" type="button" value="FISH">Riblji</button>
-            <button class="dropdown-item" type="button" value="VEGE">Veganski</button>
+            <button class="dropdown-item" type="button" v-on:click="filterTypeRestaurant('italijanski')" >Italijanski</button>
+            <button class="dropdown-item" type="button" v-on:click="filterTypeRestaurant('kineski')">Kineski</button>
+            <button class="dropdown-item" type="button" v-on:click="filterTypeRestaurant('pica')" >Pica</button>
+            <button class="dropdown-item" type="button" v-on:click="filterTypeRestaurant('rostilj')">Rostilj</button>
+            <button class="dropdown-item" type="button" v-on:click="filterTypeRestaurant('riblji')" >Riblji</button>
+            <button class="dropdown-item" type="button" v-on:click="filterTypeRestaurant('vege')">Veganski</button>
             </span>
         </td>
         <td style="width:20px;"> </td>
@@ -48,13 +48,12 @@ template: `
       <td style="width:20px;"> </td>
       <td > <button class="btn btn-secondary dropdown-toggle" type="button" data-toggle="dropdown" > Tip porudzbine </button>                  
             <span class="dropdown-menu" aria-labelledby="dropdownMenu2">
-            <button class="dropdown-item" type="button" value="O">Otkazana</button>
-            <button class="dropdown-item" type="button" value="Dostavljena">Dostavljena</button>
-            <button class="dropdown-item" type="button" >Obradjuje se</button>
-            <button class="dropdown-item" type="button" >Ceka dostavljaca</button>
-            <button class="dropdown-item" type="button" >U transportu</button>
-            <button class="dropdown-item" type="button">Dostavljena</button>
-            <button class="dropdown-item" type="button">Nedostavljena</button>
+            <button class="dropdown-item" type="button" v-on:click="filterTypeOrders('otkazana')">Otkazana</button>
+            <button class="dropdown-item" type="button" v-on:click="filterTypeOrders('obrada')">Obradjuje se</button>
+            <button class="dropdown-item" type="button" v-on:click="filterTypeOrders('ceka')">Ceka dostavljaca</button>
+            <button class="dropdown-item" type="button" v-on:click="filterTypeOrders('transport')">U transportu</button>
+            <button class="dropdown-item" type="button" v-on:click="filterTypeOrders('dostavljena')">Dostavljena</button>
+            <button class="dropdown-item" type="button" v-on:click="filterTypeOrders('priprema')">U pripremi</button>
             </span>
         </td>
     </tr>
@@ -66,12 +65,12 @@ template: `
     
         <td > <button class="btn btn-secondary dropdown-toggle" type="button" data-toggle="dropdown" > Sortiraj porudzbine  </button>                  
             <span class="dropdown-menu" aria-labelledby="dropdownMenu2">
-            <button class="dropdown-item" type="button" value="ITALIAN">Nazivu restorana rastuce</button>
-            <button class="dropdown-item" type="button" value="CHINESE">Nazivu restorana opadajuce</button>
-            <button class="dropdown-item" type="button" value="PIZZA">Ceni porudzbine rastuce</button>
-            <button class="dropdown-item" type="button" value="BARBECUE">Ceni porudzbine opadajuce</button>
-            <button class="dropdown-item" type="button" value="FISH">Datumu porudzbine rastuce</button>
-            <button class="dropdown-item" type="button" value="VEGE">Datumu porudzbine opadajuce</button>
+            <button class="dropdown-item" type="button" v-on:click="sortOrders('imeRastuce')">Nazivu restorana rastuce</button>
+            <button class="dropdown-item" type="button" v-on:click="sortOrders('imeOpadajuce')">Nazivu restorana opadajuce</button>
+            <button class="dropdown-item" type="button" v-on:click="sortOrders('rastuce')">Ceni porudzbine rastuce</button>
+            <button class="dropdown-item" type="button" v-on:click="sortOrders('opadajuce')">Ceni porudzbine opadajuce</button>
+            <button class="dropdown-item" type="button"  >Datumu porudzbine rastuce</button>
+            <button class="dropdown-item" type="button" >Datumu porudzbine opadajuce</button>
             </span>
         </td>
         
@@ -80,16 +79,18 @@ template: `
 </div>
 
 
-  <!--tabela-->
-  <div v-if="mode" > 
-  <h3 style=" margin-left: 60px;"> <small> Trenutno stanje svih Vasih porudzbina: </small> <hr></h3>
-    <table class="table table-hover">
-        <thead>
+
+   
+  <div v-if= "orders != []" > 
+  <h3 style=" margin-left: 30px;"> <small> Trenutno stanje svih Vasih porudzbina: </small> <hr></h3>
+    <table class="table table-hover" >
+        <thead v-if= "orders != null">
           <tr>
             <th scope="col">Ime restorana</th>
             <th scope="col">Datum kreiranja</th>
             <th scope="col">Ukupna cena</th>
             <th scope="col">Status porudzbine</th>
+            <th scope="col">Tip restorana </th>
             <th scope="col"> </th>
           </tr>
         </thead>
@@ -99,6 +100,7 @@ template: `
             <td>{{order.date}}</td>
             <td>{{order.price}}</td>
             <td>{{order.status}}</td>
+            <td>{{order.restaurantType}}</td>
         
             <div>
 
@@ -110,8 +112,7 @@ template: `
         </tbody>
     </table>
   </div>
-   
-  
+
   <!-- modal obrisi-->
   <div class="modal fade" id="brisanje" role="dialog" >
           <div class="modal-dialog" style="width: 300px;" >
@@ -149,9 +150,40 @@ methods:{
         })
     }, 
     changeStatus() {
+       
         axios.post("/WebShopREST/rest/order/changeStatus", this.selected.id)
         .then(response => {
             router.push(`/porudzbine`);
+        })
+        .catch(function(error){
+            console.log(error)
+        })
+    },
+     filterTypeOrders: function(type) {
+        this.orders=null,
+        axios.post("/WebShopREST/rest/order/filterOrders", type)
+        .then(response => {
+           this.orders = response.data
+        })
+        .catch(function(error){
+            console.log(error)
+        })
+    }, 
+    filterTypeRestaurant: function(type) {
+        this.orders=null,
+        axios.post("/WebShopREST/rest/order/filterRestaurantTypeOrders", type)
+        .then(response => {
+           this.orders = response.data
+        })
+        .catch(function(error){
+            console.log(error)
+        })
+    },
+    sortOrders: function(type) {
+        this.orders=null,
+        axios.post("/WebShopREST/rest/order/sortOrders", type)
+        .then(response => {
+           this.orders = response.data
         })
         .catch(function(error){
             console.log(error)
