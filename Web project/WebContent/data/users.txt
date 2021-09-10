@@ -175,7 +175,7 @@
   },
   "marko" : {
     "deleted" : false,
-    "blocked" : false,
+    "blocked" : true,
     "username" : "marko",
     "password" : "marko",
     "name" : "Marko",

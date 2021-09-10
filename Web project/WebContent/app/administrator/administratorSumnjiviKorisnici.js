@@ -36,7 +36,7 @@ template: `
         <td>{{user.role}}</td>
         <td>{{user.typeCustomer.type}}</td>
         <div>
-          <td><button type="button" class="btn btn-secondary" v-on:click="blockUser">Blokiraj</button></td>
+          <td><button type="button" class="btn btn-secondary" v-on:click="blockUser(user.username)">Blokiraj</button></td>
         </div>
       </tr>
         </tbody>
@@ -66,10 +66,10 @@ template: `
     getSelected: function(user){
       this.selected = user;
     },
-    blockUser: function(event){
-      axios.post('/WebShopREST/rest/user/blockUser', this.selected.username)
+    blockUser: function(username){
+      axios.post('/WebShopREST/rest/user/blockUser', username)
             .then(response => {
-                router.push(`/sumnjivikorisnici`);
+                this.allUsers = response.data
             })
             .catch(function(error){
                 console.log(error)

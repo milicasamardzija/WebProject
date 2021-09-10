@@ -165,12 +165,13 @@ public class UsersDAO {
 	}
 	
 	//blokiranje korisnika
-	public void blockUserById(String username) {
+	public Collection<User> blockUserById(String username) {
 		User user = getUserByUsername(username);
 		if(user != null) {
 			user.setBlocked(true);
 			saveUsers();
 		}
+		return this.getUsers().values();
 	}
 	
 	public Collection<User> getValues() {
