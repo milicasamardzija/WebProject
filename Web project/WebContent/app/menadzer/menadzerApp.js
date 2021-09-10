@@ -8,9 +8,9 @@ const IzmeniArtikalComponent = {template: '<izmeniArtikal-menadzer></izmeniArtik
 const router = new VueRouter({
     mode: 'hash',
     routes:[
+        {path : '/', component: RestoranComponent},
         {path : '/profilMenadzer', component: ProfilComponent}, //profil
         {path : '/izmeniProfilMenadzer', component: IzmeniProfilComponent}, //izmena profila
-        {path : '/restoranMenadzer', component: RestoranComponent},
         {path : '/dodajArtikal', component: DodajArtikalComponent},
         {path : '/izmeniArtikal', component: IzmeniArtikalComponent},
     ]

@@ -18,6 +18,7 @@ import beans.Restaurant;
 import beans.User;
 import dao.ArticalDAO;
 import dao.RestaurantDAO;
+import dto.ArticalChangeDTO;
 import dto.ArticalDTO;
 
 @Path("/artical")
@@ -62,10 +63,33 @@ public class ArticalService {
 	}
 	
 	@POST
+	@Path("/getArtical")
+	@Produces(MediaType.APPLICATION_JSON)
+	public Artical getArtical(String id) {
+		ArticalDAO articalDAO = getArticalDAO();
+		
+		for (Artical artical : articalDAO.getValues()) {
+			if(!artical.getDeleted() && artical.getId() == Integer.parseInt(id)) {
+				return artical;
+			}
+			
+		}
+		return null;
+	}
+	
+	@POST
 	@Path("/addArtical")
 	@Consumes(MediaType.APPLICATION_JSON)
 	public void add(ArticalDTO artical) {
 		ArticalDAO articalDAO = getArticalDAO();
 		articalDAO.addArtical(artical);
+	}
+	
+	@POST
+	@Path("/changeArtical")
+	@Consumes(MediaType.APPLICATION_JSON)
+	public void add(ArticalChangeDTO artical) {
+		ArticalDAO articalDAO = getArticalDAO();
+		articalDAO.changeArtical(artical);
 	}
 }

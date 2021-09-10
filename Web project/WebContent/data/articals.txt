@@ -1,11 +1,11 @@
 {
   "0" : {
     "id" : 0,
-    "name" : "margarita",
+    "name" : "margaritaaa",
     "price" : 760.0,
     "type" : "FOOD",
     "idRestaurant" : 2,
-    "quantity" : 500.0,
+    "quantity" : 550.0,
     "description" : "sunka, kecap, sampinjoni",
     "link" : "12.png",
     "deleted" : false
@@ -24,7 +24,7 @@
   "2" : {
     "id" : 2,
     "name" : "hamburger",
-    "price" : 250.0,
+    "price" : 255.0,
     "type" : "FOOD",
     "idRestaurant" : 2,
     "quantity" : 300.0,
@@ -46,8 +46,8 @@
   "4" : {
     "id" : 4,
     "name" : "palacinke sa kremom",
-    "price" : 150.0,
-    "type" : "DRINK",
+    "price" : 160.0,
+    "type" : "FOOD",
     "idRestaurant" : 2,
     "quantity" : 200.0,
     "description" : "Krem, plazma, mleko",

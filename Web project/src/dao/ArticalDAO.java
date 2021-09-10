@@ -17,8 +17,10 @@ import com.fasterxml.jackson.databind.introspect.VisibilityChecker;
 import com.fasterxml.jackson.databind.type.MapType;
 import com.fasterxml.jackson.databind.type.TypeFactory;
 
+import beans.Address;
 import beans.Artical;
 import beans.Restaurant;
+import dto.ArticalChangeDTO;
 import dto.ArticalDTO;
 
 public class ArticalDAO {
@@ -160,5 +162,16 @@ public class ArticalDAO {
 		ret = path[1].substring(1);
 		
 		return ret;
+	}
+
+	public void changeArtical(ArticalChangeDTO artical) {
+		Artical articalChange = getByID(artical.id);
+		articalChange.setName(artical.name);
+		articalChange.setType(artical.type);
+		articalChange.setLink(artical.link);
+		articalChange.setDescription(artical.description);
+		articalChange.setPrice(artical.price);
+		articalChange.setQuantity(artical.quantity);
+		saveArticals();
 	}
 }
