@@ -69,8 +69,8 @@ template: `
             <button class="dropdown-item" type="button" v-on:click="sortOrders('imeOpadajuce')">Nazivu restorana opadajuce</button>
             <button class="dropdown-item" type="button" v-on:click="sortOrders('rastuce')">Ceni porudzbine rastuce</button>
             <button class="dropdown-item" type="button" v-on:click="sortOrders('opadajuce')">Ceni porudzbine opadajuce</button>
-            <button class="dropdown-item" type="button"  >Datumu porudzbine rastuce</button>
-            <button class="dropdown-item" type="button" >Datumu porudzbine opadajuce</button>
+            <button class="dropdown-item" type="button"  v-on:click="sortOrders('datumRastuce')">Datumu porudzbine rastuce</button>
+            <button class="dropdown-item" type="button" v-on:click="sortOrders('datumOpadajuce')">Datumu porudzbine opadajuce</button>
             </span>
         </td>
         
@@ -97,7 +97,7 @@ template: `
         <tbody>
           <tr v-for="order in orders" v-on:click="getSelected(order)">
             <td>{{order.restaurantName}}</td>
-            <td>{{order.date}}</td>
+            <td>{{order.date | dateFormat('DD.MM.YYYY.')}}</td>
             <td>{{order.price}}</td>
             <td>{{order.status}}</td>
             <td>{{order.restaurantType}}</td>
@@ -208,4 +208,12 @@ mounted(){
     })
 
 },
+
+filters: {
+    dateFormat: function(value, format){
+        var parsed = moment(value);
+        return parsed.format(format)
+    }
+}
+
 });
