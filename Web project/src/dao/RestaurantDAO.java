@@ -23,6 +23,7 @@ import beans.Restaurant;
 import beans.User;
 import dto.RestaurantChangeDTO;
 import dto.RestaurantNewDTO;
+import dto.RestaurantSearchMixDTO;
 import enums.CustomerType;
 import enums.RestaurantType;
 import enums.Role;
@@ -197,6 +198,8 @@ public class RestaurantDAO {
 	private RestaurantType checkTypeRestaurant(String type)
 	{
 		RestaurantType ret =null;
+		System.out.println("tip");
+		System.out.println(type);
 		if(type.equals("ITALIAN")) {
 			ret=RestaurantType.ITALIAN;
 		}
@@ -227,6 +230,17 @@ public class RestaurantDAO {
 			}
 		}
 		return null;
+	}
+
+	public Collection<Restaurant> searchMix(RestaurantSearchMixDTO parameters) {
+		ArrayList<Restaurant> ret = new ArrayList<Restaurant>();
+		for(Restaurant restaurant : this.restaurants.values()) {
+			if(restaurant.getType().equals(parameters.type) && restaurant.getName().toLowerCase().contains(parameters.name.toLowerCase()) && (restaurant.getGrade() == Integer.parseInt(parameters.grade)) && (restaurant.getAddress().getCity().toLowerCase().contains(parameters.location.toLowerCase()) || restaurant.getAddress().getStreet().toLowerCase().contains(parameters.location.toLowerCase()) )) 
+			{
+				ret.add(restaurant);
+			}
+		}
+		return ret;
 	}
 	
 }
