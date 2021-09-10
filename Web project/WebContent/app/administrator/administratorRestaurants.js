@@ -21,24 +21,21 @@ template: `
 										            <input type="text" class="form-control search-slt" placeholder="Lokacija restorana"  v-model="search.location">
 										        </div>
                                                 <div class="dropdown col-lg-2 col-md-3 col-sm-12 p-0 filt">
-                                                    
                                                     <select v-model="search.type">Tip
-                                                    <option   v-bind:value="0">Italijanski</option>
-                                                    <option   v-bind:value="1">Kineski</option>
+                                                    <option  v-bind:value="0">Italijanski</option>
+                                                    <option  v-bind:value="1">Kineski</option>
                                                     <option  v-bind:value="2">Pica</option>
-                                                    <option   v-bind:value="3">Rostilj</option>
-                                                    <option   v-bind:value="4">Riblji</option>
+                                                    <option  v-bind:value="3">Rostilj</option>
+                                                    <option  v-bind:value="4">Riblji</option>
                                                     <option  v-bind:value="5">Veganski</option>
                                                     </select>
                                                 </div>
-                                                <div class="dropdown col-lg-2 col-md-3 col-sm-12 p-0 filt">
-                                                    
-                                                    <select  v-model="search.grade"> Ocena
+                                                <div class="dropdown col-lg-2 col-md-3 col-sm-12 p-0 filt"><select  v-model="search.grade"> Ocena
                                                     <option  v-bind:value="5">5</option>
                                                     <option  v-bind:value="4">4</option>
-                                                    <option  type="button"  v-bind:value="3">3</option>
-                                                    <option  type="button"  v-bind:value="2">2</option>
-                                                    <option  type="button"  v-bind:value="1">1</option>
+                                                    <option  v-bind:value="3">3</option>
+                                                    <option  v-bind:value="2">2</option>
+                                                    <option  v-bind:value="1">1</option>
                                                     </select>
                                                 </div>
                                                 <div class="col-lg-1 col-md-3 col-sm-12 btn-search">

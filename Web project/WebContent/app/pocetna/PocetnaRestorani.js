@@ -2,45 +2,43 @@ Vue.component("restaurants", {
     data(){
         return{
             restaurants:[], 
-            selected:null
+            selected:null,
+            search: {name:"", location:"", type:"", grade:""}
         }
     },
 template: `
     
-                  <div>
-                      <table style="margin-left: 200px; margin-top: 20px;" >
+        <div>
+                        <table style="margin-left: 200px; margin-top: 20px;" >
                           <tr> 
-                            <td style="width: 250px"> <input style="width: 150px" type="text" class="form-control search-slt" placeholder="Naziv"> </td>
-                            <td style="width: 250px" > <input style="width: 150px"  type="text" class="form-control search-slt" placeholder="Lokacija"> </td>
+                            <td style="width: 250px"> <input style="width: 150px" type="text" class="form-control search-slt" placeholder="Naziv" v-model="search.name"> </td>
+                            <td style="width: 250px" > <input style="width: 150px"  type="text" class="form-control search-slt" placeholder="Lokacija" v-model="search.location"> </td>
                               <td style="width: 300px"> 
-                                <button class="btn btn-secondary dropdown-toggle" type="button" data-toggle="dropdown" >
-                                    Tip restorana
-                                </button>
-                                <span class="dropdown-menu" aria-labelledby="dropdownMenu2">
-                                  <button class="dropdown-item" type="button" value="ITALIAN">Italijanski</button>
-                                  <button class="dropdown-item" type="button" value="CHINESE">Kineski</button>
-                                  <button class="dropdown-item" type="button" value="PIZZA">Pica</button>
-                                  <button class="dropdown-item" type="button" value="BARBECUE">Rostilj</button>
-                                  <button class="dropdown-item" type="button" value="FISH">Riblji</button>
-                                  <button class="dropdown-item" type="button" value="VEGE">Veganski</button>
-                                  
-                                </span>
+                                
+                                                    <select v-model="search.type">Tip
+                                                    <option  v-bind:value="0">Italijanski</option>
+                                                    <option  v-bind:value="1">Kineski</option>
+                                                    <option  v-bind:value="2">Pica</option>
+                                                    <option  v-bind:value="3">Rostilj</option>
+                                                    <option  v-bind:value="4">Riblji</option>
+                                                    <option  v-bind:value="5">Veganski</option>
+                                                    </select>
+                                
                             </td>
                               <td style="width: 250px"> 
-                                <button class="btn btn-secondary dropdown-toggle" type="button" data-toggle="dropdown" >
-                                    Ocena restorana
-                                </button>
-                                <span class="dropdown-menu" aria-labelledby="dropdownMenu2">
-                                <button class="dropdown-item" type="button">1</button>
-                                <button class="dropdown-item" type="button">2</button>
-                                <button class="dropdown-item" type="button">3</button>
-                                <button class="dropdown-item" type="button">4</button>
-                                <button class="dropdown-item" type="button">5</button>
-                                </span>
+                            
+                              <select  v-model="search.grade"> Ocena
+                              <option  v-bind:value="5">5</option>
+                              <option  v-bind:value="4">4</option>
+                              <option  v-bind:value="3">3</option>
+                              <option  v-bind:value="2">2</option>
+                              <option  v-bind:value="1">1</option>
+                              </select>
+                           
                             </td>
-                            <td style="width: 250px"> <button type="button" class="btn btn-danger wrn-btn btn-search">Search</button></td>
+                            <td style="width: 250px"> <button type="button" class="btn btn-danger wrn-btn btn-search" v-on:click="pretrazi">Search</button></td>
                            </tr>
-                       </table>
+                        </table>
 
                
              
@@ -92,27 +90,27 @@ template: `
                                   </span> </td>
                             
                             </tr > 
-                    
+                            
                       </table>
               
             
-          <div id="restoraniPrikaz"> 
-              <div class=" tab-pane container active">
-                  <div class="row-restaurants" v-for="restaurant in restaurants" v-on:click="getSelected(restaurant)">
-                    <div class = "col-with-picture">
-                        <div class="col-picture">
-                            <div><img v-bind:src="'pictures/'+restaurant.link" style="height:250px !important; width:300px !important" v-on:click="goToRestaurant"></div>
+            <div id="restoraniPrikaz"> 
+               <div class=" tab-pane container active">
+                    <div class="row-restaurants" v-for="restaurant in restaurants" v-on:click="getSelected(restaurant)">
+                        <div class = "col-with-picture">
+                            <div class="col-picture">
+                                <div><img v-bind:src="'pictures/'+restaurant.link" style="height:250px !important; width:300px !important" v-on:click="goToRestaurant"></div>
+                            </div>
+                        </div>
+                        <div class="col-info">
+                            <h4 style="width: 600px;" class="text">Naziv:  {{restaurant.name}}</h4>
+                            <h4 style="width: 600px;" class="text">Tip:  {{restaurant.type}}</h4>
+                            <h4 style="width: 600px;" class="text">Lokacija:  {{restaurant.address.street}} {{restaurant.address.number}}, {{restaurant.address.city}}</h4>
+                            <h4 style="width: 600px;" class="text">Prosecna ocena: {{restaurant.grade}}</h4>
                         </div>
                     </div>
-                    <div class="col-info">
-                        <h4 style="width: 600px;" class="text">Naziv:  {{restaurant.name}}</h4>
-                        <h4 style="width: 600px;" class="text">Tip:  {{restaurant.type}}</h4>
-                        <h4 style="width: 600px;" class="text">Lokacija:  {{restaurant.address.street}} {{restaurant.address.number}}, {{restaurant.address.city}}</h4>
-                        <h4 style="width: 600px;" class="text">Prosecna ocena: {{restaurant.grade}}</h4>
-                    </div>
-                  </div>
-              </div>
-          </div>
+                </div>
+            </div>
     </div>
 
 `,
@@ -122,6 +120,15 @@ methods:{
         },
         goToRestaurant : function () {
             this.$router.push({path: `/restoran`, query:{ id: this.selected.id}})
+        },
+        pretrazi: function(){
+            axios.post('/WebShopREST/rest/restaurant/searchRestaurants', this.search)
+            .then(response => {
+               this.restaurants = response.data
+            })
+            .catch(function(error){
+                console.log(error)
+            })
         }
 },
 mounted(){

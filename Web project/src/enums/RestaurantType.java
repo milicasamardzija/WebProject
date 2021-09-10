@@ -6,6 +6,6 @@ public enum RestaurantType {
 	PIZZA,
 	BARBECUE,
 	FISH,
-	MEXICAN,
-	VEGE
+	VEGE,
+	MEXICAN
 }

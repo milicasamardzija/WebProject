@@ -20,7 +20,6 @@ import dao.UsersDAO;
 import dto.RestaurantChangeDTO;
 import dto.RestaurantNewDTO;
 import dto.RestaurantSearchMixDTO;
-import dto.UserSearchDTO;
 
 
 @Path("/restaurant")
@@ -89,7 +88,7 @@ public class RestaurantService {
 		restaurantDAO.changeRestaurant(restaurant);	
 	} 
 	
-	//pretraga korisnika
+	//pretraga kombinovana
 	@POST
 	@Path("/searchMix")
 	@Consumes(MediaType.APPLICATION_JSON)
@@ -98,6 +97,17 @@ public class RestaurantService {
 		RestaurantDAO restaurantDAO = getRestaurantsDAO();
 		return restaurantDAO.searchMix(restaurant);
 	}
+	
+	//pretraga obicna
+	@POST
+	@Path("/searchRestaurants")
+	@Consumes(MediaType.APPLICATION_JSON)
+	@Produces(MediaType.APPLICATION_JSON)
+	public Collection<Restaurant> search(RestaurantSearchMixDTO restaurant) {
+		RestaurantDAO restaurantDAO = getRestaurantsDAO();
+		return restaurantDAO.searchMix(restaurant);
+	}
+			
 		
 	//prikaz restorana
 	@POST

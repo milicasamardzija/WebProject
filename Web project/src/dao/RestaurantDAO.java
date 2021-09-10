@@ -198,8 +198,6 @@ public class RestaurantDAO {
 	private RestaurantType checkTypeRestaurant(String type)
 	{
 		RestaurantType ret =null;
-		System.out.println("tip");
-		System.out.println(type);
 		if(type.equals("ITALIAN")) {
 			ret=RestaurantType.ITALIAN;
 		}
@@ -217,6 +215,9 @@ public class RestaurantDAO {
 		}
 		if(type.equals("VEGE")) {
 			ret=RestaurantType.VEGE;
+		} 
+		if(type.equals("MEXICAN")) {
+			ret=RestaurantType.MEXICAN;
 		} 
 		return ret;
 	}
@@ -242,5 +243,20 @@ public class RestaurantDAO {
 		}
 		return ret;
 	}
+
+	/*public Collection<Restaurant> searchNotMix(RestaurantSearchMixDTO parameters) {
+		ArrayList<Restaurant> ret = new ArrayList<Restaurant>();
+		if(parameters.equals(null)) {
+			return this.getValues();
+		}
+		for(Restaurant restaurant : this.restaurants.values()) {
+			
+			if(restaurant.getType().equals(parameters.type) || restaurant.getName().toLowerCase().contains(parameters.name.toLowerCase()) || (restaurant.getGrade() == Integer.parseInt(parameters.grade)) || (restaurant.getAddress().getCity().toLowerCase().contains(parameters.location.toLowerCase()) || restaurant.getAddress().getStreet().toLowerCase().contains(parameters.location.toLowerCase()) )) 
+			{
+				ret.add(restaurant);
+			}
+		}
+		return ret;
+	}*/
 	
 }
