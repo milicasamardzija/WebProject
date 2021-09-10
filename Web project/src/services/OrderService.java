@@ -180,12 +180,28 @@ public class OrderService {
 					    }
 					});
 			 }
+		
 			 if(type.equals("opadajuce")) {
 				 myOrders = (ArrayList<OrderDTO>) myOrders.stream().sorted(Comparator.comparingInt(OrderDTO::getPrice).reversed()).collect(Collectors.toList());
 			 }
 			 if(type.equals("rastuce")) {
 				 myOrders = (ArrayList<OrderDTO>) myOrders.stream().sorted(Comparator.comparingInt(OrderDTO::getPrice)).collect(Collectors.toList());
 			 }
+				if(type.equals("datumRastuce")) {
+					 Collections.sort(myOrders, new Comparator<OrderDTO>(){
+						    public int compare(OrderDTO s1, OrderDTO s2) {
+						        return s1.getDate().compareTo(s2.getDate());
+						    }
+						});
+				 }
+				if(type.equals("datumOpadajuce")) {
+					 Collections.sort(myOrders, new Comparator<OrderDTO>(){
+						    public int compare(OrderDTO s1, OrderDTO s2) {
+						        return s2.getDate().compareTo(s1.getDate());
+						    }
+						});
+				 }
+			 
 			 return myOrders;
 		}
 	
