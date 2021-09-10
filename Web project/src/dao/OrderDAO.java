@@ -9,6 +9,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
+import java.util.Iterator;
 
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
@@ -24,6 +25,7 @@ import com.fasterxml.jackson.databind.type.TypeFactory;
 
 import beans.Order;
 import beans.User;
+import dao.RestaurantDAO;
 import dto.OrderDTO;
 import enums.OrderStatus;
 import enums.RestaurantType;
@@ -51,14 +53,14 @@ public class OrderDAO {
 		this.orders = orders;
 	}
 	public OrderDAO() {
-		this.setOrders(new HashMap<Integer, Order>());
-		
 		loadOrders();
 	}
 	
+	
+	
 	//citanje iz fajla
 	@SuppressWarnings("unchecked")
-	private void loadOrders() {
+	public void loadOrders() {
 		FileWriter fileWriter = null;
 		BufferedReader in = null;
 		File file = null;
@@ -172,6 +174,21 @@ public class OrderDAO {
 		return null;
 	}
 	
+	//zatrazi dostavu
+	public void askForDeliver(String idDeliver, int idOrder) {
+		Order order=getByIdOrder(idOrder); //nasla sam je ;
+		order.setPotencialDeliverer(idDeliver);
+		saveOrders(); //sacuvaj sve 
+	}
+	
+	//odobri dostavu dostavu 
+	public void getInCharge(int idOrder) {
+		Order order=getByIdOrder(idOrder); //nasla sam je 
+		order.setIdDeliverer(order.getPotencialDeliverer());
+		saveOrders(); //sacuvaj sve 
+		
+	}
+	
 	public void deleteOrderById(int id) {
 		Order order = getByIdOrder(id);
 		if(order != null && !order.getDeleted()) {
@@ -189,17 +206,17 @@ public class OrderDAO {
 		return null;
 	}
 	
-	public void changeStatus(int id) {
+	//otkazivanje porudzbine kod kupca
+	public void changeStatusCancel(int id) {
 		Order order = getByIdOrder(id);
 		if(order.getStatus().equals(OrderStatus.OBRADA)) {
 			order.setStatus(OrderStatus.OTKAZANA);
 			saveOrders();
 		}
-		
 	}
 
 	//upis u fajl
-	private void saveOrders() {
+	public void saveOrders() {
 		File f = new File("WebContent/data/orders.txt");
 		FileWriter fileWriter = null;
 		try {
@@ -268,4 +285,10 @@ public class OrderDAO {
 	}
 	
 	
+			
+	
+			
+		
+
+			
 }

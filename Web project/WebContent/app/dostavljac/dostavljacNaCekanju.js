@@ -1,12 +1,9 @@
-Vue.component("porudbine-kupac", {
+Vue.component("cekaju-dostavljaca", {
     data: function() {  
         return {
-        kupac:{},
-        orders: [],
-        idKupca: null, 
-        selected:{},
-        mode: true
-        }
+            orders: [],
+            user:{}
+            }
     },
 template: `
 <div class="container" style=" margin-top: 20px; margin-left: 40px; margin-right: 10px;">
@@ -43,19 +40,6 @@ template: `
             <button class="dropdown-item" type="button" v-on:click="filterTypeRestaurant('vege')">Veganski</button>
             </span>
         </td>
-        <td style="width:20px;"> </td>
-      <td > <p> ili status porudzbine </p></td>  
-      <td style="width:20px;"> </td>
-      <td > <button class="btn btn-secondary dropdown-toggle" type="button" data-toggle="dropdown" > Tip porudzbine </button>                  
-            <span class="dropdown-menu" aria-labelledby="dropdownMenu2">
-            <button class="dropdown-item" type="button" v-on:click="filterTypeOrders('otkazana')">Otkazana</button>
-            <button class="dropdown-item" type="button" v-on:click="filterTypeOrders('obrada')">Obradjuje se</button>
-            <button class="dropdown-item" type="button" v-on:click="filterTypeOrders('ceka')">Ceka dostavljaca</button>
-            <button class="dropdown-item" type="button" v-on:click="filterTypeOrders('transport')">U transportu</button>
-            <button class="dropdown-item" type="button" v-on:click="filterTypeOrders('dostavljena')">Dostavljena</button>
-            <button class="dropdown-item" type="button" v-on:click="filterTypeOrders('priprema')">U pripremi</button>
-            </span>
-        </td>
     </tr>
 </table>
 
@@ -69,7 +53,7 @@ template: `
             <button class="dropdown-item" type="button" v-on:click="sortOrders('imeOpadajuce')">Nazivu restorana opadajuce</button>
             <button class="dropdown-item" type="button" v-on:click="sortOrders('rastuce')">Ceni porudzbine rastuce</button>
             <button class="dropdown-item" type="button" v-on:click="sortOrders('opadajuce')">Ceni porudzbine opadajuce</button>
-            <button class="dropdown-item" type="button"  v-on:click="sortOrders('datumRastuce')">Datumu porudzbine rastuce</button>
+            <button class="dropdown-item" type="button" v-on:click="sortOrders('datumRastuce')" >Datumu porudzbine rastuce</button>
             <button class="dropdown-item" type="button" v-on:click="sortOrders('datumOpadajuce')">Datumu porudzbine opadajuce</button>
             </span>
         </td>
@@ -82,7 +66,7 @@ template: `
 
    
   <div v-if= "orders != []" > 
-  <h3 style=" margin-left: 30px;"> <small> Trenutno stanje svih Vasih porudzbina: </small> <hr></h3>
+  <h3 style=" margin-left: 30px;"> <small> Trenutno stanje svih porudzbina na cekanju: </small> <hr></h3>
     <table class="table table-hover" >
         <thead v-if= "orders != null">
           <tr>
@@ -97,41 +81,18 @@ template: `
         <tbody>
           <tr v-for="order in orders" v-on:click="getSelected(order)">
             <td>{{order.restaurantName}}</td>
-            <td>{{order.date | dateFormat('DD.MM.YYYY.')}}</td>
+            <td> {{order.date | dateFormat('DD.MM.YYYY.')}} </td>
             <td>{{order.price}}</td>
             <td>{{order.status}}</td>
             <td>{{order.restaurantType}}</td>
-        
+          
             <div>
 
-              <td><button type="button" class="btn btn-secondary" v-if="order.status == 'OBRADA'" v-on:click="changeStatus()" >Otkazi</button>
-               <button type="button" class="btn btn-secondary" v-if="order.status == 'OTKAZANA'" v-on:click="getSelected(order)" data-toggle="modal" data-target="#brisanje" >Izbrisi</button>  </td>
-               <button type="button" class="btn btn-secondary" v-if="order.status == 'DOSTAVLJENA'" v-on:click="getSelected(order)" data-toggle="modal" data-target="#brisanje" >Izbrisi</button> 
+              <td><button type="button" class="btn btn-secondary" v-if="order.potencialDeliverer != user.username" v-on:click="zaduziZaDostavu(order.id)">Zatrazi</button>
                </div>
           </tr>
         </tbody>
     </table>
-  </div>
-
-  <!-- modal obrisi-->
-  <div class="modal fade" id="brisanje" role="dialog" >
-          <div class="modal-dialog" style="width: 300px;" >
-              <!-- Modal content -->
-              <div class="modal-content">
-                  <div class="modal-header" style="padding:35px 50px;">
-                  <h5 class="modal-title" id="exampleModalLabel">Odjavi se</h5>
-                  </div>
-                  <div class="modal-body"  style="padding:40px 50px;">
-                      <form role="form" @submit="deleteOrder">
-                        <div> <p> Da li ste sigurni da zelite da obrisete?</p></div>
-                          <button type="submit" class="btn btn-danger btn-block" v-on:click="deleteOrder"><span class="glyphicon glyphicon-off"></span> Obrisi</button>
-                      </form>
-                  </div>
-                  <div class="modal-footer">
-                  <button type="button" class="btn btn-danger btn-default pull-left"  data-dismiss="modal">Odustani</button>   
-                  </div>
-              </div>
-          </div>
   </div>
   
 </div>
@@ -143,35 +104,16 @@ methods:{
     deleteOrder() {
         axios.post("/WebShopREST/rest/order/deleteOrder", this.selected.id )
         .then(response => {
-            router.push(`/porudzbine`);
-        })
-        .catch(function(error){
-            console.log(error)
-        })
-    }, 
-    changeStatus() {
-       
-        axios.post("/WebShopREST/rest/order/changeStatusCancel", this.selected.id)
-        .then(response => {
-            router.push(`/porudzbine`);
+            router.push(`/cekajuDostavljaca`);
         })
         .catch(function(error){
             console.log(error)
         })
     },
-     filterTypeOrders: function(type) {
-        this.orders=null,
-        axios.post("/WebShopREST/rest/order/filterOrders", type)
-        .then(response => {
-           this.orders = response.data
-        })
-        .catch(function(error){
-            console.log(error)
-        })
-    }, 
+      
     filterTypeRestaurant: function(type) {
         this.orders=null,
-        axios.post("/WebShopREST/rest/order/filterRestaurantTypeOrders", type)
+        axios.post("/WebShopREST/rest/order/filterRestaurantTypeOnWaitOrders", type)
         .then(response => {
            this.orders = response.data
         })
@@ -181,9 +123,18 @@ methods:{
     },
     sortOrders: function(type) {
         this.orders=null,
-        axios.post("/WebShopREST/rest/order/sortOrders", type)
+        axios.post("/WebShopREST/rest/order/sortDelivererOnWaitOrders", type)
         .then(response => {
            this.orders = response.data
+        })
+        .catch(function(error){
+            console.log(error)
+        })
+    },
+    zaduziZaDostavu: function(id){
+        axios.post("/WebShopREST/rest/order/askForDelivery", id)
+        .then(response => {
+       router.push(`/cekajuDostavljaca`)
         })
         .catch(function(error){
             console.log(error)
@@ -194,12 +145,12 @@ methods:{
 mounted(){
     axios.get("/WebShopREST/rest/profile/profileUser")
     .then( response => {
-        this.kupac = response.data
+        this.user = response.data
     })
     .catch(function(error){
         console.log(error)
     }),
-    axios.get("/WebShopREST/rest/order/getOrders")
+    axios.get("/WebShopREST/rest/order/getAllOrdersForDelivererOnWait")
     .then( response => {
         this.orders = response.data
     })
@@ -208,12 +159,10 @@ mounted(){
     })
 
 },
-
 filters: {
     dateFormat: function(value, format){
         var parsed = moment(value);
         return parsed.format(format)
     }
 }
-
 });

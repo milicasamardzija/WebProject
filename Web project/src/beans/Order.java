@@ -18,7 +18,14 @@ public class Order {
 	private Boolean deleted;
 	private String idDeliverer;
 	private RestaurantType restaurantType;
+	private String potencialDeliverer;
 	
+	public String getPotencialDeliverer() {
+		return potencialDeliverer;
+	}
+	public void setPotencialDeliverer(String potencialDeliverer) {
+		this.potencialDeliverer = potencialDeliverer;
+	}
 	public String getIdDeliverer() {
 		return idDeliverer;
 	}
@@ -80,7 +87,7 @@ public class Order {
 		this.status = status;
 	}
 	public Order(int id, ArrayList<Integer> articalIds, int retaurantId, Date date, int price, String idCustomer,
-			OrderStatus status, Boolean deleted, String idDeliverer, RestaurantType type) {
+			OrderStatus status, Boolean deleted,String idPotencial, String idDeliverer, RestaurantType type) {
 		super();
 		this.id = id;
 		this.articalIds = articalIds;
@@ -92,6 +99,7 @@ public class Order {
 		this.deleted=deleted;
 		this.idDeliverer=idDeliverer;
 		this.restaurantType=type;
+		this.potencialDeliverer=idPotencial;
 	}
 	public Order() {
 		super();

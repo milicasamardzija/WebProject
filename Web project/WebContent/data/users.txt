@@ -121,7 +121,7 @@
     "username" : "ZikaZivic",
     "password" : "ZikaZivic",
     "name" : "Zika",
-    "surname" : "Zivic",
+    "surname" : "Zivojinovic",
     "gender" : "MALE",
     "birthday" : 1593129600000,
     "role" : "DELIVERER",
@@ -201,5 +201,26 @@
     },
     "idRestaurant" : 0,
     "suspecious" : true
-  }
+  },
+  "ivan" : {
+    "deleted" : false,
+    "blocked" : false,
+    "username" : "ivan",
+    "password" : "ivan",
+    "name" : "Ivan",
+    "surname" : "Uskokovic",
+    "gender" : "MALE",
+    "birthday" : 1593129600000,
+    "role" : "DELIVERER",
+    "address" : {
+      "street" : "Lilike Bem",
+      "number" : 1,
+      "city" : "Novi Sad",
+      "zipCode" : 21000,
+      "latitude" : 0.0,
+      "longitude" : 0.0
+      },
+    "idRestaurant" : 0,
+    "suspecious" : true
+    }
 }

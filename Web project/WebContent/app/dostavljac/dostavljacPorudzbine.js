@@ -1,11 +1,8 @@
-Vue.component("porudbine-kupac", {
+Vue.component("porudzbine-dostavljac", {
     data: function() {  
         return {
-        kupac:{},
         orders: [],
-        idKupca: null, 
-        selected:{},
-        mode: true
+        selected: {}
         }
     },
 template: `
@@ -69,7 +66,7 @@ template: `
             <button class="dropdown-item" type="button" v-on:click="sortOrders('imeOpadajuce')">Nazivu restorana opadajuce</button>
             <button class="dropdown-item" type="button" v-on:click="sortOrders('rastuce')">Ceni porudzbine rastuce</button>
             <button class="dropdown-item" type="button" v-on:click="sortOrders('opadajuce')">Ceni porudzbine opadajuce</button>
-            <button class="dropdown-item" type="button"  v-on:click="sortOrders('datumRastuce')">Datumu porudzbine rastuce</button>
+            <button class="dropdown-item" type="button" v-on:click="sortOrders('datumRastuce')" >Datumu porudzbine rastuce</button>
             <button class="dropdown-item" type="button" v-on:click="sortOrders('datumOpadajuce')">Datumu porudzbine opadajuce</button>
             </span>
         </td>
@@ -82,7 +79,7 @@ template: `
 
    
   <div v-if= "orders != []" > 
-  <h3 style=" margin-left: 30px;"> <small> Trenutno stanje svih Vasih porudzbina: </small> <hr></h3>
+  <h3 style=" margin-left: 30px;"> <small> Trenutno stanje svih porudzbina na cekanju: </small> <hr></h3>
     <table class="table table-hover" >
         <thead v-if= "orders != null">
           <tr>
@@ -97,11 +94,11 @@ template: `
         <tbody>
           <tr v-for="order in orders" v-on:click="getSelected(order)">
             <td>{{order.restaurantName}}</td>
-            <td>{{order.date | dateFormat('DD.MM.YYYY.')}}</td>
+            <td> {{order.date | dateFormat('DD.MM.YYYY.')}} </td>
             <td>{{order.price}}</td>
             <td>{{order.status}}</td>
             <td>{{order.restaurantType}}</td>
-        
+          
             <div>
 
               <td><button type="button" class="btn btn-secondary" v-if="order.status == 'OBRADA'" v-on:click="changeStatus()" >Otkazi</button>
@@ -140,80 +137,50 @@ methods:{
     getSelected: function(order){
         this.selected = order;
       }, 
-    deleteOrder() {
-        axios.post("/WebShopREST/rest/order/deleteOrder", this.selected.id )
-        .then(response => {
-            router.push(`/porudzbine`);
-        })
-        .catch(function(error){
-            console.log(error)
-        })
-    }, 
-    changeStatus() {
-       
-        axios.post("/WebShopREST/rest/order/changeStatusCancel", this.selected.id)
-        .then(response => {
-            router.push(`/porudzbine`);
-        })
-        .catch(function(error){
-            console.log(error)
-        })
-    },
-     filterTypeOrders: function(type) {
-        this.orders=null,
-        axios.post("/WebShopREST/rest/order/filterOrders", type)
-        .then(response => {
-           this.orders = response.data
-        })
-        .catch(function(error){
-            console.log(error)
-        })
-    }, 
-    filterTypeRestaurant: function(type) {
-        this.orders=null,
-        axios.post("/WebShopREST/rest/order/filterRestaurantTypeOrders", type)
-        .then(response => {
-           this.orders = response.data
-        })
-        .catch(function(error){
-            console.log(error)
-        })
-    },
-    sortOrders: function(type) {
-        this.orders=null,
-        axios.post("/WebShopREST/rest/order/sortOrders", type)
-        .then(response => {
-           this.orders = response.data
-        })
-        .catch(function(error){
-            console.log(error)
-        })
-    }
-    
-},
-mounted(){
-    axios.get("/WebShopREST/rest/profile/profileUser")
-    .then( response => {
-        this.kupac = response.data
+deleteOrder() {
+    axios.post("/WebShopREST/rest/order/deleteOrder", this.selected.id )
+    .then(response => {
+        router.push(`/porudzbine`);
     })
     .catch(function(error){
         console.log(error)
-    }),
-    axios.get("/WebShopREST/rest/order/getOrders")
+    })
+}, 
+filterTypeRestaurant: function(type) {
+    this.orders=null,
+    axios.post("/WebShopREST/rest/order/filterDelivererRestaurantTypeOrders", type)
+    .then(response => {
+       this.orders = response.data
+    })
+    .catch(function(error){
+        console.log(error)
+    })
+},
+sortOrders: function(type) {
+    this.orders=null,
+    axios.post("/WebShopREST/rest/order/sortDelivererOrders", type)
+    .then(response => {
+       this.orders = response.data
+    })
+    .catch(function(error){
+        console.log(error)
+    })
+}
+},
+mounted(){
+    axios.get("/WebShopREST/rest/order/getDelivererOrders")
     .then( response => {
         this.orders = response.data
     })
     .catch(function(error){
         console.log(error)
     })
-
 },
-
 filters: {
     dateFormat: function(value, format){
         var parsed = moment(value);
         return parsed.format(format)
     }
 }
-
 });
+

@@ -17,10 +17,7 @@ template: `
             <h4> Prezime: {{user.surname}}</h4>
             <h4>Korisnicko ime: {{user.username}}</h4>
             <h4>Pol: {{user.gender}}</h4>
-            <tr> 
-                <td>Datum rodjenja: </td>
-                <td> {{user.birthday | dateFormat('DD.MM.YYYY.')}} </td>
-            </tr>
+            <h4> Datum rodjenja:  {{user.birthday | dateFormat('DD.MM.YYYY.')}} </h4> 
             <h4>Adresa: {{user.address.street}}  {{user.address.number}}  {{user.address.city}}  {{user.address.zipCode}}</h4>
             <button type="button" class="btn btn-success" v-on:click= "editProfile" >Izmeni podatke</button>
         </div>
@@ -35,7 +32,7 @@ template: `
     mounted(){
         axios.get("/WebShopREST/rest/profile/profileUser")
         .then( response => {
-            this.user = response.data
+            this.user = response.data 
         })
         .catch(function(error){
             console.log(error)
