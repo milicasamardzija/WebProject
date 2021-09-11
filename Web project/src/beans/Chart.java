@@ -6,7 +6,7 @@ public class Chart {
 	private int id;
 	private ArrayList<Integer> articalsIds;
 	private String idCustomer;
-		private double price;
+	private double price;
 		
 	public Chart() {}	
 	

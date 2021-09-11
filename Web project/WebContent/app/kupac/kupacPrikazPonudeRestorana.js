@@ -4,7 +4,9 @@ Vue.component("odabraniRestoran-kupac", {
             restaurant: {},
             articals: [],
             idRestaurant: null,
-            selectedArtical: {}
+            selectedArtical: {},
+            quantity: null,
+            articalChart: {idArtical:"", quantity:""}
         }
     },
 template: `
@@ -45,8 +47,8 @@ template: `
                                     <p>Gramaza: {{artical.quantity}}g</p>
                                     <p>Opis: {{artical.description}}</p>
                                 </div>
-                                <div class="col-lg-1 col-md-3 col-sm-12 btn-search">
-                                    <button v-on:click= "poruci" style= "margin-left: 70px; width:40px" type="button" class="btn btn-danger wrn-btn  col-lg-1 col-md-3 col-sm-12"><span class="glyphicon glyphicon-plus"></span></button>
+                                <div>
+                                <td> <input type="number" min="0" v-model="artical.number" @input="dodaj(artical)">  </td>
                                 </div>
                             </div>
                         </div>
@@ -68,6 +70,17 @@ methods:{
         },
         poruci: function(){
 
+        },
+        dodaj: function(artical){
+            axios.post("/WebShopREST/rest/articalChart/addNew", artical)
+            .then()
+            .catch(function(error){
+                console.log(error)
+            })
+
+        },
+        oduzmi:function(idArtical){
+            
         }
 },
 mounted(){

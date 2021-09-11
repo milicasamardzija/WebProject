@@ -1,17 +1,11 @@
 package beans;
 
 public class ArticalChart {
-	private int id;
 	private int idArtical;
 	private int quantity;
 	private String idCustomer;
 	
-	public int getId() {
-		return id;
-	}
-	public void setId(int id) {
-		this.id = id;
-	}
+	
 	public int getIdArtical() {
 		return idArtical;
 	}
@@ -30,9 +24,8 @@ public class ArticalChart {
 	public void setIdCustomer(String idCustomer) {
 		this.idCustomer = idCustomer;
 	}
-	public ArticalChart(int id,int idArtical, int quantity, String idCustomer) {
+	public ArticalChart(int idArtical, int quantity, String idCustomer) {
 		super();
-		this.id = id;
 		this.idArtical = idArtical;
 		this.quantity = quantity;
 		this.idCustomer = idCustomer;

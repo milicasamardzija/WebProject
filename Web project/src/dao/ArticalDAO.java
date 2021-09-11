@@ -151,7 +151,7 @@ public class ArticalDAO {
 
 	public void addArtical(ArticalDTO artical) {
 		int id = generateIdArtical();
-		this.articals.put(id, new Artical(id, artical.name, artical.price, artical.type, artical.idRestaurant,artical.quantity, artical.description, generateLink(artical.link),false));
+		this.articals.put(id, new Artical(id, artical.name, artical.price, artical.type, artical.idRestaurant,artical.quantity, artical.description, generateLink(artical.link),false, 0));
 		this.saveArticals();
 	}
 

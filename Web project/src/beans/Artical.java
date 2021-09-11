@@ -5,14 +5,21 @@ import enums.ArticalType;
 public class Artical {
 	private int id;
 	private String name;
-	private double price;
+	private int price;
 	private ArticalType type;
 	private int idRestaurant;
 	private double quantity;
 	private String description;
 	private String link;
 	private boolean deleted;
+	private int number;
 	
+	public int getNumber() {
+		return number;
+	}
+	public void setNumber(int number) {
+		this.number = number;
+	}
 	public Boolean getDeleted() {
 		return deleted;
 	}
@@ -31,10 +38,10 @@ public class Artical {
 	public void setName(String name) {
 		this.name = name;
 	}
-	public double getPrice() {
+	public int getPrice() {
 		return price;
 	}
-	public void setPrice(double price) {
+	public void setPrice(int price) {
 		this.price = price;
 	}
 	public ArticalType getType() {
@@ -68,8 +75,8 @@ public class Artical {
 		this.link = link;
 	}
 	
-	public Artical(int id, String name, double price, ArticalType type, int idRestaurant, double quantity,
-			String description, String link, boolean deleted) {
+	public Artical(int id, String name, int price, ArticalType type, int idRestaurant, double quantity,
+			String description, String link, boolean deleted, int number) {
 		super();
 		this.id = id;
 		this.name = name;
@@ -80,6 +87,7 @@ public class Artical {
 		this.description = description;
 		this.link = link;
 		this.deleted = deleted;
+		this.number=number;
 	}
 	
 	public Artical() {

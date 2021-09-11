@@ -1,0 +1,22 @@
+{
+  "0" : {
+    "idArtical" : 0,
+    "quantity" : 3,
+    "idCustomer" : "kupac"
+  },
+  "2" : {
+    "idArtical" : 2,
+    "quantity" : 1,
+    "idCustomer" : "kupac"
+  },
+  "3" : {
+    "idArtical" : 3,
+    "quantity" : 2,
+    "idCustomer" : "kupac"
+  },
+  "4" : {
+    "idArtical" : 4,
+    "quantity" : 1,
+    "idCustomer" : "kupac"
+  }
+}

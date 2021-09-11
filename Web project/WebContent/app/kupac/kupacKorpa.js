@@ -1,7 +1,7 @@
 Vue.component("korpa-kupac", {
     data(){
         return{
-            proizvodi:null
+            proizvodi:[]
         }
     },
 template: `
@@ -24,15 +24,16 @@ template: `
                       </tr>
                     </thead>
                     <tbody>
-                      <tr >
-                        <td>LOGO</td>
-                        <td>IME</td>
-                        <td>CENA</td>
-                        <td>KOLICINA</td>
-                        <td><button type="button" class="btn btn-success"> <span class="glyphicon glyphicon-plus"></span></button> </td>
-                        <td><button type="button" class="btn btn-danger"> <span class="glyphicon glyphicon-minus"></span></button></td>
+                      <tr v-for="proizvod in proizvodi">
+                        <td><div class="col-picture">
+                        <div><img v-bind:src="'../pictures/'+ proizvod.link" style="height:250px !important; width:300px !important"></div>
+                        </div></td>
+                        <td>{{proizvod.name}}</td>
+                        <td>{{proizvod.price}}</td>
+                        <td>{{proizvod.quantity}}</td>
+                        <td><button type="button" class="btn btn-success" v-on:click="dodaj"> <span class="glyphicon glyphicon-plus"></span></button> </td>
+                        <td><button type="button" class="btn btn-danger"  v-on:click="oduzmi"> <span class="glyphicon glyphicon-minus"></span></button></td>
                         <div>
-                         
                           <td><button type="button" class="btn btn-secondary">Izbrisi</button></td>
                         </div>
                       </tr>
@@ -47,11 +48,15 @@ template: `
 </section>
 `,
 methods:{
-    editProfile: function() {
-        router.push(`/izmeniProfil`)
-    }
+    
 },
 mounted(){
-
+  axios.get("/WebShopREST/rest/articalChart/getChart")
+  .then( response => {
+      this.proizvodi = response.data
+  })
+  .catch(function(error){
+      console.log(error)
+  })
 },
 });

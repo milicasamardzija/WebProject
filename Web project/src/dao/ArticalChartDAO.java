@@ -6,8 +6,13 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
+
+import javax.servlet.ServletContext;
+import javax.servlet.http.HttpServletRequest;
+import javax.ws.rs.core.Context;
 
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.core.JsonGenerator;
@@ -17,9 +22,17 @@ import com.fasterxml.jackson.databind.introspect.VisibilityChecker;
 import com.fasterxml.jackson.databind.type.MapType;
 import com.fasterxml.jackson.databind.type.TypeFactory;
 
+import beans.Artical;
 import beans.ArticalChart;
+import beans.User;
+import dto.ArticalChartsDTO;
 
 public class ArticalChartDAO {
+	
+	@Context
+	HttpServletRequest request;
+	@Context
+	ServletContext context;
 	
 	private HashMap<Integer,ArticalChart> articals;
 
@@ -45,7 +58,7 @@ public class ArticalChartDAO {
 		BufferedReader in = null;
 		File file = null;
 		try {
-			file = new File("WebContent/data/articalCharts.txt");
+			file = new File("WebContent/data/articalsCharts.txt");
 			in = new BufferedReader(new FileReader(file));
 
 			ObjectMapper objectMapper = new ObjectMapper();
@@ -106,7 +119,7 @@ public class ArticalChartDAO {
 	
 	//ucitavanje artikala u fajl
 	private void saveArticals() {
-		File f = new File("WebContent/data/articalsChart.txt");
+		File f = new File("WebContent/data/articalsCharts.txt");
 		FileWriter fileWriter = null;
 		try {
 			fileWriter = new FileWriter(f);
@@ -143,5 +156,46 @@ public class ArticalChartDAO {
             }
         }
         return ret;
+	}
+
+	public void addNew(Artical artical, String user) {
+		//int id = generateIdArtical();
+		ArticalChart newArtical = new ArticalChart(artical.getId(), artical.getNumber(),user);
+		this.articals.put(artical.getId(),newArtical);
+		System.out.println("******KOLICINA**********");
+		System.out.println(newArtical.getQuantity());
+		System.out.println("*******ARTICAL ID*********");
+		System.out.println(newArtical.getIdArtical());
+		this.saveArticals();
+	}
+
+	public ArrayList<ArticalChartsDTO> getArticalsForChart(User user) {
+		ArrayList<ArticalChartsDTO> ret = new ArrayList<ArticalChartsDTO>();
+		 
+			for (ArticalChart articalChart : this.getValues()) {
+				Artical artical = getArtical(articalChart.getIdArtical());
+				if(articalChart.getIdCustomer().equals(user.getUsername())) {
+					ret.add(new ArticalChartsDTO(artical.getLink(),artical.getName(), artical.getPrice(), articalChart.getQuantity()));
+				}
+			}
+			
+		return ret;		 
+	
+	}
+	
+	public Artical getArtical(int id) {
+		ArticalDAO articalDAO = new ArticalDAO();
+		return articalDAO.getByID(id);
+	}
+	
+	private ArticalDAO getArticalDAO() {
+		ArticalDAO articals = (ArticalDAO)context.getAttribute("articals");
+		
+		if (articals == null) {
+			articals = new ArticalDAO();
+			context.setAttribute("articals", articals);
+		}
+	
+		return articals;
 	}
 }
