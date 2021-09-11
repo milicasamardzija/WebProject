@@ -174,7 +174,7 @@ public class ArticalChartDAO {
 		 
 			for (ArticalChart articalChart : this.getValues()) {
 				Artical artical = getArtical(articalChart.getIdArtical());
-				if(articalChart.getIdCustomer().equals(user.getUsername())) {
+				if(articalChart.getIdCustomer().equals(user.getUsername()) && articalChart.getQuantity() > 0) {
 					ret.add(new ArticalChartsDTO(artical.getId(),artical.getLink(),artical.getName(), artical.getPrice(), articalChart.getQuantity()));
 				}
 			}
