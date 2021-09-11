@@ -59,4 +59,23 @@ public class ArticalChartService {
 		ret = dao.getArticalsForChart(user);
 		return ret;
 	}
+	
+	@POST
+	@Path("/plus")
+	@Produces(MediaType.APPLICATION_JSON)
+	public ArrayList<ArticalChartsDTO> plus(String idArtical) {
+		ArticalChartDAO articalDAO = getArticalChartDAO();
+		User user = (User)request.getSession().getAttribute("loginUser");
+		return articalDAO.plus(Integer.parseInt(idArtical), user.getUsername());
+	}
+	
+	@POST
+	@Path("/minus")
+	@Produces(MediaType.APPLICATION_JSON)
+	public ArrayList<ArticalChartsDTO> minus(String idArtical) {
+		ArticalChartDAO articalDAO = getArticalChartDAO();
+		User user = (User)request.getSession().getAttribute("loginUser");
+		return articalDAO.minus(Integer.parseInt(idArtical), user.getUsername());
+	}
+	
 }

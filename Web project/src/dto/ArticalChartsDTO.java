@@ -3,6 +3,7 @@ package dto;
 import java.util.ArrayList;
 
 public class ArticalChartsDTO {
+	private int id;
 		private String link;
 		private String name;
 		private int price;
@@ -16,6 +17,12 @@ public class ArticalChartsDTO {
 		}
 		public String getName() {
 			return name;
+		}
+		public int getId() {
+			return id;
+		}
+		public void setId(int id) {
+			this.id = id;
 		}
 		public void setName(String name) {
 			this.name = name;
@@ -32,8 +39,9 @@ public class ArticalChartsDTO {
 		public void setQuantity(int quantity) {
 			this.quantity = quantity;
 		}
-		public ArticalChartsDTO(String link,String name, int price, int quantity) {
+		public ArticalChartsDTO(int id,String link,String name, int price, int quantity) {
 			super();
+			this.id=id;
 			this.link = link;
 			this.name = name;
 			this.price = price;

@@ -26,13 +26,13 @@ template: `
                     <tbody>
                       <tr v-for="proizvod in proizvodi">
                         <td><div class="col-picture">
-                        <div><img v-bind:src="'../pictures/'+ proizvod.link" style="height:250px !important; width:300px !important"></div>
+                        <div><img v-bind:src="'../pictures/'+ proizvod.link" style="height:60px !important; width:60px !important"></div>
                         </div></td>
                         <td>{{proizvod.name}}</td>
                         <td>{{proizvod.price}}</td>
                         <td>{{proizvod.quantity}}</td>
-                        <td><button type="button" class="btn btn-success" v-on:click="dodaj"> <span class="glyphicon glyphicon-plus"></span></button> </td>
-                        <td><button type="button" class="btn btn-danger"  v-on:click="oduzmi"> <span class="glyphicon glyphicon-minus"></span></button></td>
+                        <td><button type="button" class="btn btn-success" v-on:click="dodaj(proizvod.id)"> <span class="glyphicon glyphicon-plus"></span></button> </td>
+                        <td><button type="button" class="btn btn-danger"  v-on:click="oduzmi(proizvod.id)"> <span class="glyphicon glyphicon-minus"></span></button></td>
                         <div>
                           <td><button type="button" class="btn btn-secondary">Izbrisi</button></td>
                         </div>
@@ -48,9 +48,30 @@ template: `
 </section>
 `,
 methods:{
+  dodaj(proizvod){
+    this.proizvodi=null,
+    axios.post("/WebShopREST/rest/articalChart/plus", proizvod)
+    .then( response => {
+        this.proizvodi = response.data
+    })
+    .catch(function(error){
+        console.log(error)
+    })
+  },
+  oduzmi(proizvod){
+    this.proizvodi=null,
+    axios.post("/WebShopREST/rest/articalChart/minus", proizvod)
+    .then( response => {
+        this.proizvodi = response.data
+    })
+    .catch(function(error){
+        console.log(error)
+    })
+  }
     
 },
 mounted(){
+  
   axios.get("/WebShopREST/rest/articalChart/getChart")
   .then( response => {
       this.proizvodi = response.data

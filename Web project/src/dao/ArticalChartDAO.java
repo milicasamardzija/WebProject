@@ -175,7 +175,7 @@ public class ArticalChartDAO {
 			for (ArticalChart articalChart : this.getValues()) {
 				Artical artical = getArtical(articalChart.getIdArtical());
 				if(articalChart.getIdCustomer().equals(user.getUsername())) {
-					ret.add(new ArticalChartsDTO(artical.getLink(),artical.getName(), artical.getPrice(), articalChart.getQuantity()));
+					ret.add(new ArticalChartsDTO(artical.getId(),artical.getLink(),artical.getName(), artical.getPrice(), articalChart.getQuantity()));
 				}
 			}
 			
@@ -198,4 +198,52 @@ public class ArticalChartDAO {
 	
 		return articals;
 	}
+
+	public ArrayList<ArticalChartsDTO> plus(int parseInt, String username) {
+		ArrayList<ArticalChartsDTO> ret= new ArrayList<ArticalChartsDTO>();
+		Artical artical= getArtical(parseInt);
+		for(ArticalChart a: this.getValues()) {
+			if(a.getIdArtical() == parseInt && a.getIdCustomer().equals(username)) {
+				a.setQuantity(a.getQuantity()+1);
+			}
+		}
+		saveArticals();
+		
+		for(ArticalChart a: this.getValues()) {
+			Artical artical2= getArtical(a.getIdArtical());
+			if(a.getIdCustomer().equals(username)) {
+				ret.add(new ArticalChartsDTO(a.getIdArtical(), artical2.getLink(), artical2.getName(), artical2.getPrice(), a.getQuantity()));
+			}
+		}
+		
+		return ret;
+	}
+
+	public ArrayList<ArticalChartsDTO> minus(int parseInt, String username) {
+		ArrayList<ArticalChartsDTO> ret= new ArrayList<ArticalChartsDTO>();
+		Artical artical= getArtical(parseInt);
+		for(ArticalChart a: this.getValues()) {
+			if(a.getIdArtical() == parseInt && a.getIdCustomer().equals(username) && a.getQuantity() > 0) {
+				a.setQuantity(a.getQuantity()-1);
+			}
+		}
+		saveArticals();
+		
+		
+		for(ArticalChart a: this.getValues()) {
+			Artical artical2= getArtical(a.getIdArtical());
+			if(a.getIdCustomer().equals(username)) {
+				if(a.getQuantity()<1) {
+					a.setQuantity(-1);
+				}
+				if (a.getQuantity() > 0) {
+					ret.add(new ArticalChartsDTO(a.getIdArtical(), artical2.getLink(), artical2.getName(), artical2.getPrice(), a.getQuantity()));
+				}
+			}
+		}
+			saveArticals();
+		return ret;
+	}
+
+	
 }
