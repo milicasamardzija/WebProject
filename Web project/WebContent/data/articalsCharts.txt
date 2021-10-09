@@ -4,6 +4,11 @@
     "quantity" : 11,
     "idCustomer" : "kupac"
   },
+  "1" : {
+    "idArtical" : 1,
+    "quantity" : 2,
+    "idCustomer" : "kupac"
+  },
   "2" : {
     "idArtical" : 2,
     "quantity" : -1,

@@ -19,9 +19,9 @@
     "date" : 226380800000,
     "price" : 500,
     "idCustomer" : "kupac",
-    "status" : "CEKA_DOSTAVLJACA",
+    "status" : "DOSTAVLJENA",
     "deleted" : false,
-    "idDeliverer" : "x",
+    "idDeliverer" : "ZikaZivic",
     "restaurantType" : "ITALIAN",
     "potencialDeliverer" : "ZikaZivic"
   },
@@ -32,11 +32,11 @@
     "date" : 326380800000,
     "price" : 150,
     "idCustomer" : "kupac",
-    "status" : "CEKA_DOSTAVLJACA",
-    "deleted" : false,
+    "status" : "OBRADA",
+    "deleted" : true,
     "idDeliverer" : "ZikaZivic",
     "restaurantType" : "BARBECUE",
-    "potencialDeliverer" : "x"
+    "potencialDeliverer" : "ZikaZivic"
   },
   "3" : {
     "id" : 3,
@@ -45,11 +45,11 @@
     "date" : 326380800000,
     "price" : 50,
     "idCustomer" : "kupac",
-    "status" : "CEKA_DOSTAVLJACA",
+    "status" : "OTKAZANA",
     "deleted" : false,
-    "idDeliverer" : "x",
+    "idDeliverer" : "ZikaZivic",
     "restaurantType" : "FISH",
-    "potencialDeliverer" : "x"
+    "potencialDeliverer" : "ZikaZivic"
   },
   "4" : {
     "id" : 4,
@@ -71,10 +71,8 @@
     "date" : 326380800000,
     "price" : 950,
     "idCustomer" : "kupac",
-
-    "status" : "U_TRANSPORTU",
-
-    "deleted" : false,
+    "status" : "DOSTAVLJENA",
+    "deleted" : true,
     "idDeliverer" : "ZikaZivic",
     "restaurantType" : "ITALIAN",
     "potencialDeliverer" : "ZikaZivic"
@@ -86,7 +84,20 @@
     "date" : 326380800000,
     "price" : 850,
     "idCustomer" : "kupac",
-    "status" : "U_TRANSPORTU",
+    "status" : "OTKAZANA",
+    "deleted" : false,
+    "idDeliverer" : "x",
+    "restaurantType" : "VEGE",
+    "potencialDeliverer" : "ZikaZivic"
+  },
+  "7" : {
+    "id" : 7,
+    "articalIds" : [ 0 ],
+    "retaurantId" : 2,
+    "date" : 326380800000,
+    "price" : 850,
+    "idCustomer" : "kupac",
+    "status" : "OTKAZANA",
     "deleted" : false,
     "idDeliverer" : "x",
     "restaurantType" : "VEGE",
