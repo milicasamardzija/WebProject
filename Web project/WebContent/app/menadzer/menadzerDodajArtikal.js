@@ -71,7 +71,15 @@ methods:{
             })
             .then(
               response => {
-                router.push(`/`)
+                  alert("TU SAAAM")
+                if (response.data != null) 
+                {
+                router.push(`/`) 
+                alert("Artikal nije null!")
+                }
+                else {
+                alert("Postoji artikal sa tim imenom vec!")
+                }
               } 
             )
             .catch()    
