@@ -35,7 +35,9 @@ public class ArticalChartDAO {
 	ServletContext context;
 	
 	private HashMap<Integer,ArticalChart> articals;
-
+	private RestaurantDAO restaurantDao;
+	
+	
 	public HashMap<Integer, ArticalChart> getArticals() {
 		return articals;
 	}
@@ -47,6 +49,7 @@ public class ArticalChartDAO {
 	
 	public ArticalChartDAO() {
 		this.setArticals(new HashMap<Integer, ArticalChart>());
+		this.restaurantDao = new RestaurantDAO();
 		
 		loadArticals();
 	}
@@ -142,7 +145,7 @@ public class ArticalChartDAO {
 		}
 	}
 	
-	private int generateIdArtical() {
+	private int generateIdArticalChart() {
 		int ret = 0;
         for (ArticalChart articalBig : this.getValues())
         {
@@ -158,14 +161,24 @@ public class ArticalChartDAO {
         return ret;
 	}
 
-	public void addNew(Artical artical, String user) {
+	public void addNew(Artical artical, User user) {
 		//int id = generateIdArtical();
-		ArticalChart newArtical = new ArticalChart(artical.getId(), artical.getNumber(),user);
+		ArrayList<ArticalChartsDTO> chartsArticals = this.getArticalsForChart(user);
+		ArticalChart newArtical = new ArticalChart(artical.getId(), artical.getNumber(),user.getUsername(),artical.getId(), artical.getIdRestaurant(), this.restaurantDao.getByID(artical.getIdRestaurant()).getType());
+		if(chartsArticals.size() == 0) {
+			this.articals.put(artical.getId(),newArtical);
+		}else {
+			for (ArticalChart articalChart : this.getValues()) {
+				if (articalChart.getIdRestaurant() == artical.getIdRestaurant()) {
+					this.articals.put(artical.getId(),newArtical);
+					break;
+				} else {
+					return;
+				}
+			}
+		}		
+		
 		this.articals.put(artical.getId(),newArtical);
-		System.out.println("******KOLICINA**********");
-		System.out.println(newArtical.getQuantity());
-		System.out.println("*******ARTICAL ID*********");
-		System.out.println(newArtical.getIdArtical());
 		this.saveArticals();
 	}
 
@@ -199,50 +212,43 @@ public class ArticalChartDAO {
 		return articals;
 	}
 
-	public ArrayList<ArticalChartsDTO> plus(int parseInt, String username) {
+	public ArrayList<ArticalChartsDTO> plus(int parseInt, User user) {
 		ArrayList<ArticalChartsDTO> ret= new ArrayList<ArticalChartsDTO>();
 		Artical artical= getArtical(parseInt);
 		for(ArticalChart a: this.getValues()) {
-			if(a.getIdArtical() == parseInt && a.getIdCustomer().equals(username)) {
+			if(a.getIdArtical() == parseInt && a.getIdCustomer().equals(user.getUsername())) {
 				a.setQuantity(a.getQuantity()+1);
 			}
 		}
 		saveArticals();
 		
-		for(ArticalChart a: this.getValues()) {
-			Artical artical2= getArtical(a.getIdArtical());
-			if(a.getIdCustomer().equals(username)) {
-				ret.add(new ArticalChartsDTO(a.getIdArtical(), artical2.getLink(), artical2.getName(), artical2.getPrice(), a.getQuantity()));
-			}
-		}
-		
-		return ret;
+		return this.getArticalsForChart(user);
 	}
 
-	public ArrayList<ArticalChartsDTO> minus(int parseInt, String username) {
+	//RADI
+	public ArrayList<ArticalChartsDTO> minus(int parseInt, User user) {
 		ArrayList<ArticalChartsDTO> ret= new ArrayList<ArticalChartsDTO>();
 		Artical artical= getArtical(parseInt);
 		for(ArticalChart a: this.getValues()) {
-			if(a.getIdArtical() == parseInt && a.getIdCustomer().equals(username) && a.getQuantity() > 0) {
-				a.setQuantity(a.getQuantity()-1);
+			if(a.getIdArtical() == parseInt && a.getIdCustomer().equals(user.getUsername()) && a.getQuantity() > 0) {
+				if (a.getQuantity() - 1 >= 0) {
+					a.setQuantity(a.getQuantity()-1);
+				}
 			}
 		}
-		saveArticals();
-		
 		
 		for(ArticalChart a: this.getValues()) {
-			Artical artical2= getArtical(a.getIdArtical());
-			if(a.getIdCustomer().equals(username)) {
-				if(a.getQuantity()<1) {
-					a.setQuantity(-1);
-				}
-				if (a.getQuantity() > 0) {
-					ret.add(new ArticalChartsDTO(a.getIdArtical(), artical2.getLink(), artical2.getName(), artical2.getPrice(), a.getQuantity()));
+			if(a.getIdArtical() == parseInt && a.getIdCustomer().equals(user.getUsername()) && a.getQuantity() > 0) {
+				if (a.getQuantity() - 1 <= 0) {
+					this.getValues().remove(a);
+					break;
 				}
 			}
 		}
-			saveArticals();
-		return ret;
+		
+		saveArticals();
+		
+		return this.getArticalsForChart(user);
 	}
 
 	

@@ -149,10 +149,17 @@ public class ArticalDAO {
         return ret;
 	}
 
-	public void addArtical(ArticalDTO artical) {
+	public ArticalDTO addArtical(ArticalDTO artical) {
+		
+		for (Artical a : this.getValues()) {
+			if (a.getName().equals(artical.name)){
+				return null;
+			}
+		}
 		int id = generateIdArtical();
 		this.articals.put(id, new Artical(id, artical.name, artical.price, artical.type, artical.idRestaurant,artical.quantity, artical.description, generateLink(artical.link),false, 0));
 		this.saveArticals();
+		return artical;
 	}
 
 	private String generateLink(String link) {

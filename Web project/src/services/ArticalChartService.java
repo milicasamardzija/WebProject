@@ -46,7 +46,7 @@ public class ArticalChartService {
 	public void addNew(Artical artical) {
 		ArticalChartDAO articalDAO = getArticalChartDAO();
 		User user = (User)request.getSession().getAttribute("loginUser");
-		articalDAO.addNew(artical, user.getUsername());
+		articalDAO.addNew(artical, user);
 	}
 	
 	@GET
@@ -66,7 +66,7 @@ public class ArticalChartService {
 	public ArrayList<ArticalChartsDTO> plus(String idArtical) {
 		ArticalChartDAO articalDAO = getArticalChartDAO();
 		User user = (User)request.getSession().getAttribute("loginUser");
-		return articalDAO.plus(Integer.parseInt(idArtical), user.getUsername());
+		return articalDAO.plus(Integer.parseInt(idArtical), user);
 	}
 	
 	@POST
@@ -75,7 +75,7 @@ public class ArticalChartService {
 	public ArrayList<ArticalChartsDTO> minus(String idArtical) {
 		ArticalChartDAO articalDAO = getArticalChartDAO();
 		User user = (User)request.getSession().getAttribute("loginUser");
-		return articalDAO.minus(Integer.parseInt(idArtical), user.getUsername());
+		return articalDAO.minus(Integer.parseInt(idArtical), user);
 	}
 	
 }

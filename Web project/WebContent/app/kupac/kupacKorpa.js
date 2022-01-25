@@ -1,7 +1,8 @@
 Vue.component("korpa-kupac", {
     data(){
         return{
-            proizvodi:[]
+            proizvodi:[],
+            cena: 0
         }
     },
 template: `
@@ -31,8 +32,8 @@ template: `
                         <td>{{proizvod.name}}</td>
                         <td>{{proizvod.price}}</td>
                         <td>{{proizvod.quantity}}</td>
-                        <td><button type="button" class="btn btn-success" v-on:click="dodaj(proizvod.id)"> <span class="glyphicon glyphicon-plus"></span></button> </td>
-                        <td><button type="button" class="btn btn-danger"  v-on:click="oduzmi(proizvod.id)"> <span class="glyphicon glyphicon-minus"></span></button></td>
+                        <td><button type="button" class="btn btn-success" v-on:click="dodaj(proizvod)"> <span class="glyphicon glyphicon-plus"></span></button> </td>
+                        <td><button type="button" class="btn btn-danger"  v-on:click="oduzmi(proizvod)"> <span class="glyphicon glyphicon-minus"></span></button></td>
                         <div>
                           <td><button type="button" class="btn btn-secondary">Izbrisi</button></td>
                         </div>
@@ -40,6 +41,9 @@ template: `
                     </tbody>
                   </table>
                   <br/>
+
+                  <h4 style="margin-left: 45em"> Ukupna cena:  <h4> {{this.cena}} </h4> </h4>  
+                  
                   <button type="button" class="btn btn-success " style="margin-left:1050px; position: relative;"> PORUCI </button >
             </div>     
                     
@@ -50,9 +54,11 @@ template: `
 methods:{
   dodaj(proizvod){
     this.proizvodi=null,
-    axios.post("/WebShopREST/rest/articalChart/plus", proizvod)
+    axios.post("/WebShopREST/rest/articalChart/plus", proizvod.id)
     .then( response => {
-        this.proizvodi = response.data
+        this.proizvodi = response.data; 
+        this.obracunajCenuSabiranje(proizvod.price);
+     
     })
     .catch(function(error){
         console.log(error)
@@ -60,24 +66,37 @@ methods:{
   },
   oduzmi(proizvod){
     this.proizvodi=null,
-    axios.post("/WebShopREST/rest/articalChart/minus", proizvod)
+    axios.post("/WebShopREST/rest/articalChart/minus", proizvod.id)
     .then( response => {
-        this.proizvodi = response.data
+        this.proizvodi = response.data; 
+        this.obracunajCenuOduzimanje(proizvod.price);
     })
     .catch(function(error){
         console.log(error)
     })
+  }, 
+  obracunajCenuOduzimanje(price){
+    this.cena -= price;
   }
-    
+  , 
+  obracunajCenuSabiranje(price){;
+    this.cena +=  price;
+  }, 
+  obracunajCenuTrenutnu(){
+    this.proizvodi.forEach(element => { this.cena += element.price * element.quantity
+      
+    });
+  }
 },
 mounted(){
   
   axios.get("/WebShopREST/rest/articalChart/getChart")
   .then( response => {
-      this.proizvodi = response.data
+      this.proizvodi = response.data;
+      this.obracunajCenuTrenutnu();
   })
   .catch(function(error){
       console.log(error)
   })
-},
+}
 });

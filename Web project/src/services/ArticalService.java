@@ -96,9 +96,9 @@ public class ArticalService {
 	@POST
 	@Path("/addArtical")
 	@Consumes(MediaType.APPLICATION_JSON)
-	public void add(ArticalDTO artical) {
+	public ArticalDTO add(ArticalDTO artical) {
 		ArticalDAO articalDAO = getArticalDAO();
-		articalDAO.addArtical(artical);
+		return articalDAO.addArtical(artical);
 	}
 	
 	@POST
