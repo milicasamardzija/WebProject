@@ -14,7 +14,7 @@ import javax.ws.rs.core.MediaType;
 import beans.Comment;
 import beans.User;
 import dao.ArticalChartDAO;
-import dao.ChartDAO;
+
 import dao.CommentsDAO;
 import dao.RestaurantDAO;
 import dto.ArticalChartsDTO;
@@ -31,7 +31,7 @@ public class ChartService {
 		
 	}
 	
-	private ChartDAO getChartDAO() {
+	/* private ChartDAO getChartDAO() {
 		ChartDAO charts = (ChartDAO)context.getAttribute("charts");
 		
 		if (charts == null) {
@@ -41,6 +41,6 @@ public class ChartService {
 	
 		return charts;
 	}
-	
+	*/
 	
 }

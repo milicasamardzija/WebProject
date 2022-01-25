@@ -136,7 +136,7 @@ public class OrderService {
 		ordersDAO.deleteOrderById(Integer.parseInt(id));	
 	}
 	
-	//otkazivanje porudzbine kod kupca
+	//otkazivanje porudzbine kod kupca dok je u statusu obrada
 	@POST
 	@Path("/changeStatusCancel")
 	public void changeStatus(String id) {
