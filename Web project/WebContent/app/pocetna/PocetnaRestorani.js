@@ -36,8 +36,9 @@ template: `
                               </select>
                            
                             </td>
-                            <td style="width: 250px"> <button type="button" class="btn btn-danger wrn-btn btn-search" v-on:click="pretrazi">Search</button></td>
-                           </tr>
+                            <td style="width: 250px"> <button type="button" class="btn btn-danger wrn-btn btn-search" v-on:click="pretrazi()">Search</button></td>
+                         
+                            </tr>
                         </table>
 
                
@@ -81,12 +82,12 @@ template: `
                             Sortiranje</button>
                         
                                   <span class="dropdown-menu" aria-labelledby="dropdownMenu2">
-                                  <button class="dropdown-item" type="button">Po nazivu rastuce</button>
-                                  <button class="dropdown-item" type="button">Po nazivu opadajuce</button>
-                                  <button class="dropdown-item" type="button">Po mestu rastuce</button>
-                                  <button class="dropdown-item" type="button">Po mestu opadajuce</button>
-                                  <button class="dropdown-item" type="button">Po oceni rastuce</button>
-                                  <button class="dropdown-item" type="button">Po oceni opadajuce</button>
+                                  <button class="dropdown-item" type="button" v-on:click="sortNameAsc()">Po nazivu rastuce</button>
+                                  <button class="dropdown-item" type="button" v-on:click="sortNameDesc()" >Po nazivu opadajuce</button>
+                                  <button class="dropdown-item" type="button" v-on:click="sortCityAsc()">Po mestu rastuce</button>
+                                  <button class="dropdown-item" type="button" v-on:click="sortCityDesc()">Po mestu opadajuce</button>
+                                  <button class="dropdown-item" type="button" v-on:click="sortGradeAsc()">Po oceni rastuce</button>
+                                  <button class="dropdown-item" type="button" v-on:click="sortGradeDesc()">Po oceni opadajuce</button>
                                   </span> </td>
                             
                             </tr > 
@@ -129,8 +130,88 @@ methods:{
             .catch(function(error){
                 console.log(error)
             })
-        }
+        },
+
+        sortNameAsc: function() {
+			function compare(a, b) {
+			  if (a.name < b.name)
+			    return -1;
+			  if (a.name > b.name)
+			    return 1;
+			  return 0;
+			}
+
+			return this.restaurants.sort(compare);
+		}, 
+		sortNameDesc: function() {
+			function compare(a, b) {
+			  if (a.name < b.name)
+			    return 1;
+			  if (a.name > b.name)
+			    return -1;
+			  return 0;
+			}
+			
+			return this.restaurants.sort(compare);
+		},
+        sortGradeAsc: function() {
+			function compare(a, b) {
+			  if (a.grade < b.grade)
+			    return -1;
+			  if (a.grade > b.grade)
+			    return 1;
+			  return 0;
+			}
+
+			return this.restaurants.sort(compare);
+		}, 
+		sortGradeDesc: function() {
+			function compare(a, b) {
+			  if (a.grade < b.grade)
+			    return 1;
+			  if (a.grade > b.grade)
+			    return -1;
+			  return 0;
+			}
+			
+			return this.restaurants.sort(compare);
+		},
+        sortCityAsc: function() {
+			function compare(a, b) {
+			  if (a.address.city < b.address.city)
+			    return -1;
+			  if (a.address.city > b.address.city)
+			    return 1;
+			  return 0;
+			}
+
+			return this.restaurants.sort(compare);
+		}, 
+		sortCityDesc: function() {
+			function compare(a, b) {
+			  if (a.address.city < b.address.city)
+			    return 1;
+			  if (a.address.city > b.address.city)
+			    return -1;
+			  return 0;
+			}
+			
+			return this.restaurants.sort(compare);
+		},
 },
+computed: {
+    sortedName: function() {
+      function compare(a, b) {
+        if (a.name < b.name)
+          return -1;
+        if (a.name > b.name)
+          return 1;
+        return 0;
+      }
+  
+      return this.restaurants.sort(compare);
+    }
+  },
 mounted(){
     axios.get("/WebShopREST/rest/restaurant/getAllRestaurants")
     .then( response => {

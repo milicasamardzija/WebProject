@@ -78,7 +78,7 @@
   "4" : {
     "id" : 4,
     "managerId" : "AcaPeric",
-    "name" : "JEEEEEEJ",
+    "name" : "Tropicana",
     "type" : "VEGE",
     "articalIds" : [ ],
     "status" : "OPEN",
@@ -97,7 +97,7 @@
   "5" : {
     "id" : 5,
     "managerId" : "QQQEEEE",
-    "name" : "ssssssssssss",
+    "name" : "La casa de pasta",
     "type" : "ITALIAN",
     "articalIds" : [ ],
     "status" : "OPEN",
@@ -116,7 +116,7 @@
   "6" : {
     "id" : 6,
     "managerId" : "mmmhhhh",
-    "name" : "fffffffffffffffffffffff",
+    "name" : "Bondjorno",
     "type" : "ITALIAN",
     "articalIds" : [ ],
     "status" : "OPEN",
@@ -135,7 +135,7 @@
   "7" : {
     "id" : 7,
     "managerId" : "dfdffdgf",
-    "name" : "gfdgd",
+    "name" : "Noodles",
     "type" : "CHINESE",
     "articalIds" : [ ],
     "status" : "OPEN",
@@ -154,7 +154,7 @@
   "9" : {
     "id" : 9,
     "managerId" : "mika",
-    "name" : "rwe",
+    "name" : "Pica master",
     "type" : "PIZZA",
     "articalIds" : [ ],
     "status" : "OPEN",
