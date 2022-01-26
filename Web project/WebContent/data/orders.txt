@@ -7,7 +7,7 @@
     "price" : 100,
     "idCustomer" : "kupac",
     "status" : "OTKAZANA",
-    "deleted" : false,
+    "deleted" : true,
     "idDeliverer" : "ZikaZivic",
     "restaurantType" : "PIZZA",
     "potencialDeliverer" : "ZikaZivic"
@@ -102,5 +102,44 @@
     "idDeliverer" : "x",
     "restaurantType" : "VEGE",
     "potencialDeliverer" : "ZikaZivic"
+  },
+  "8" : {
+    "id" : 8,
+    "articalIds" : [ 1 ],
+    "retaurantId" : 0,
+    "date" : 1643210803212,
+    "price" : 1200,
+    "idCustomer" : "kupac",
+    "status" : "OBRADA",
+    "deleted" : false,
+    "idDeliverer" : " ",
+    "restaurantType" : "ITALIAN",
+    "potencialDeliverer" : " "
+  },
+  "9" : {
+    "id" : 9,
+    "articalIds" : [ 1 ],
+    "retaurantId" : 0,
+    "date" : 1643215850677,
+    "price" : 2100,
+    "idCustomer" : "kupac",
+    "status" : "OBRADA",
+    "deleted" : false,
+    "idDeliverer" : "",
+    "restaurantType" : "ITALIAN",
+    "potencialDeliverer" : ""
+  },
+  "10" : {
+    "id" : 10,
+    "articalIds" : [ 1 ],
+    "retaurantId" : 0,
+    "date" : 1643215963483,
+    "price" : 2100,
+    "idCustomer" : "kupac",
+    "status" : "OBRADA",
+    "deleted" : false,
+    "idDeliverer" : "",
+    "restaurantType" : "ITALIAN",
+    "potencialDeliverer" : ""
   }
 }

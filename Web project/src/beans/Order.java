@@ -9,7 +9,7 @@ import enums.RestaurantType;
 
 public class Order {
 	private int id; // karaktera
-	private ArrayList<Integer> articalIds; // ArticalChart!!
+	private ArrayList<Integer> articalIds; // ArticalChart!! (id artikala u restoranu)
 	private int retaurantId;
 	private Date date; //datum i vreme
 	private int price;
@@ -104,4 +104,12 @@ public class Order {
 	public Order() {
 		super();
 	}
+	@Override
+	public String toString() {
+		return "Order [id=" + id + ", articalIds=" + articalIds + ", retaurantId=" + retaurantId + ", date=" + date
+				+ ", price=" + price + ", idCustomer=" + idCustomer + ", status=" + status + ", deleted=" + deleted
+				+ ", idDeliverer=" + idDeliverer + ", restaurantType=" + restaurantType + ", potencialDeliverer="
+				+ potencialDeliverer + "]";
+	}
+	
 }

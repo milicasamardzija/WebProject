@@ -2,12 +2,37 @@ package dto;
 
 import java.util.ArrayList;
 
+import enums.RestaurantType;
+
 public class ArticalChartsDTO {
-	private int id;
+	    private int id;
 		private String link;
 		private String name;
 		private int price;
 		private int quantity;
+		private int retaurantId;
+		private RestaurantType restaurantType;
+		private int articalInRestaurantId;
+		
+		public int getRetaurantId() {
+			return retaurantId;
+		}
+		public void setRetaurantId(int retaurantId) {
+			this.retaurantId = retaurantId;
+		}
+		public RestaurantType getRestaurantType() {
+			return restaurantType;
+		}
+		public void setRestaurantType(RestaurantType restaurantType) {
+			this.restaurantType = restaurantType;
+		}
+		public int getArticalInRestaurantId() {
+			return articalInRestaurantId;
+		}
+		public void setArticalInRestaurantId(int articalInRestaurantId) {
+			this.articalInRestaurantId = articalInRestaurantId;
+		}
+		
 		
 		public String getLink() {
 			return link;
@@ -36,23 +61,28 @@ public class ArticalChartsDTO {
 		public int getQuantity() {
 			return quantity;
 		}
+		
 		public void setQuantity(int quantity) {
 			this.quantity = quantity;
 		}
-		public ArticalChartsDTO(int id,String link,String name, int price, int quantity) {
+		
+		public ArticalChartsDTO() {
 			super();
-			this.id=id;
+		}
+		public ArticalChartsDTO(int id, String link, String name, int price, int quantity, int retaurantId,
+				RestaurantType restaurantType, int articalInRestaurantId) {
+			super();
+			this.id = id;
 			this.link = link;
 			this.name = name;
 			this.price = price;
 			this.quantity = quantity;
+			this.retaurantId = retaurantId;
+			this.restaurantType = restaurantType;
+			this.articalInRestaurantId = articalInRestaurantId;
 		}
-		public ArticalChartsDTO() {
-			super();
-		}
-		public ArrayList<ArticalChartsDTO> getArticalsForChart() {
-			// TODO Auto-generated method stub
-			return null;
-		}
+		
+		
+		
 	   
 }

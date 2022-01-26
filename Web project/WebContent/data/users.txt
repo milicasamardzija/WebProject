@@ -86,6 +86,35 @@
     "idRestaurant" : 7,
     "suspecious" : false
   },
+  "b" : {
+    "deleted" : false,
+    "blocked" : false,
+    "username" : "b",
+    "password" : "b",
+    "name" : "da",
+    "surname" : "da",
+    "gender" : "FEMALE",
+    "birthday" : 1641427200000,
+    "role" : "CUSTOMER",
+    "address" : {
+      "street" : "ad",
+      "number" : 3,
+      "city" : "da",
+      "zipCode" : 3,
+      "latitude" : 0.0,
+      "longitude" : 0.0
+    },
+    "orderIds" : [ ],
+    "chartId" : -1,
+    "points" : 0.0,
+    "typeCustomer" : {
+      "type" : "BRONZE",
+      "sale" : 0.1,
+      "points" : 2000.0
+    },
+    "idRestaurant" : -1,
+    "suspecious" : false
+  },
   "admin" : {
     "deleted" : true,
     "blocked" : false,

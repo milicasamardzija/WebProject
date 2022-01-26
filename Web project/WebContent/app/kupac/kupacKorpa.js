@@ -44,7 +44,7 @@ template: `
 
                   <h4 style="margin-left: 45em"> Ukupna cena:  <h4> {{this.cena}} </h4> </h4>  
                   
-                  <button type="button" class="btn btn-success " style="margin-left:1050px; position: relative;"> PORUCI </button >
+                  <button type="button" class="btn btn-success " style="margin-left:1050px; position: relative;" v-on:click="poruci()"> PORUCI </button >
             </div>     
                     
             </div>
@@ -52,6 +52,17 @@ template: `
 </section>
 `,
 methods:{
+  poruci: function(){
+    axios.post("/WebShopREST/rest/order/add/" + localStorage.getItem("userLogged"), this.proizvodi)
+    .then( response => {
+      alert("Uspesno ste izvrsili narudzbinu!");
+      router.push(`/`);
+      //ovde jos dodati poziv metode koja poziva metodu za birsanje svakog artikla iz korpe na beku
+    })
+    .catch(function(error){
+        console.log(error)
+    })
+  },
   dodaj(proizvod){
     this.proizvodi=null,
     axios.post("/WebShopREST/rest/articalChart/plus", proizvod.id)
@@ -84,7 +95,6 @@ methods:{
   }, 
   obracunajCenuTrenutnu(){
     this.proizvodi.forEach(element => { this.cena += element.price * element.quantity
-      
     });
   }
 },
@@ -93,6 +103,7 @@ mounted(){
   axios.get("/WebShopREST/rest/articalChart/getChart")
   .then( response => {
       this.proizvodi = response.data;
+      console.log(response.data)
       this.obracunajCenuTrenutnu();
   })
   .catch(function(error){

@@ -108,6 +108,7 @@ public class RestaurantDAO {
 	public Restaurant getByID(int restaurantId) {
 		for (Restaurant restaurant : this.restaurants.values()) {
 			if(restaurant.getId() == restaurantId) {
+				System.out.println(restaurant);
 				return restaurant;
 			}
 		}

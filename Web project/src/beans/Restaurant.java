@@ -101,5 +101,13 @@ public class Restaurant {
 		this.deleted= deleted;
 		this.grade = grade;
 	}
+
+	@Override
+	public String toString() {
+		return "Restaurant [id=" + id + ", managerId=" + managerId + ", name=" + name + ", type=" + type
+				+ ", articalIds=" + articalIds + ", status=" + status + ", address=" + address + ", link=" + link
+				+ ", deleted=" + deleted + ", grade=" + grade + "]";
+	}
+	
 	
 }

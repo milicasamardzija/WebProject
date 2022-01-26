@@ -6,6 +6,7 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.Date;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
@@ -27,6 +28,7 @@ import beans.Comment;
 import beans.Order;
 import beans.User;
 import dao.RestaurantDAO;
+import dto.ArticalChartsDTO;
 import dto.OrderDTO;
 import enums.OrderStatus;
 import enums.RestaurantType;
@@ -277,13 +279,6 @@ public class OrderDAO {
 		}
 	}
 	
-	
-	public Order addOrder(OrderDTO order) {
-		Order newOrder ;
-		return null;
-		
-	}
-	
 	private Integer generateIdOrder() {
 		int ret = 0;
         for (Order orderBig : this.getValues())
@@ -330,6 +325,23 @@ public class OrderDAO {
 			}
 		}
 		return ret;
+	}
+
+	public void addNewOrder(ArrayList<ArticalChartsDTO> articalsChart, User user){;
+		System.out.println(user);
+		ArticalChartsDTO oneArticalInChart = new ArticalChartsDTO();
+		int price = 0;
+		
+		ArrayList<Integer> articalIds = new ArrayList<Integer>();
+		for (ArticalChartsDTO articalChart : articalsChart) {
+			articalIds.add(articalChart.getArticalInRestaurantId());
+			oneArticalInChart = articalChart;
+			price += articalChart.getPrice() * articalChart.getQuantity();
+		}
+		int id = this.generateIdOrder();
+		this.orders.put(id, new Order(id, articalIds, oneArticalInChart.getRetaurantId(), new Date(), price, user.getUsername(), OrderStatus.OBRADA, false, "", "", oneArticalInChart.getRestaurantType()));
+		
+		this.saveOrders();
 	}
 	
 	

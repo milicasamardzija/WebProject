@@ -162,7 +162,6 @@ public class ArticalChartDAO {
 	}
 
 	public void addNew(Artical artical, User user) {
-		//int id = generateIdArtical();
 		ArrayList<ArticalChartsDTO> chartsArticals = this.getArticalsForChart(user);
 		ArticalChart newArtical = new ArticalChart(artical.getId(), artical.getNumber(),user.getUsername(),artical.getId(), artical.getIdRestaurant(), this.restaurantDao.getByID(artical.getIdRestaurant()).getType());
 		if(chartsArticals.size() == 0) {
@@ -188,7 +187,7 @@ public class ArticalChartDAO {
 			for (ArticalChart articalChart : this.getValues()) {
 				Artical artical = getArtical(articalChart.getIdArtical());
 				if(articalChart.getIdCustomer().equals(user.getUsername()) && articalChart.getQuantity() > 0) {
-					ret.add(new ArticalChartsDTO(artical.getId(),artical.getLink(),artical.getName(), artical.getPrice(), articalChart.getQuantity()));
+					ret.add(new ArticalChartsDTO(artical.getId(),artical.getLink(),artical.getName(), artical.getPrice(), articalChart.getQuantity(), articalChart.getIdRestaurant(), articalChart.getRestaurantType(), articalChart.getIdArticalInRestaurant()));
 				}
 			}
 			

@@ -8,21 +8,24 @@ import java.util.stream.Collectors;
 
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
-
+import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
+import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
 
 import beans.Order;
 import beans.User;
+import dao.ArticalChartDAO;
 import dao.ArticalDAO;
 
 import dao.OrderDAO;
 import dao.RestaurantDAO;
-
+import dao.UsersDAO;
+import dto.ArticalChartsDTO;
 import dto.OrderDTO;
 import enums.OrderStatus;
 import enums.RestaurantType;
@@ -53,6 +56,27 @@ public class OrderService {
 		return ret;
 	}
 	
+	private UsersDAO getUsers() {
+		UsersDAO users = (UsersDAO)context.getAttribute("users");
+		
+		if (users == null) {
+			String contextPath = context.getRealPath("");
+			users = new UsersDAO(contextPath);
+			context.setAttribute("users", users);
+		}
+		return users;
+	}
+	
+	
+	@POST
+	@Path("/add/{username}")
+	@Consumes(MediaType.APPLICATION_JSON)
+	public void addNewOrder(@PathParam("username") String username, ArrayList<ArticalChartsDTO> articalsChart) {
+		OrderDAO ordersDAO = getOrders();
+		UsersDAO userDao = this.getUsers();
+		ordersDAO.addNewOrder(articalsChart, userDao.getUserByUsername(username));
+	}
+	
 	//porudzbine za ulogovanog usera
 	@GET
 	@Path("/getOrders")
@@ -64,6 +88,8 @@ public class OrderService {
 		User user = (User)request.getSession().getAttribute("loginUser");		
 		
 		for(Order order : orders) {
+			System.out.println(order);
+			System.out.println((User)request.getSession().getAttribute("loginUser"));
 			if(!order.getDeleted() && order.getIdCustomer().equals(user.getUsername())) {
 			ret.add(new OrderDTO(order.getId(), findOrderArticals(order.getArticalIds()),findNameRestaurant(order.getId()), order.getDate(), order.getPrice(), order.getIdCustomer(), order.getStatus(), order.getDeleted(),order.getPotencialDeliverer(), order.getIdDeliverer(), order.getRestaurantType()));
 			}
