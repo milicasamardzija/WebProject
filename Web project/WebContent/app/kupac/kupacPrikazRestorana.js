@@ -19,25 +19,28 @@ template: `
 										            <input type="text" class="form-control search-slt" placeholder="Lokacija restorana">
 										        </div>
                                                 <div class="dropdown col-lg-2 col-md-3 col-sm-12 p-0 filt">
-                                                    <button class="btn btn-secondary dropdown-toggle" type="button" data-toggle="dropdown" >
-                                                    Tip restorana
-                                                    </button>
-                                                    <span class="dropdown-menu" aria-labelledby="dropdownMenu2">
-                                                    <button class="dropdown-item" type="button">Action</button>
-                                                    <button class="dropdown-item" type="button">Another action</button>
-                                                    <button class="dropdown-item" type="button">Something else here</button>
-                                                    </span>
+                                                    <select  style="height: 35px; width: 150px; background-color:gray; color:white;  border-radius: 4px;">Tip
+                                                     <option value="">Tip restorana</option>
+                                                    <option  v-bind:value="0" style=" background-color:white; color: black">Italijanski</option>
+                                                    <option  v-bind:value="1" style=" background-color:white; color: black">Kineski</option>
+                                                    <option  v-bind:value="2" style=" background-color:white; color: black">Pica</option>
+                                                    <option  v-bind:value="3" style=" background-color:white; color: black">Rostilj</option>
+                                                    <option  v-bind:value="4" style=" background-color:white; color: black">Riblji</option>
+                                                    <option  v-bind:value="5" style=" background-color:white; color: black">Veganski</option>
+                                                    </select>
+                                                   
                                                 </div>
                                                 <div class="dropdown col-lg-2 col-md-3 col-sm-12 p-0 filt">
-                                                    <button class="btn btn-secondary dropdown-toggle filters" type="button" data-toggle="dropdown">
-                                                    Ocena restorana
-                                                    </button>
-                                                    <div class="dropdown-menu">
-                                                    <button class="dropdown-item" type="button">Action</button>
-                                                    <button class="dropdown-item" type="button">Another action</button>
-                                                    <button class="dropdown-item" type="button">Something else here</button>
+                                                    <select  style="height: 35px; width: 150px; background-color:gray; color:white;  border-radius: 4px;"> Ocena
+                                                     <option value="">Ocena</option>
+                                                    <option  v-bind:value="5" style=" background-color:white; color: black">5</option>
+                                                    <option  v-bind:value="4" style=" background-color:white; color: black">4</option>
+                                                    <option  v-bind:value="3" style=" background-color:white; color: black">3</option>
+                                                    <option  v-bind:value="2" style=" background-color:white; color: black">2</option>
+                                                    <option  v-bind:value="1" style=" background-color:white; color: black">1</option>
+                                                    </select>
                                                     </div>
-                                                </div>
+                                                
                                                 <div class="col-lg-1 col-md-3 col-sm-12 btn-search">
                                                     <button type="button" class="btn btn-danger wrn-btn">Pretrazi kombinovano</button>
                                                 </div>

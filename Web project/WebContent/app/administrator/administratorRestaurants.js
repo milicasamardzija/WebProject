@@ -21,21 +21,24 @@ template: `
 										            <input type="text" class="form-control search-slt" placeholder="Lokacija restorana"  v-model="search.location">
 										        </div>
                                                 <div class="dropdown col-lg-2 col-md-3 col-sm-12 p-0 filt">
-                                                    <select v-model="search.type">Tip
-                                                    <option  v-bind:value="0">Italijanski</option>
-                                                    <option  v-bind:value="1">Kineski</option>
-                                                    <option  v-bind:value="2">Pica</option>
-                                                    <option  v-bind:value="3">Rostilj</option>
-                                                    <option  v-bind:value="4">Riblji</option>
-                                                    <option  v-bind:value="5">Veganski</option>
+                                                    <select v-model="search.type" style="height: 35px; width: 150px; background-color:gray; color:white;  border-radius: 4px;">Tip
+                                                     <option value="">Tip restorana</option>
+                                                    <option  v-bind:value="0" style=" background-color:white; color: black">Italijanski</option>
+                                                    <option  v-bind:value="1" style=" background-color:white; color: black">Kineski</option>
+                                                    <option  v-bind:value="2" style=" background-color:white; color: black">Pica</option>
+                                                    <option  v-bind:value="3" style=" background-color:white; color: black">Rostilj</option>
+                                                    <option  v-bind:value="4" style=" background-color:white; color: black">Riblji</option>
+                                                    <option  v-bind:value="5" style=" background-color:white; color: black">Veganski</option>
                                                     </select>
                                                 </div>
-                                                <div class="dropdown col-lg-2 col-md-3 col-sm-12 p-0 filt"><select  v-model="search.grade"> Ocena
-                                                    <option  v-bind:value="5">5</option>
-                                                    <option  v-bind:value="4">4</option>
-                                                    <option  v-bind:value="3">3</option>
-                                                    <option  v-bind:value="2">2</option>
-                                                    <option  v-bind:value="1">1</option>
+                                                <div class="dropdown col-lg-2 col-md-3 col-sm-12 p-0 filt">
+                                                <select  v-model="search.grade" style="height: 35px; width: 150px; background-color:gray; color:white;  border-radius: 4px;"> Ocena
+                                                     <option value="">Ocena</option>
+                                                    <option  v-bind:value="5" style=" background-color:white; color: black">5</option>
+                                                    <option  v-bind:value="4" style=" background-color:white; color: black">4</option>
+                                                    <option  v-bind:value="3" style=" background-color:white; color: black">3</option>
+                                                    <option  v-bind:value="2" style=" background-color:white; color: black">2</option>
+                                                    <option  v-bind:value="1" style=" background-color:white; color: black">1</option>
                                                     </select>
                                                 </div>
                                                 <div class="col-lg-1 col-md-3 col-sm-12 btn-search">

@@ -6,6 +6,8 @@ Vue.component("dodajArtikal-menadzer", {
         }
     },
 template: `
+
+
 <section> 
             
         <div class="row content">
@@ -71,16 +73,24 @@ methods:{
             })
             .then(
               response => {
-                  alert("TU SAAAM")
-                if (response.data != null) 
-                {
+               
+                Swal.fire({
+                  position: 'top-end',
+                 
+                  title: 'Uspesno dodat artikal',
+                  showConfirmButton: false,
+                  timer: 1500
+                })
                 router.push(`/`) 
-                alert("Artikal nije null!")
-                }
-                else {
-                alert("Postoji artikal sa tim imenom vec!")
-                }
-              } 
+                
+              }, error => {
+                Swal.fire({
+                    title: 'Oops...',
+                    text: 'Artikal vec postoji!',
+                    
+                  })
+
+              }
             )
             .catch()    
     },

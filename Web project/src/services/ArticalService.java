@@ -12,6 +12,7 @@ import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.Response;
 
 import beans.Artical;
 import beans.Restaurant;
@@ -95,10 +96,13 @@ public class ArticalService {
 	
 	@POST
 	@Path("/addArtical")
+	@Produces(MediaType.TEXT_HTML)
 	@Consumes(MediaType.APPLICATION_JSON)
-	public ArticalDTO add(ArticalDTO artical) {
+	public Response add(ArticalDTO artical) {
 		ArticalDAO articalDAO = getArticalDAO();
-		return articalDAO.addArtical(artical);
+		if( articalDAO.addArtical(artical) != null) 
+			return  Response.status(Response.Status.ACCEPTED).build();
+		else  Response.status(Response.Status.BAD_REQUEST).entity("Vec postoji artikal sa datim imenom!").build();
 	}
 	
 	@POST
