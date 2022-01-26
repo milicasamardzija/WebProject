@@ -50,25 +50,19 @@ template: `
                           Tip restorana </button>
                      
                               <span class="dropdown-menu" aria-labelledby="dropdownMenu2">
-                              <button class="dropdown-item" type="button" value="ITALIAN" v-on:click="checkType('ITALIAN')">Italijanski</button>
-                              <button class="dropdown-item" type="button" value="CHINESE" v-on:click="checkType('CHINESE')">Kineski</button>
-                              <button class="dropdown-item" type="button" value="PIZZA" v-on:click="checkType('PIZZA')">Pica</button>
-                              <button class="dropdown-item" type="button" value="BARBECUE" v-on:click="checkType('BARBECUE')">Rostilj</button>
-                              <button class="dropdown-item" type="button" value="FISH" v-on:click="checkType('FISH')">Riblji</button>
-                              <button class="dropdown-item" type="button" value="VEGE" v-on:click="checkType('VEGE')">Veganski</button>
+                              <button class="dropdown-item" type="button" value="ITALIAN" v-on:click="filterType('ITALIAN')">Italijanski</button>
+                              <button class="dropdown-item" type="button" value="CHINESE" v-on:click="filterType('CHINESE')">Kineski</button>
+                              <button class="dropdown-item" type="button" value="PIZZA" v-on:click="filterType('PIZZA')">Pica</button>
+                              <button class="dropdown-item" type="button" value="BARBECUE" v-on:click="filterType('BARBECUE')">Rostilj</button>
+                              <button class="dropdown-item" type="button" value="FISH" v-on:click="filterType('FISH')">Riblji</button>
+                              <button class="dropdown-item" type="button" value="VEGE" v-on:click="filterType('VEGE')">Veganski</button>
                               </span> </td>
                             <td style="width: 25px;"> </td>
                               <td style="width:150px "> <p> ili status restorana</p></td>
                               <td > <button class="btn btn-secondary dropdown-toggle" type="button" data-toggle="dropdown" > Status restorana </button>
-                                 
-                       
                                 <span class="dropdown-menu" aria-labelledby="dropdownMenu2">
-                                <button class="dropdown-item" type="button" value="ITALIAN">Italijanski</button>
-                                <button class="dropdown-item" type="button" value="CHINESE">Kineski</button>
-                                <button class="dropdown-item" type="button" value="PIZZA">Pica</button>
-                                <button class="dropdown-item" type="button" value="BARBECUE">Rostilj</button>
-                                <button class="dropdown-item" type="button" value="FISH">Riblji</button>
-                                <button class="dropdown-item" type="button" value="VEGE">Veganski</button>
+                                <button class="dropdown-item" type="button" value="OPEN"  v-on:click="filterStatus('OPEN')">Otvoren</button>
+                                <button class="dropdown-item" type="button" value="CLOSE" v-on:click="filterStatus('CLOSE')">Zatvoren</button>
                                 </span>
                              </td>
                         </tr> 
@@ -198,6 +192,12 @@ methods:{
 			
 			return this.restaurants.sort(compare);
 		},
+        filterType: function (type){
+            this.restaurants = this.restaurants.filter(restaurant => restaurant.type === type);
+        },
+        filterStatus: function (status){
+            this.restaurants = this.restaurants.filter(restaurant => restaurant.status === status);
+        }
 },
 computed: {
     sortedName: function() {
