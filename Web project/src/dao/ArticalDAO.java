@@ -175,7 +175,7 @@ public class ArticalDAO {
 		Artical articalChange = getByID(artical.id);
 		articalChange.setName(artical.name);
 		articalChange.setType(artical.type);
-		articalChange.setLink(artical.link);
+		articalChange.setLink(generateLink(artical.link));
 		articalChange.setDescription(artical.description);
 		articalChange.setPrice(artical.price);
 		articalChange.setQuantity(artical.quantity);

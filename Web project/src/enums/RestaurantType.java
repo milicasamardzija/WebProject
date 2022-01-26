@@ -1,11 +1,10 @@
 package enums;
 
 public enum RestaurantType {
-	ITALIAN,
-	CHINESE,
+	ITALIJANSKI,
+	KINESKI,
 	PIZZA,
-	BARBECUE,
-	FISH,
-	VEGE,
-	MEXICAN
+	ROSTILJ,
+	RIBLJI,
+	VEGE
 }

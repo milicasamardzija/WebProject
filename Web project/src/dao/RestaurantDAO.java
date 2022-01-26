@@ -199,26 +199,24 @@ public class RestaurantDAO {
 	{
 		RestaurantType ret =null;
 		if(type.equals("ITALIAN")) {
-			ret=RestaurantType.ITALIAN;
+			ret=RestaurantType.ITALIJANSKI;
 		}
 		if(type.equals("CHINESE")) {
-			ret=RestaurantType.CHINESE;
+			ret=RestaurantType.KINESKI;
 		}
 		 if(type.equals("PIZZA")) {
 			 ret=RestaurantType.PIZZA;
 		} 
 		 if(type.equals("BARBECUE")) {
-			ret=RestaurantType.PIZZA;
+			ret=RestaurantType.ROSTILJ;
 		}
 		if(type.equals("FISH")) {
-			ret=RestaurantType.FISH;
+			ret=RestaurantType.RIBLJI;
 		}
 		if(type.equals("VEGE")) {
 			ret=RestaurantType.VEGE;
 		} 
-		if(type.equals("MEXICAN")) {
-			ret=RestaurantType.MEXICAN;
-		} 
+		
 		return ret;
 	}
 

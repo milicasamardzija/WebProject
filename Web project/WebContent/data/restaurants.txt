@@ -3,7 +3,7 @@
     "id" : 0,
     "managerId" : "mika",
     "name" : "Karibik",
-    "type" : "ITALIAN",
+    "type" : "PIZZA",
     "articalIds" : [ 0, 1, 3 ],
     "status" : "OPEN",
     "address" : {
@@ -14,14 +14,14 @@
       "latitude" : 0.0,
       "longitude" : 0.0
     },
-    "link" : "12.png",
+    "link" : "caribicLogo.png",
     "deleted" : false,
     "grade" : 5
   },
   "1" : {
     "id" : 1,
     "managerId" : "mika",
-    "name" : "Toscana",
+    "name" : "Portofino",
     "type" : "VEGE",
     "articalIds" : [ 0, 1, 2 ],
     "status" : "OPEN",
@@ -33,15 +33,15 @@
       "latitude" : 0.0,
       "longitude" : 0.0
     },
-    "link" : "12.png",
+    "link" : "portofino.png",
     "deleted" : true,
     "grade" : 3
   },
   "2" : {
     "id" : 2,
     "managerId" : "AnaMasic",
-    "name" : "BozePomoziHVALA",
-    "type" : "ITALIAN",
+    "name" : "BozePomoziHVALA Ciao",
+    "type" : "ITALIJANSKI",
     "articalIds" : [ 0, 1, 3 ],
     "status" : "OPEN",
     "address" : {
@@ -52,15 +52,15 @@
       "latitude" : 0.0,
       "longitude" : 0.0
     },
-    "link" : "indij.png",
+    "link" : "Picerija-ĆAO.jpg",
     "deleted" : false,
     "grade" : 4
   },
   "3" : {
     "id" : 3,
     "managerId" : "AAABBB",
-    "name" : "Sarajevski cevap",
-    "type" : "MEXICAN",
+    "name" : "Sarajevska kuca",
+    "type" : "ROSTILJ",
     "articalIds" : [ ],
     "status" : "OPEN",
     "address" : {
@@ -90,7 +90,7 @@
       "latitude" : 0.0,
       "longitude" : 0.0
     },
-    "link" : "kinezi.png",
+    "link" : "tropicanaLogo.jpg",
     "deleted" : false,
     "grade" : 3
   },
@@ -98,7 +98,7 @@
     "id" : 5,
     "managerId" : "QQQEEEE",
     "name" : "La casa de pasta",
-    "type" : "ITALIAN",
+    "type" : "ITALIJANSKI",
     "articalIds" : [ ],
     "status" : "OPEN",
     "address" : {
@@ -109,15 +109,15 @@
       "latitude" : 0.0,
       "longitude" : 0.0
     },
-    "link" : "novaind.png",
+    "link" : "pasta.jpg",
     "deleted" : false,
     "grade" : 1
   },
   "6" : {
     "id" : 6,
     "managerId" : "mmmhhhh",
-    "name" : "Bondjorno",
-    "type" : "ITALIAN",
+    "name" : "Fish house",
+    "type" : "RIBLJI",
     "articalIds" : [ ],
     "status" : "OPEN",
     "address" : {
@@ -128,7 +128,7 @@
       "latitude" : 0.0,
       "longitude" : 0.0
     },
-    "link" : "piletina_sa_svezom_paprikom_i_tikvicama.jpg",
+    "link" : "ribaLogo.png",
     "deleted" : false,
     "grade" : 1
   },
@@ -136,7 +136,7 @@
     "id" : 7,
     "managerId" : "dfdffdgf",
     "name" : "Noodles",
-    "type" : "CHINESE",
+    "type" : "KINESKI",
     "articalIds" : [ ],
     "status" : "OPEN",
     "address" : {
@@ -147,14 +147,14 @@
       "latitude" : 0.0,
       "longitude" : 0.0
     },
-    "link" : "11.jpg",
+    "link" : "kinezi.png",
     "deleted" : false,
-    "grade" : -1
+    "grade" : 5
   },
   "9" : {
     "id" : 9,
     "managerId" : "mika",
-    "name" : "Pica master",
+    "name" : "Pica bar",
     "type" : "PIZZA",
     "articalIds" : [ ],
     "status" : "OPEN",

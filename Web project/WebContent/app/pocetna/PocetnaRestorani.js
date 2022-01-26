@@ -22,6 +22,7 @@ template: `
                                                     <option  v-bind:value="3">Rostilj</option>
                                                     <option  v-bind:value="4">Riblji</option>
                                                     <option  v-bind:value="5">Veganski</option>
+                                                 
                                                     </select>
                                 
                             </td>
@@ -50,11 +51,11 @@ template: `
                           Tip restorana </button>
                      
                               <span class="dropdown-menu" aria-labelledby="dropdownMenu2">
-                              <button class="dropdown-item" type="button" value="ITALIAN" v-on:click="filterType('ITALIAN')">Italijanski</button>
-                              <button class="dropdown-item" type="button" value="CHINESE" v-on:click="filterType('CHINESE')">Kineski</button>
+                              <button class="dropdown-item" type="button" value="ITALIJANSKI" v-on:click="filterType('ITALIJANSKI')">Italijanski</button>
+                              <button class="dropdown-item" type="button" value="KINESKI" v-on:click="filterType('KINESKI')">Kineski</button>
                               <button class="dropdown-item" type="button" value="PIZZA" v-on:click="filterType('PIZZA')">Pica</button>
-                              <button class="dropdown-item" type="button" value="BARBECUE" v-on:click="filterType('BARBECUE')">Rostilj</button>
-                              <button class="dropdown-item" type="button" value="FISH" v-on:click="filterType('FISH')">Riblji</button>
+                              <button class="dropdown-item" type="button" value="ROSTILJ" v-on:click="filterType('ROSTILJ')">Rostilj</button>
+                              <button class="dropdown-item" type="button" value="RIBLJI" v-on:click="filterType('RIBLJI')">Riblji</button>
                               <button class="dropdown-item" type="button" value="VEGE" v-on:click="filterType('VEGE')">Veganski</button>
                               </span> </td>
                             <td style="width: 25px;"> </td>
@@ -65,6 +66,8 @@ template: `
                                 <button class="dropdown-item" type="button" value="CLOSE" v-on:click="filterStatus('CLOSE')">Zatvoren</button>
                                 </span>
                              </td>
+                             <td style="width: 135px;"> </td>
+                             <td><button class="btn btn-secondary" type="button"  v-on:click="reset()">x</button> </td> 
                         </tr> 
                         </table>
 
@@ -94,7 +97,7 @@ template: `
                     <div class="row-restaurants" v-for="restaurant in restaurants" v-on:click="getSelected(restaurant)">
                         <div class = "col-with-picture">
                             <div class="col-picture">
-                                <div><img v-bind:src="'pictures/'+restaurant.link" style="height:250px !important; width:300px !important" v-on:click="goToRestaurant(restaurant.id)"></div>
+                                <div><img v-bind:src="'pictures/'+restaurant.link" style="height:220px !important; width:250px !important" v-on:click="goToRestaurant(restaurant.id)"></div>
                             </div>
                         </div>
                         <div class="col-info">
@@ -197,6 +200,16 @@ methods:{
         },
         filterStatus: function (status){
             this.restaurants = this.restaurants.filter(restaurant => restaurant.status === status);
+        }, 
+
+        reset:function() {
+          axios.get("/WebShopREST/rest/restaurant/getAllRestaurants")
+          .then( response => {
+              this.restaurants = response.data
+          })
+          .catch(function(error){
+              console.log(error)
+          })
         }
 },
 computed: {

@@ -119,20 +119,18 @@ public class OrderDAO {
 	public RestaurantType checkRestaurantType(String userType) {
 		RestaurantType status=null;
 		if(userType.equals("italijanski")) {
-			status=RestaurantType.ITALIAN;
+			status=RestaurantType.ITALIJANSKI;
 		}
 		if(userType.equals("pecenje")) {
-			status=RestaurantType.BARBECUE;
+			status=RestaurantType.ROSTILJ;
 		}
 		 if(userType.equals("kineski")) {
-			 status=RestaurantType.CHINESE;
+			 status=RestaurantType.KINESKI;
 		} 
 		 if(userType.equals("riblji")) {
-			 status=RestaurantType.FISH;
+			 status=RestaurantType.RIBLJI;
 		} 
-		 if(userType.equals("meksicki")) {
-			 status=RestaurantType.MEXICAN;
-		} 
+		 
 		 if(userType.equals("pica")) {
 			 status=RestaurantType.PIZZA;
 		} 
