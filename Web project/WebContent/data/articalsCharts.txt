@@ -1,33 +1,33 @@
 {
-  "1" : {
-    "idArtical" : 1,
-    "quantity" : 7,
-    "idCustomer" : "kupac",
-    "idArticalInRestaurant" : 1,
-    "idRestaurant" : 0,
-    "restaurantType" : "ITALIAN"
-  },
-  "2" : {
-    "idArtical" : 2,
-    "quantity" : 0,
-    "idCustomer" : "b",
-    "idArticalInRestaurant" : 2,
+  "3" : {
+    "idArtical" : 3,
+    "quantity" : 2,
+    "idCustomer" : "marko",
+    "idArticalInRestaurant" : 3,
     "idRestaurant" : 2,
     "restaurantType" : "ITALIAN"
   },
-  "3" : {
-    "idArtical" : 3,
-    "quantity" : 0,
-    "idCustomer" : "b",
-    "idArticalInRestaurant" : 3,
+  "4" : {
+    "idArtical" : 4,
+    "quantity" : 2,
+    "idCustomer" : "marko",
+    "idArticalInRestaurant" : 4,
     "idRestaurant" : 2,
     "restaurantType" : "ITALIAN"
   },
   "6" : {
     "idArtical" : 6,
     "quantity" : 1,
-    "idCustomer" : "b",
+    "idCustomer" : "kupac",
     "idArticalInRestaurant" : 6,
+    "idRestaurant" : 2,
+    "restaurantType" : "ITALIAN"
+  },
+  "7" : {
+    "idArtical" : 7,
+    "quantity" : 2,
+    "idCustomer" : "marko",
+    "idArticalInRestaurant" : 7,
     "idRestaurant" : 2,
     "restaurantType" : "ITALIAN"
   }

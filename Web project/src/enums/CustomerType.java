@@ -4,5 +4,5 @@ public enum CustomerType {
 	GOLD,
 	SILVER,
 	BRONZE,
-	EMPLOYEE
+	NONE
 }

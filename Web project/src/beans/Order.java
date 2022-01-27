@@ -12,7 +12,7 @@ public class Order {
 	private ArrayList<Integer> articalIds; // ArticalChart!! (id artikala u restoranu)
 	private int retaurantId;
 	private Date date; //datum i vreme
-	private int price;
+	private double price;
 	private String idCustomer;
 	private OrderStatus status;
 	private Boolean deleted;
@@ -68,10 +68,10 @@ public class Order {
 	public void setDate(Date date) {
 		this.date = date;
 	}
-	public int getPrice() {
+	public double getPrice() {
 		return price;
 	}
-	public void setPrice(int price) {
+	public void setPrice(double price) {
 		this.price = price;
 	}
 	public String getIdCustomer() {
@@ -86,7 +86,7 @@ public class Order {
 	public void setStatus(OrderStatus status) {
 		this.status = status;
 	}
-	public Order(int id, ArrayList<Integer> articalIds, int retaurantId, Date date, int price, String idCustomer,
+	public Order(int id, ArrayList<Integer> articalIds, int retaurantId, Date date, double price, String idCustomer,
 			OrderStatus status, Boolean deleted,String idPotencial, String idDeliverer, RestaurantType type) {
 		super();
 		this.id = id;

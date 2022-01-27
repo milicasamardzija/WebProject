@@ -5,15 +5,13 @@ import enums.CustomerType;
 public class Customer {
 	public CustomerType type;
 	private double sale;
-	private double points;
 	
 	public Customer() {}
 	
-	public Customer(CustomerType type, double sale, double points) {
+	public Customer(CustomerType type, double sale) {
 		super();
 		this.type = type;
 		this.sale = sale;
-		this.points = points;
 	}
 
 	public CustomerType getType() {
@@ -32,11 +30,10 @@ public class Customer {
 		this.sale = sale;
 	}
 
-	public double getPoints() {
-		return points;
+	@Override
+	public String toString() {
+		return "Customer [type=" + type + ", sale=" + sale +"]" ;
 	}
 
-	public void setPoints(double points) {
-		this.points = points;
-	} 
+	 
 }

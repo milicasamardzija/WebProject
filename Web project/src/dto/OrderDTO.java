@@ -12,7 +12,7 @@ public class OrderDTO {
 	public ArrayList<String> artikli;
 	public String restaurantName;
 	public Date date;
-	public int price;
+	public double price;
 	public String idCustomer;
 	public OrderStatus status;
 	public Boolean deleted;
@@ -71,10 +71,10 @@ public class OrderDTO {
 	public void setDate(Date date) {
 		this.date = date;
 	}
-	public int getPrice() {
+	public double getPrice() {
 		return price;
 	}
-	public void setPrice(int price) {
+	public void setPrice(double price) {
 		this.price = price;
 	}
 	public String getIdCustomer() {
@@ -89,7 +89,7 @@ public class OrderDTO {
 	public void setStatus(OrderStatus status) {
 		this.status = status;
 	}
-	public OrderDTO(Integer id, ArrayList<String> artikli, String restaurantName, Date date, int price,
+	public OrderDTO(Integer id, ArrayList<String> artikli, String restaurantName, Date date, double price,
 			String idCustomer, OrderStatus status, Boolean deleted, String potencial, String idDeliverer,
 			RestaurantType
 			type) {

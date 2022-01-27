@@ -1,33 +1,4 @@
 {
-  "efwrre" : {
-    "deleted" : false,
-    "blocked" : true,
-    "username" : "efwrre",
-    "password" : "efwrre",
-    "name" : "Anastasija",
-    "surname" : "Rapaic",
-    "gender" : "MALE",
-    "birthday" : 1632441600000,
-    "role" : "MANAGER",
-    "address" : {
-      "street" : "Terij",
-      "number" : 4,
-      "city" : "Negotin",
-      "zipCode" : 45487,
-      "latitude" : 0.0,
-      "longitude" : 0.0
-    },
-    "orderIds" : [ ],
-    "chartId" : -1,
-    "points" : -1.0,
-    "typeCustomer" : {
-      "type" : "EMPLOYEE",
-      "sale" : -1.0,
-      "points" : -1.0
-    },
-    "idRestaurant" : -1,
-    "suspecious" : false
-  },
   "kupac" : {
     "deleted" : false,
     "blocked" : false,
@@ -48,71 +19,12 @@
     },
     "orderIds" : [ ],
     "chartId" : -1,
-    "points" : -1.0,
+    "points" : 2277.0,
     "typeCustomer" : {
-      "type" : "BRONZE",
-      "sale" : 0.0,
-      "points" : 200.0
+      "type" : "SILVER",
+      "sale" : 6.0
     },
     "idRestaurant" : 0,
-    "suspecious" : false
-  },
-  "dfdffdgf" : {
-    "deleted" : false,
-    "blocked" : false,
-    "username" : "dfdffdgf",
-    "password" : "dfdffdgf",
-    "name" : "dfdf",
-    "surname" : "fdgf",
-    "gender" : "MALE",
-    "birthday" : 1635292800000,
-    "role" : "MANAGER",
-    "address" : {
-      "street" : "fgd",
-      "number" : 5,
-      "city" : "gdgd",
-      "zipCode" : 5,
-      "latitude" : 0.0,
-      "longitude" : 0.0
-    },
-    "orderIds" : [ ],
-    "chartId" : -1,
-    "points" : -1.0,
-    "typeCustomer" : {
-      "type" : "EMPLOYEE",
-      "sale" : -1.0,
-      "points" : -1.0
-    },
-    "idRestaurant" : 7,
-    "suspecious" : false
-  },
-  "b" : {
-    "deleted" : false,
-    "blocked" : false,
-    "username" : "b",
-    "password" : "b",
-    "name" : "da",
-    "surname" : "da",
-    "gender" : "FEMALE",
-    "birthday" : 1641427200000,
-    "role" : "CUSTOMER",
-    "address" : {
-      "street" : "ad",
-      "number" : 3,
-      "city" : "da",
-      "zipCode" : 3,
-      "latitude" : 0.0,
-      "longitude" : 0.0
-    },
-    "orderIds" : [ ],
-    "chartId" : -1,
-    "points" : 0.0,
-    "typeCustomer" : {
-      "type" : "BRONZE",
-      "sale" : 0.1,
-      "points" : 2000.0
-    },
-    "idRestaurant" : -1,
     "suspecious" : false
   },
   "admin" : {
@@ -137,9 +49,8 @@
     "chartId" : -1,
     "points" : -1.0,
     "typeCustomer" : {
-      "type" : "EMPLOYEE",
-      "sale" : -1.0,
-      "points" : -1.0
+      "type" : "NONE",
+      "sale" : -1.0
     },
     "idRestaurant" : 2,
     "suspecious" : false
@@ -166,9 +77,8 @@
     "chartId" : -1,
     "points" : -1.0,
     "typeCustomer" : {
-      "type" : "EMPLOYEE",
-      "sale" : -1.0,
-      "points" : -1.0
+      "type" : "NONE",
+      "sale" : -1.0
     },
     "idRestaurant" : -1,
     "suspecious" : false
@@ -220,9 +130,8 @@
     "chartId" : -1,
     "points" : -1.0,
     "typeCustomer" : {
-      "type" : "EMPLOYEE",
-      "sale" : -1.0,
-      "points" : -1.0
+      "type" : "NONE",
+      "sale" : -1.0
     },
     "idRestaurant" : -1,
     "suspecious" : false
@@ -249,9 +158,8 @@
     "chartId" : -1,
     "points" : -1.0,
     "typeCustomer" : {
-      "type" : "EMPLOYEE",
-      "sale" : -1.0,
-      "points" : -1.0
+      "type" : "NONE",
+      "sale" : -1.0
     },
     "idRestaurant" : 2,
     "suspecious" : false
@@ -276,11 +184,10 @@
     },
     "orderIds" : [ ],
     "chartId" : -1,
-    "points" : 0.0,
+    "points" : 233.0,
     "typeCustomer" : {
       "type" : "BRONZE",
-      "sale" : 0.0,
-      "points" : 2000.0
+      "sale" : 3.0
     },
     "idRestaurant" : 0,
     "suspecious" : true

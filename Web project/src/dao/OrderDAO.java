@@ -30,6 +30,7 @@ import beans.User;
 import dao.RestaurantDAO;
 import dto.ArticalChartsDTO;
 import dto.OrderDTO;
+import enums.CustomerType;
 import enums.OrderStatus;
 import enums.RestaurantType;
 
@@ -206,12 +207,6 @@ public class OrderDAO {
 		}
 		
 		this.saveOrders();
-		
-		/*for (Order order : orders) {
-			ret.add(new OrderDTO(order.getId(), findOrderArticals(order.getArticalIds()), findNameRestaurant(order.getId()), order.getDate(), order.getPrice(), order.getIdCustomer(), order.getStatus(), order.getDeleted(),order.getPotencialDeliverer(), order.getIdDeliverer(), order.getRestaurantType()));
-		}
-		
-		return ret;*/
 	}
 	
 	private String findNameRestaurant(int id) {
@@ -328,19 +323,27 @@ public class OrderDAO {
 	}
 
 	public void addNewOrder(ArrayList<ArticalChartsDTO> articalsChart, User user){;
+	System.out.println("------------------------------------------");
 		System.out.println(user);
 		ArticalChartsDTO oneArticalInChart = new ArticalChartsDTO();
-		int price = 0;
-		
+		double price = 0;
 		ArrayList<Integer> articalIds = new ArrayList<Integer>();
+		
 		for (ArticalChartsDTO articalChart : articalsChart) {
 			articalIds.add(articalChart.getArticalInRestaurantId());
 			oneArticalInChart = articalChart;
 			price += articalChart.getPrice() * articalChart.getQuantity();
 		}
+	
+		if (user.getTypeCustomer().getType() != CustomerType.NONE) {
+			price = price - price*(user.getTypeCustomer().getSale() / 100);
+		} 
+		
 		int id = this.generateIdOrder();
 		this.orders.put(id, new Order(id, articalIds, oneArticalInChart.getRetaurantId(), new Date(), price, user.getUsername(), OrderStatus.OBRADA, false, "", "", oneArticalInChart.getRestaurantType()));
-		
+		System.out.println("------------------------------------------");
+		System.out.println(new Order(id, articalIds, oneArticalInChart.getRetaurantId(), new Date(), price, user.getUsername(), OrderStatus.OBRADA, false, "", "", oneArticalInChart.getRestaurantType()));
+		System.out.println("------------------------------------------");
 		this.saveOrders();
 	}
 	

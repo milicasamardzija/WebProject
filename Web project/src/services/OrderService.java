@@ -75,6 +75,7 @@ public class OrderService {
 		OrderDAO ordersDAO = getOrders();
 		UsersDAO userDao = this.getUsers();
 		ordersDAO.addNewOrder(articalsChart, userDao.getUserByUsername(username));
+		userDao.addPoens(userDao.getUserByUsername(username), articalsChart);
 	}
 	
 	//porudzbine za ulogovanog usera
@@ -264,7 +265,7 @@ public class OrderService {
 	}
 	
 	//sortiranje svih porudzbina kupca
-	@POST
+	/*@POST
 	@Path("/sortOrders")
 	@Produces(MediaType.APPLICATION_JSON)
 	public Collection<OrderDTO> sortOrders(String type) {
@@ -284,7 +285,7 @@ public class OrderService {
 					});
 			 }
 			 if(type.equals("opadajuce")) {
-				 myOrders = (ArrayList<OrderDTO>) myOrders.stream().sorted(Comparator.comparingInt(OrderDTO::getPrice).reversed()).collect(Collectors.toList());
+				 myOrders = (ArrayList<OrderDTO>) myOrders.stream().sorted(Comparator.comparingDouble(OrderDTO::getPrice).reversed()).collect(Collectors.toList());
 			 }
 			 if(type.equals("rastuce")) {
 				 myOrders = (ArrayList<OrderDTO>) myOrders.stream().sorted(Comparator.comparingInt(OrderDTO::getPrice)).collect(Collectors.toList());
@@ -347,7 +348,7 @@ public class OrderService {
 						});
 				 }
 				 return myOrders;
-			}
+			}*/
 	
 		
 
@@ -530,7 +531,7 @@ public class OrderService {
 	
 	//sortiranje porudzbina na cekanju
 	//sortiranje SVIH NA CEKANJU porudzbina
-			@POST
+		/*	@POST
 			@Path("/sortDelivererOnWaitOrders")
 			@Produces(MediaType.APPLICATION_JSON)
 			public Collection<OrderDTO> sortDelivererOnWaitOrders(String type) {
@@ -615,7 +616,7 @@ public class OrderService {
 									});
 							 }
 							 return ret;
-						}
+						}*/
 
 			
 			

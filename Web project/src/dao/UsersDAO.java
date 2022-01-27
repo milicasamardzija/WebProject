@@ -26,6 +26,7 @@ import com.fasterxml.jackson.databind.type.TypeFactory;
 import beans.Address;
 import beans.Customer;
 import beans.User;
+import dto.ArticalChartsDTO;
 import dto.ChangeUserProfileDTO;
 import dto.UserChangeDTO;
 import dto.UserNewDTO;
@@ -152,7 +153,7 @@ public class UsersDAO {
 	//dodavanje novog korisnika(menadzer ili dostavljac)
 	//username i password su mu ime i prezime spojeno na pocetku
 	public void addUser(UserNewDTO user) {
-		getUsers().put(user.name+user.surname, new User(false, false, user.name+user.surname, user.name+user.surname, user.name, user.surname, user.gender, user.birthday, user.role, new Address(user.street, user.number, user.city, user.zipCode), new ArrayList<Integer>(), -1, -1, new Customer(CustomerType.EMPLOYEE, -1, -1), -1,false));
+		getUsers().put(user.name+user.surname, new User(false, false, user.name+user.surname, user.name+user.surname, user.name, user.surname, user.gender, user.birthday, user.role, new Address(user.street, user.number, user.city, user.zipCode), new ArrayList<Integer>(), -1, -1, new Customer(CustomerType.NONE, 0), -1,false));
 		saveUsers();
 	}
 		
@@ -160,7 +161,7 @@ public class UsersDAO {
 	//da li se chartId dodaje ovde??
 	//podestiti bodvanje za Customer!!! - lupila sam ovde
 	public void registerUser(UserRegistrationDTO user) {
-		getUsers().put(user.username, new User(false, false, user.username, user.password, user.name, user.surname, user.gender, user.birthday, Role.CUSTOMER, new Address(user.street, user.number, user.city, user.zipCode), new ArrayList<Integer>(), -1, 0, new Customer(CustomerType.BRONZE,0.1,2000), -1, false));
+		getUsers().put(user.username, new User(false, false, user.username, user.password, user.name, user.surname, user.gender, user.birthday, Role.CUSTOMER, new Address(user.street, user.number, user.city, user.zipCode), new ArrayList<Integer>(), -1, 0, new Customer(CustomerType.NONE,0), -1, false));
 		saveUsers();
 	}
 	
@@ -275,8 +276,9 @@ public class UsersDAO {
 		for(User user : users.values()) {
 			if(!user.getDeleted()) {
 			ret.add(user);
+			}
 		}
-		}
+		
 		 if(type.equals("imeRastuce")) {
 			 Collections.sort(ret, new Comparator<User>(){
 				    public int compare(User s1, User s2) {
@@ -284,6 +286,7 @@ public class UsersDAO {
 				    }
 				});
 		 }
+		 
 		 if(type.equals("imeOpadajuce")) {
 			 Collections.sort(ret, new Comparator<User>(){
 				    public int compare(User s1, User s2) {
@@ -291,6 +294,7 @@ public class UsersDAO {
 				    }
 				});
 		 }
+		 
 		 if(type.equals("prezimeRastuce")) {
 			 Collections.sort(ret, new Comparator<User>(){
 				    public int compare(User s1, User s2) {
@@ -323,6 +327,7 @@ public class UsersDAO {
 		 }
 		return ret;
 	}
+	
 	public void changeUserProfile(ChangeUserProfileDTO user) {
 		User userChange = getUserByUsername(user.username);
 		userChange.setName(user.name);
@@ -332,6 +337,59 @@ public class UsersDAO {
 		userChange.setBirthday(user.birthday);
 		saveUsers();
 	}
-
+	
+	public void addPoens(User userByUsername, ArrayList<ArticalChartsDTO> articalsChart) {
+		double newPoents = 0;
+		double price = 0;
+		
+		for (ArticalChartsDTO articalChart : articalsChart) {
+			price += articalChart.getPrice() * articalChart.getQuantity();
+		}
+		
+		if (userByUsername.getTypeCustomer().getType() != CustomerType.NONE) {
+			price = price - price*(userByUsername.getTypeCustomer().getSale() / 100);
+		} 
+		
+		newPoents = (price / 1000) * 133;
+		userByUsername.setPoints(Math.round(userByUsername.getPoints() + newPoents));
+		
+		if (userByUsername.getPoints() > 1000 && userByUsername.getPoints() <= 2000) {
+			userByUsername.setTypeCustomer(new Customer(CustomerType.BRONZE, 3));
+		} else if (userByUsername.getPoints() > 2000 && userByUsername.getPoints() <= 4000) {
+			userByUsername.setTypeCustomer(new Customer(CustomerType.SILVER, 6));
+		} else if (userByUsername.getPoints() > 4000) {
+			userByUsername.setTypeCustomer(new Customer(CustomerType.GOLD, 10));
+		}
+		System.out.println(userByUsername);
+		System.out.println("------------------------------------------");
+		this.saveUsers();
+	}
+	
+	public void minusPoens(User userByUsername, ArrayList<ArticalChartsDTO> articalsChart) {
+		double newPoents = 0;
+		double price = 0;
+		
+		for (ArticalChartsDTO articalChart : articalsChart) {
+			price += articalChart.getPrice() * articalChart.getQuantity();
+		}
+		
+		if (userByUsername.getTypeCustomer().getType() != CustomerType.NONE) {
+			price = price - price*(userByUsername.getTypeCustomer().getSale() / 100);
+		} 
+		
+		newPoents = (price / 1000) * 133 * 4;
+		
+		userByUsername.setPoints(Math.round(userByUsername.getPoints() - newPoents));
+		
+		if (userByUsername.getPoints() > 1000 && userByUsername.getPoints() <= 2000) {
+			userByUsername.setTypeCustomer(new Customer(CustomerType.BRONZE, 3));
+		} else if (userByUsername.getPoints() > 2000 && userByUsername.getPoints() <= 4000) {
+			userByUsername.setTypeCustomer(new Customer(CustomerType.SILVER, 6));
+		} else if (userByUsername.getPoints() > 4000) {
+			userByUsername.setTypeCustomer(new Customer(CustomerType.GOLD, 10));
+		}
+		
+		this.saveUsers();
+	}
 
 }
