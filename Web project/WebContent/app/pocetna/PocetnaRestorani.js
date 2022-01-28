@@ -4,8 +4,7 @@ Vue.component("restaurants", {
             restaurants:[], 
             selected:null,
             search: {name:"", location:"", type:"", grade:""},
-            brRestorana: 0,
-            brFiltriranih: 0,
+     
             check: false
         }
     },

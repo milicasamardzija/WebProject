@@ -1,18 +1,10 @@
 {
-  "2" : {
-    "idArtical" : 2,
-    "quantity" : 3,
-    "idCustomer" : "kupac",
-    "idArticalInRestaurant" : 2,
-    "idRestaurant" : 2,
-    "restaurantType" : "ITALIAN"
-  },
-  "3" : {
-    "idArtical" : 3,
+  "1" : {
+    "idArtical" : 1,
     "quantity" : 2,
     "idCustomer" : "kupac",
-    "idArticalInRestaurant" : 3,
-    "idRestaurant" : 2,
-    "restaurantType" : "ITALIAN"
+    "idArticalInRestaurant" : 1,
+    "idRestaurant" : 0,
+    "restaurantType" : "PIZZA"
   }
 }
