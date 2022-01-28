@@ -1,5 +1,6 @@
 package services;
 
+import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
@@ -100,14 +101,14 @@ public class OrderService {
 	@GET
 	@Path("/cancelOrder/{username}/{idOrder}")
 	@Produces(MediaType.APPLICATION_JSON)
-	public Collection<OrderDTO> addNewOrder(@PathParam("username") String username, @PathParam("idOrder") String idOrder) {
+	public Collection<OrderDTO> addNewOrder(@PathParam("username") String username, @PathParam("idOrder") String idOrder) throws ParseException {
 		ArrayList<OrderDTO> ret= new ArrayList<OrderDTO>();
 		OrderDAO ordersDAO = getOrders();
 		Collection<Order> orders = ordersDAO.getValues();
 		UsersDAO userDao = this.getUsers();
-		ordersDAO.cancelOrder(userDao.getUserByUsername(username), idOrder);
-		userDao.minusPoens(userDao.getUserByUsername(username), this.getArticalChartDAO().getArticalsForChart(userDao.getUserByUsername(username)));
 		
+		userDao.minusPoens(userDao.getUserByUsername(username), this.getArticalChartDAO().getArticalsForChart(userDao.getUserByUsername(username)));
+		ordersDAO.cancelOrder(userDao.getUserByUsername(username), idOrder);
 		for(Order order : orders) {
 			if(!order.getDeleted() && order.getIdCustomer().equals(username) && order.getStatus() != OrderStatus.DOSTAVLJENA && order.getStatus() != OrderStatus.OTKAZANA ) {
 			ret.add(new OrderDTO(order.getId(), findOrderArticals(order.getArticalIds()),findNameRestaurant(order.getRetaurantId()), order.getDate(), order.getPrice(), order.getIdCustomer(), order.getStatus(), order.getDeleted(),order.getPotencialDeliverer(), order.getIdDeliverer(), order.getRestaurantType()));

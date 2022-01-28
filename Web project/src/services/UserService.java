@@ -16,7 +16,6 @@ import javax.ws.rs.core.Response;
 
 import beans.Order;
 import beans.User;
-import beans.UsernameDTO;
 import dao.OrderDAO;
 import dao.UsersDAO;
 import dto.UserNewDTO;
@@ -25,6 +24,7 @@ import dto.UserChangeDTO;
 import dto.UserLoginDTO;
 import dto.UserRegistrationDTO;
 import dto.UserSearchDTO;
+import dto.UsernameDTO;
 import enums.Role;
 
 @Path("/user")
@@ -110,6 +110,10 @@ public class UserService {
 		
 		if(!userForLogin.getPassword().equals(user.password)) {
 			return Response.status(Response.Status.BAD_REQUEST).entity("Lozinka koju ste uneli je pogresna!Probajte ponovo!!").build();
+		}
+		
+		if (userForLogin.getBlocked()) {
+			return Response.status(Response.Status.BAD_REQUEST).entity("Blokirani ste!").build();
 		}
 		
 		request.getSession().setAttribute("loginUser", userForLogin); //kacimo sesiju za korisnika
