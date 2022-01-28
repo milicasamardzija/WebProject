@@ -67,6 +67,25 @@ public class OrderService {
 		return users;
 	}
 	
+	private ArticalChartDAO getArticalChartDAO() {
+		ArticalChartDAO articalsCharts = (ArticalChartDAO)context.getAttribute("articalsCharts");
+		
+		if (articalsCharts == null) {
+			articalsCharts = new ArticalChartDAO();
+			context.setAttribute("articalsCharts", articalsCharts);
+		}
+	
+		return articalsCharts;
+	}
+	
+	@GET
+	@Path("/price/{username}")
+	@Produces(MediaType.APPLICATION_JSON)
+	@Consumes(MediaType.APPLICATION_JSON)
+	public double getPrice(@PathParam("username") String username, ArrayList<ArticalChartsDTO> articalsChart) {
+		UsersDAO users = getUsers();
+		return users.getPrice(users.getUserByUsername(username), this.getArticalChartDAO().getArticalsForChart(users.getUserByUsername(username)));
+	}
 	
 	@POST
 	@Path("/add/{username}")

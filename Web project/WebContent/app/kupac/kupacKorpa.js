@@ -2,7 +2,9 @@ Vue.component("korpa-kupac", {
     data(){
         return{
             proizvodi:[],
-            cena: 0
+            cena: 0.0,
+            cenaBezPopusta: 0.0,
+            korisnik: {}
         }
     },
 template: `
@@ -41,8 +43,8 @@ template: `
                     </tbody>
                   </table>
                   <br/>
-
-                  <h4 style="margin-left: 45em"> Ukupna cena:  <h4> {{this.cena}} </h4> </h4>  
+                  <h4 style="margin-left: 30em"> Ukupna cena bez popusta:  <h4> {{this.cenaBezPopusta}} </h4> </h4>  
+                  <h4 style="margin-left: 30em"> Ukupna cena sa korisnickim popustom:  <h4> {{this.cena}} </h4> </h4>  
                   
                   <button type="button" class="btn btn-success " style="margin-left:1050px; position: relative;" v-on:click="poruci()"> PORUCI </button >
             </div>     
@@ -57,7 +59,7 @@ methods:{
     .then( response => {
       alert("Uspesno ste izvrsili narudzbinu!");
       router.push(`/`);
-      //ovde jos dodati poziv metode koja poziva metodu za birsanje svakog artikla iz korpe na beku
+      //ovde jos dodati poziv metode koja poziva metodu za brisanje svakog artikla iz korpe na beku
     })
     .catch(function(error){
         console.log(error)
@@ -68,8 +70,9 @@ methods:{
     axios.post("/WebShopREST/rest/articalChart/plus", proizvod.id)
     .then( response => {
         this.proizvodi = response.data; 
-        this.obracunajCenuSabiranje(proizvod.price);
-     
+       // this.obracunajCenuSabiranje(proizvod.price);
+        this.obracunajCenuTrenutnu();
+        this.obracunajCenuBezPopusta();
     })
     .catch(function(error){
         console.log(error)
@@ -80,7 +83,9 @@ methods:{
     axios.post("/WebShopREST/rest/articalChart/minus", proizvod.id)
     .then( response => {
         this.proizvodi = response.data; 
-        this.obracunajCenuOduzimanje(proizvod.price);
+        //this.obracunajCenuOduzimanje(proizvod.price);
+        this.obracunajCenuTrenutnu();
+        this.obracunajCenuBezPopusta();
     })
     .catch(function(error){
         console.log(error)
@@ -94,20 +99,34 @@ methods:{
     this.cena +=  price;
   }, 
   obracunajCenuTrenutnu(){
-    this.proizvodi.forEach(element => { this.cena += element.price * element.quantity
+    axios.get("/WebShopREST/rest/order/price/" + localStorage.getItem("userLogged"), this.proizvodi)
+    .then( response => { this.cena = response.data;
+      console.log(response.data);})
+    .catch(function(error){
+        console.log(error)
+    })
+  },
+  obracunajCenuBezPopusta(){
+    this.proizvodi.forEach(element => { this.cenaBezPopusta += element.price * element.quantity
     });
   }
 },
 mounted(){
-  
+  axios.get("/WebShopREST/rest/profile/profileUser")
+  .then( response => {
+      this.korisnik = response.data;
+  })
+  .catch(function(error){
+      console.log(error)
+  }),
   axios.get("/WebShopREST/rest/articalChart/getChart")
   .then( response => {
       this.proizvodi = response.data;
-      console.log(response.data)
       this.obracunajCenuTrenutnu();
+      this.obracunajCenuBezPopusta();
   })
   .catch(function(error){
       console.log(error)
   })
 }
-});
+})

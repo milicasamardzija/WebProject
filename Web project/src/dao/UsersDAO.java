@@ -342,13 +342,7 @@ public class UsersDAO {
 		double newPoents = 0;
 		double price = 0;
 		
-		for (ArticalChartsDTO articalChart : articalsChart) {
-			price += articalChart.getPrice() * articalChart.getQuantity();
-		}
-		
-		if (userByUsername.getTypeCustomer().getType() != CustomerType.NONE) {
-			price = price - price*(userByUsername.getTypeCustomer().getSale() / 100);
-		} 
+		price = getPrice(userByUsername, articalsChart);
 		
 		newPoents = (price / 1000) * 133;
 		userByUsername.setPoints(Math.round(userByUsername.getPoints() + newPoents));
@@ -369,13 +363,7 @@ public class UsersDAO {
 		double newPoents = 0;
 		double price = 0;
 		
-		for (ArticalChartsDTO articalChart : articalsChart) {
-			price += articalChart.getPrice() * articalChart.getQuantity();
-		}
-		
-		if (userByUsername.getTypeCustomer().getType() != CustomerType.NONE) {
-			price = price - price*(userByUsername.getTypeCustomer().getSale() / 100);
-		} 
+		price = getPrice(userByUsername, articalsChart); 
 		
 		newPoents = (price / 1000) * 133 * 4;
 		
@@ -392,4 +380,18 @@ public class UsersDAO {
 		this.saveUsers();
 	}
 
+	public double getPrice(User userByUsername, ArrayList<ArticalChartsDTO> articalsChart) {
+		double price = 0;
+		
+		for (ArticalChartsDTO articalChart : articalsChart) {
+			price += articalChart.getPrice() * articalChart.getQuantity();
+		}
+		
+		if (userByUsername.getTypeCustomer().getType() != CustomerType.NONE) {
+			price = price - price*(userByUsername.getTypeCustomer().getSale() / 100);
+		} 
+		
+		return price;
+	}
+	
 }

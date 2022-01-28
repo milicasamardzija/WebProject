@@ -52,6 +52,7 @@ public class UserService {
 		}
 		return ret;
 	}
+
 	
 	@GET
 	@Path("/getAllUsersForRestaurant")

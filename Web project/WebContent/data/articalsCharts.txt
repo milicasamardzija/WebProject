@@ -1,23 +1,15 @@
 {
   "3" : {
     "idArtical" : 3,
-    "quantity" : 2,
-    "idCustomer" : "marko",
+    "quantity" : 5,
+    "idCustomer" : "kupac",
     "idArticalInRestaurant" : 3,
-    "idRestaurant" : 2,
-    "restaurantType" : "ITALIAN"
-  },
-  "4" : {
-    "idArtical" : 4,
-    "quantity" : 2,
-    "idCustomer" : "marko",
-    "idArticalInRestaurant" : 4,
     "idRestaurant" : 2,
     "restaurantType" : "ITALIAN"
   },
   "6" : {
     "idArtical" : 6,
-    "quantity" : 1,
+    "quantity" : 0,
     "idCustomer" : "kupac",
     "idArticalInRestaurant" : 6,
     "idRestaurant" : 2,

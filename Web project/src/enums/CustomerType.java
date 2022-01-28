@@ -1,7 +1,7 @@
 package enums;
 
 public enum CustomerType {
-	GOLD,
+	GOLD ,
 	SILVER,
 	BRONZE,
 	NONE
