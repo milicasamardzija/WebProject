@@ -1,16 +1,17 @@
 <html> 
 <head> 
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.9.1/underscore.js"></script>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Donesi hranu</title>
     <link rel="stylesheet" href="css/administrator.css"> 
     <link rel= "stylesheet" href="css/navibar.css">
-    <link rel= "stylesheet" href="css/restorani.css">
-    <link rel="stylesheet" href="css/prikazIzmene.css">
+  <!--  <link rel= "stylesheet" href="css/restorani.css">   PROMENI POZICIJU TEXT FIELDOVA NA MODALIMA-->
+      <link rel="stylesheet" href="css/prikazIzmene.css">
     <link rel= "stylesheet" href="css/articals.css">
     <link rel= "stylesheet" href="css/users.css">
-    <link rel= "stylesheet" href="css/comments.css">
-    <link rel= "stylesheet" href="css/tabelaZaPretragu.css">
+    <link rel= "stylesheet" href="css/comments.css"> 
+   <link rel= "stylesheet" href="css/tabelaZaPretragu.css">
     <link rel= "stylesheet" href="css/restorani-pocetna.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
@@ -52,8 +53,8 @@
                     <div class="genderRow"> 
                         <label >Pol </label>
                         <div class="col"> 
-                            <input type="radio" name="gender"  value="MALE" v-model="user.gender"><small>Muski</small>
-                           <input type="radio" name="gender"  value="FEMALE" v-model="user.gender"> <small>Zenski</small>
+                            <input type="radio" name="gender"  value="MALE" v-model="user.gender"  style="margin-left: 0.2em"><small style="margin-left: 1em">Muski</small>
+                           <input type="radio" name="gender"  value="FEMALE" v-model="user.gender"  style="margin-left: 2em"> <small  style="margin-left: 1em">Zenski</small>
                          </div>    
                     </div>
                     <div> </div>
@@ -238,7 +239,7 @@
           </div>
 
       
-
+         
     <script src="js/vue.js"></script>
     <script src="js/vue-router.js"></script>
     <script src="js/axios.js"></script>
@@ -247,8 +248,7 @@
     <script src="app/administrator/adminApp.js"></script>
    <script src="app/administrator/adminPocetna.js"></script>
     <script src="app/administrator/adminPocetnaKomentari.js"></script>--> 
-
-
+    
     <script src="js/jquery.min.js"></script>
     <script src="js/moment.min.js"></script>
     <script src="js/login.js"></script>

@@ -39,16 +39,17 @@ template: `
                     <div class="row-artical">
                         <div class="column" v-for="artical in articals" v-on:click="getSelectedArtical(artical)">
                             <div class="card">
-                            <img v-bind:src="'../pictures/'+  artical.link" style="height:280px !important; width:320px !important" >
+                            <img v-bind:src="'../pictures/'+  artical.link" style="height:220px !important; width:260px !important; margin-left: 1.7em" >
                                 <div class="container">
-                                    <h2>{{artical.name}}</h2>
+                                    <h3>{{artical.name}}</h3>
                                     <p class="title">{{artical.type}}</p>
                                     <p>Cena: {{artical.price}} din</p>
                                     <p>Gramaza: {{artical.quantity}}g</p>
                                     <p>Opis: {{artical.description}}</p>
                                 </div>
                                 <div>
-                                <td> <input type="number" min="0" v-model="artical.number" @input="dodaj(artical)">  </td>
+                                <td><p style="margin-left: 1em">Unesite kolicinu: </p> </td>
+                                <td> <input type="number" min="0" v-model="artical.number" @input="dodaj(artical)" style="margin-left: 3em; width: 5em">  </td>
                                 </div>
                             </div>
                         </div>

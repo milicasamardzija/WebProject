@@ -3,7 +3,9 @@ Vue.component("restaurants", {
         return{
             restaurants:[], 
             selected:null,
-            search: {name:"", location:"", type:"", grade:""}
+            search: {name:"", location:"", type:"", grade:""},
+     
+            check: false
         }
     },
 template: `
@@ -39,8 +41,9 @@ template: `
                               </select>
                            
                             </td>
-                            <td style="width: 250px"> <button type="button" class="btn btn-danger wrn-btn btn-search" v-on:click="pretrazi">Search</button></td>
-                           </tr>
+                            <td style="width: 250px"> <button type="button" class="btn btn-danger wrn-btn btn-search" v-on:click="pretrazi()">Search</button></td>
+                         
+                            </tr>
                         </table>
 
                
@@ -52,27 +55,23 @@ template: `
                           Tip restorana </button>
                      
                               <span class="dropdown-menu" aria-labelledby="dropdownMenu2">
-                              <button class="dropdown-item" type="button" value="ITALIAN" v-on:click="checkType('ITALIAN')">Italijanski</button>
-                              <button class="dropdown-item" type="button" value="CHINESE" v-on:click="checkType('CHINESE')">Kineski</button>
-                              <button class="dropdown-item" type="button" value="PIZZA" v-on:click="checkType('PIZZA')">Pica</button>
-                              <button class="dropdown-item" type="button" value="BARBECUE" v-on:click="checkType('BARBECUE')">Rostilj</button>
-                              <button class="dropdown-item" type="button" value="FISH" v-on:click="checkType('FISH')">Riblji</button>
-                              <button class="dropdown-item" type="button" value="VEGE" v-on:click="checkType('VEGE')">Veganski</button>
+                              <button class="dropdown-item" type="button" value="ITALIJANSKI" v-on:click="filterType('ITALIJANSKI')">Italijanski</button>
+                              <button class="dropdown-item" type="button" value="KINESKI" v-on:click="filterType('KINESKI')">Kineski</button>
+                              <button class="dropdown-item" type="button" value="PIZZA" v-on:click="filterType('PIZZA')">Pica</button>
+                              <button class="dropdown-item" type="button" value="ROSTILJ" v-on:click="filterType('ROSTILJ')">Rostilj</button>
+                              <button class="dropdown-item" type="button" value="RIBLJI" v-on:click="filterType('RIBLJI')">Riblji</button>
+                              <button class="dropdown-item" type="button" value="VEGE" v-on:click="filterType('VEGE')">Veganski</button>
                               </span> </td>
                             <td style="width: 25px;"> </td>
                               <td style="width:150px "> <p> ili status restorana</p></td>
                               <td > <button class="btn btn-secondary dropdown-toggle" type="button" data-toggle="dropdown" > Status restorana </button>
-                                 
-                       
                                 <span class="dropdown-menu" aria-labelledby="dropdownMenu2">
-                                <button class="dropdown-item" type="button" value="ITALIAN">Italijanski</button>
-                                <button class="dropdown-item" type="button" value="CHINESE">Kineski</button>
-                                <button class="dropdown-item" type="button" value="PIZZA">Pica</button>
-                                <button class="dropdown-item" type="button" value="BARBECUE">Rostilj</button>
-                                <button class="dropdown-item" type="button" value="FISH">Riblji</button>
-                                <button class="dropdown-item" type="button" value="VEGE">Veganski</button>
+                                <button class="dropdown-item" type="button" value="OPEN"  v-on:click="filterStatus('OPEN')">Otvoren</button>
+                                <button class="dropdown-item" type="button" value="CLOSE" v-on:click="filterStatus('CLOSE')">Zatvoren</button>
                                 </span>
                              </td>
+                             <td style="width: 135px;"> </td>
+                             <td><button class="btn btn-secondary" type="button"  v-if="check" v-on:click="reset()">x</button> </td> 
                         </tr> 
                         </table>
 
@@ -84,12 +83,12 @@ template: `
                             Sortiranje</button>
                         
                                   <span class="dropdown-menu" aria-labelledby="dropdownMenu2">
-                                  <button class="dropdown-item" type="button">Po nazivu rastuce</button>
-                                  <button class="dropdown-item" type="button">Po nazivu opadajuce</button>
-                                  <button class="dropdown-item" type="button">Po mestu rastuce</button>
-                                  <button class="dropdown-item" type="button">Po mestu opadajuce</button>
-                                  <button class="dropdown-item" type="button">Po oceni rastuce</button>
-                                  <button class="dropdown-item" type="button">Po oceni opadajuce</button>
+                                  <button class="dropdown-item" type="button" v-on:click="sortNameAsc()">Po nazivu rastuce</button>
+                                  <button class="dropdown-item" type="button" v-on:click="sortNameDesc()" >Po nazivu opadajuce</button>
+                                  <button class="dropdown-item" type="button" v-on:click="sortCityAsc()">Po mestu rastuce</button>
+                                  <button class="dropdown-item" type="button" v-on:click="sortCityDesc()">Po mestu opadajuce</button>
+                                  <button class="dropdown-item" type="button" v-on:click="sortGradeAsc()">Po oceni rastuce</button>
+                                  <button class="dropdown-item" type="button" v-on:click="sortGradeDesc()">Po oceni opadajuce</button>
                                   </span> </td>
                             
                             </tr > 
@@ -102,7 +101,7 @@ template: `
                     <div class="row-restaurants" v-for="restaurant in restaurants" v-on:click="getSelected(restaurant)">
                         <div class = "col-with-picture">
                             <div class="col-picture">
-                                <div><img v-bind:src="'pictures/'+restaurant.link" style="height:250px !important; width:300px !important" v-on:click="goToRestaurant(restaurant.id)"></div>
+                                <div><img v-bind:src="'pictures/'+restaurant.link" style="height:220px !important; width:250px !important" v-on:click="goToRestaurant(restaurant.id)"></div>
                             </div>
                         </div>
                         <div class="col-info">
@@ -132,12 +131,114 @@ methods:{
             .catch(function(error){
                 console.log(error)
             })
+        },
+
+        sortNameAsc: function() {
+			function compare(a, b) {
+			  if (a.name < b.name)
+			    return -1;
+			  if (a.name > b.name)
+			    return 1;
+			  return 0;
+			}
+
+			return this.restaurants.sort(compare);
+		}, 
+		sortNameDesc: function() {
+			function compare(a, b) {
+			  if (a.name < b.name)
+			    return 1;
+			  if (a.name > b.name)
+			    return -1;
+			  return 0;
+			}
+			
+			return this.restaurants.sort(compare);
+		},
+        sortGradeAsc: function() {
+			function compare(a, b) {
+			  if (a.grade < b.grade)
+			    return -1;
+			  if (a.grade > b.grade)
+			    return 1;
+			  return 0;
+			}
+
+			return this.restaurants.sort(compare);
+		}, 
+		sortGradeDesc: function() {
+			function compare(a, b) {
+			  if (a.grade < b.grade)
+			    return 1;
+			  if (a.grade > b.grade)
+			    return -1;
+			  return 0;
+			}
+			
+			return this.restaurants.sort(compare);
+		},
+        sortCityAsc: function() {
+			function compare(a, b) {
+			  if (a.address.city < b.address.city)
+			    return -1;
+			  if (a.address.city > b.address.city)
+			    return 1;
+			  return 0;
+			}
+
+			return this.restaurants.sort(compare);
+		}, 
+		sortCityDesc: function() {
+			function compare(a, b) {
+			  if (a.address.city < b.address.city)
+			    return 1;
+			  if (a.address.city > b.address.city)
+			    return -1;
+			  return 0;
+			}
+			
+			return this.restaurants.sort(compare);
+		},
+        filterType: function (type){
+            this.restaurants = this.restaurants.filter(restaurant => restaurant.type === type);
+            
+            this.check = true
+        },
+        filterStatus: function (status){
+            this.restaurants = this.restaurants.filter(restaurant => restaurant.status === status);
+            
+            this.check = true
+        }, 
+
+        reset:function() {
+          axios.get("/WebShopREST/rest/restaurant/getAllRestaurants")
+          .then( response => {
+              this.restaurants = response.data,
+              this.check = false
+          })
+          .catch(function(error){
+              console.log(error)
+          })
         }
 },
+computed: {
+    sortedName: function() {
+      function compare(a, b) {
+        if (a.name < b.name)
+          return -1;
+        if (a.name > b.name)
+          return 1;
+        return 0;
+      }
+  
+      return this.restaurants.sort(compare);
+    }
+  },
 mounted(){
     axios.get("/WebShopREST/rest/restaurant/getAllRestaurants")
     .then( response => {
-        this.restaurants = response.data
+        this.restaurants = response.data,
+        this.check = false
     })
     .catch(function(error){
         console.log(error)
