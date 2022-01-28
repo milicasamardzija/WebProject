@@ -3,7 +3,10 @@ Vue.component("restaurants", {
         return{
             restaurants:[], 
             selected:null,
-            search: {name:"", location:"", type:"", grade:""}
+            search: {name:"", location:"", type:"", grade:""},
+            brRestorana: 0,
+            brFiltriranih: 0,
+            check: false
         }
     },
 template: `
@@ -67,7 +70,7 @@ template: `
                                 </span>
                              </td>
                              <td style="width: 135px;"> </td>
-                             <td><button class="btn btn-secondary" type="button"  v-on:click="reset()">x</button> </td> 
+                             <td><button class="btn btn-secondary" type="button"  v-if="check" v-on:click="reset()">x</button> </td> 
                         </tr> 
                         </table>
 
@@ -197,15 +200,20 @@ methods:{
 		},
         filterType: function (type){
             this.restaurants = this.restaurants.filter(restaurant => restaurant.type === type);
+            
+            this.check = true
         },
         filterStatus: function (status){
             this.restaurants = this.restaurants.filter(restaurant => restaurant.status === status);
+            
+            this.check = true
         }, 
 
         reset:function() {
           axios.get("/WebShopREST/rest/restaurant/getAllRestaurants")
           .then( response => {
-              this.restaurants = response.data
+              this.restaurants = response.data,
+              this.check = false
           })
           .catch(function(error){
               console.log(error)
@@ -228,7 +236,8 @@ computed: {
 mounted(){
     axios.get("/WebShopREST/rest/restaurant/getAllRestaurants")
     .then( response => {
-        this.restaurants = response.data
+        this.restaurants = response.data,
+        this.check = false
     })
     .catch(function(error){
         console.log(error)
