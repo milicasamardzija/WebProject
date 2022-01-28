@@ -111,7 +111,7 @@ public class OrderService {
 			System.out.println(order);
 			System.out.println((User)request.getSession().getAttribute("loginUser"));
 			if(!order.getDeleted() && order.getIdCustomer().equals(user.getUsername())) {
-			ret.add(new OrderDTO(order.getId(), findOrderArticals(order.getArticalIds()),findNameRestaurant(order.getId()), order.getDate(), order.getPrice(), order.getIdCustomer(), order.getStatus(), order.getDeleted(),order.getPotencialDeliverer(), order.getIdDeliverer(), order.getRestaurantType()));
+			ret.add(new OrderDTO(order.getId(), findOrderArticals(order.getArticalIds()),findNameRestaurant(order.getRetaurantId()), order.getDate(), order.getPrice(), order.getIdCustomer(), order.getStatus(), order.getDeleted(),order.getPotencialDeliverer(), order.getIdDeliverer(), order.getRestaurantType()));
 			}
 		}
 		return ret;
@@ -271,13 +271,13 @@ public class OrderService {
 	@Produces(MediaType.APPLICATION_JSON)
 	public Collection<OrderDTO> getUndelivered(){
 		ArrayList<OrderDTO> ret= new ArrayList<OrderDTO>();
-		OrderDAO ordersDAO = getOrders(); //sve porudzbine
+		OrderDAO ordersDAO = getOrders(); 
 		Collection<Order> orders = ordersDAO.getValues(); //sve porudzbine
-		User user = (User)request.getSession().getAttribute("loginUser");		//dobijam ulogovanog dostavljaca
+		User user = (User)request.getSession().getAttribute("loginUser");		//dobijam ulogovanog kupca
 		
 		for(Order order : orders) {
 			if(!order.getDeleted() && order.getIdCustomer().equals(user.getUsername()) && order.getStatus() != OrderStatus.DOSTAVLJENA && order.getStatus() != OrderStatus.OTKAZANA ) {
-			ret.add(new OrderDTO(order.getId(), findOrderArticals(order.getArticalIds()),findNameRestaurant(order.getId()), order.getDate(), order.getPrice(), order.getIdCustomer(), order.getStatus(), order.getDeleted(),order.getPotencialDeliverer(), order.getIdDeliverer(), order.getRestaurantType()));
+			ret.add(new OrderDTO(order.getId(), findOrderArticals(order.getArticalIds()),findNameRestaurant(order.getRetaurantId()), order.getDate(), order.getPrice(), order.getIdCustomer(), order.getStatus(), order.getDeleted(),order.getPotencialDeliverer(), order.getIdDeliverer(), order.getRestaurantType()));
 			}
 		}
 		return ret;	

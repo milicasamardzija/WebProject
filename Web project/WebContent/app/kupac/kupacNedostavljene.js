@@ -26,7 +26,7 @@ template: `
         <tbody>
           <tr v-for="order in orders">
             <td>{{order.restaurantName}}</td>
-            <td>{{order.date}}</td>
+            <td>{{order.date | dateFormat('DD.MM.YYYY.')}}</td>
             <td>{{order.price}}</td>
             <td>{{order.status}}</td>
         
@@ -59,6 +59,11 @@ mounted(){
     .catch(function(error){
         console.log(error)
     })
-
 },
+filters: {
+  dateFormat: function(value, format){
+      var parsed = moment(value);
+      return parsed.format(format)
+  }
+}
 });
