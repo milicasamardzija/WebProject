@@ -7,13 +7,18 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.time.Instant;
+import java.time.Period;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.Comparator;
+import java.util.Date;
 import java.util.HashMap;
 
-
+import javax.servlet.ServletContext;
+import javax.servlet.http.HttpServletRequest;
+import javax.ws.rs.core.Context;
 
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.core.JsonGenerator;
@@ -25,6 +30,7 @@ import com.fasterxml.jackson.databind.type.TypeFactory;
 
 import beans.Address;
 import beans.Customer;
+import beans.SuspiciousUsers;
 import beans.User;
 import dto.ArticalChartsDTO;
 import dto.ChangeUserProfileDTO;
@@ -38,6 +44,11 @@ import enums.Role;
 public class UsersDAO {
 	private HashMap<String,User> users;
 	private String filePath = "";
+	
+	@Context
+	ServletContext context;
+	@Context
+	HttpServletRequest request;
 	
 	public HashMap<String, User> getUsers() {
 		return users;
@@ -380,6 +391,7 @@ public class UsersDAO {
 		this.saveUsers();
 	}
 
+	
 	public double getPrice(User userByUsername, ArrayList<ArticalChartsDTO> articalsChart) {
 		double price = 0;
 		
@@ -392,6 +404,12 @@ public class UsersDAO {
 		} 
 		
 		return price;
+	}
+	
+	public void setUserSuspisious(User user) {
+		User userChange = getUserByUsername(user.getUsername());
+		userChange.setSuspecious(true);
+		this.saveUsers();
 	}
 	
 }

@@ -6,15 +6,26 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.time.Instant;
+import java.time.LocalDate;
+import java.time.ZoneId;
+import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeFormatterBuilder;
+import java.time.temporal.TemporalAccessor;
 import java.util.Date;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.Iterator;
+import java.util.Locale;
 
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
 import javax.ws.rs.core.Context;
+import javax.xml.bind.ParseConversionEvent;
 
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.core.JsonGenerator;
@@ -26,6 +37,7 @@ import com.fasterxml.jackson.databind.type.TypeFactory;
 
 import beans.Comment;
 import beans.Order;
+import beans.SuspiciousUsers;
 import beans.User;
 import dao.RestaurantDAO;
 import dto.ArticalChartsDTO;
@@ -344,12 +356,65 @@ public class OrderDAO {
 		System.out.println("------------------------------------------");
 		this.saveOrders();
 	}
-	
-	
-			
-	
-			
-		
 
+	public void cancelOrder(User userByUsername, String idOrder) throws ParseException {
+		SuspiciousUsersDAO suspisiousUsers = new SuspiciousUsersDAO("");
+		Order order = getByIdOrder(Integer.parseInt(idOrder));
+		if(order.getStatus().equals(OrderStatus.OBRADA) && order.getIdCustomer().equals(userByUsername.getUsername())) {
+			order.setStatus(OrderStatus.OTKAZANA);
+			saveOrders();
+		}
+		suspisiousUsers.addNew(new SuspiciousUsers(-1, userByUsername.getUsername(), order.getId(), new Date()));
+		checkIfUserIsSuspiciuos(userByUsername, order.getDate());
+	}
+	
+	private SuspiciousUsersDAO getSuspiciousUsers() {
+		SuspiciousUsersDAO users = (SuspiciousUsersDAO)context.getAttribute("SuspiciousUsers");
+		
+		if (users == null) {
+			String contextPath = context.getRealPath("");
+			users = new SuspiciousUsersDAO(contextPath);
+			context.setAttribute("SuspiciousUsers", users);
+		}
+		return users;
+	}
+	
+	@SuppressWarnings("deprecation")
+	private void checkIfUserIsSuspiciuos(User user , Date lastCancelation) throws ParseException {
+		
+		SuspiciousUsersDAO suspisiousUsers = new SuspiciousUsersDAO("");
+		UsersDAO usersDao = new UsersDAO("");
+		Collection<SuspiciousUsers> all = suspisiousUsers.getValues();
+		int br = 0;
+		
+		ZoneId defaultZoneId = ZoneId.systemDefault();
+		
+		//Converting the date to Instant
+		Instant instant = lastCancelation.toInstant();
 			
+		//Converting the Date to LocalDate	
+		LocalDate rangeDate = instant.atZone(defaultZoneId).toLocalDate();;
+		
+		Date covertToDate = Date.from(rangeDate.minusDays(30).atStartOfDay(ZoneId.systemDefault()).toInstant());
+		System.out.println(covertToDate);
+		for (SuspiciousUsers suspiciousUsers : all) {
+			System.out.println(suspiciousUsers);
+			if (suspiciousUsers.getUserId().equals(user.getUsername())) {
+				System.out.println("ZNAM KO JE");
+				System.out.println(covertToDate);
+				System.out.println(suspiciousUsers.getDateOfCancelation());
+				System.out.println(lastCancelation);
+				if (lastCancelation.after(covertToDate) && lastCancelation.before(suspiciousUsers.getDateOfCancelation())) {
+					System.out.println("TU SAM");
+					br++;
+				}
+			}
+		}
+		System.out.println(br);
+		
+		if (br > 5 ) {
+			usersDao.setUserSuspisious(user);
+		}		
+	}
+				
 }

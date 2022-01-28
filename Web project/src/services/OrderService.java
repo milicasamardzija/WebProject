@@ -1,5 +1,6 @@
 package services;
 
+import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
@@ -97,6 +98,26 @@ public class OrderService {
 		userDao.addPoens(userDao.getUserByUsername(username), articalsChart);
 	}
 	
+	@GET
+	@Path("/cancelOrder/{username}/{idOrder}")
+	@Produces(MediaType.APPLICATION_JSON)
+	public Collection<OrderDTO> addNewOrder(@PathParam("username") String username, @PathParam("idOrder") String idOrder) throws ParseException {
+		ArrayList<OrderDTO> ret= new ArrayList<OrderDTO>();
+		OrderDAO ordersDAO = getOrders();
+		Collection<Order> orders = ordersDAO.getValues();
+		UsersDAO userDao = this.getUsers();
+		
+		userDao.minusPoens(userDao.getUserByUsername(username), this.getArticalChartDAO().getArticalsForChart(userDao.getUserByUsername(username)));
+		ordersDAO.cancelOrder(userDao.getUserByUsername(username), idOrder);
+		for(Order order : orders) {
+			if(!order.getDeleted() && order.getIdCustomer().equals(username) && order.getStatus() != OrderStatus.DOSTAVLJENA && order.getStatus() != OrderStatus.OTKAZANA ) {
+			ret.add(new OrderDTO(order.getId(), findOrderArticals(order.getArticalIds()),findNameRestaurant(order.getRetaurantId()), order.getDate(), order.getPrice(), order.getIdCustomer(), order.getStatus(), order.getDeleted(),order.getPotencialDeliverer(), order.getIdDeliverer(), order.getRestaurantType()));
+			}
+		}
+		
+		return ret;
+	}
+	
 	//porudzbine za ulogovanog usera
 	@GET
 	@Path("/getOrders")
@@ -108,10 +129,8 @@ public class OrderService {
 		User user = (User)request.getSession().getAttribute("loginUser");		
 		
 		for(Order order : orders) {
-			System.out.println(order);
-			System.out.println((User)request.getSession().getAttribute("loginUser"));
-			if(!order.getDeleted() && order.getIdCustomer().equals(user.getUsername())) {
-			ret.add(new OrderDTO(order.getId(), findOrderArticals(order.getArticalIds()),findNameRestaurant(order.getId()), order.getDate(), order.getPrice(), order.getIdCustomer(), order.getStatus(), order.getDeleted(),order.getPotencialDeliverer(), order.getIdDeliverer(), order.getRestaurantType()));
+			if(!order.getDeleted() && order.getIdCustomer().equals(user.getUsername()) && order.getStatus() != OrderStatus.OBRADA) {
+			ret.add(new OrderDTO(order.getId(), findOrderArticals(order.getArticalIds()),findNameRestaurant(order.getRetaurantId()), order.getDate(), order.getPrice(), order.getIdCustomer(), order.getStatus(), order.getDeleted(),order.getPotencialDeliverer(), order.getIdDeliverer(), order.getRestaurantType()));
 			}
 		}
 		return ret;
@@ -271,13 +290,13 @@ public class OrderService {
 	@Produces(MediaType.APPLICATION_JSON)
 	public Collection<OrderDTO> getUndelivered(){
 		ArrayList<OrderDTO> ret= new ArrayList<OrderDTO>();
-		OrderDAO ordersDAO = getOrders(); //sve porudzbine
+		OrderDAO ordersDAO = getOrders(); 
 		Collection<Order> orders = ordersDAO.getValues(); //sve porudzbine
-		User user = (User)request.getSession().getAttribute("loginUser");		//dobijam ulogovanog dostavljaca
+		User user = (User)request.getSession().getAttribute("loginUser");		//dobijam ulogovanog kupca
 		
 		for(Order order : orders) {
 			if(!order.getDeleted() && order.getIdCustomer().equals(user.getUsername()) && order.getStatus() != OrderStatus.DOSTAVLJENA && order.getStatus() != OrderStatus.OTKAZANA ) {
-			ret.add(new OrderDTO(order.getId(), findOrderArticals(order.getArticalIds()),findNameRestaurant(order.getId()), order.getDate(), order.getPrice(), order.getIdCustomer(), order.getStatus(), order.getDeleted(),order.getPotencialDeliverer(), order.getIdDeliverer(), order.getRestaurantType()));
+			ret.add(new OrderDTO(order.getId(), findOrderArticals(order.getArticalIds()),findNameRestaurant(order.getRetaurantId()), order.getDate(), order.getPrice(), order.getIdCustomer(), order.getStatus(), order.getDeleted(),order.getPotencialDeliverer(), order.getIdDeliverer(), order.getRestaurantType()));
 			}
 		}
 		return ret;	
