@@ -15,6 +15,7 @@ import java.util.Iterator;
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
 import javax.ws.rs.core.Context;
+import javax.xml.bind.ParseConversionEvent;
 
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.core.JsonGenerator;
@@ -346,12 +347,13 @@ public class OrderDAO {
 		System.out.println("------------------------------------------");
 		this.saveOrders();
 	}
-	
-	
-			
-	
-			
-		
 
-			
+	public void cancelOrder(User userByUsername, String idOrder) {
+		Order order = getByIdOrder(Integer.parseInt(idOrder));
+		if(order.getStatus().equals(OrderStatus.OBRADA) && order.getIdCustomer().equals(userByUsername.getUsername())) {
+			order.setStatus(OrderStatus.OTKAZANA);
+			saveOrders();
+		}
+	}
+				
 }

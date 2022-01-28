@@ -19,10 +19,10 @@
     },
     "orderIds" : [ ],
     "chartId" : -1,
-    "points" : 2277.0,
+    "points" : 1261.0,
     "typeCustomer" : {
-      "type" : "SILVER",
-      "sale" : 6.0
+      "type" : "BRONZE",
+      "sale" : 3.0
     },
     "idRestaurant" : 0,
     "suspecious" : false

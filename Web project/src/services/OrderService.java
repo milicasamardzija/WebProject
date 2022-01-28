@@ -97,6 +97,26 @@ public class OrderService {
 		userDao.addPoens(userDao.getUserByUsername(username), articalsChart);
 	}
 	
+	@GET
+	@Path("/cancelOrder/{username}/{idOrder}")
+	@Produces(MediaType.APPLICATION_JSON)
+	public Collection<OrderDTO> addNewOrder(@PathParam("username") String username, @PathParam("idOrder") String idOrder) {
+		ArrayList<OrderDTO> ret= new ArrayList<OrderDTO>();
+		OrderDAO ordersDAO = getOrders();
+		Collection<Order> orders = ordersDAO.getValues();
+		UsersDAO userDao = this.getUsers();
+		ordersDAO.cancelOrder(userDao.getUserByUsername(username), idOrder);
+		userDao.minusPoens(userDao.getUserByUsername(username), this.getArticalChartDAO().getArticalsForChart(userDao.getUserByUsername(username)));
+		
+		for(Order order : orders) {
+			if(!order.getDeleted() && order.getIdCustomer().equals(username) && order.getStatus() != OrderStatus.DOSTAVLJENA && order.getStatus() != OrderStatus.OTKAZANA ) {
+			ret.add(new OrderDTO(order.getId(), findOrderArticals(order.getArticalIds()),findNameRestaurant(order.getRetaurantId()), order.getDate(), order.getPrice(), order.getIdCustomer(), order.getStatus(), order.getDeleted(),order.getPotencialDeliverer(), order.getIdDeliverer(), order.getRestaurantType()));
+			}
+		}
+		
+		return ret;
+	}
+	
 	//porudzbine za ulogovanog usera
 	@GET
 	@Path("/getOrders")
@@ -108,9 +128,7 @@ public class OrderService {
 		User user = (User)request.getSession().getAttribute("loginUser");		
 		
 		for(Order order : orders) {
-			System.out.println(order);
-			System.out.println((User)request.getSession().getAttribute("loginUser"));
-			if(!order.getDeleted() && order.getIdCustomer().equals(user.getUsername())) {
+			if(!order.getDeleted() && order.getIdCustomer().equals(user.getUsername()) && order.getStatus() != OrderStatus.OBRADA) {
 			ret.add(new OrderDTO(order.getId(), findOrderArticals(order.getArticalIds()),findNameRestaurant(order.getRetaurantId()), order.getDate(), order.getPrice(), order.getIdCustomer(), order.getStatus(), order.getDeleted(),order.getPotencialDeliverer(), order.getIdDeliverer(), order.getRestaurantType()));
 			}
 		}
