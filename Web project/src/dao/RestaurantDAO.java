@@ -240,106 +240,134 @@ public class RestaurantDAO {
 		
 			for(Restaurant restaurant : this.restaurants.values()) {
 			//	if (restaurant.getStatus() == Status.OPEN) {
-					//tip
+					// samo tip
 					if(restaurant.getType().equals(parameters.type) && parameters.name.equals("") && parameters.location.equals("") && parameters.grade.equals("")) 
 					{
 						ret.add(restaurant);
 						break;
+						
 					}
 					
-					//naziv
-					if(parameters.type.equals("") && restaurant.getName().toLowerCase().contains(parameters.name.toLowerCase())  && parameters.location.equals("") && parameters.grade.equals("")) 
+					//samo naziv
+					if(parameters.type.equals(RestaurantType.PRETRAGA) && restaurant.getName().toLowerCase().contains(parameters.name.toLowerCase())  && parameters.location.equals("") && parameters.grade.equals("")) 
 					{
 						ret.add(restaurant);
 						break;
+					
 					}
 					
 					//ocena
-					if(parameters.type.equals("") && parameters.name.equals("")  && parameters.location.equals("") && (restaurant.getGrade() == Integer.parseInt(parameters.grade))) 
+					else if(parameters.type.equals(RestaurantType.PRETRAGA) && parameters.name.equals("")  && parameters.location.equals("") && (checkGrade(restaurant.getGrade())) == Integer.parseInt(parameters.grade)) 
 					{
 						ret.add(restaurant);
-						break;
+						System.out.println("PARAMETAR GRADE:" + parameters.grade);
+						System.out.println("RESTORAN GRADE:" + restaurant.getGrade());
+						
+						
 					}
 					
 					//lokacija
-					if(parameters.type.equals("") && parameters.name.equals("")  && (restaurant.getAddress().getCity().toLowerCase().contains(parameters.location.toLowerCase()) || restaurant.getAddress().getStreet().toLowerCase().contains(parameters.location.toLowerCase()) && parameters.grade.equals("")))
+					else if(parameters.type.equals(RestaurantType.PRETRAGA) && parameters.name.equals("")  && (restaurant.getAddress().getCity().toLowerCase().contains(parameters.location.toLowerCase()) || restaurant.getAddress().getStreet().toLowerCase().contains(parameters.location.toLowerCase()) && parameters.grade.equals("")))
 					{
 						ret.add(restaurant);
-						break;
+						
 					}
 					
 					//naziv i lokacija
-					if(restaurant.getName().toLowerCase().contains(parameters.name.toLowerCase())  && (restaurant.getAddress().getCity().toLowerCase().contains(parameters.location.toLowerCase()) || restaurant.getAddress().getStreet().toLowerCase().contains(parameters.location.toLowerCase())) && parameters.grade.equals("") && parameters.type.equals(""))
+					else if(restaurant.getName().toLowerCase().contains(parameters.name.toLowerCase())  && (restaurant.getAddress().getCity().toLowerCase().contains(parameters.location.toLowerCase()) || restaurant.getAddress().getStreet().toLowerCase().contains(parameters.location.toLowerCase())) && parameters.grade.equals("") && parameters.type.equals(""))
 					{
 						ret.add(restaurant);
-						break;
+						
 					}
 					
 					//naziv i tip
-					if(restaurant.getType().equals(parameters.type) && restaurant.getName().toLowerCase().contains(parameters.name.toLowerCase()) && parameters.location.equals("") && parameters.grade.equals("")) 
+					else if(parameters.type.equals(RestaurantType.PRETRAGA) && restaurant.getType().equals(parameters.type) && restaurant.getName().toLowerCase().contains(parameters.name.toLowerCase()) && parameters.location.equals("") && parameters.grade.equals("")) 
 					{
 						ret.add(restaurant);
-						break;
+						
 					}
 					
-					//naziv i ocena
-					if(restaurant.getName().toLowerCase().contains(parameters.name.toLowerCase()) && parameters.name.equals("") && parameters.location.equals("") && parameters.grade.equals("")) 
+					//naziv i ocena samo
+					else if (parameters.type.equals(RestaurantType.PRETRAGA) && restaurant.getName().toLowerCase().contains(parameters.name.toLowerCase())  && parameters.location.equals("") && checkGrade(restaurant.getGrade()) == Integer.parseInt(parameters.grade)) 
 					{
 						ret.add(restaurant);
-						break;
+						
 					}
+				
 					
 					//lokacija i tip
-					if(restaurant.getType().equals(parameters.type)  && (restaurant.getAddress().getCity().toLowerCase().contains(parameters.location.toLowerCase()) || restaurant.getAddress().getStreet().toLowerCase().contains(parameters.location.toLowerCase())) && parameters.grade.equals("") && parameters.type.equals(""))
+					else if(restaurant.getType().equals(parameters.type)  && (restaurant.getAddress().getCity().toLowerCase().contains(parameters.location.toLowerCase()) || restaurant.getAddress().getStreet().toLowerCase().contains(parameters.location.toLowerCase())) && parameters.grade.equals("") && parameters.type.equals(""))
 					{
 						ret.add(restaurant);
-						break;
+					
 					}
 					
 					//lokacija i ocena
-					if(parameters.type.equals("")  && (restaurant.getAddress().getCity().toLowerCase().contains(parameters.location.toLowerCase()) || restaurant.getAddress().getStreet().toLowerCase().contains(parameters.location.toLowerCase())) && (restaurant.getGrade() == Integer.parseInt(parameters.grade)) && parameters.type.equals(""))
+					else 	if(parameters.type.equals(6)  && (restaurant.getAddress().getCity().toLowerCase().contains(parameters.location.toLowerCase()) || restaurant.getAddress().getStreet().toLowerCase().contains(parameters.location.toLowerCase())) && (checkGrade(restaurant.getGrade()) == Integer.parseInt(parameters.grade)) && parameters.type.equals(RestaurantType.PRETRAGA))
 					{
 						ret.add(restaurant);
-						break;
+						
 					}
 					
 					//tip i ocena
-					if(restaurant.getType().equals(parameters.type) && parameters.name.equals("") && parameters.location.equals("")  && (restaurant.getGrade() == Integer.parseInt(parameters.grade))) 
+					else 	if(restaurant.getType().equals(parameters.type) && parameters.name.equals("") && parameters.location.equals("")  && (checkGrade(restaurant.getGrade()) == Integer.parseInt(parameters.grade))) 
 					{
 						ret.add(restaurant);
-						break;
+						
 					}
 					
 					//naziv, lokacija, tip
-					if(restaurant.getType().equals(parameters.type) && restaurant.getName().toLowerCase().contains(parameters.name.toLowerCase()) && parameters.grade.equals("") && (restaurant.getAddress().getCity().toLowerCase().contains(parameters.location.toLowerCase()) || restaurant.getAddress().getStreet().toLowerCase().contains(parameters.location.toLowerCase()) )) 
+					else if(restaurant.getType().equals(parameters.type) && restaurant.getName().toLowerCase().contains(parameters.name.toLowerCase()) && parameters.grade.equals("") && (restaurant.getAddress().getCity().toLowerCase().contains(parameters.location.toLowerCase()) || restaurant.getAddress().getStreet().toLowerCase().contains(parameters.location.toLowerCase()) )) 
 					{
 						ret.add(restaurant);
-						break;
+						
 					}
 					
 					//naziv, lokacija, ocena
-					if(parameters.type.equals("") && restaurant.getName().toLowerCase().contains(parameters.name.toLowerCase()) && (restaurant.getGrade() == Integer.parseInt(parameters.grade)) && (restaurant.getAddress().getCity().toLowerCase().contains(parameters.location.toLowerCase()) || restaurant.getAddress().getStreet().toLowerCase().contains(parameters.location.toLowerCase()) )) 
+					else 	if(parameters.type.equals(6) && restaurant.getName().toLowerCase().contains(parameters.name.toLowerCase()) && (checkGrade(restaurant.getGrade()) == Integer.parseInt(parameters.grade)) && (restaurant.getAddress().getCity().toLowerCase().contains(parameters.location.toLowerCase()) || restaurant.getAddress().getStreet().toLowerCase().contains(parameters.location.toLowerCase()) )) 
 					{
 						ret.add(restaurant);
-						break;
+						
 					}
 					
 					//lokacija, tip, ocena
-					if(restaurant.getType().equals(parameters.type) && parameters.name.equals("") && (restaurant.getGrade() == Integer.parseInt(parameters.grade)) && (restaurant.getAddress().getCity().toLowerCase().contains(parameters.location.toLowerCase()) || restaurant.getAddress().getStreet().toLowerCase().contains(parameters.location.toLowerCase()) )) 
+					else	if(restaurant.getType().equals(parameters.type) && parameters.name.equals("") && (checkGrade(restaurant.getGrade()) == Integer.parseInt(parameters.grade)) && (restaurant.getAddress().getCity().toLowerCase().contains(parameters.location.toLowerCase()) || restaurant.getAddress().getStreet().toLowerCase().contains(parameters.location.toLowerCase()) )) 
 					{
 						ret.add(restaurant);
-						break;
+						
 					}
 					
 					//sve
-					if(restaurant.getType().equals(parameters.type) && restaurant.getName().toLowerCase().contains(parameters.name.toLowerCase()) && (restaurant.getGrade() == Integer.parseInt(parameters.grade)) && (restaurant.getAddress().getCity().toLowerCase().contains(parameters.location.toLowerCase()) || restaurant.getAddress().getStreet().toLowerCase().contains(parameters.location.toLowerCase()) )) 
+					else if (restaurant.getType().equals(parameters.type) && restaurant.getName().toLowerCase().contains(parameters.name.toLowerCase()) && (checkGrade(restaurant.getGrade()) == Integer.parseInt(parameters.grade)) && (restaurant.getAddress().getCity().toLowerCase().contains(parameters.location.toLowerCase()) || restaurant.getAddress().getStreet().toLowerCase().contains(parameters.location.toLowerCase()) )) 
 					{
 						ret.add(restaurant);
-						break;
+					
 					}
 				}
 			//}	
 		
+		return ret;
+	}
+	
+	private int checkGrade(double grade) {
+		int ret= 0;
+		if( grade < 1.50) {
+			ret = 1;
+			
+		}
+		else if(grade >= 1.50 && grade < 2.50) {
+			ret = 2;
+			
+		}
+		else if( grade >= 2.50 && grade < 3.50) {
+			ret = 3;
+		}
+		else if( grade >= 3.50 && grade < 4.50) {
+			ret = 4;
+		}
+		else {
+			ret = 5;
+		}
 		return ret;
 	}
 
