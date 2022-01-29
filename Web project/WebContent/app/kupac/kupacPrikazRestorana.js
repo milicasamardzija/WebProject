@@ -2,7 +2,8 @@ Vue.component("restorani-kupac", {
     data(){
         return{
             restaurants:[], 
-            selected:null
+            selected:null,
+            search: {name:"", location:"", type:6, grade:""}
         }
     },
 template: `
@@ -42,7 +43,7 @@ template: `
                                                     </div>
                                                 
                                                 <div class="col-lg-1 col-md-3 col-sm-12 btn-search">
-                                                    <button type="button" class="btn btn-danger wrn-btn">Pretrazi kombinovano</button>
+                                                    <button type="button" class="btn btn-danger wrn-btn" v-on:click="pretrazi()">Pretrazi kombinovano</button>
                                                 </div>
 					    </div>
 		</div>
@@ -78,7 +79,16 @@ methods:{
         },
         goToRestaurant : function (idR) {
             this.$router.push({path: `/restoran`, query:{ id: idR}})
-        }
+        },
+        pretrazi: function(){
+            axios.post('/WebShopREST/rest/restaurant/searchRestaurants', this.search)
+            .then(response => {
+               this.restaurants = response.data
+            })
+            .catch(function(error){
+                console.log(error)
+            })
+        },
 },
 mounted(){
     axios.get("/WebShopREST/rest/restaurant/getAllRestaurants")

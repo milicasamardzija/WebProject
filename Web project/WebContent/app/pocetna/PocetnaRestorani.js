@@ -4,7 +4,6 @@ Vue.component("restaurants", {
             restaurants:[], 
             selected:null,
             search: {name:"", location:"", type:6, grade:""},
-     
             check: false
         }
     },
@@ -117,26 +116,22 @@ template: `
 
 `,
 methods:{
-        getSelected: function(restaurant){
-        this.selected= restaurant;
-        },
-        goToRestaurant : function (idRest) {
-            this.$router.push({path: `/restoran`, query:{ id:idRest}})
-        },
-        pretrazi: function(){
-           /* if (this.search.type === ""){
-              this.search.type = 6;
-            }*/
-            axios.post('/WebShopREST/rest/restaurant/searchRestaurants', this.search)
-            .then(response => {
-               this.restaurants = response.data
-            })
-            .catch(function(error){
-                console.log(error)
-            })
-        },
-
-        sortNameAsc: function() {
+      getSelected: function(restaurant){
+      this.selected= restaurant;
+      },
+      goToRestaurant : function (idRest) {
+          this.$router.push({path: `/restoran`, query:{ id:idRest}})
+      },
+      pretrazi: function(){
+          axios.post('/WebShopREST/rest/restaurant/searchRestaurants', this.search)
+          .then(response => {
+              this.restaurants = response.data
+          })
+          .catch(function(error){
+              console.log(error)
+          })
+      },
+      sortNameAsc: function() {
 			function compare(a, b) {
 			  if (a.name < b.name)
 			    return -1;
