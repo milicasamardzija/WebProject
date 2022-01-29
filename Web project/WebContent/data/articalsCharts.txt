@@ -5,7 +5,7 @@
     "idCustomer" : "marko",
     "idArticalInRestaurant" : 2,
     "idRestaurant" : 2,
-    "restaurantType" : "ITALIAN"
+    "restaurantType" : "ITALIJANSKI"
   },
   "3" : {
     "idArtical" : 3,
@@ -13,7 +13,7 @@
     "idCustomer" : "kupac",
     "idArticalInRestaurant" : 3,
     "idRestaurant" : 2,
-    "restaurantType" : "ITALIAN"
+    "restaurantType" : "ROSTILJ"
   },
   "4" : {
     "idArtical" : 4,
@@ -21,22 +21,6 @@
     "idCustomer" : "marko",
     "idArticalInRestaurant" : 4,
     "idRestaurant" : 2,
-    "restaurantType" : "ITALIAN"
-  },
-  "6" : {
-    "idArtical" : 6,
-    "quantity" : 0,
-    "idCustomer" : "kupac",
-    "idArticalInRestaurant" : 6,
-    "idRestaurant" : 2,
-    "restaurantType" : "ITALIAN"
-  },
-  "7" : {
-    "idArtical" : 7,
-    "quantity" : 3,
-    "idCustomer" : "marko",
-    "idArticalInRestaurant" : 7,
-    "idRestaurant" : 2,
-    "restaurantType" : "ITALIAN"
+    "restaurantType" : "VEGE"
   }
 }

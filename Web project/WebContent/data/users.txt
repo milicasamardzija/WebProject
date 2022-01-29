@@ -1,7 +1,7 @@
 {
   "kupac" : {
     "deleted" : false,
-    "blocked" : true,
+    "blocked" : false,
     "username" : "kupac",
     "password" : "kupac",
     "name" : "Tihomir",
@@ -25,7 +25,7 @@
       "sale" : 3.0
     },
     "idRestaurant" : 0,
-    "suspecious" : true
+    "suspecious" : false
   },
   "admin" : {
     "deleted" : true,

@@ -5,6 +5,7 @@ import java.util.Collection;
 
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
+import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
@@ -18,6 +19,7 @@ import beans.User;
 import dao.CommentsDAO;
 import dao.RestaurantDAO;
 import dto.CommentDTO;
+import dto.CommentNewDTO;
 
 
 @Path("/comments")
@@ -102,6 +104,17 @@ public class CommentsService {
 		}
 	
 		return comments;
+	}
+	
+	@POST
+	@Path("/addComment")
+	@Consumes(MediaType.APPLICATION_JSON)
+	public void addComment(CommentNewDTO comment) {
+		CommentsDAO commentDao = new CommentsDAO();
+		RestaurantDAO restaurantDao = new RestaurantDAO();
+		
+		commentDao.addNewComment(new Comment(-1,comment.username, comment.idRestaurant,  comment.text, comment.grade, false));
+		restaurantDao.updateGrade(comment.idRestaurant, comment.grade, commentDao.getValues());
 	}
 	
 	private RestaurantDAO getRestaurantsDAO() {

@@ -82,17 +82,5 @@
     "link" : "7_0.png",
     "deleted" : false,
     "number" : 0
-  },
-  "7" : {
-    "id" : 7,
-    "name" : "ffdfd",
-    "price" : 542,
-    "type" : "FOOD",
-    "idRestaurant" : 2,
-    "quantity" : 542.0,
-    "description" : "tfhx",
-    "link" : "11_0.png",
-    "deleted" : false,
-    "number" : 0
   }
 }

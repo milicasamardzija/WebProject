@@ -6,7 +6,9 @@ Vue.component("porudbine-kupac", {
         idKupca: null, 
         selected:{},
         mode: true,
-        check: false
+        check: false,
+        comment: {},
+        komentar: true,
         }
     },
 template: `
@@ -110,6 +112,7 @@ template: `
               <td>
                <button type="button" class="btn btn-secondary" v-if="order.status == 'OTKAZANA'" v-on:click="getSelected(order)" data-toggle="modal" data-target="#brisanje" >Izbrisi</button>  </td>
                <button type="button" class="btn btn-secondary" v-if="order.status == 'DOSTAVLJENA'" v-on:click="getSelected(order)" data-toggle="modal" data-target="#brisanje" >Izbrisi</button> 
+               <button type="button" class="btn btn-secondary" v-if="order.status == 'DOSTAVLJENA' && this.komentar == true" v-on:click="getSelected(order)" data-toggle="modal" data-target="#oceni" >Oceni</button> 
                </div>
           </tr>
         </tbody>
@@ -136,6 +139,43 @@ template: `
               </div>
           </div>
   </div>
+
+  <!-- modal komentar-->
+  <div class="modal fade" id="oceni" role="dialog" >
+          <div class="modal-dialog" style="width: 300px;" >
+              <!-- Modal content -->
+              <div class="modal-content">
+              <table>
+              <tr>
+                  <td> Komentar: </td>
+                  <td> <input class="form-control" type="text" v-model="comment.text"> </td>
+              </tr>
+              <tr> 
+                  <td>Ocena: </td>
+                  <td> 
+                  <select   v-model="comment.grade" style="height: 35px; width: 150px; background-color:gray; color:white;  border-radius: 4px;" > Ocena
+                  <option value="">Ocena</option>
+                  <option  v-bind:value="5" style=" background-color:white; color: black">5</option>
+                  <option  v-bind:value="4" style=" background-color:white; color: black">4</option>
+                  <option  v-bind:value="3" style=" background-color:white; color: black">3</option>
+                  <option  v-bind:value="2" style=" background-color:white; color: black">2</option>
+                  <option  v-bind:value="1" style=" background-color:white; color: black">1</option>
+                  </select>
+                  </td>
+              </tr>
+              
+                  <tr> 
+                      <td> <button type="button" class="btn btn-danger btn-default pull-left"  data-dismiss="modal" v-on:click="oceni()">Potvrdi</button>   </td>
+                      <td> <button type="button" class="btn btn-danger btn-default pull-left"  data-dismiss="modal">Odustani</button>   </td> 
+                  </tr>
+                 </table>
+                 </form>
+             </div>
+              
+          </table>
+              </div>
+          </div>
+  </div>
   
 </div>
 `,
@@ -157,6 +197,17 @@ methods:{
         axios.post("/WebShopREST/rest/order/changeStatusCancel", this.selected.id)
         .then(response => {
             router.push(`/porudzbine`);
+        })
+        .catch(function(error){
+            console.log(error)
+        })
+    },
+    oceni(){
+      this.comment.idRestaurant = this.selected.idRestaurant;
+      this.comment.username = localStorage.getItem("userLogged");
+      axios.post("/WebShopREST/rest/comments/addComment", this.comment)
+        .then(response => {
+            this.komentar = false;
         })
         .catch(function(error){
             console.log(error)
@@ -277,7 +328,7 @@ mounted(){
     .catch(function(error){
         console.log(error)
     })
-
+    this.komentar = true;
 },
 
 filters: {

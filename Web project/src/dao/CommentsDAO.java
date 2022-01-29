@@ -17,6 +17,7 @@ import com.fasterxml.jackson.databind.introspect.VisibilityChecker;
 import com.fasterxml.jackson.databind.type.MapType;
 import com.fasterxml.jackson.databind.type.TypeFactory;
 
+import beans.Artical;
 import beans.Comment;
 
 public class CommentsDAO {
@@ -129,4 +130,27 @@ public class CommentsDAO {
 			this.saveComments();
 			return this.getValues();
 	}
+	
+	private int generateId() {
+		int ret = 0;
+        for (Comment commentBig : this.getValues())
+        {
+            for (Comment comment : this.getValues())
+            {
+                if (ret == comment.getId())
+                {
+                    ++ret;
+                    break;
+                }
+            }
+        }
+        return ret;
+	}
+	
+	public void addNewComment(Comment comment) {
+		int id = this.generateId();
+		this.comments.put(id, new Comment(id, comment.getCustomerId(), comment.getRestaurantId(), comment.getText(), comment.getGrade(), false));
+		this.saveComments();
+	}
+
 }

@@ -29,7 +29,7 @@ template: `
             <td>{{order.date | dateFormat('DD.MM.YYYY.')}}</td>
             <td>{{order.price}}</td>
             <td>{{order.status}}</td>
-            <td ><button type="button" class="btn btn-secondary" v-if="order.status == 'OBRADA'"  v-on:click="getSelected(order)" data-toggle="modal" data-target="#otkazi">Otkazi</button></td>
+            <td ><button type="button" class="btn btn-secondary" v-if="order.status == 'OBRADA' "  v-on:click="getSelected(order)" data-toggle="modal" data-target="#otkazi">Otkazi</button></td>
           </tr>
         </tbody>
     </table>

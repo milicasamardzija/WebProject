@@ -16,7 +16,7 @@
     },
     "link" : "caribicLogo.png",
     "deleted" : false,
-    "grade" : 5
+    "grade" : 3.83
   },
   "1" : {
     "id" : 1,
@@ -35,7 +35,7 @@
     },
     "link" : "portofino.png",
     "deleted" : true,
-    "grade" : 3
+    "grade" : 3.0
   },
   "2" : {
     "id" : 2,
@@ -52,9 +52,9 @@
       "latitude" : 0.0,
       "longitude" : 0.0
     },
-    "link" : "Picerija-ĆAO.jpg",
+    "link" : "Picerija-\u0106AO.jpg",
     "deleted" : false,
-    "grade" : 4
+    "grade" : 4.0
   },
   "3" : {
     "id" : 3,
@@ -73,7 +73,7 @@
     },
     "link" : "4_0.png",
     "deleted" : false,
-    "grade" : 1
+    "grade" : 1.0
   },
   "4" : {
     "id" : 4,
@@ -92,7 +92,7 @@
     },
     "link" : "tropicanaLogo.jpg",
     "deleted" : false,
-    "grade" : 3
+    "grade" : 3.0
   },
   "5" : {
     "id" : 5,
@@ -111,7 +111,7 @@
     },
     "link" : "pasta.jpg",
     "deleted" : false,
-    "grade" : 1
+    "grade" : 1.0
   },
   "6" : {
     "id" : 6,
@@ -130,7 +130,7 @@
     },
     "link" : "ribaLogo.png",
     "deleted" : false,
-    "grade" : 1
+    "grade" : 1.0
   },
   "7" : {
     "id" : 7,
@@ -149,7 +149,7 @@
     },
     "link" : "kinezi.png",
     "deleted" : false,
-    "grade" : 5
+    "grade" : 5.0
   },
   "9" : {
     "id" : 9,
@@ -168,6 +168,6 @@
     },
     "link" : "logoPizza.png",
     "deleted" : false,
-    "grade" : 5
+    "grade" : 5.0
   }
 }

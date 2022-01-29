@@ -6,6 +6,7 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
@@ -19,6 +20,7 @@ import com.fasterxml.jackson.databind.type.MapType;
 import com.fasterxml.jackson.databind.type.TypeFactory;
 
 import beans.Address;
+import beans.Comment;
 import beans.Restaurant;
 import beans.User;
 import dto.RestaurantChangeDTO;
@@ -236,42 +238,54 @@ public class RestaurantDAO {
 	public Collection<Restaurant> searchMix(RestaurantSearchMixDTO parameters) {
 		ArrayList<Restaurant> ret = new ArrayList<Restaurant>();
 		
-		//if(!parameters.name.equals("") && !parameters.location.equals("") && !parameters.grade.equals("") && parameters.type != null) {
 			for(Restaurant restaurant : this.restaurants.values()) {
+				
+				
+				if(restaurant.getType().equals(parameters.type) && parameters.name.equals("") && parameters.location.equals("") && (restaurant.getGrade() == Integer.parseInt(parameters.grade))) 
+				{
+					ret.add(restaurant);
+				}
+				
+				if(parameters.type.equals("") && restaurant.getName().toLowerCase().contains(parameters.name.toLowerCase())  && parameters.location.equals("") && parameters.grade.equals("")) 
+				{
+					ret.add(restaurant);
+				}
+				
+				if(parameters.type.equals("") && parameters.name.equals("")  && parameters.location.equals("") && (restaurant.getGrade() == Integer.parseInt(parameters.grade))) 
+				{
+					ret.add(restaurant);
+				}
+				
+				if(parameters.type.equals("") && parameters.name.equals("")  && parameters.grade.equals("") && (restaurant.getAddress().getCity().toLowerCase().contains(parameters.location.toLowerCase()) || restaurant.getAddress().getStreet().toLowerCase().contains(parameters.location.toLowerCase()) && parameters.grade.equals("")))
+				{
+					ret.add(restaurant);
+				}
+				
 				if(restaurant.getType().equals(parameters.type) && restaurant.getName().toLowerCase().contains(parameters.name.toLowerCase()) && (restaurant.getGrade() == Integer.parseInt(parameters.grade)) && (restaurant.getAddress().getCity().toLowerCase().contains(parameters.location.toLowerCase()) || restaurant.getAddress().getStreet().toLowerCase().contains(parameters.location.toLowerCase()) )) 
 				{
 					ret.add(restaurant);
 				}
-			}
-		//}
-		
-		//if(!parameters.name.equals("") && !parameters.location.equals("") && !parameters.grade.equals("") && parameters.type != null) {
-			/*for(Restaurant restaurant : this.restaurants.values()) {
-				if(restaurant.getType().equals(parameters.type) && restaurant.getName().toLowerCase().contains(parameters.name.toLowerCase()) && (restaurant.getGrade() == Integer.parseInt(parameters.grade)) && (restaurant.getAddress().getCity().toLowerCase().contains(parameters.location.toLowerCase()) || restaurant.getAddress().getStreet().toLowerCase().contains(parameters.location.toLowerCase()) )) 
-				{
-					ret.add(restaurant);
-				}
-			}*/
-		//}
-		
-		
+			}	
 		
 		return ret;
 	}
 
-	/*public Collection<Restaurant> searchNotMix(RestaurantSearchMixDTO parameters) {
-		ArrayList<Restaurant> ret = new ArrayList<Restaurant>();
-		if(parameters.equals(null)) {
-			return this.getValues();
-		}
-		for(Restaurant restaurant : this.restaurants.values()) {
-			
-			if(restaurant.getType().equals(parameters.type) || restaurant.getName().toLowerCase().contains(parameters.name.toLowerCase()) || (restaurant.getGrade() == Integer.parseInt(parameters.grade)) || (restaurant.getAddress().getCity().toLowerCase().contains(parameters.location.toLowerCase()) || restaurant.getAddress().getStreet().toLowerCase().contains(parameters.location.toLowerCase()) )) 
-			{
-				ret.add(restaurant);
+	private static final DecimalFormat df = new DecimalFormat("0.00");
+	
+	public void updateGrade(int idRestaurant, double grade, Collection<Comment> comments) {
+		Restaurant restaurant = this.getByID(idRestaurant);
+		double sum = 0;
+		double br = 0;
+		
+		for (Comment comment : comments) {
+			if (comment.getRestaurantId() == restaurant.getId()) {
+				sum = sum + comment.getGrade();
+				br += 1;
 			}
 		}
-		return ret;
-	}*/
-	
+		
+		restaurant.setGrade(Double.parseDouble(df.format(sum/br)));
+		this.saveRestaurants();
+	}
+
 }
