@@ -355,6 +355,15 @@ public class OrderDAO {
 		System.out.println(new Order(id, articalIds, oneArticalInChart.getRetaurantId(), new Date(), price, user.getUsername(), OrderStatus.OBRADA, false, "", "", oneArticalInChart.getRestaurantType()));
 		System.out.println("------------------------------------------");
 		this.saveOrders();
+		System.out.println("brisem atrikle za usera " + user.getName());
+		ArticalChartDAO chart = new ArticalChartDAO();
+		for(ArticalChartsDTO articalChart : articalsChart) {
+			System.out.println("Artikal za brisanje je sa id " + articalChart.getId());
+			chart.deleteArticalById(articalChart.getId());
+			
+		}
+		
+		
 	}
 
 	public void cancelOrder(User userByUsername, String idOrder) throws ParseException {

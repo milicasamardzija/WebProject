@@ -91,11 +91,15 @@ public class OrderService {
 	@POST
 	@Path("/add/{username}")
 	@Consumes(MediaType.APPLICATION_JSON)
-	public void addNewOrder(@PathParam("username") String username, ArrayList<ArticalChartsDTO> articalsChart) {
+	@Produces(MediaType.APPLICATION_JSON)
+	public  ArrayList<ArticalChartsDTO>  addNewOrder(@PathParam("username") String username, ArrayList<ArticalChartsDTO> articalsChart) {
 		OrderDAO ordersDAO = getOrders();
 		UsersDAO userDao = this.getUsers();
 		ordersDAO.addNewOrder(articalsChart, userDao.getUserByUsername(username));
 		userDao.addPoens(userDao.getUserByUsername(username), articalsChart);
+		//vracam praznu listu zbog prikaza da je korpa ispraznjena
+		ArrayList<ArticalChartsDTO> ret= new ArrayList<ArticalChartsDTO>();
+		return ret;
 	}
 	
 	@GET

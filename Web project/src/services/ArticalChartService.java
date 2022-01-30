@@ -80,4 +80,15 @@ public class ArticalChartService {
 		return articalDAO.minus(Integer.parseInt(idArtical), user);
 	}
 	
+	
+	@POST
+	@Path("/deleteArticalFromChart")
+	@Produces(MediaType.APPLICATION_JSON)
+	public ArrayList<ArticalChartsDTO> deleteArtical(String idArtical){
+	ArticalChartDAO articalChartDao =  getArticalChartDAO();
+	User user = (User)request.getSession().getAttribute("loginUser");
+	
+	 articalChartDao.deleteArticalById(Integer.parseInt(idArtical));
+	return articalChartDao.getArticalsForChart(user);
+	}
 }

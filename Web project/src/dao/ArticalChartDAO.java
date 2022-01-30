@@ -195,6 +195,28 @@ public class ArticalChartDAO {
 	
 	}
 	
+	//za konkretnog usera citavu korpu da brise 
+	public void deleteArticalsFromChart(User user) {
+			for (ArticalChart articalChart : this.getValues()) {
+				Artical artical = getArtical(articalChart.getIdArtical());
+				if(articalChart.getIdCustomer().equals(user.getUsername())) {
+					System.out.println("Ime artikla " + articalChart.getIdArtical());
+					this.getValues().remove(articalChart);
+				}
+			}
+		
+	}
+
+	
+	
+	public void deleteArticalById(int id) {
+		ArticalChart artical = getByID(id);
+		if(artical != null) {
+			this.getValues().remove(artical);
+			this.saveArticals();
+		}
+	}
+	
 	public Artical getArtical(int id) {
 		ArticalDAO articalDAO = new ArticalDAO();
 		return articalDAO.getByID(id);

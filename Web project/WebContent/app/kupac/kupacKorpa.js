@@ -37,7 +37,7 @@ template: `
                         <td><button type="button" class="btn btn-success" v-on:click="dodaj(proizvod)"> <span class="glyphicon glyphicon-plus"></span></button> </td>
                         <td><button type="button" class="btn btn-danger"  v-on:click="oduzmi(proizvod)"> <span class="glyphicon glyphicon-minus"></span></button></td>
                         <div>
-                          <td><button type="button" class="btn btn-secondary">Izbrisi</button></td>
+                          <td><button type="button" class="btn btn-secondary" v-on:click="obrisi(proizvod)">Izbrisi</button></td>
                         </div>
                       </tr>
                     </tbody>
@@ -58,8 +58,28 @@ methods:{
     axios.post("/WebShopREST/rest/order/add/" + localStorage.getItem("userLogged"), this.proizvodi)
     .then( response => {
       alert("Uspesno ste izvrsili narudzbinu!");
-      router.push(`/`);
+      this.proizvodi = response.data;
+      this.cenaBezPopusta = 0.0;
+      this.cena = 0.0;
+      
+      //router.push(`/`);
       //ovde jos dodati poziv metode koja poziva metodu za brisanje svakog artikla iz korpe na beku
+
+   
+    })
+    .catch(function(error){
+        console.log(error)
+    })
+  },
+  
+  obrisi(proizvod){
+    this.proizvodi=null,
+    axios.post("/WebShopREST/rest/articalChart/deleteArticalFromChart", proizvod.id)
+    .then( response => {
+        this.proizvodi = response.data; 
+        this.obracunajCenuSabiranje(proizvod.price);
+        this.obracunajCenuTrenutnu();
+        this.obracunajCenuBezPopusta();
     })
     .catch(function(error){
         console.log(error)
@@ -113,7 +133,9 @@ methods:{
     });
   }
 },
+
 mounted(){
+ 
   axios.get("/WebShopREST/rest/profile/profileUser")
   .then( response => {
       this.korisnik = response.data;
@@ -121,6 +143,7 @@ mounted(){
   .catch(function(error){
       console.log(error)
   }),
+ this.proizvodi = [];
   axios.get("/WebShopREST/rest/articalChart/getChart")
   .then( response => {
       this.proizvodi = response.data;
