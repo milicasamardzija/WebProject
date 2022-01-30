@@ -93,9 +93,8 @@ template: `
                             </tr > 
                             
                       </table>
-              
-            
-            <div id="restoraniPrikaz"> 
+  
+          <div id="restoraniPrikaz"> 
                <div class=" tab-pane container active">
                     <div class="row-restaurants" v-for="restaurant in restaurants" v-on:click="getSelected(restaurant)">
                         <div class = "col-with-picture">
@@ -112,8 +111,11 @@ template: `
                     </div>
                 </div>
             </div>
+            
     </div>
+    
 
+         
 `,
 methods:{
       getSelected: function(restaurant){
@@ -230,7 +232,7 @@ computed: {
       }
   
       return this.restaurants.sort(compare);
-    }
+    },
   },
 mounted(){
     axios.get("/WebShopREST/rest/restaurant/getAllRestaurants")
