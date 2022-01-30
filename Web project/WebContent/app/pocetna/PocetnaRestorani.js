@@ -17,7 +17,7 @@ template: `
                             <td style="width: 250px" > <input style="width: 150px"  type="text" class="form-control search-slt" placeholder="Lokacija" v-model="search.location"> </td>
                               <td style="width: 300px"> 
                                 
-                                                    <select v-model="search.type" style="height: 35px; width: 120px; background-color:gray; color:white;  border-radius: 4px;">Tip
+                                                    <select v-model="search.type" style="height: 35px; width: 120px; background-color:#6c757d; color:white;  border-radius: 4px;">Tip
                                                      
                                                        <option value="">Tip restorana</option>
                                                     <option  v-bind:value="0" style=" margin-left: 5px;background-color:white; color: black">Italijanski</option>
@@ -31,7 +31,7 @@ template: `
                             </td>
                               <td style="width: 250px"> 
                             
-                              <select   v-model="search.grade" style="height: 35px; width: 150px; background-color:gray; color:white;  border-radius: 4px;" > Ocena
+                              <select   v-model="search.grade" style="height: 35px; width: 150px; background-color:#6c757d; color:white;  border-radius: 4px;" > Ocena
       <option value="">Ocena</option>
                               <option  v-bind:value="5" style=" background-color:white; color: black">5</option>
                               <option  v-bind:value="4" style=" background-color:white; color: black">4</option>
@@ -98,7 +98,7 @@ template: `
             
             <div id="restoraniPrikaz"> 
                <div class=" tab-pane container active">
-                    <div class="row-restaurants" v-for="restaurant in restaurants" v-on:click="getSelected(restaurant)">
+                    <div class="row-restaurants" v-for="restaurant in restaurants" v-if="restaurant.status == 'OTVOREN'" v-on:click="getSelected(restaurant)">
                         <div class = "col-with-picture">
                             <div class="col-picture">
                                 <div><img v-bind:src="'pictures/'+restaurant.link" style="height:220px !important; width:250px !important" v-on:click="goToRestaurant(restaurant.id)"></div>
@@ -109,10 +109,31 @@ template: `
                             <h4 style="width: 600px;" class="text">Tip:  {{restaurant.type}}</h4>
                             <h4 style="width: 600px;" class="text">Lokacija:  {{restaurant.address.street}} {{restaurant.address.number}}, {{restaurant.address.city}}</h4>
                             <h4 style="width: 600px;" class="text">Prosecna ocena: {{restaurant.grade}}</h4>
+                            <h4 style="width: 600px;" class="text">Status restorana: {{restaurant.status}}</h4>
                         </div>
                     </div>
+                      <hr/>
+
+                      <div class="row-restaurants" v-for="restaurant in restaurants" v-if="restaurant.status == 'ZATVOREN'" v-on:click="getSelected(restaurant)">
+                        <div class = "col-with-picture">
+                            <div class="col-picture">
+                                <div><img v-bind:src="'pictures/'+restaurant.link" style="height:220px !important; width:250px !important" v-on:click="goToRestaurant(restaurant.id)"></div>
+                            </div>
+                        </div>
+                        <div class="col-info">
+                            <h4 style="width: 600px;" class="text">Naziv:  {{restaurant.name}}</h4>
+                            <h4 style="width: 600px;" class="text">Tip:  {{restaurant.type}}</h4>
+                            <h4 style="width: 600px;" class="text">Lokacija:  {{restaurant.address.street}} {{restaurant.address.number}}, {{restaurant.address.city}}</h4>
+                            <h4 style="width: 600px;" class="text">Prosecna ocena: {{restaurant.grade}}</h4>
+                            <h4 style="width: 600px;" class="text">Status restorana: {{restaurant.status}}</h4>
+                        </div>
+                    </div>
+                    
                 </div>
             </div>
+            
+            <div id="restoraniPrikaz"> 
+            </div> 
     </div>
 
 `,

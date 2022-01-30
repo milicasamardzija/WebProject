@@ -22,12 +22,12 @@ Vue.component("administrator-addManager", {
         </tr>
         <tr>
             <td class="labela">Pol:</td>
-            <td><input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="MALE" v-model="newUser.gender" checked>
+            <td><input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="MUSKI" v-model="newUser.gender" checked>
                 <label class="form-check-label" for="exampleRadios1">
                   Muski
                 </label>
             </td>
-            <td><input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="FEMALE"  v-model="newUser.gender" checked>
+            <td><input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="ZENSKI"  v-model="newUser.gender" checked>
                 <label class="form-check-label" for="exampleRadios1">
                   Zenski
                 </label>

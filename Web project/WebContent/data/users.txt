@@ -6,7 +6,7 @@
     "password" : "kupac",
     "name" : "Tihomir",
     "surname" : "Sijan",
-    "gender" : "MALE",
+    "gender" : "MUSKI",
     "birthday" : 925257600000,
     "role" : "CUSTOMER",
     "address" : {
@@ -32,9 +32,9 @@
     "blocked" : false,
     "username" : "admin",
     "password" : "admin123",
-    "name" : "Aleksaaa",
+    "name" : "Aleksa",
     "surname" : "Arsic",
-    "gender" : "MALE",
+    "gender" : "MUSKI",
     "birthday" : 925776000000,
     "role" : "ADMINISTRATOR",
     "address" : {
@@ -62,7 +62,7 @@
     "password" : "AcaPeric",
     "name" : "Aca",
     "surname" : "Peric",
-    "gender" : "MALE",
+    "gender" : "ZENSKI",
     "birthday" : 1631664000000,
     "role" : "MANAGER",
     "address" : {
@@ -90,7 +90,7 @@
     "password" : "ZikaZivic",
     "name" : "Zika",
     "surname" : "Zivojinovic",
-    "gender" : "MALE",
+    "gender" : "MUSKI",
     "birthday" : 1593129600000,
     "role" : "DELIVERER",
     "address" : {
@@ -118,7 +118,7 @@
     "password" : "AnaMasic",
     "name" : "Ana",
     "surname" : "Masic",
-    "gender" : "FEMALE",
+    "gender" : "ZENSKI",
     "birthday" : 1267056000000,
     "role" : "MANAGER",
     "address" : {
@@ -146,7 +146,7 @@
     "password" : "marko",
     "name" : "Marko",
     "surname" : "Markovic",
-    "gender" : "MALE",
+    "gender" : "MUSKI",
     "birthday" : 926380800000,
     "role" : "CUSTOMER",
     "address" : {

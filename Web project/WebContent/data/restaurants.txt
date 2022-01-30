@@ -5,7 +5,7 @@
     "name" : "Karibik",
     "type" : "PIZZA",
     "articalIds" : [ 0, 1, 3 ],
-    "status" : "OPEN",
+    "status" : "ZATVOREN",
     "address" : {
       "street" : "Periceva",
       "number" : 12,
@@ -24,7 +24,7 @@
     "name" : "Portofino",
     "type" : "VEGE",
     "articalIds" : [ 0, 1, 2 ],
-    "status" : "OPEN",
+    "status" : "OTVOREN",
     "address" : {
       "street" : "Periceva",
       "number" : 12,
@@ -43,7 +43,7 @@
     "name" : "BozePomoziHVALA Ciao",
     "type" : "ITALIJANSKI",
     "articalIds" : [ 0, 1, 3 ],
-    "status" : "OPEN",
+    "status" : "OTVOREN",
     "address" : {
       "street" : "",
       "number" : 0,
@@ -62,7 +62,7 @@
     "name" : "Sarajevska kuca",
     "type" : "ROSTILJ",
     "articalIds" : [ ],
-    "status" : "OPEN",
+    "status" : "OTVOREN",
     "address" : {
       "street" : "Mise Dimitrijevica",
       "number" : 4,
@@ -81,7 +81,7 @@
     "name" : "Tropicana",
     "type" : "VEGE",
     "articalIds" : [ ],
-    "status" : "OPEN",
+    "status" : "OTVOREN",
     "address" : {
       "street" : "aaa",
       "number" : 56,
@@ -100,7 +100,7 @@
     "name" : "La casa de pasta",
     "type" : "ITALIJANSKI",
     "articalIds" : [ ],
-    "status" : "OPEN",
+    "status" : "OTVOREN",
     "address" : {
       "street" : "DSDF",
       "number" : 4,
@@ -119,7 +119,7 @@
     "name" : "Fish house",
     "type" : "RIBLJI",
     "articalIds" : [ ],
-    "status" : "OPEN",
+    "status" : "OTVOREN",
     "address" : {
       "street" : "rte",
       "number" : 5,
@@ -138,7 +138,7 @@
     "name" : "Noodles",
     "type" : "KINESKI",
     "articalIds" : [ ],
-    "status" : "OPEN",
+    "status" : "OTVOREN",
     "address" : {
       "street" : "fg",
       "number" : 6,
@@ -157,7 +157,7 @@
     "name" : "Pica bar",
     "type" : "PIZZA",
     "articalIds" : [ ],
-    "status" : "OPEN",
+    "status" : "OTVOREN",
     "address" : {
       "street" : "tw",
       "number" : 4,

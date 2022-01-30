@@ -70,7 +70,7 @@ methods:{
     axios.post("/WebShopREST/rest/articalChart/plus", proizvod.id)
     .then( response => {
         this.proizvodi = response.data; 
-       // this.obracunajCenuSabiranje(proizvod.price);
+        this.obracunajCenuSabiranje(proizvod.price);
         this.obracunajCenuTrenutnu();
         this.obracunajCenuBezPopusta();
     })
@@ -83,7 +83,7 @@ methods:{
     axios.post("/WebShopREST/rest/articalChart/minus", proizvod.id)
     .then( response => {
         this.proizvodi = response.data; 
-        //this.obracunajCenuOduzimanje(proizvod.price);
+        this.obracunajCenuOduzimanje(proizvod.price);
         this.obracunajCenuTrenutnu();
         this.obracunajCenuBezPopusta();
     })
@@ -105,8 +105,10 @@ methods:{
     .catch(function(error){
         console.log(error)
     })
+  
   },
   obracunajCenuBezPopusta(){
+    this.cenaBezPopusta=0;
     this.proizvodi.forEach(element => { this.cenaBezPopusta += element.price * element.quantity
     });
   }

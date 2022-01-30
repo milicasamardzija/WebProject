@@ -31,12 +31,12 @@ template: `
                                         </tr>
                                         <tr> 
                                             <td> Pol:</td>
-                                            <td><input class="form-check-input" type="radio" id="exampleRadios2" value="MALE"  v-model="user.gender" >
+                                            <td><input class="form-check-input" type="radio" id="exampleRadios2" value="MUSKI"  v-model="user.gender" >
                                                 <label class="form-check-label" for="exampleRadios2">
                                                 Muski
                                                 </label>
                                             </td>
-                                            <td><input class="form-check-input" type="radio" id="exampleRadios2" value="FEMALE"  v-model="user.gender" >
+                                            <td><input class="form-check-input" type="radio" id="exampleRadios2" value="ZENSKI"  v-model="user.gender" >
                                                 <label class="form-check-label" for="exampleRadios2">
                                                 Zenski
                                                 </label>

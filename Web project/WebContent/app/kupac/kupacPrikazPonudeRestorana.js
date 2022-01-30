@@ -16,7 +16,7 @@ template: `
         <div class="row-restaurants">
             <div class = "col-with-picture">
                 <div class="col-picture">
-                    <div><img v-bind:src="'../pictures/'+restaurant.link" style="height:250px !important; width:300px !important"></div>
+                    <div><img v-bind:src="'../pictures/'+restaurant.link" style="height:250px !important; width:300px !important; margin-left: 5em; margin-top: 3em;"></div>
                 </div>
             </div>
             <div class="col-info">
@@ -29,7 +29,7 @@ template: `
             </div>
         </div>
        
-    <h4 style="margin-left: 15px;  font-weight: bold; "> ARTIKLI:  </h4> 
+    <h4 style="margin-left: 5em;  font-weight: bold; "> ARTIKLI:  </h4> 
 
     
     <div id="artikli" class="tab-pane fade in active">

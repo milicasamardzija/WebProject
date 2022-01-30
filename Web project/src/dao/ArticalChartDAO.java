@@ -229,22 +229,31 @@ public class ArticalChartDAO {
 		ArrayList<ArticalChartsDTO> ret= new ArrayList<ArticalChartsDTO>();
 		Artical artical= getArtical(parseInt);
 		for(ArticalChart a: this.getValues()) {
-			if(a.getIdArtical() == parseInt && a.getIdCustomer().equals(user.getUsername()) && a.getQuantity() > 0) {
-				if (a.getQuantity() - 1 >= 0) {
+			//ako ima vise od jedan 
+			if(a.getIdArtical() == parseInt && a.getIdCustomer().equals(user.getUsername()) && a.getQuantity() > 1 ) {
+				System.out.println("Kolicina nakon smanjivanja " + a.getQuantity());
 					a.setQuantity(a.getQuantity()-1);
-				}
+					System.out.println("Kolicina nakon smanjivanja " + a.getQuantity());
+					break;
+				
+			}
+			else if(a.getIdArtical() == parseInt && a.getIdCustomer().equals(user.getUsername()) && a.getQuantity() == 1){
+				System.out.println("DRUGA METODA KAD JE JEDAN ");
+				this.getValues().remove(a);
+
+				break;
 			}
 		}
 		
-		for(ArticalChart a: this.getValues()) {
-			if(a.getIdArtical() == parseInt && a.getIdCustomer().equals(user.getUsername()) && a.getQuantity() > 0) {
-				if (a.getQuantity() - 1 <= 0) {
+		/*for(ArticalChart a: this.getValues()) {
+			if(a.getIdArtical() == parseInt && a.getIdCustomer().equals(user.getUsername()) && a.getQuantity() == 1) {
+				
 					this.getValues().remove(a);
 					break;
-				}
-			}
+			
+			} 
 		}
-		
+		*/
 		saveArticals();
 		
 		return this.getArticalsForChart(user);

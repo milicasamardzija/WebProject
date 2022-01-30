@@ -156,7 +156,7 @@ public class RestaurantDAO {
 	}
 
 	public Restaurant addRestaurant(RestaurantNewDTO restaurant) {
-		Restaurant newRestaurant = new Restaurant(generateIdRestaurant(),restaurant.managerId, restaurant.name, restaurant.type, new ArrayList<Integer>(), Status.OPEN, new Address(restaurant.street, restaurant.number, restaurant.city, restaurant.zipCode, 0, 0), generateLink(restaurant.link), false, -1);
+		Restaurant newRestaurant = new Restaurant(generateIdRestaurant(),restaurant.managerId, restaurant.name, restaurant.type, new ArrayList<Integer>(), Status.OTVOREN, new Address(restaurant.street, restaurant.number, restaurant.city, restaurant.zipCode, 0, 0), generateLink(restaurant.link), false, -1);
 		this.restaurants.put(newRestaurant.getId(), newRestaurant);
 		saveRestaurants();
 		return newRestaurant;

@@ -1,6 +1,6 @@
 package enums;
 
 public enum ArticalType {
-	DRINK,
-	FOOD
+	PICE,
+	JELO
 }
