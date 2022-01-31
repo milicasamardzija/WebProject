@@ -350,9 +350,9 @@ public class OrderDAO {
 		} 
 		
 		int id = this.generateIdOrder();
-		this.orders.put(id, new Order(id, articalIds, oneArticalInChart.getRetaurantId(), new Date(), price, user.getUsername(), OrderStatus.OBRADA, false, "", "", oneArticalInChart.getRestaurantType()));
+		this.orders.put(id, new Order(id, articalIds, oneArticalInChart.getRetaurantId(), new Date(), price, user.getUsername(), OrderStatus.OBRADA, false, "x", "", oneArticalInChart.getRestaurantType()));
 		System.out.println("------------------------------------------");
-		System.out.println(new Order(id, articalIds, oneArticalInChart.getRetaurantId(), new Date(), price, user.getUsername(), OrderStatus.OBRADA, false, "", "", oneArticalInChart.getRestaurantType()));
+		System.out.println(new Order(id, articalIds, oneArticalInChart.getRetaurantId(), new Date(), price, user.getUsername(), OrderStatus.OBRADA, false, "x", "", oneArticalInChart.getRestaurantType()));
 		System.out.println("------------------------------------------");
 		this.saveOrders();
 		System.out.println("brisem atrikle za usera " + user.getName());

@@ -6,7 +6,9 @@ Vue.component("cekaju-dostavljaca", {
             }
     },
 template: `
-<div class="container" style=" margin-top: 20px; margin-left: 40px; margin-right: 10px;">
+
+<div class="containerInfo"> 
+<div class="container" style=" margin-top: 20px; margin-left: 8%; margin-right: 10px;">
   
 <div>
 <table  style=" margin:25px 25px; font-size:1.1 em;"> 
@@ -30,7 +32,7 @@ template: `
 <tr> 
         <td style="width:450px !important;"><p> Ukoliko zelite da filtrirate prikaz, odaberite odgovarajuci tip restorana </p></td>  
     
-        <td > <button class="btn btn-secondary dropdown-toggle" type="button" data-toggle="dropdown" > Tip restorana </button>                  
+        <td > <button class="btn btn-secondary dropdown-toggle" style="width: 155px;" type="button" data-toggle="dropdown" > Tip restorana </button>                  
             <span class="dropdown-menu" aria-labelledby="dropdownMenu2">
             <button class="dropdown-item" type="button" v-on:click="filterTypeRestaurant('italijanski')" >Italijanski</button>
             <button class="dropdown-item" type="button" v-on:click="filterTypeRestaurant('kineski')">Kineski</button>
@@ -66,8 +68,8 @@ template: `
 
    
   <div v-if= "orders != []" > 
-  <h3 style=" margin-left: 30px;"> <small> Trenutno stanje svih porudzbina na cekanju: </small> <hr></h3>
-    <table class="table table-hover" >
+  <h3 style=" margin-left: 20px;"> <small> Trenutno stanje svih porudzbina na cekanju: </small> <hr></h3>
+    <table class="table table-hover" style=" margin-left: 20px;" >
         <thead v-if= "orders != null">
           <tr>
             <th scope="col">Ime restorana</th>
@@ -94,7 +96,7 @@ template: `
         </tbody>
     </table>
   </div>
-  
+  </div>
 </div>
 `,
 methods:{
