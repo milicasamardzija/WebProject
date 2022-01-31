@@ -46,7 +46,7 @@
     "status" : "OTVOREN",
     "address" : {
       "street" : "Pavla Papa",
-      "number" : 10,
+      "number" : 11,
       "city" : "Novi Sad",
       "zipCode" : 2100,
       "latitude" : 0.0,
