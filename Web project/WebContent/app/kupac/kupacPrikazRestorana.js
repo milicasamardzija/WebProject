@@ -9,7 +9,7 @@ template: `
 <div class="containerInfo">
 
 	<!--pretraga-->
-	<div class="row" style="width:1400px !important; margin-left:30px;">
+	<div class="row" style="width:1400px !important; margin-left:8%;">
 		<div class="col-lg-12">
 					    <div class="row" style="width:1400px !important;">
 										        <div class="col-lg-2 col-md-3 col-sm-12 p-0 search">
@@ -54,7 +54,7 @@ template: `
 			                <div class="row-restaurants" v-for="restaurant in restaurants" v-on:click="getSelected(restaurant)" >
 			                    <div class = "col-with-picture">
 			                        <div class="col-picture">
-			                            <div><img v-bind:src="'../pictures/'+restaurant.link" style="height:250px !important; width:300px !important" v-on:click="goToRestaurant(restaurant.id)"></div>
+			                            <div><img v-bind:src="'../pictures/'+restaurant.link" style="height:250px !important;border-radius: 4px; width:300px !important" v-on:click="goToRestaurant(restaurant.id)"></div>
 			                        </div>
 			                    </div>
 			                    <div class="col-info">

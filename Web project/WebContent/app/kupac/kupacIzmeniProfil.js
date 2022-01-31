@@ -10,16 +10,16 @@ template:
 <section> 
             
             <div class="row content">
-                <div class="col-sm-3 sidenav">
-                    <h3><small>Vase informacije na profilu:</small> <hr> </h3>
+                <div class="col-sm-3 sidenav" style="margin-left: 10%">
+                    <h3  style="width: 200px;"><small>Vase informacije na profilu:</small> <hr> </h3>
                     <img class= "img-responsive"src="../pictures/korisnik.png">
                 </div> 
-                <div class="col-sm-9">
+                <div class="col-sm-9" style="margin-top:2em;">
                         <div class="informations" >
                             <form>
                                     <table>
                                         <tr>
-                                            <td> Ime: </td>
+                                            <td style="width:11em;"> Ime: </td>
                                             <td> <input class="form-control" type="text" v-model="user.name" v-bind:value="name" > {{name}}</td>
                                         </tr>
                                         <tr> 
@@ -50,13 +50,13 @@ template:
                                         <tr> 
                                             <td> Adresa:</td>
                                             <td> <input class="form-control" type="text" placeholder="ulica" v-model="user.address.street" v-bind:value="user.address.street"> {{street}}</td>
-                                            <td> <input class="form-control" type="text" placeholder="broj" style="width:70px" v-model="user.address.number" v-bind:value="user.address.number"></td>
-                                            <td> <input class="form-control" type="text" placeholder="grad" style="width:120px" v-model="user.address.city" v-bind:value="user.address.city"></td>
-                                            <td> <input class="form-control" type="text" placeholder="postanski broj" style="width:115px" v-model="user.address.zipCode" v-bind:value="user.address.zipCode" ></td>
-                                        </tr>
+                                           <td> <input class="form-control" type="text" placeholder="broj" style="width:70px !important;" v-model="user.address.number" v-bind:value="user.address.number"></td></tr>  <tr>
+                                            <td> </td> <td> <input class="form-control" type="text" placeholder="grad" style="width:px" v-model="user.address.city" v-bind:value="user.address.city"></td>
+                                            <td> <input class="form-control" type="text" placeholder="posta" style="width:70px !important;" v-model="user.address.zipCode" v-bind:value="user.address.zipCode" ></td>
+                                       </tr>
                                         <tr> 
-                                           <button type="button" class="btn btn-danger" v-on:click="changePassword"> Promeni sifru </button>
-                                        </tr>
+                                           <button type="button" class="btn btn-danger" style="width: 122px" v-on:click="changePassword"> Promeni sifru </button>
+                                        </tr>  </table>
                                         <div v-if="mode" stylep="top-margin:5px;">
                                            <form id="izmena">
                                            <table>
@@ -69,17 +69,17 @@ template:
                                                 <td> <input class="form-control" type="password"></td> 
                                             </tr>
                                             <tr> 
-                                                <td> Ponovo unesite novu sifru:  </td>
+                                                <td> Ponovite unos nove sifre:  </td>
                                                 <td> <input class="form-control" type="password"></td> 
                                             </tr>
                                            </table>
                                            </form>
                                        </div>
                                         
-                                    </table>
+                                  
 
                             </form>
-                            <button type="button" class="btn btn-success" v-on:click="changeProfile">Sacuvaj izmene</button>
+                            <button type="button" style="margin-top: 5px;" class="btn btn-success" v-on:click="changeProfile">Sacuvaj izmene</button>
                         </div>
                     </div>    
             </div>

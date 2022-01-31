@@ -7,7 +7,9 @@ Vue.component("nedostavljene-kupac", {
         }
     },
 template: `
-<div class="container" style=" margin-top: 20px; margin-left: 20px; margin-right: 10px;">
+
+<div class="containerInfo" >
+<div class="container" style=" margin-top: 20px; margin-left: 8%; margin-right: 10px;">
   <h3 style=" margin-left: 60px;"> <small> Trenutno stanje svih Vasih porudzbina: </small> <hr></h3>          
        
   
@@ -37,11 +39,11 @@ template: `
    
   <!-- modal otkazi-->
   <div class="modal fade" id="otkazi" role="dialog" >
-          <div class="modal-dialog" style="width: 300px;" >
+          <div class="modal-dialog" style="width: 400px;" >
               <!-- Modal content -->
               <div class="modal-content">
                   <div class="modal-header" style="padding:35px 50px;">
-                  <h5 class="modal-title" id="exampleModalLabel">Odjavi se</h5>
+                  <h5 class="modal-title" id="exampleModalLabel">Otkazi porudzbinu</h5>
                   </div>
                   <div class="modal-body"  style="padding:40px 50px;">
                       <form role="form">
@@ -56,6 +58,8 @@ template: `
           </div>
   </div>
   
+</div>
+
 </div>
 `,
 methods:{

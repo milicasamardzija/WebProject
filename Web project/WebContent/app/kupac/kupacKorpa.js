@@ -8,12 +8,14 @@ Vue.component("korpa-kupac", {
         }
     },
 template: `
+
+<div class="containerInfo">
 <section> 
-    <div class="container" style=" margin-top: 20px; margin-left: 20px; margin-right: 10px;">
+    <div class="container" style=" margin-top: 20px; margin-left: 6%; margin-right: 10px;">
             
                 <h3 style=" margin-left: 60px;"> <small> Trenutno stanje Vase korpe: </small> <hr></h3> 
             <!--tabela-->
-            <div>
+            <div >
                 <table class="table table-hover">
                     <thead>
                       <tr>
@@ -31,27 +33,32 @@ template: `
                         <td><div class="col-picture">
                         <div><img v-bind:src="'../pictures/'+ proizvod.link" style="height:60px !important; width:60px !important"></div>
                         </div></td>
-                        <td>{{proizvod.name}}</td>
-                        <td>{{proizvod.price}}</td>
-                        <td>{{proizvod.quantity}}</td>
-                        <td><button type="button" class="btn btn-success" v-on:click="dodaj(proizvod)"> <span class="glyphicon glyphicon-plus"></span></button> </td>
-                        <td><button type="button" class="btn btn-danger"  v-on:click="oduzmi(proizvod)"> <span class="glyphicon glyphicon-minus"></span></button></td>
-                        <div>
-                          <td><button type="button" class="btn btn-secondary" v-on:click="obrisi(proizvod)">Izbrisi</button></td>
-                        </div>
+                        <td > <label style="margin-top: 1em; font-size: 14px;"> {{proizvod.name}}</label></td>
+                        <td> <label style="margin-top: 1em; font-size: 14px;">{{proizvod.price}} </label></td>
+                        <td> <label style="margin-top: 1em; font-size: 14px;">{{proizvod.quantity}} </label></td>
+                        <td> <button  style="margin-top: 1em; font-size: 14px;" type="button" class="btn btn-success" v-on:click="dodaj(proizvod)"> <span class="glyphicon glyphicon-plus"></span></button> </td>
+                        <td> <button  style="margin-top: 1em; font-size: 14px;" type="button" class="btn btn-danger"  v-on:click="oduzmi(proizvod)"> <span class="glyphicon glyphicon-minus"></span></button></td>
+                        <td> <div>
+                          <td><button style="margin-top: 1em; font-size: 14px;" type="button" class="btn btn-secondary" v-on:click="obrisi(proizvod)">Izbrisi</button></td>
+                        </div> </td>
                       </tr>
                     </tbody>
                   </table>
                   <br/>
-                  <h4 style="margin-left: 30em"> Ukupna cena bez popusta:  <h4> {{this.cenaBezPopusta}} </h4> </h4>  
-                  <h4 style="margin-left: 30em"> Ukupna cena sa korisnickim popustom:  <h4> {{this.cena}} </h4> </h4>  
-                  
-                  <button type="button" class="btn btn-success " style="margin-left:1050px; position: relative;" v-on:click="poruci()"> PORUCI </button >
+                  <div style="box-shadow: white"> 
+                  <table> 
+                   <tr> <td> <h4 style="margin-left: 35em"> Ukupna cena bez popusta:  </h4> </td> <td style="width: 2em;"> </td> <td>   <h4>  {{this.cenaBezPopusta}} din </h4>  </td></tr> 
+                   <tr> <td> <h4 style="margin-left: 35em"> Ukupna cena sa korisnickim popustom:</h4>  </td><td style="width: 2em;"> </td> <td>  <h4> {{this.cena}} din  </h4>  </td> </tr>
+                  </table>
+                  </div>
+                  <button type="button" class="btn btn-success " style="margin-left:1050px; position: relative;" v-on:click="poruci()"> Poruci </button >
             </div>     
                     
             </div>
      </div>
 </section>
+
+</div>
 `,
 methods:{
   poruci: function(){

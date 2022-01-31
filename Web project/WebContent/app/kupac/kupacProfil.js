@@ -7,45 +7,53 @@ Vue.component("profil-kupac", {
 template: `
 <section> 
             
-            <div class="row content">
-                    <div class="col-sm-3 sidenav">
-                        <h3><small>Vase informacije na profilu:</small> <hr> </h3>
+            <div class="row content" >
+                    <div class="col-sm-5 sidenav" style="margin-left: 10%">
+                        <h3 style="width: 200px;" ><small>Vase informacije na profilu:</small> <hr> </h3>
                         <img class= "img-responsive"src="../pictures/korisnik.png">
                     </div> 
-                    <div class="col-sm-9">
+                    <div class="col-sm-9" style="margin-top:2em;">
                             <div class="informations" >
                                 
                                 <table>
                                 <tr>
-                                    <td> Ime: </td>
+                                    <td style="width:12em;" > Ime: </td>
+                                   
                                     <td> {{kupac.name}} </td>
                                     </tr>
                                 <tr> 
                                 <td>Prezime: </td>
+                                
                                 <td> {{kupac.surname}} </td>
                                 </tr>
                                 <tr> 
                                 <td> Korisnicko ime:</td>
+                                
                                 <td> {{kupac.username}} </td>
                                 </tr>
                                 <tr> 
                                 <td> Pol:</td>
+                                
                                 <td> {{kupac.gender}} </td>
                                 </tr>
                                 <tr> 
                                 <td>Datum rodjenja: </td>
+                                
                                 <td> {{kupac.birthday | dateFormat('DD.MM.YYYY.')}} </td>
                                 </tr>
                                 <tr> 
                                     <td> Adresa:</td>
+                                    
                                     <td> {{kupac.address.street}} {{kupac.address.number}}, grad {{kupac.address.city}}  {{kupac.address.zipCode}} </td>
                                 </tr>
                                 <tr> 
                                 <td>Broj bodova: </td>
+                              
                                 <td> {{kupac.points}} </td>
                                 </tr>
                                 <tr> 
                                 <td>Tip kupca </td>
+                                
                                 <td> {{kupac.typeCustomer.type}}, za Gold potrebno: {{kupac.typeCustomer.points}} bodova </td>
                                 </tr>
                                 <tr style="height: 10px;"> </tr>

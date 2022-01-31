@@ -17,9 +17,9 @@ template: `
                             <td style="width: 250px" > <input style="width: 150px"  type="text" class="form-control search-slt" placeholder="Lokacija" v-model="search.location"> </td>
                               <td style="width: 300px"> 
                                 
-                                                    <select v-model="search.type" style="height: 35px; width: 120px; background-color:#6c757d; color:white;  border-radius: 4px;">Tip
+                                                    <select v-model="search.type" style="height: 35px; width: 120px; background-color:#6c757d; color:white;  border-radius: 4px; font-size: 14px;">Tip
                                                      
-                                                       <option value="">Tip restorana</option>
+                                                       <option value="">  Tip restorana</option>
                                                     <option  v-bind:value="0" style=" margin-left: 5px;background-color:white; color: black">Italijanski</option>
                                                     <option  v-bind:value="1" style="margin-left: 5px; background-color:white; color: black">Kineski</option>
                                                     <option  v-bind:value="2" style="margin-left: 5px; background-color:white; color: black">Pica</option>
@@ -31,7 +31,7 @@ template: `
                             </td>
                               <td style="width: 250px"> 
                             
-                              <select   v-model="search.grade" style="height: 35px; width: 150px; background-color:#6c757d; color:white;  border-radius: 4px;" > Ocena
+                              <select   v-model="search.grade" style="height: 35px; width: 147px; background-color:#6c757d; color:white;  border-radius: 4px;font-size: 14px;" > Ocena
       <option value="">Ocena</option>
                               <option  v-bind:value="5" style=" background-color:white; color: black">5</option>
                               <option  v-bind:value="4" style=" background-color:white; color: black">4</option>
@@ -41,7 +41,7 @@ template: `
                               </select>
                            
                             </td>
-                            <td style="width: 250px"> <button type="button" class="btn btn-danger wrn-btn btn-search" v-on:click="pretrazi()">Search</button></td>
+                            <td style="width: 250px"> <button type="button" class="btn btn-danger wrn-btn btn-search" v-on:click="pretrazi()">Pretrazi </button></td>
                          
                             </tr>
                         </table>
@@ -79,7 +79,7 @@ template: `
                       <table style="margin-left: 200px; margin-top: 20px;">
                             <tr> 
                               <td style="width: 500px;"> <p> Ukoliko zelite da sortirate prikaz, izaberite odgovarajuci kriterijum: </p></td>
-                              <td style="margin-left: 30px;">    <button class="btn btn-secondary dropdown-toggle" type="button" data-toggle="dropdown" >
+                              <td style="margin-left: 30px;">    <button class="btn btn-secondary dropdown-toggle" style="width:125px;" type="button" data-toggle="dropdown" >
                             Sortiranje</button>
                         
                                   <span class="dropdown-menu" aria-labelledby="dropdownMenu2">
@@ -96,12 +96,12 @@ template: `
                       </table>
               
             
-            <div id="restoraniPrikaz"> 
+            <div id="restoraniPrikaz" style="margin-left: 0em; "> 
                <div class=" tab-pane container active">
                     <div class="row-restaurants" v-for="restaurant in restaurants" v-if="restaurant.status == 'OTVOREN'" v-on:click="getSelected(restaurant)">
-                        <div class = "col-with-picture">
+                        <div class = "col-with-picture" style="border-radius: 4px;">
                             <div class="col-picture">
-                                <div><img v-bind:src="'pictures/'+restaurant.link" style="height:220px !important; width:250px !important" v-on:click="goToRestaurant(restaurant.id)"></div>
+                                <div><img v-bind:src="'pictures/'+restaurant.link" style="height:220px !important; width:300px !important;border-radius: 4px; margin-right: 3em; " class="img-thumbnail" v-on:click="goToRestaurant(restaurant.id)"></div>
                             </div>
                         </div>
                         <div class="col-info">
@@ -117,7 +117,7 @@ template: `
                       <div class="row-restaurants" v-for="restaurant in restaurants" v-if="restaurant.status == 'ZATVOREN'" v-on:click="getSelected(restaurant)">
                         <div class = "col-with-picture">
                             <div class="col-picture">
-                                <div><img v-bind:src="'pictures/'+restaurant.link" style="height:220px !important; width:250px !important" v-on:click="goToRestaurant(restaurant.id)"></div>
+                                <div><img v-bind:src="'pictures/'+restaurant.link" style="height:220px !important; width:300px !important; border-radius: 4px; margin-right: 3em;" class="img-thumbnail" v-on:click="goToRestaurant(restaurant.id)"></div>
                             </div>
                         </div>
                         <div class="col-info">
@@ -130,6 +130,7 @@ template: `
                     </div>
                     
                 </div>
+
             </div>
             
             <div id="restoraniPrikaz"> 

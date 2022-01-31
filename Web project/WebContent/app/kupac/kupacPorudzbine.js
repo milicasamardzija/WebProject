@@ -12,9 +12,10 @@ Vue.component("porudbine-kupac", {
         }
     },
 template: `
-<div class="container" style=" margin-top: 20px; margin-left: 40px; margin-right: 10px;">
+<div class="containerInfo" > 
+<div class="container" style=" margin-top: 20px; margin-left: 8%; margin-right: 10px;">
   
-<div>
+<div >
 <table  style=" margin:25px 25px; font-size:1.1 em;"> 
 <tr>
     <td > <input type="text" placeholder="naziv restorana" style="height:32px;"> </td>
@@ -36,7 +37,7 @@ template: `
 <tr> 
         <td style="width:450px !important;"><p> Ukoliko zelite da filtrirate prikaz, odaberite odgovarajuci tip restorana </p></td>  
     
-        <td > <button class="btn btn-secondary dropdown-toggle" type="button" data-toggle="dropdown" > Tip restorana </button>                  
+        <td > <button class="btn btn-secondary dropdown-toggle" type="button" data-toggle="dropdown" style="width:152px;" > Tip restorana </button>                  
             <span class="dropdown-menu" aria-labelledby="dropdownMenu2">
             <button class="dropdown-item" type="button" v-on:click="filterType('ITALIJANSKI')" >Italijanski</button>
             <button class="dropdown-item" type="button" v-on:click="filterTypeRestaurant('KINESKI')">Kineski</button>
@@ -88,7 +89,7 @@ template: `
    
   <div v-if="orders != []" > 
   <h3 style=" margin-left: 30px;"> <small> Trenutno stanje svih Vasih porudzbina: </small> <hr></h3>
-    <table class="table table-hover" >
+    <table class="table table-hover" style="margin-left: 1.5em;" >
         <thead v-if= "orders != []">
           <tr>
             <th scope="col">Ime restorana</th>
@@ -118,7 +119,7 @@ template: `
         </tbody>
     </table>
   </div>
-
+</div>
   <!-- modal obrisi-->
   <div class="modal fade" id="brisanje" role="dialog" >
           <div class="modal-dialog" style="width: 300px;" >
