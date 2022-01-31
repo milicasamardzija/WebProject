@@ -8,9 +8,9 @@ Vue.component("administrator-addRestaurant", {
   template: `
     <div class="containerInfo t"> 
     
-    <div><input id="searchInput" class="controls" type="text" style="width: 250px;" placeholder="Ukucajte ime restorana..." /></div>
+    
           	<div id="dvMap" style="width: 600px; height: 350px"></div>
-          </div>
+         
     
         <div class="information">
             <form>
