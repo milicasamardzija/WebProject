@@ -5,10 +5,12 @@ Vue.component("administrator-changeRestaurant", {
             managers: [],
             manager: {},
             id: null,
+            type: "",
             city:"",
             number:"",
             street:"",
-            zipCode:""
+            zipCode:"",
+            link: ""
         }
     },    
   template: `
@@ -20,8 +22,9 @@ Vue.component("administrator-changeRestaurant", {
               <td class="labela">Novi menadzer:</td>
               <td><select class="form-control" v-model="restaurant.managerId" placeholder="Kliknite za izbor menadzera">
                   <option v-for="m in managers" v-bind:value="m.id">{{m.name}} {{m.surname}}</option>
-              </select></td>
-              <td class="buttonMap"><button type="button" class="btn btn-success" v-on:click="dodajMenadzera">Kreiraj novog menadzera</button></td>
+                  </select>
+              </td>
+              <td class="buttonMap"><button type="button" class="btn btn-success" v-on:click="dodajMenadzera" style="margin-left:20px">Kreiraj novog menadzera</button></td>
               <td><p style="margin-left: 15px;margin-top: 8px;">*Ukoliko ne postoje slobodni menadzeri klikom na ovo dugme kreirajte novog menadzera.</p></td>
               </tr>
               <tr>
@@ -30,21 +33,20 @@ Vue.component("administrator-changeRestaurant", {
               </tr>
               <tr>
               <td class="labela">Tip:</td>
-              <td><select class="form-control" v-model="restaurant.type" placeholder="Kliknite za izbor tipa" >
-                  <option v-bind:value="type"> {{type}} </option>
-                  <option v-bind:value="0">Italijanski</option>
-                  <option v-bind:value="1">Kineski</option>
-                  <option v-bind:value="2">Pica</option>
-                  <option v-bind:value="3">Rostilj</option>
-                  <option v-bind:value="4">Riblji</option>
-                  <option v-bind:value="5">Veganski</option>
+              <td><select  v-model="restaurant.type" placeholder="Kliknite za izbor tipa" style="height: 35px; width: 200px; background-color:#5CB85C; color:white; border-radius: 4px; font-size: 14px;">
+                <option value="ITALIJANSKI">Italijanski</option>
+                <option value="KINESKI">Kineski</option>
+                <option value="PIZZA">Pica</option>
+                <option value="ROSTILJ">Rostilj</option>
+                <option value="RIBLJI">Riblji</option>
+                <option value="VEGE">Veganski</option>
               </select>
               </td>
               </tr>
               <tr>
               <td class="labela">Ulica:</td>
               <td><input class="form-control" type="text" placeholder="Ulica" v-model="restaurant.address.street"  v-bind:value="street">{{street}}</td>
-              <td class="buttonMap"><button type="button" class="btn btn-success"><i></i>Choose on map</button></td>
+              <td class="buttonMap"><button type="button" class="btn btn-success" style="margin-left:20px"><i></i>Choose on map</button></td>
               </tr>
               <tr>
               <td class="labela">Broj:</td>
@@ -62,6 +64,10 @@ Vue.component("administrator-changeRestaurant", {
               <td class="buttonForm"><button type="button" class="btn btn-success" v-on:click="changeRestaurant">Sacuvaj</button></td>
               <td class="buttonForm"><button type="button" class="btn btn-success" v-on:click="otkazi">Otkazi</button></td>
               </tr>
+              <!--<tr>
+              <td class="labela">Slika:</td>
+              <td><input type="file" v-model="restaurant.link" v-bind:value="link">{{link}}</td>
+              </tr>-->
           </table>
       </form>
   </div>

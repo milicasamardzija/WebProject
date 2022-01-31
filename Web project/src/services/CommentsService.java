@@ -89,9 +89,10 @@ public class CommentsService {
 	@POST
 	@Path("/approveComment")
 	@Produces(MediaType.APPLICATION_JSON)
-	public Collection<Comment> approveComment(String idComment) {
+	public Collection<CommentDTO> approveComment(String idComment) {
 		CommentsDAO commentsDAO = getCommentsDAO();
-		return commentsDAO.approveComment(idComment);
+		commentsDAO.approveComment(idComment);
+		return this.getAllCommentsManager();
 		
 	}
 	

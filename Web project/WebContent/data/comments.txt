@@ -13,7 +13,7 @@
     "restaurantId" : 2,
     "text" : "Bilo je prelepo",
     "grade" : 5.0,
-    "approved" : false
+    "approved" : true
   },
   "2" : {
     "id" : 2,
@@ -21,7 +21,7 @@
     "restaurantId" : 2,
     "text" : "Bilo je najbolje",
     "grade" : 5.0,
-    "approved" : false
+    "approved" : true
   },
   "3" : {
     "id" : 3,

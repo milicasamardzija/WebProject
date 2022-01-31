@@ -28,12 +28,12 @@ Vue.component("administrator-addRestaurant", {
                     <tr>
                     <td class="labela">Tip:</td>
                     <td><select class="form-control" v-model="restaurant.type" placeholder="Kliknite za izbor tipa">
-                        <option v-bind:value="0">Italijanski</option>
-                        <option v-bind:value="1">Kineski</option>
-                        <option v-bind:value="2">Pica</option>
-                        <option v-bind:value="3">Rostilj</option>
-                        <option v-bind:value="4">Riblji</option>
-                        <option v-bind:value="5">Veganski</option>
+                        <option value="ITALIJANSKI">Italijanski</option>
+                        <option value="KINESKI">Kineski</option>
+                        <option value="PIZZA">Pica</option>
+                        <option value="ROSTILJ">Rostilj</option>
+                        <option value="RIBLJI">Riblji</option>
+                        <option value="VEGE">Veganski</option>
                     </select>
                     </td>
                     </tr>

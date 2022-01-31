@@ -73,16 +73,14 @@ methods:{
             })
             .then(
               response => {
-               
                 Swal.fire({
                   position: 'top-end',
-                 
                   title: 'Uspesno dodat artikal',
                   showConfirmButton: false,
                   timer: 1500
                 })
                 router.push(`/`) 
-                
+                this.$router.go()
               }, error => {
                 Swal.fire({
                     title: 'Oops...',
@@ -96,6 +94,7 @@ methods:{
     },
     otkazi: function(s){
       router.push(`/`);
+      this.$router.go()
     },
 },
 mounted(){

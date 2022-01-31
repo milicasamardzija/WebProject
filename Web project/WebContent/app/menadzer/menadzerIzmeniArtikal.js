@@ -1,7 +1,7 @@
 Vue.component("izmeniArtikal-menadzer", {
     data(){
         return{
-            artical:{},
+            artical:{name: "", price: 0, type:0, quantity: 0, description: "", link: "", idArtic: 0},
             idArtic: null
         }
     },
@@ -27,8 +27,9 @@ template: `
                                         <tr> 
                                             <td> Tip:</td>
                                             <td> <select class="selectKolicina" id="tipArtikla" v-model="artical.type" placeholder="Kliknite za izbor tipa"> 
-                                           <option value="FOOD"> Jelo </option>
-                                           <option value="DRINK"> Pice </option>
+                                           <option value="JELO"> Jelo </option>
+                                           <option value="PICE"> Pice </option>
+                                           </select>
                                             </td>
                                         </tr>
                                         <tr> 
@@ -69,12 +70,14 @@ methods:{
             .then(
               response => {
                 router.push(`/`)
+                this.$router.go()
               } 
             )
             .catch()    
     },
     otkazi: function(){
       router.push(`/`);
+      this.$router.go()
     },
 },
 mounted(){

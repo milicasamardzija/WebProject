@@ -5,7 +5,7 @@
     "price" : 760,
     "type" : "JELO",
     "idRestaurant" : 2,
-    "quantity" : 550.0,
+    "quantity" : 500.0,
     "description" : "sunka, kecap, sampinjoni",
     "link" : "13_0.png",
     "deleted" : false,
@@ -80,6 +80,30 @@
     "quantity" : 50.0,
     "description" : "Prelepo",
     "link" : "7_0.png",
+    "deleted" : false,
+    "number" : 0
+  },
+  "7" : {
+    "id" : 7,
+    "name" : "voda",
+    "price" : 90,
+    "type" : "PICE",
+    "idRestaurant" : 2,
+    "quantity" : 0.5,
+    "description" : "Mineralna voda",
+    "link" : "voda.jpg",
+    "deleted" : false,
+    "number" : 0
+  },
+  "8" : {
+    "id" : 8,
+    "name" : "limunada",
+    "price" : 43,
+    "type" : "PICE",
+    "idRestaurant" : 2,
+    "quantity" : 3.0,
+    "description" : "dasa",
+    "link" : "6_0.png",
     "deleted" : false,
     "number" : 0
   }

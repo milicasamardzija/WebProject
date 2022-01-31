@@ -6,6 +6,7 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
 
@@ -119,16 +120,16 @@ public class CommentsDAO {
 	}
 
 
-	public Collection<Comment> approveComment(String idComment) {
+	public void approveComment(String idComment) {
            Collection<Comment> comments =  this.getValues();
-		
+           Collection<Comment> ret =  new ArrayList<Comment>();
+           
 			for (Comment comment : comments) {
 				if (comment.getId() == Integer.parseInt(idComment)) {
 					comment.setApproved(true);
 				}
 			}
 			this.saveComments();
-			return this.getValues();
 	}
 	
 	private int generateId() {
