@@ -81,6 +81,12 @@ public class ArticalChartsDTO {
 			this.restaurantType = restaurantType;
 			this.articalInRestaurantId = articalInRestaurantId;
 		}
+		@Override
+		public String toString() {
+			return "ArticalChartsDTO [id=" + id + ", link=" + link + ", name=" + name + ", price=" + price
+					+ ", quantity=" + quantity + ", retaurantId=" + retaurantId + ", restaurantType=" + restaurantType
+					+ ", articalInRestaurantId=" + articalInRestaurantId + "]";
+		}
 		
 		
 		

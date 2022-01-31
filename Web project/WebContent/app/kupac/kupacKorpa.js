@@ -57,15 +57,16 @@ methods:{
   poruci: function(){
     axios.post("/WebShopREST/rest/order/add/" + localStorage.getItem("userLogged"), this.proizvodi)
     .then( response => {
-      alert("Uspesno ste izvrsili narudzbinu!");
-      this.proizvodi = response.data;
+      alert("Uspesno ste izvrsili narudzbinu!"); 
       this.cenaBezPopusta = 0.0;
       this.cena = 0.0;
       
       //router.push(`/`);
       //ovde jos dodati poziv metode koja poziva metodu za brisanje svakog artikla iz korpe na beku
-
-   
+      this.proizvodi.forEach(element => {
+        this.obrisi(element);
+      });
+      
     })
     .catch(function(error){
         console.log(error)
@@ -80,6 +81,7 @@ methods:{
         this.obracunajCenuSabiranje(proizvod.price);
         this.obracunajCenuTrenutnu();
         this.obracunajCenuBezPopusta();
+        
     })
     .catch(function(error){
         console.log(error)
