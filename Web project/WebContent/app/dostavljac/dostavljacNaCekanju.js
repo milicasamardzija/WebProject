@@ -2,7 +2,8 @@ Vue.component("cekaju-dostavljaca", {
     data: function() {  
         return {
             orders: [],
-            user:{}
+            user:{}, 
+            check: false
             }
     },
 template: `
@@ -33,14 +34,17 @@ template: `
         <td style="width:450px !important;"><p> Ukoliko zelite da filtrirate prikaz, odaberite odgovarajuci tip restorana </p></td>  
     
         <td > <button class="btn btn-secondary dropdown-toggle" style="width: 155px;" type="button" data-toggle="dropdown" > Tip restorana </button>                  
-            <span class="dropdown-menu" aria-labelledby="dropdownMenu2">
-            <button class="dropdown-item" type="button" v-on:click="filterTypeRestaurant('italijanski')" >Italijanski</button>
-            <button class="dropdown-item" type="button" v-on:click="filterTypeRestaurant('kineski')">Kineski</button>
-            <button class="dropdown-item" type="button" v-on:click="filterTypeRestaurant('pica')" >Pica</button>
-            <button class="dropdown-item" type="button" v-on:click="filterTypeRestaurant('rostilj')">Rostilj</button>
-            <button class="dropdown-item" type="button" v-on:click="filterTypeRestaurant('riblji')" >Riblji</button>
-            <button class="dropdown-item" type="button" v-on:click="filterTypeRestaurant('vege')">Veganski</button>
-            </span>
+        <span class="dropdown-menu" aria-labelledby="dropdownMenu2">
+        <button class="dropdown-item" type="button" v-on:click="filterType('ITALIJANSKI')" >Italijanski</button>
+        <button class="dropdown-item" type="button" v-on:click="filterType('KINESKI')">Kineski</button>
+        <button class="dropdown-item" type="button" v-on:click="filterType('PIZZA')" >Pica</button>
+        <button class="dropdown-item" type="button" v-on:click="filterType('ROSTILJ')">Rostilj</button>
+        <button class="dropdown-item" type="button" v-on:click="filterType('RIBLJI')" >Riblji</button>
+        <button class="dropdown-item" type="button" v-on:click="filterType('VEGE')">Veganski</button>
+        </span>
+    </td>
+    <td style="width: 135px;"> </td>
+    <td><button class="btn btn-secondary" type="button"  v-if="check" v-on:click="reset()">x</button> </td> 
         </td>
     </tr>
 </table>
@@ -50,14 +54,14 @@ template: `
         <td style="width:450px !important;"><p> Ukoliko zelite da sortirate prikaz, odaberite odgovarajuci kriterijum  </p></td>  
     
         <td > <button class="btn btn-secondary dropdown-toggle" type="button" data-toggle="dropdown" > Sortiraj porudzbine  </button>                  
-            <span class="dropdown-menu" aria-labelledby="dropdownMenu2">
-            <button class="dropdown-item" type="button" v-on:click="sortOrders('imeRastuce')">Nazivu restorana rastuce</button>
-            <button class="dropdown-item" type="button" v-on:click="sortOrders('imeOpadajuce')">Nazivu restorana opadajuce</button>
-            <button class="dropdown-item" type="button" v-on:click="sortOrders('rastuce')">Ceni porudzbine rastuce</button>
-            <button class="dropdown-item" type="button" v-on:click="sortOrders('opadajuce')">Ceni porudzbine opadajuce</button>
-            <button class="dropdown-item" type="button" v-on:click="sortOrders('datumRastuce')" >Datumu porudzbine rastuce</button>
-            <button class="dropdown-item" type="button" v-on:click="sortOrders('datumOpadajuce')">Datumu porudzbine opadajuce</button>
-            </span>
+        <span class="dropdown-menu" aria-labelledby="dropdownMenu2">
+        <button class="dropdown-item" type="button" v-on:click="sortNameAsc()">Nazivu restorana rastuce</button>
+        <button class="dropdown-item" type="button" v-on:click="sortNameDesc()">Nazivu restorana opadajuce</button>
+        <button class="dropdown-item" type="button" v-on:click="sortPriceAsc()">Ceni porudzbine rastuce</button>
+        <button class="dropdown-item" type="button" v-on:click="sortPriceDesc()">Ceni porudzbine opadajuce</button>
+        <button class="dropdown-item" type="button" v-on:click="sortDateAsc()" >Datumu porudzbine rastuce</button>
+        <button class="dropdown-item" type="button" v-on:click="sortDateDesc()">Datumu porudzbine opadajuce</button>
+        </span>
         </td>
         
     </tr>
@@ -113,26 +117,79 @@ methods:{
         })
     },
       
-    filterTypeRestaurant: function(type) {
-        this.orders=null,
-        axios.post("/WebShopREST/rest/order/filterRestaurantTypeOnWaitOrders", type)
-        .then(response => {
-           this.orders = response.data
-        })
-        .catch(function(error){
-            console.log(error)
-        })
-    },
-    sortOrders: function(type) {
-        this.orders=null,
-        axios.post("/WebShopREST/rest/order/sortDelivererOnWaitOrders", type)
-        .then(response => {
-           this.orders = response.data
-        })
-        .catch(function(error){
-            console.log(error)
-        })
-    },
+   
+
+sortNameAsc: function() {
+    function compare(a, b) {
+      if (a.restaurantName < b.restaurantName)
+        return -1;
+      if (a.restaurantName > b.restaurantName)
+        return 1;
+      return 0;
+    }
+
+    return this.orders.sort(compare);
+}, 
+sortNameDesc: function() {
+    function compare(a, b) {
+      if (a.restaurantName < b.restaurantName)
+        return 1;
+      if (a.restaurantName > b.restaurantName)
+        return -1;
+      return 0;
+    }
+    
+    return this.orders.sort(compare);
+},
+sortPriceAsc: function() {
+    function compare(a, b) {
+      if (a.price < b.price)
+        return -1;
+      if (a.price > b.price)
+        return 1;
+      return 0;
+    }
+
+    return this.orders.sort(compare);
+}, 
+sortPriceDesc: function() {
+    function compare(a, b) {
+      if (a.price < b.price)
+        return 1;
+      if (a.price > b.price)
+        return -1;
+      return 0;
+    }
+    
+    return this.orders.sort(compare);
+},
+sortDateAsc: function() {
+    function compare(a, b) {
+      if (a.date < b.date)
+        return -1;
+      if (a.date > b.date)
+        return 1;
+      return 0;
+    }
+
+    return this.orders.sort(compare);
+}, 
+sortDateDesc: function() {
+    function compare(a, b) {
+      if (a.date  < b.date )
+        return 1;
+      if (a.date  > b.date )
+        return -1;
+      return 0;
+    }
+    
+    return this.orders.sort(compare);
+},
+filterType: function (type){
+    this.orders = this.orders.filter(restaurant => restaurant.restaurantType === type);
+    
+    this.check = true
+},
     zaduziZaDostavu: function(id){
         this.orders=null;
         axios.post("/WebShopREST/rest/order/askForDelivery", id)
@@ -142,7 +199,17 @@ methods:{
         .catch(function(error){
             console.log(error)
         })
-    }
+    },
+    reset:function() {
+        axios.get("/WebShopREST/rest/order/getAllOrdersForDelivererOnWait")
+        .then( response => {
+            this.orders = response.data,
+            this.check = false
+        })
+        .catch(function(error){
+            console.log(error)
+        })
+      }
     
 },
 mounted(){

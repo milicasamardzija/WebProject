@@ -151,26 +151,7 @@ deleteOrder() {
         console.log(error)
     })
 }, 
-filterTypeRestaurant: function(type) {
-    this.orders=null,
-    axios.post("/WebShopREST/rest/order/filterDelivererRestaurantTypeOrders", type)
-    .then(response => {
-       this.orders = response.data
-    })
-    .catch(function(error){
-        console.log(error)
-    })
-},
-sortOrders: function(type) {
-    this.orders=null,
-    axios.post("/WebShopREST/rest/order/sortDelivererOrders", type)
-    .then(response => {
-       this.orders = response.data
-    })
-    .catch(function(error){
-        console.log(error)
-    })
-},
+
 
 sortNameAsc: function() {
     function compare(a, b) {

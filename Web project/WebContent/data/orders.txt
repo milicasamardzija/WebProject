@@ -214,7 +214,7 @@
     "date" : 1643559868443,
     "price" : 349.2,
     "idCustomer" : "kupac",
-    "status" : "DOSTAVLJENA",
+    "status" : "U_TRANSPORTU",
     "deleted" : false,
     "idDeliverer" : "ZikaZivic",
     "restaurantType" : "ITALIJANSKI",
@@ -227,10 +227,10 @@
     "date" : 1643559959363,
     "price" : 349.2,
     "idCustomer" : "kupac",
-    "status" : "CEKA_DOSTAVLJACA",
+    "status" : "U_TRANSPORTU",
     "deleted" : false,
-    "idDeliverer" : "x",
+    "idDeliverer" : "ZikaZivic",
     "restaurantType" : "ITALIJANSKI",
-    "potencialDeliverer" : "x"
+    "potencialDeliverer" : "ZikaZivic"
   }
 }
