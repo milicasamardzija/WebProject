@@ -19,7 +19,7 @@
     },
     "orderIds" : [ ],
     "chartId" : -1,
-    "points" : -6958.0,
+    "points" : 178.0,
     "typeCustomer" : {
       "type" : "BRONZE",
       "sale" : 3.0
@@ -47,7 +47,7 @@
     },
     "orderIds" : [ ],
     "chartId" : -1,
-    "points" : -1.0,
+    "points" : 0.0,
     "typeCustomer" : {
       "type" : "NONE",
       "sale" : -1.0
@@ -75,7 +75,7 @@
     },
     "orderIds" : [ ],
     "chartId" : -1,
-    "points" : -1.0,
+    "points" : 0.0,
     "typeCustomer" : {
       "type" : "NONE",
       "sale" : -1.0
@@ -103,7 +103,7 @@
     },
     "orderIds" : [ ],
     "chartId" : -1,
-    "points" : -1.0,
+    "points" : 0.0,
     "typeCustomer" : {
       "type" : "NONE",
       "sale" : -1.0
@@ -131,7 +131,7 @@
     },
     "orderIds" : [ ],
     "chartId" : -1,
-    "points" : -1.0,
+    "points" : 0.0,
     "typeCustomer" : {
       "type" : "NONE",
       "sale" : -1.0
@@ -159,7 +159,7 @@
     },
     "orderIds" : [ ],
     "chartId" : -1,
-    "points" : -9753.0,
+    "points" : 0.0,
     "typeCustomer" : {
       "type" : "BRONZE",
       "sale" : 3.0

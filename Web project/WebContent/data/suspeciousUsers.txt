@@ -35,6 +35,12 @@
     "orderId" : 37,
     "dateOfCancelation" : 1643411811229
   },
+  "17" : {
+    "id" : 17,
+    "userId" : "marko",
+    "orderId" : 37,
+    "dateOfCancelation" : 1643412262211
+  },
   "0" : {
     "id" : 0,
     "userId" : "kupac",
@@ -47,17 +53,17 @@
     "orderId" : 29,
     "dateOfCancelation" : 1643408699667
   },
-  "17" : {
-    "id" : 17,
-    "userId" : "marko",
-    "orderId" : 37,
-    "dateOfCancelation" : 1643412262211
-  },
   "2" : {
     "id" : 2,
     "userId" : "kupac",
     "orderId" : 24,
     "dateOfCancelation" : 1643408718503
+  },
+  "18" : {
+    "id" : 18,
+    "userId" : "kupac",
+    "orderId" : 19,
+    "dateOfCancelation" : 1643672633398
   },
   "3" : {
     "id" : 3,

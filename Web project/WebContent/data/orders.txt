@@ -232,5 +232,31 @@
     "idDeliverer" : "",
     "restaurantType" : "ITALIJANSKI",
     "potencialDeliverer" : ""
+  },
+  "18" : {
+    "id" : 18,
+    "articalIds" : [ 2 ],
+    "retaurantId" : 2,
+    "date" : 1643672610726,
+    "price" : 742.05,
+    "idCustomer" : "kupac",
+    "status" : "OBRADA",
+    "deleted" : false,
+    "idDeliverer" : "",
+    "restaurantType" : "ITALIJANSKI",
+    "potencialDeliverer" : ""
+  },
+  "19" : {
+    "id" : 19,
+    "articalIds" : [ 3, 4 ],
+    "retaurantId" : 2,
+    "date" : 1643672624429,
+    "price" : 591.7,
+    "idCustomer" : "kupac",
+    "status" : "OTKAZANA",
+    "deleted" : false,
+    "idDeliverer" : "",
+    "restaurantType" : "ITALIJANSKI",
+    "potencialDeliverer" : ""
   }
 }

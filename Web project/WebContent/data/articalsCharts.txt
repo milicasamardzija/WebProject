@@ -1,10 +1,1 @@
-{
-  "2" : {
-    "idArtical" : 2,
-    "quantity" : 3,
-    "idCustomer" : "kupac",
-    "idArticalInRestaurant" : 2,
-    "idRestaurant" : 2,
-    "restaurantType" : "ITALIJANSKI"
-  }
-}
+{ }
