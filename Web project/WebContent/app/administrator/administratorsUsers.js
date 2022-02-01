@@ -53,6 +53,7 @@ template: `
             <div>
               <td><button type="button" class="btn btn-secondary" v-on:click="changeUser">Izmeni</button></td>
               <td><button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#brisanje" >Izbrisi</button></td>
+              <td><button type="button" class="btn btn-secondary" v-on:click="blockUser(user.username)">Blokiraj</button></td>
             </div>
           </tr>
         </tbody>
@@ -114,10 +115,21 @@ template: `
             axios.post('/WebShopREST/rest/user/deleteUser', this.selected.username)
             .then(response => {
                 router.push(`/korisnici`);
+                this.$router.go()
             })
             .catch(function(error){
                 console.log(error)
             })
-        }
+        },
+    blockUser: function(username){
+      axios.post('/WebShopREST/rest/user/blockUser', username)
+            .then(response => {
+              router.push(`/sumnjivikorisnici`);
+                this.$router.go()
+            })
+            .catch(function(error){
+                console.log(error)
+            })
+    }
   }
   });

@@ -80,7 +80,11 @@ public class UserService {
 		UsersDAO users = getUsers();
 		ArrayList<User> ret = new ArrayList<User>();
 		for (User user : users.getValues()) {
+			System.out.println(user);
 			if(!user.getDeleted() && !user.getBlocked() && user.getSuspecious()) {
+				System.out.println("-----------------U METODI--------------");
+				System.out.println(user);
+				System.out.println("--------------------------------");
 				ret.add(user);
 			}
 		}

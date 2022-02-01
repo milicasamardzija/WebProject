@@ -69,7 +69,9 @@ template: `
     blockUser: function(username){
       axios.post('/WebShopREST/rest/user/blockUser', username)
             .then(response => {
-                this.allUsers = response.data
+              this.$router.go()
+              router.push(`/sumnjivikorisnici`);
+              
             })
             .catch(function(error){
                 console.log(error)

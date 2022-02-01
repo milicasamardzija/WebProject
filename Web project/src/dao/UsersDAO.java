@@ -187,6 +187,7 @@ public class UsersDAO {
 	}
 	
 	public Collection<User> getValues() {
+		loadUsers("");
 		return users.values();
 	}
 	
