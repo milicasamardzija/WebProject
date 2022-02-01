@@ -116,15 +116,15 @@ template: `
 
   <!-- modal obrisi-->
   <div class="modal fade" id="brisanje" role="dialog" >
-          <div class="modal-dialog" style="width: 300px;" >
+          <div class="modal-dialog" style="width: 400px;" >
               <!-- Modal content -->
               <div class="modal-content">
                   <div class="modal-header" style="padding:35px 50px;">
-                  <h5 class="modal-title" id="exampleModalLabel">Odjavi se</h5>
+                  <h5 class="modal-title" id="exampleModalLabel">Obrisi</h5>
                   </div>
                   <div class="modal-body"  style="padding:40px 50px;">
                       <form role="form" @submit="deleteOrder">
-                        <div> <p> Da li ste sigurni da zelite da obrisete?</p></div>
+                        <div> <p> Da li ste sigurni da zelite da obrisete porudzbinu?</p></div>
                           <button type="submit" class="btn btn-danger btn-block" v-on:click="deleteOrder"><span class="glyphicon glyphicon-off"></span> Obrisi</button>
                       </form>
                   </div>

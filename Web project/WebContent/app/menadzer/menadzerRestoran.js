@@ -49,7 +49,7 @@ template: `
                                     <tr>
                                       <td> <button style="width:70px;  margin-left: 1.6em; margin-bottom: 1em" class="button" v-on:click="izmeni(artical.id)" >Izmeni</button></td>
                                     
-                                    <td> <button class="button" style="width:70px;  margin-left: 1.6em; margin-bottom: 1em" v-on:click="izbrisi(artical.id)" >Izbrisi</button></td>
+                                    <td> <button class="button" style="width:70px;  margin-left: 1.6em; margin-bottom: 1em" v-on:click="izbrisi(artical)" >Izbrisi</button></td>
                                     </tr>
                                     
                                      </table> 
@@ -78,7 +78,12 @@ methods:{
             this.$router.push({path: `/izmeniArtikal`, query:{ id: idA}})
         },
         izbrisi: function(idA){
-            
+            axios.post("/WebShopREST/rest/artical/deleteArtical", idA.id).then(
+                response => {
+                   this.$router.go();
+                 } ).catch(function(error){
+                console.log(error)
+            })
         },
 
 },
