@@ -167,34 +167,6 @@
     "idRestaurant" : 18,
     "suspecious" : false
   },
-  "sdasda" : {
-    "deleted" : false,
-    "blocked" : false,
-    "username" : "sdasda",
-    "password" : "sdasda",
-    "name" : "sda",
-    "surname" : "sda",
-    "gender" : "MALE",
-    "birthday" : 1644537600000,
-    "role" : "MANAGER",
-    "address" : {
-      "street" : "dsa",
-      "number" : 3,
-      "city" : "asd",
-      "zipCode" : 3,
-      "latitude" : 0.0,
-      "longitude" : 0.0
-    },
-    "orderIds" : [ ],
-    "chartId" : -1,
-    "points" : -1.0,
-    "typeCustomer" : {
-      "type" : "NONE",
-      "sale" : 0.0
-    },
-    "idRestaurant" : -1,
-    "suspecious" : false
-  },
   "ZikaZivic" : {
     "deleted" : false,
     "blocked" : false,
@@ -249,34 +221,6 @@
       "sale" : 0.0
     },
     "idRestaurant" : -1,
-    "suspecious" : false
-  },
-  "sdadsa" : {
-    "deleted" : false,
-    "blocked" : false,
-    "username" : "sdadsa",
-    "password" : "sdadsa",
-    "name" : "sda",
-    "surname" : "dsa",
-    "gender" : "MALE",
-    "birthday" : 1643673600000,
-    "role" : "MANAGER",
-    "address" : {
-      "street" : "rew",
-      "number" : 4,
-      "city" : "re",
-      "zipCode" : 4,
-      "latitude" : 0.0,
-      "longitude" : 0.0
-    },
-    "orderIds" : [ ],
-    "chartId" : -1,
-    "points" : -1.0,
-    "typeCustomer" : {
-      "type" : "NONE",
-      "sale" : 0.0
-    },
-    "idRestaurant" : 17,
     "suspecious" : false
   },
   "AnaMasic" : {
@@ -361,62 +305,6 @@
       "sale" : 3.0
     },
     "idRestaurant" : 0,
-    "suspecious" : false
-  },
-  "grfdgsd" : {
-    "deleted" : false,
-    "blocked" : false,
-    "username" : "grfdgsd",
-    "password" : "grfdgsd",
-    "name" : "grf",
-    "surname" : "dgsd",
-    "gender" : "MALE",
-    "birthday" : 1643846400000,
-    "role" : "MANAGER",
-    "address" : {
-      "street" : "dgs",
-      "number" : 4,
-      "city" : "fefsr",
-      "zipCode" : 4,
-      "latitude" : 0.0,
-      "longitude" : 0.0
-    },
-    "orderIds" : [ ],
-    "chartId" : -1,
-    "points" : -1.0,
-    "typeCustomer" : {
-      "type" : "NONE",
-      "sale" : 0.0
-    },
-    "idRestaurant" : 8,
-    "suspecious" : false
-  },
-  "effrew" : {
-    "deleted" : false,
-    "blocked" : false,
-    "username" : "effrew",
-    "password" : "effrew",
-    "name" : "eff",
-    "surname" : "rew",
-    "gender" : "MALE",
-    "birthday" : 1644451200000,
-    "role" : "MANAGER",
-    "address" : {
-      "street" : "fsd",
-      "number" : 4,
-      "city" : "fsd",
-      "zipCode" : 4,
-      "latitude" : 0.0,
-      "longitude" : 0.0
-    },
-    "orderIds" : [ ],
-    "chartId" : -1,
-    "points" : -1.0,
-    "typeCustomer" : {
-      "type" : "NONE",
-      "sale" : 0.0
-    },
-    "idRestaurant" : -1,
     "suspecious" : false
   }
 }
