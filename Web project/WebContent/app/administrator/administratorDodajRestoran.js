@@ -59,6 +59,14 @@ Vue.component("administrator-addRestaurant", {
                 <td><input class="form-control" type="text" placeholder="Postanski broj" v-model="address.zipCode"  id="zipcodeID"></td>
                 </tr>
                 <tr>
+                <td class="labela">Geografskia sirina:</td>
+                <td><input class="form-control" type="text" placeholder="Geografskia sirina" id="latitudeID"  v-model="address.latitude"></td>
+                </tr>
+                <tr>
+                <td class="labela">Geografska duzina:</td>
+                <td><input class="form-control" type="text" placeholder="Geografska duzina" id="longitudeID"  v-model="address.longitude" ></td>
+                </tr>
+                <tr>
                 <td class="labela">Logo:</td>
                 <td><input type="file" onchange="encodeImageFileAsURL(this)" v-model="restaurant.link"></td>
                 </tr>
@@ -67,12 +75,6 @@ Vue.component("administrator-addRestaurant", {
                 <td class="buttonForm"><button type="button" class="btn btn-success" v-on:click="otkazi">Otkazi</button></td>
                 </tr>
             </table>
-
-            <!-- I use those inputs field for geting data from map -->
-            <input type="text" id="latitudeID"  v-model="address.latitude"> 
-            <input type="text" id="longitudeID"  v-model="address.longitude" >
-            <!-- End of getind data for long i lat -->
-
         </form>
       </div>
     </div>

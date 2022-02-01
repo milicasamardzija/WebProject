@@ -153,6 +153,7 @@ public class UsersDAO {
 	}
 	
 	public User getUserByUsername(String username) {
+		this.loadUsers("");
 		for (User user : getValues()) {
 			if(user.getUsername().equals(username)) {
 				return user;

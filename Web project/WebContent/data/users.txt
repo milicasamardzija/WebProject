@@ -1,4 +1,340 @@
 {
+  "434r3" : {
+    "deleted" : false,
+    "blocked" : false,
+    "username" : "434r3",
+    "password" : "434r3",
+    "name" : "43",
+    "surname" : "4r3",
+    "gender" : "MALE",
+    "birthday" : 1643587200000,
+    "role" : "MANAGER",
+    "address" : {
+      "street" : "434",
+      "number" : 4,
+      "city" : "rwew",
+      "zipCode" : 4,
+      "latitude" : 0.0,
+      "longitude" : 0.0
+    },
+    "orderIds" : [ ],
+    "chartId" : -1,
+    "points" : -1.0,
+    "typeCustomer" : {
+      "type" : "NONE",
+      "sale" : 0.0
+    },
+    "idRestaurant" : -1,
+    "suspecious" : false
+  },
+  "pliz radi" : {
+    "deleted" : false,
+    "blocked" : false,
+    "username" : "pliz radi",
+    "password" : "pliz radi",
+    "name" : "pliz ",
+    "surname" : "radi",
+    "gender" : "FEMALE",
+    "birthday" : 1643673600000,
+    "role" : "MANAGER",
+    "address" : {
+      "street" : "dasd",
+      "number" : 3,
+      "city" : "daf",
+      "zipCode" : 4,
+      "latitude" : 0.0,
+      "longitude" : 0.0
+    },
+    "orderIds" : [ ],
+    "chartId" : -1,
+    "points" : -1.0,
+    "typeCustomer" : {
+      "type" : "NONE",
+      "sale" : 0.0
+    },
+    "idRestaurant" : -1,
+    "suspecious" : false
+  },
+  "asdda" : {
+    "deleted" : false,
+    "blocked" : false,
+    "username" : "asdda",
+    "password" : "asdda",
+    "name" : "asd",
+    "surname" : "da",
+    "gender" : "MALE",
+    "birthday" : 1643587200000,
+    "role" : "MANAGER",
+    "address" : {
+      "street" : "sda",
+      "number" : 3,
+      "city" : "dsf",
+      "zipCode" : 4,
+      "latitude" : 0.0,
+      "longitude" : 0.0
+    },
+    "orderIds" : [ ],
+    "chartId" : -1,
+    "points" : -1.0,
+    "typeCustomer" : {
+      "type" : "NONE",
+      "sale" : 0.0
+    },
+    "idRestaurant" : -1,
+    "suspecious" : false
+  },
+  "dsadsa" : {
+    "deleted" : false,
+    "blocked" : false,
+    "username" : "dsadsa",
+    "password" : "dsadsa",
+    "name" : "dsa",
+    "surname" : "dsa",
+    "gender" : "MALE",
+    "birthday" : 1643846400000,
+    "role" : "MANAGER",
+    "address" : {
+      "street" : "sda",
+      "number" : 3,
+      "city" : "dasd",
+      "zipCode" : 3,
+      "latitude" : 0.0,
+      "longitude" : 0.0
+    },
+    "orderIds" : [ ],
+    "chartId" : -1,
+    "points" : -1.0,
+    "typeCustomer" : {
+      "type" : "NONE",
+      "sale" : 0.0
+    },
+    "idRestaurant" : -1,
+    "suspecious" : false
+  },
+  "admin" : {
+    "deleted" : true,
+    "blocked" : false,
+    "username" : "admin",
+    "password" : "admin123",
+    "name" : "Aleksaaa",
+    "surname" : "Arsic",
+    "gender" : "MALE",
+    "birthday" : 925776000000,
+    "role" : "ADMINISTRATOR",
+    "address" : {
+      "street" : "Jug Bogdana",
+      "number" : 15,
+      "city" : "Novi Sad",
+      "zipCode" : 21000,
+      "latitude" : 0.0,
+      "longitude" : 0.0
+    },
+    "orderIds" : [ ],
+    "chartId" : -1,
+    "points" : 0.0,
+    "typeCustomer" : {
+      "type" : "NONE",
+      "sale" : -1.0
+    },
+    "idRestaurant" : 2,
+    "suspecious" : false
+  },
+  "AcaPeric" : {
+    "deleted" : false,
+    "blocked" : false,
+    "username" : "AcaPeric",
+    "password" : "AcaPeric",
+    "name" : "Aca",
+    "surname" : "Peric",
+    "gender" : "MALE",
+    "birthday" : 1631664000000,
+    "role" : "MANAGER",
+    "address" : {
+      "street" : "hejHje",
+      "number" : 3,
+      "city" : "rwer",
+      "zipCode" : 44,
+      "latitude" : 0.0,
+      "longitude" : 0.0
+    },
+    "orderIds" : [ ],
+    "chartId" : -1,
+    "points" : -1.0,
+    "typeCustomer" : {
+      "type" : "NONE",
+      "sale" : -1.0
+    },
+    "idRestaurant" : 18,
+    "suspecious" : false
+  },
+  "sdasda" : {
+    "deleted" : false,
+    "blocked" : false,
+    "username" : "sdasda",
+    "password" : "sdasda",
+    "name" : "sda",
+    "surname" : "sda",
+    "gender" : "MALE",
+    "birthday" : 1644537600000,
+    "role" : "MANAGER",
+    "address" : {
+      "street" : "dsa",
+      "number" : 3,
+      "city" : "asd",
+      "zipCode" : 3,
+      "latitude" : 0.0,
+      "longitude" : 0.0
+    },
+    "orderIds" : [ ],
+    "chartId" : -1,
+    "points" : -1.0,
+    "typeCustomer" : {
+      "type" : "NONE",
+      "sale" : 0.0
+    },
+    "idRestaurant" : -1,
+    "suspecious" : false
+  },
+  "ZikaZivic" : {
+    "deleted" : false,
+    "blocked" : false,
+    "username" : "ZikaZivic",
+    "password" : "ZikaZivic",
+    "name" : "Zika",
+    "surname" : "Zivojinovic",
+    "gender" : "MALE",
+    "birthday" : 1593129600000,
+    "role" : "DELIVERER",
+    "address" : {
+      "street" : "Lilike Bem",
+      "number" : 1,
+      "city" : "Novi Sad",
+      "zipCode" : 21000,
+      "latitude" : 0.0,
+      "longitude" : 0.0
+    },
+    "orderIds" : [ ],
+    "chartId" : -1,
+    "points" : 0.0,
+    "typeCustomer" : {
+      "type" : "NONE",
+      "sale" : 1.0
+    },
+    "idRestaurant" : -1,
+    "suspecious" : false
+  },
+  "StefanMarinkov" : {
+    "deleted" : false,
+    "blocked" : false,
+    "username" : "StefanMarinkov",
+    "password" : "StefanMarinkov",
+    "name" : "Stefan",
+    "surname" : "Marinkov",
+    "gender" : "MALE",
+    "birthday" : 924134400000,
+    "role" : "MANAGER",
+    "address" : {
+      "street" : "Masarikova ",
+      "number" : 5,
+      "city" : "Novi Sad",
+      "zipCode" : 21000,
+      "latitude" : 0.0,
+      "longitude" : 0.0
+    },
+    "orderIds" : [ ],
+    "chartId" : -1,
+    "points" : -1.0,
+    "typeCustomer" : {
+      "type" : "NONE",
+      "sale" : 0.0
+    },
+    "idRestaurant" : -1,
+    "suspecious" : false
+  },
+  "sdadsa" : {
+    "deleted" : false,
+    "blocked" : false,
+    "username" : "sdadsa",
+    "password" : "sdadsa",
+    "name" : "sda",
+    "surname" : "dsa",
+    "gender" : "MALE",
+    "birthday" : 1643673600000,
+    "role" : "MANAGER",
+    "address" : {
+      "street" : "rew",
+      "number" : 4,
+      "city" : "re",
+      "zipCode" : 4,
+      "latitude" : 0.0,
+      "longitude" : 0.0
+    },
+    "orderIds" : [ ],
+    "chartId" : -1,
+    "points" : -1.0,
+    "typeCustomer" : {
+      "type" : "NONE",
+      "sale" : 0.0
+    },
+    "idRestaurant" : 17,
+    "suspecious" : false
+  },
+  "AnaMasic" : {
+    "deleted" : false,
+    "blocked" : false,
+    "username" : "AnaMasic",
+    "password" : "AnaMasic",
+    "name" : "Ana",
+    "surname" : "Masic",
+    "gender" : "FEMALE",
+    "birthday" : 1267056000000,
+    "role" : "MANAGER",
+    "address" : {
+      "street" : "Gudulicev",
+      "number" : 4,
+      "city" : "Novi Sad",
+      "zipCode" : 21000,
+      "latitude" : 0.0,
+      "longitude" : 0.0
+    },
+    "orderIds" : [ ],
+    "chartId" : -1,
+    "points" : 0.0,
+    "typeCustomer" : {
+      "type" : "NONE",
+      "sale" : 1.0
+    },
+    "idRestaurant" : 2,
+    "suspecious" : false
+  },
+  "marko" : {
+    "deleted" : false,
+    "blocked" : false,
+    "username" : "marko",
+    "password" : "marko",
+    "name" : "Marko",
+    "surname" : "Markovic",
+    "gender" : "MALE",
+    "birthday" : 926380800000,
+    "role" : "CUSTOMER",
+    "address" : {
+      "street" : "Marka Kraljevica",
+      "number" : 5,
+      "city" : "Nis",
+      "zipCode" : 12548,
+      "latitude" : 0.0,
+      "longitude" : 0.0
+    },
+    "orderIds" : [ ],
+    "chartId" : -1,
+    "points" : -9753.0,
+    "typeCustomer" : {
+      "type" : "BRONZE",
+      "sale" : 3.0
+    },
+    "idRestaurant" : 0,
+    "suspecious" : false
+  },
   "kupac" : {
     "deleted" : false,
     "blocked" : false,
@@ -25,34 +361,6 @@
       "sale" : 3.0
     },
     "idRestaurant" : 0,
-    "suspecious" : false
-  },
-  "admin" : {
-    "deleted" : true,
-    "blocked" : false,
-    "username" : "admin",
-    "password" : "admin123",
-    "name" : "Aleksaaa",
-    "surname" : "Arsic",
-    "gender" : "MALE",
-    "birthday" : 925776000000,
-    "role" : "ADMINISTRATOR",
-    "address" : {
-      "street" : "Jug Bogdana",
-      "number" : 15,
-      "city" : "Novi Sad",
-      "zipCode" : 21000,
-      "latitude" : 0.0,
-      "longitude" : 0.0
-    },
-    "orderIds" : [ ],
-    "chartId" : -1,
-    "points" : -1.0,
-    "typeCustomer" : {
-      "type" : "NONE",
-      "sale" : -1.0
-    },
-    "idRestaurant" : 2,
     "suspecious" : false
   },
   "grfdgsd" : {
@@ -83,77 +391,21 @@
     "idRestaurant" : 8,
     "suspecious" : false
   },
-  "AcaPeric" : {
+  "effrew" : {
     "deleted" : false,
     "blocked" : false,
-    "username" : "AcaPeric",
-    "password" : "AcaPeric",
-    "name" : "Aca",
-    "surname" : "Peric",
+    "username" : "effrew",
+    "password" : "effrew",
+    "name" : "eff",
+    "surname" : "rew",
     "gender" : "MALE",
-    "birthday" : 1631664000000,
+    "birthday" : 1644451200000,
     "role" : "MANAGER",
     "address" : {
-      "street" : "hejHje",
-      "number" : 3,
-      "city" : "rwer",
-      "zipCode" : 44,
-      "latitude" : 0.0,
-      "longitude" : 0.0
-    },
-    "orderIds" : [ ],
-    "chartId" : -1,
-    "points" : -1.0,
-    "typeCustomer" : {
-      "type" : "NONE",
-      "sale" : -1.0
-    },
-    "idRestaurant" : -1,
-    "suspecious" : false
-  },
-  "ZikaZivic" : {
-    "deleted" : false,
-    "blocked" : false,
-    "username" : "ZikaZivic",
-    "password" : "ZikaZivic",
-    "name" : "Zika",
-    "surname" : "Zivojinovic",
-    "gender" : "MALE",
-    "birthday" : 1593129600000,
-    "role" : "DELIVERER",
-    "address" : {
-      "street" : "Lilike Bem",
-      "number" : 1,
-      "city" : "Novi Sad",
-      "zipCode" : 21000,
-      "latitude" : 0.0,
-      "longitude" : 0.0
-    },
-    "orderIds" : [ ],
-    "chartId" : -1,
-    "points" : -1.0,
-    "typeCustomer" : {
-      "type" : "NONE",
-      "sale" : -1.0
-    },
-    "idRestaurant" : -1,
-    "suspecious" : false
-  },
-  "AnaMasic" : {
-    "deleted" : false,
-    "blocked" : false,
-    "username" : "AnaMasic",
-    "password" : "AnaMasic",
-    "name" : "Ana",
-    "surname" : "Masic",
-    "gender" : "FEMALE",
-    "birthday" : 1267056000000,
-    "role" : "MANAGER",
-    "address" : {
-      "street" : "Gudulicev",
+      "street" : "fsd",
       "number" : 4,
-      "city" : "Novi Sad",
-      "zipCode" : 21000,
+      "city" : "fsd",
+      "zipCode" : 4,
       "latitude" : 0.0,
       "longitude" : 0.0
     },
@@ -162,37 +414,9 @@
     "points" : -1.0,
     "typeCustomer" : {
       "type" : "NONE",
-      "sale" : -1.0
+      "sale" : 0.0
     },
-    "idRestaurant" : 2,
+    "idRestaurant" : -1,
     "suspecious" : false
-  },
-  "marko" : {
-    "deleted" : false,
-    "blocked" : true,
-    "username" : "marko",
-    "password" : "marko",
-    "name" : "Marko",
-    "surname" : "Markovic",
-    "gender" : "MALE",
-    "birthday" : 926380800000,
-    "role" : "CUSTOMER",
-    "address" : {
-      "street" : "Marka Kraljevica",
-      "number" : 5,
-      "city" : "Nis",
-      "zipCode" : 12548,
-      "latitude" : 0.0,
-      "longitude" : 0.0
-    },
-    "orderIds" : [ ],
-    "chartId" : -1,
-    "points" : -9753.0,
-    "typeCustomer" : {
-      "type" : "BRONZE",
-      "sale" : 3.0
-    },
-    "idRestaurant" : 0,
-    "suspecious" : true
   }
 }
