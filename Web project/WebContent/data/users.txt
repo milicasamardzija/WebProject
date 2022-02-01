@@ -1,7 +1,7 @@
 {
   "kupac" : {
     "deleted" : false,
-    "blocked" : true,
+    "blocked" : false,
     "username" : "kupac",
     "password" : "kupac",
     "name" : "Tihomir",
