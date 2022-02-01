@@ -23,7 +23,7 @@ template: `
             <div class="col-info">
                 <h4 class="text" style="color: black;margin-top: 3em;">Naziv: {{restaurant.name}}</h4>
                 <h4 class="text"style="color: black;" >Tip: {{restaurant.type}}</h4>
-                <h4 class="text" style="color: black;">Lokacija: {{restaurant.address.street}} {{restaurant.address.number}}, {{restaurant.address.city}} {{restaurant.address.zipCode}}</h4>
+                <h4 class="text" style="color: black;">Lokacija: {{restaurant.address.street}} {{restaurant.address.number}}, {{restaurant.address.city}} {{restaurant.address.zipCode}} ({{restaurant.address.latitude}} , {{restaurant.address.longitude}})</h4>
                 <h4 class="text" style="color: black;">Status: {{restaurant.status}}</h4>
                 <h4 class="text" style="color: black;">Prosecna ocena: {{restaurant.grade}}</h4>
                 <button type="button" class="btn btn-success" v-on:click="showComments"> Pogledaj komentare </button>
@@ -33,7 +33,7 @@ template: `
                 <a href="#" id="popup-closer" class="ol-popup-closer"></a>
                 <div id="popup-content"></div>
             </div>
-            <div id="map" class="map" v-if="previewMap" style="width: 300px;height:300px; margin-right:50px; margin-left:500px;margin-top:20px"></div>
+            <div id="map" class="map" v-if="previewMap" style="width: 600px;height:300px; margin-right:50px; margin-left:500px;margin-top:20px"></div>
         </div>
        
     <h4 style="margin-left: 5em;  font-weight: bold; "> ARTIKLI:  </h4> 
