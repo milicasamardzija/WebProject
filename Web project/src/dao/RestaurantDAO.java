@@ -104,6 +104,7 @@ public class RestaurantDAO {
 	
 
 	public Collection<Restaurant> getValues() {
+		this.loadRestaurants();
 		return this.restaurants.values();
 	}
 

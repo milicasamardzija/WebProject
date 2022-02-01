@@ -16,7 +16,7 @@
     },
     "link" : "caribicLogo.png",
     "deleted" : false,
-    "grade" : 3.83
+    "grade" : 3.7
   },
   "1" : {
     "id" : 1,
@@ -54,7 +54,7 @@
     },
     "link" : "Picerija-\u0106AO.jpg",
     "deleted" : false,
-    "grade" : 4.0
+    "grade" : 4.25
   },
   "3" : {
     "id" : 3,
@@ -157,7 +157,7 @@
     "name" : "Masa",
     "type" : "PIZZA",
     "articalIds" : [ ],
-    "status" : "OPEN",
+    "status" : "OTVOREN",
     "address" : {
       "street" : "\u0412\u0430\u0441\u0435 \u0421\u0442\u0430\u0458\u0438\u045B\u0430",
       "number" : 4,

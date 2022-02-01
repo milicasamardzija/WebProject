@@ -7,7 +7,7 @@
     "password" : "pliz radi",
     "name" : "Masa ",
     "surname" : "MAsic",
-    "gender" : "FEMALE",
+    "gender" : "ZENSKI",
     "birthday" : 1643673600000,
     "role" : "MANAGER",
     "address" : {
@@ -119,7 +119,7 @@
     "password" : "StefanMarinkov",
     "name" : "Stefan",
     "surname" : "Marinkov",
-    "gender" : "MALE",
+    "gender" : "MUSKI",
     "birthday" : 924134400000,
     "role" : "MANAGER",
     "address" : {
@@ -203,7 +203,7 @@
     "password" : "kupac",
     "name" : "Tihomir",
     "surname" : "Sijan",
-    "gender" : "MALE",
+    "gender" : "MUSKI",
     "birthday" : 925257600000,
     "role" : "CUSTOMER",
     "address" : {

@@ -113,7 +113,7 @@ template: `
               <td>
                <button type="button" class="btn btn-secondary" v-if="order.status == 'OTKAZANA'" v-on:click="getSelected(order)" data-toggle="modal" data-target="#brisanje" >Izbrisi</button>  </td>
                <button type="button" class="btn btn-secondary" v-if="order.status == 'DOSTAVLJENA'" v-on:click="getSelected(order)" data-toggle="modal" data-target="#brisanje" >Izbrisi</button> 
-               <button type="button" class="btn btn-secondary" v-if="order.status == 'DOSTAVLJENA' && this.komentar == true" v-on:click="getSelected(order)" data-toggle="modal" data-target="#oceni" >Oceni</button> 
+               <button type="button" class="btn btn-secondary" v-if="order.status == 'DOSTAVLJENA'" v-on:click="getSelected(order)" data-toggle="modal" data-target="#oceni" >Oceni</button> 
                </div>
           </tr>
         </tbody>
@@ -194,7 +194,6 @@ methods:{
         })
     }, 
     changeStatus() {
-       
         axios.post("/WebShopREST/rest/order/changeStatusCancel", this.selected.id)
         .then(response => {
             router.push(`/porudzbine`);
