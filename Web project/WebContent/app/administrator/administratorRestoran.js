@@ -10,7 +10,6 @@ Vue.component("administrator-restaurant", {
 template: `
     
 <div class="containerInfo" >
-   
         <div class="row-restaurants">
             <div class = "col-with-picture">
                 <div class="col-picture">
@@ -25,6 +24,7 @@ template: `
                 <h4 class="text" style="color: black;">Prosecna ocena: {{restaurant.grade}}</h4>
                 <button type="button" class="btn btn-success" v-on:click="showComments"> Pogledaj komentare </button>
             </div>
+            <div id="map" class="map" style=" width: 100%; height:400px;"></div>
         </div>
        
     <h4 style="margin-left: 15px;  font-weight: bold; "> ARTIKLI:  </h4> 
@@ -44,7 +44,7 @@ template: `
                                     <p>Cena: {{artical.price}} din</p>
                                     <p>Gramaza: {{artical.quantity}}g</p>
                                      <div style=" word-wrap: break-word; width: 280px; margin-left: 0em ">
-                                    Opis: {{artical.description}}
+                                    Opis: {{artical.description}}</div>
                                 </div>
                             </div>
                         </div>
@@ -63,6 +63,20 @@ methods:{
         },
         showComments: function() {
             this.$router.push({path: `/prikaziKomentareRestoranaAdmin`, query:{ id: this.idRestaurant}})
+        },
+        init: function(){
+            var map = new ol.Map({
+                target: 'map',
+                layers: [
+                  new ol.layer.Tile({
+                    source: new ol.source.OSM()
+                  })
+                ],
+                view: new ol.View({
+                  center: ol.proj.fromLonLat([37.41, 8.82]),
+                  zoom: 4
+                })
+              });
         }
 },
 mounted(){
@@ -80,6 +94,7 @@ mounted(){
         })
         .catch(function(error){
             console.log(error)
-        })
+        });
+        this.init()
 }
 });
