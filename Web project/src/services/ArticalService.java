@@ -70,9 +70,11 @@ public class ArticalService {
 	public Collection<Artical> getAllArticals(String idRestaurant) {
 		ArticalDAO articalDAO = getArticalDAO();
 		ArrayList<Artical> ret= new ArrayList<Artical>(); 
+		RestaurantDAO restaurantDAO = getRestaurantsDAO();
+		Restaurant restaurant = restaurantDAO.getByID(Integer.parseInt(idRestaurant));
 		
 		for (Artical artical : articalDAO.getValues()) {
-			if(!artical.getDeleted() && artical.getIdRestaurant() == Integer.parseInt(idRestaurant)) {
+			if(!artical.getDeleted() && artical.getIdRestaurant() == Integer.parseInt(idRestaurant) && !restaurant.getDeleted()) {
 				ret.add(artical);
 			}
 			
@@ -120,6 +122,17 @@ public class ArticalService {
 	public  void delete(String articalId) {
 		ArticalDAO articalDAO = getArticalDAO();
 		articalDAO.deleteArticalById(Integer.parseInt(articalId));
+	}
+	
+	private RestaurantDAO getRestaurantsDAO() {
+		RestaurantDAO restaurants = (RestaurantDAO)context.getAttribute("restaurants");
+		
+		if (restaurants == null) {
+			restaurants = new RestaurantDAO();
+			context.setAttribute("restaurants", restaurants);
+		}
+	
+		return restaurants;
 	}
 	
 	

@@ -175,7 +175,7 @@
     "date" : 1643559239911,
     "price" : 727.5,
     "idCustomer" : "kupac",
-    "status" : "OBRADA",
+    "status" : "OTKAZANA",
     "deleted" : false,
     "idDeliverer" : "",
     "restaurantType" : "ITALIJANSKI",
@@ -335,19 +335,6 @@
     "deleted" : false,
     "idDeliverer" : "ZikaZivic",
     "restaurantType" : "ITALIJANSKI",
-    "potencialDeliverer" : "ZikaZivic"
-  },
-  "26" : {
-    "id" : 26,
-    "articalIds" : [ 1 ],
-    "retaurantId" : 0,
-    "date" : 1643734664197,
-    "price" : 291.0,
-    "idCustomer" : "kupac",
-    "status" : "DOSTAVLJENA",
-    "deleted" : false,
-    "idDeliverer" : "ZikaZivic",
-    "restaurantType" : "PIZZA",
     "potencialDeliverer" : "ZikaZivic"
   }
 }

@@ -1,7 +1,8 @@
 Vue.component("profil-kupac", {
     data(){
         return{
-            kupac:null
+            kupac:null,
+            point: 0
         }
     },
 template: `
@@ -48,13 +49,12 @@ template: `
                                 </tr>
                                 <tr> 
                                 <td>Broj bodova: </td>
-                              
                                 <td> {{kupac.points}} </td>
                                 </tr>
                                 <tr> 
                                 <td>Tip kupca </td>
                                 
-                                <td> {{kupac.typeCustomer.type}}, za Gold potrebno: {{kupac.typeCustomer.points}} bodova </td>
+                                <td> {{kupac.typeCustomer.type}}, za Gold potrebno: {{point}} bodova </td>
                                 </tr>
                                 <tr style="height: 10px;"> </tr>
                                 </table>
@@ -68,16 +68,20 @@ template: `
 methods:{
     editProfile: function() {
         router.push(`/izmeniProfil`)
+    },
+    getPoints: function(){
+       this.point = 4000 - this.kupac.points;
     }
 },
 mounted(){
     axios.get("/WebShopREST/rest/profile/profileUser")
         .then( response => {
-            this.kupac = response.data
+            this.kupac = response.data;
+            this.getPoints();
         })
         .catch(function(error){
             console.log(error)
-        })
+        }) 
 },
 filters: {
     dateFormat: function(value, format){

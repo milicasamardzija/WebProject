@@ -56,7 +56,7 @@
     "quantity" : 200.0,
     "description" : "Krem, plazma, mleko",
     "link" : "palacinkekrem.jpg",
-    "deleted" : true,
+    "deleted" : false,
     "number" : 0
   },
   "5" : {
@@ -68,7 +68,7 @@
     "quantity" : 10.0,
     "description" : "najbolje meso",
     "link" : "cevapi-s-lukom-830x0.jpg",
-    "deleted" : true,
+    "deleted" : false,
     "number" : 0
   },
   "6" : {
@@ -80,7 +80,7 @@
     "quantity" : 50.0,
     "description" : "Prelepo",
     "link" : "7_0.png",
-    "deleted" : true,
+    "deleted" : false,
     "number" : 0
   },
   "7" : {

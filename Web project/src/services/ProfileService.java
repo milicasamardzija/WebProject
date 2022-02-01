@@ -32,7 +32,9 @@ public class ProfileService {
 		@Path("/profileUser")
 		@Produces(MediaType.APPLICATION_JSON)
 		public User getUserInformations() {
-			User user = (User)request.getSession().getAttribute("loginUser");		
+			User userSesion = (User)request.getSession().getAttribute("loginUser");	
+			UsersDAO users = getUsers();
+			User user = users.getUserByUsername(userSesion.getUsername());
 			return user;
 		}
 	
