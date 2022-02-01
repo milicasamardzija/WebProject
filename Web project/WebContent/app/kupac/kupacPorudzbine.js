@@ -8,7 +8,7 @@ Vue.component("porudbine-kupac", {
         mode: true,
         check: false,
         comment: {},
-        komentar: true,
+        komentar: false,
         }
     },
 template: `
@@ -18,13 +18,13 @@ template: `
 <div >
 <table  style=" margin:25px 25px; font-size:1.1 em;"> 
 <tr>
-    <td > <input type="text" placeholder="naziv restorana" style="height:32px;"> </td>
-    <td style="padding: 12px;"> Cena od: </td> 
-    <td style="padding: 12px;"> <input type="text" placeholder="pocetni iznos" style="height:32px;"></td> 
+    <td > <input type="text" placeholder="naziv restorana" style="height:32px;" class="form-control search-slt"> </td>
+    <td style="padding: 12px;"><p  style="width: 90px;margin-top: 5px; "> Cena od: </p> </td> 
+    <td style="padding: 12px;"> <input type="text" placeholder="pocetni iznos" style="height:32px;" class="form-control search-slt"></td> 
     <td style="padding: 12px;"> do: </td> 
-    <td style="padding: 12px;"> <input type="text" placeholder="krajnji iznos" style="height:32px;"></td> 
-    <td style="padding: 12px;"> Datum od: </td>
-    <td style="padding: 12px;"> <input type="date" style="height:32px;"></td> 
+    <td style="padding: 12px;"> <input type="text" placeholder="krajnji iznos" style="height:32px;" class="form-control search-slt"></td> 
+    <td style="padding: 12px;"><p style="width: 90px; margin-top: 5px;"> Datum od: </p></td>
+    <td style="padding: 12px;"> <input type="date" style="height:32px;" ></td> 
     <td style="padding: 12px;"> do: </td> 
     <td style="padding: 12px;"> <input type="date" style="height:32px;"></td> 
     <td> <button class="btn btn-danger" type="button" >Nadji</button> </td>
@@ -113,7 +113,7 @@ template: `
               <td>
                <button type="button" class="btn btn-secondary" v-if="order.status == 'OTKAZANA'" v-on:click="getSelected(order)" data-toggle="modal" data-target="#brisanje" >Izbrisi</button>  </td>
                <button type="button" class="btn btn-secondary" v-if="order.status == 'DOSTAVLJENA'" v-on:click="getSelected(order)" data-toggle="modal" data-target="#brisanje" >Izbrisi</button> 
-               <button type="button" class="btn btn-secondary" v-if="order.status == 'DOSTAVLJENA' && this.komentar == true" v-on:click="getSelected(order)" data-toggle="modal" data-target="#oceni" >Oceni</button> 
+               <button type="button" class="btn btn-secondary" v-if="order.status == 'DOSTAVLJENA' " v-on:click="getSelected(order)" data-toggle="modal" data-target="#oceni" >Oceni</button> 
                </div>
           </tr>
         </tbody>
@@ -143,19 +143,24 @@ template: `
 
   <!-- modal komentar-->
   <div class="modal fade" id="oceni" role="dialog" >
-          <div class="modal-dialog" style="width: 300px;" >
+          <div class="modal-dialog" style="width: 400px;" >
               <!-- Modal content -->
               <div class="modal-content">
+                <div class="modal-header" style="padding:35px 50px;">
+                  <h4 class="modal-title" id="exampleModalLabel">Oceni porudzbinu i restoran</h4>
+             </div>
+			<div class="modal-body"  style="padding:40px 50px;">
               <table>
               <tr>
                   <td> Komentar: </td>
-                  <td> <input class="form-control" type="text" v-model="comment.text"> </td>
+                  <td> <textarea class="form-control" type="text" v-model="comment.text" style="margin-top: 5px;"> </textarea> </td>
               </tr>
+              <tr > </tr>
               <tr> 
                   <td>Ocena: </td>
                   <td> 
-                  <select   v-model="comment.grade" style="height: 35px; width: 150px; background-color:gray; color:white;  border-radius: 4px;" > Ocena
-                  <option value="">Ocena</option>
+                  <select   v-model="comment.grade" style="height: 35px; width: 195px; background-color:gray; color:white;  border-radius: 4px; margin-top: 1em;" > Ocena
+                  <option value="" > Ocena </option>
                   <option  v-bind:value="5" style=" background-color:white; color: black">5</option>
                   <option  v-bind:value="4" style=" background-color:white; color: black">4</option>
                   <option  v-bind:value="3" style=" background-color:white; color: black">3</option>
@@ -164,16 +169,19 @@ template: `
                   </select>
                   </td>
               </tr>
-              
+              <tr></tr>
                   <tr> 
-                      <td> <button type="button" class="btn btn-danger btn-default pull-left"  data-dismiss="modal" v-on:click="oceni()">Potvrdi</button>   </td>
-                      <td> <button type="button" class="btn btn-danger btn-default pull-left"  data-dismiss="modal">Odustani</button>   </td> 
+                     
                   </tr>
                  </table>
-                 </form>
+             
              </div>
-              
-          </table>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-danger btn-default pull-left"  data-dismiss="modal" v-on:click="oceni()">Potvrdi</button>   
+                       <button type="button" class="btn btn-secondary pull-left"  data-dismiss="modal">Odustani</button>  
+               </div> 
+         
+           </div>
               </div>
           </div>
   </div>
