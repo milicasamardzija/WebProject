@@ -28,6 +28,8 @@ import dao.RestaurantDAO;
 import dao.UsersDAO;
 import dto.ArticalChartsDTO;
 import dto.OrderDTO;
+import dto.OrderSearchDTO;
+import dto.UserSearchDTO;
 import enums.OrderStatus;
 import enums.RestaurantType;
 
@@ -179,6 +181,22 @@ public class OrderService {
 		
 	}
 	
+	//pretraga poridzbin a za menadzera
+	@POST
+	@Path("/searchOrderForManager")
+	@Consumes(MediaType.APPLICATION_JSON)
+	@Produces(MediaType.APPLICATION_JSON)
+	public Collection<OrderDTO> searchOderManager(OrderSearchDTO order) {
+		OrderDAO dao = new OrderDAO();
+		 ArrayList<OrderDTO> ret = new ArrayList<OrderDTO>();
+		 User user = (User)request.getSession().getAttribute("loginUser");	
+		 for(Order o :  dao.searchOrderForManager(order, user) ) {
+			 ret.add(new OrderDTO(o.getId(), findOrderArticals(o.getArticalIds()), findNameRestaurant(o.getRetaurantId()), o.getDate(), o.getPrice(), o.getIdCustomer(), o.getStatus(), o.getDeleted(),o.getPotencialDeliverer(), o.getIdDeliverer(), o.getRestaurantType()));
+		 }
+		return ret ;
+	}
+	
+	
 	@GET
 	@Path("/getOrdersForRestaurant")
 	@Produces(MediaType.APPLICATION_JSON)
@@ -238,6 +256,8 @@ public class OrderService {
 		}
 		return ret;
 	}
+	
+
 	
 	//filtrira porudzbine ulogovanog korisnika 
 	@POST 

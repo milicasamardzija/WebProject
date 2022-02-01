@@ -42,6 +42,7 @@ import beans.User;
 import dao.RestaurantDAO;
 import dto.ArticalChartsDTO;
 import dto.OrderDTO;
+import dto.OrderSearchDTO;
 import enums.CustomerType;
 import enums.OrderStatus;
 import enums.RestaurantType;
@@ -187,6 +188,17 @@ public class OrderDAO {
 			}
 		}
 		return null;
+	}
+	public Collection<Order> searchOrderForManager(OrderSearchDTO search, User user){
+		ArrayList<Order> ret = new ArrayList<Order>();
+		
+		for(Order order : this.orders.values()) {
+			if( order.getRetaurantId() == user.getIdRestaurant() && order.getPrice() >= search.priceFrom && order.getPrice() <= search.priceTo && (order.getDate().compareTo(search.dateFrom) > 0) && (search.dateTo.compareTo(order.getDate()) > 0)) {
+				ret.add(order);
+			}
+		}
+		
+		return ret;
 	}
 	
 	//zatrazi dostavu

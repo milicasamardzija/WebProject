@@ -2,7 +2,8 @@ Vue.component("porudbine-menadzer", {
     data: function() {  
         return {
         orders: [],
-        check: false
+        check: false, 
+        searchParameters: {},
         }
     },
 template: `
@@ -14,14 +15,14 @@ template: `
         <tr>
             <td style=" width: 115px;"> <p style=" width: 70px; margin-top: 7px; margin-left: -4px"> Cena od: </p></td> 
            
-            <td style="padding: 12px;"> <input type="text" placeholder="Pocetni iznos" style="height:32px;"></td> 
+            <td style="padding: 12px;"> <input type="text" v-model="searchParameters.priceFrom" placeholder="Pocetni iznos" style="height:32px;"></td> 
             <td style="padding: 12px;"> do: </td> 
-            <td style="padding: 12px;"> <input type="text" placeholder="Krajnji iznos" style="height:32px;"></td> 
+            <td style="padding: 12px;"> <input type="text" v-model="searchParameters.priceTo" placeholder="Krajnji iznos" style="height:32px;"></td> 
             <td style="padding: 12px;"> <p style=" width: 80px; margin-top: 7px; margin-left: -4px"> datum od: </p> </td>
-            <td style="padding: 12px;"> <input type="date" style="height:32px;"></td> 
+            <td style="padding: 12px;"> <input type="date" style="height:32px;" v-model="searchParameters.dateFrom"></td> 
             <td style="padding: 12px;"> do: </td> 
-            <td style="padding: 12px;"> <input type="date" style="height:32px;"></td> 
-            <td> <button class="btn btn-danger" type="button" >Nadji</button> </td>
+            <td style="padding: 12px;"> <input type="date" style="height:32px;" v-model="searchParameters.dateTo"></td> 
+            <td> <button class="btn btn-danger" type="button" v-on:click= "search">Nadji</button> </td>
 
         </tr>
 
@@ -158,6 +159,20 @@ methods:{
 
         return this.orders.sort(compare);
     },
+    search: function(){
+    	axios.post("/WebShopREST/rest/order/searchOrderForManager", {
+            "priceFrom":''+ this.searchParameters.priceFrom, 
+            "priceTo":''+ this.searchParameters.priceTo, 
+            "dateFrom":''+ this.searchParameters.dateFrom, 
+            "dateTo":''+ this.searchParameters.dateTo}).then(response => {
+        this.orders = response.data;
+        
+    }).catch(function(error){
+        console.log(error)
+    })
+    
+    },
+    
     reset:function() {
             axios.get("/WebShopREST/rest/order/getOrdersForRestaurant")
     .then( response => {
