@@ -3,7 +3,8 @@ Vue.component("administrator-addRestaurant", {
         return{
           restaurant:{},
           managers:[],
-          previewMap: false
+          previewMap: false,
+          address:{}
         }
     }, 
     template: `
@@ -42,20 +43,20 @@ Vue.component("administrator-addRestaurant", {
                 </tr>
                 <tr>
                 <td class="labela">Ulica:</td>
-                <td><input class="form-control" type="text" placeholder="Ulica" v-model="restaurant.street"  id="streetID"></td>
+                <td><input class="form-control" type="text" placeholder="Ulica" v-model="address.street"  id="streetID"></td>
                 <td class="buttonMap"><button type="button" class="btn btn-success"   v-on:click="previewMapChooseLocation()"><i></i>Choose on map</button></td>
                 </tr>
                 <tr>
                 <td class="labela">Broj:</td>
-                <td><input class="form-control" type="text" placeholder="Broj" v-model="restaurant.number"  id="numberID"></td>
+                <td><input class="form-control" type="text" placeholder="Broj" v-model="address.number"  id="numberID"></td>
                 </tr>
                 <tr>
                 <td class="labela">Grad:</td>
-                <td><input class="form-control" type="text" placeholder="Grad" v-model="restaurant.city"  id="townID"></td>
+                <td><input class="form-control" type="text" placeholder="Grad" v-model="address.city"  id="cityID"></td>
                 </tr>
                 <tr>
                 <td class="labela">Postanski broj:</td>
-                <td><input class="form-control" type="text" placeholder="Postanski broj" v-model="restaurant.zipCode"  id="zipcodeID"></td>
+                <td><input class="form-control" type="text" placeholder="Postanski broj" v-model="address.zipCode"  id="zipcodeID"></td>
                 </tr>
                 <tr>
                 <td class="labela">Logo:</td>
@@ -68,8 +69,8 @@ Vue.component("administrator-addRestaurant", {
             </table>
 
             <!-- I use those inputs field for geting data from map -->
-            <input type="text" id="latitudeID"  v-model="restaurant.latitude" hidden> 
-            <input type="text" id="longitudeID"  v-model="restaurant.longitude" hidden>
+            <input type="text" id="latitudeID"  v-model="address.latitude"> 
+            <input type="text" id="longitudeID"  v-model="address.longitude" >
             <!-- End of getind data for long i lat -->
 
         </form>
@@ -84,12 +85,12 @@ Vue.component("administrator-addRestaurant", {
         axios.post("/WebShopREST/rest/restaurant/addRestaurant", {
         "name":''+ this.restaurant.name, 
         "type":''+ this.restaurant.type, 
-        "street":''+ this.restaurant.street, 
-        "number":''+ this.restaurant.number, 
-        "city":''+ this.restaurant.city, 
-        "zipCode":''+ this.restaurant.zipCode,
-        "latitude": '' + this.restaurant.latitude,
-        "longitude": '' + this.restaurant.longitude,
+        "street":''+ this.address.street, 
+        "number":''+ this.address.number, 
+        "city":''+ this.address.city, 
+        "zipCode":''+ this.address.zipCode,
+        "latitude": '' + this.address.latitude,
+        "longitude": '' + this.address.longitude,
         "link":''+ this.restaurant.link, 
         "managerId":''+ this.restaurant.managerId})
         .then(
@@ -121,14 +122,21 @@ Vue.component("administrator-addRestaurant", {
           })
         })
 
-          map.on('click', function (evt) {
+         /* map.on('click', function (evt) {
             console.log(evt.coordinate);
            // alert(evt.coordinate);
 
             var coord = ol.proj.toLonLat(evt.coordinate);
             reverseGeocode(coord);
 
-      })},
+      })*/
+    
+      map.on('click', function (evt) {          
+        var coord = ol.proj.toLonLat(evt.coordinate);
+        reverseGeocode(coord);
+        this.$emit('change-address', this.address);
+  })
+    },
       previewMapChooseLocation: function () {
         this.previewMap = !this.previewMap;
         if (this.previewMap) {
@@ -167,7 +175,7 @@ function reverseGeocode(coords) {
       .then(function (response) {
           return response.json();
       }).then(function (json) {
-          // LATITUDE & LONGITUDE
+         /* // LATITUDE & LONGITUDE
           console.log(coords);
           document.getElementById("longitudeID").value = coords[0];
           document.getElementById("latitudeID").value = coords[1];
@@ -191,7 +199,48 @@ function reverseGeocode(coords) {
           // ZIP CODE
           if(json.address.zipCode){
               document.getElementById("zipcodeID").value = json.address.zipCode;
-          }
+          }*/
 
-      });
+          let elem = document.getElementById("longitudeID");
+            elem.value = coords[0].toFixed(2);
+            elem.dispatchEvent(new Event('input'));
+            
+            let el = document.getElementById("latitudeID");
+                el.value = coords[1].toFixed(2);
+                el.dispatchEvent(new Event('input'));
+                
+            if (json.address.road) {
+                let el = document.getElementById("streetID");
+                el.value = json.address.road;
+                el.dispatchEvent(new Event('input'));
+            } 
+
+            if(json.address.streetNumber){
+                let el = document.getElementById("numberID");
+                el.value = json.address.number;
+                el.dispatchEvent(new Event('input'));
+            }
+
+            if (json.address.city) {
+                let el = document.getElementById("cityID");
+                el.value = json.address.city;
+                el.dispatchEvent(new Event('input'));
+             } else if (json.address.city_district) {
+                let el = document.getElementById("cityID");
+                el.value = json.address.city_district;
+                el.dispatchEvent(new Event('input'));
+            }
+                
+            if (json.address.postcode) {
+                let el = document.getElementById("zipcodeID");
+                el.value = json.address.postcode;
+                el.dispatchEvent(new Event('input'));
+            } 
+              
+          });
+
+           const util = require('util')
+           console.log(util.inspect(this.address, false, null, true)) 
+
+     // });
     }

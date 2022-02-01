@@ -151,6 +151,25 @@
     "deleted" : false,
     "grade" : 5.0
   },
+  "8" : {
+    "id" : 8,
+    "managerId" : "grfdgsd",
+    "name" : "VIDI NENO RADI",
+    "type" : "PIZZA",
+    "articalIds" : [ ],
+    "status" : "OPEN",
+    "address" : {
+      "street" : "\u0412\u0430\u0441\u0435 \u0421\u0442\u0430\u0458\u0438\u045B\u0430",
+      "number" : 4,
+      "city" : "\u041D\u043E\u0432\u0438 \u0421\u0430\u0434",
+      "zipCode" : 21101,
+      "latitude" : 45.25,
+      "longitude" : 19.84
+    },
+    "link" : "13_0.png",
+    "deleted" : false,
+    "grade" : -1.0
+  },
   "9" : {
     "id" : 9,
     "managerId" : "mika",

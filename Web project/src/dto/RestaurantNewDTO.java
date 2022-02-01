@@ -11,6 +11,8 @@ public class RestaurantNewDTO {
 	public int zipCode;
 	public String link;
 	public String managerId;
+	public double latitude;
+	public double longitude;
 	
 	public String getManagerId() {
 		return managerId;

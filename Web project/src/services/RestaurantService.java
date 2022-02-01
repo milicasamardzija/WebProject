@@ -65,8 +65,8 @@ public class RestaurantService {
 	@Path("/addRestaurant")
 	@Consumes(MediaType.APPLICATION_JSON)
 	public void addRestaurant(RestaurantNewDTO restaurant) {
-		String managerId[] = restaurant.getManagerId().split(" ");
-		restaurant.setManagerId(managerId[0] + managerId[1]);
+		//String managerId[] = restaurant.getManagerId().split(" ");
+		restaurant.setManagerId(restaurant.managerId);
 		RestaurantDAO restaurantDAO = getRestaurantsDAO();
 		Restaurant newRestaurant = restaurantDAO.addRestaurant(restaurant);
 		addRestaurantToManager(newRestaurant);

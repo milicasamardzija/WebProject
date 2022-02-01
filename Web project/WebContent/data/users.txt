@@ -55,6 +55,34 @@
     "idRestaurant" : 2,
     "suspecious" : false
   },
+  "grfdgsd" : {
+    "deleted" : false,
+    "blocked" : false,
+    "username" : "grfdgsd",
+    "password" : "grfdgsd",
+    "name" : "grf",
+    "surname" : "dgsd",
+    "gender" : "MALE",
+    "birthday" : 1643846400000,
+    "role" : "MANAGER",
+    "address" : {
+      "street" : "dgs",
+      "number" : 4,
+      "city" : "fefsr",
+      "zipCode" : 4,
+      "latitude" : 0.0,
+      "longitude" : 0.0
+    },
+    "orderIds" : [ ],
+    "chartId" : -1,
+    "points" : -1.0,
+    "typeCustomer" : {
+      "type" : "NONE",
+      "sale" : 0.0
+    },
+    "idRestaurant" : 8,
+    "suspecious" : false
+  },
   "AcaPeric" : {
     "deleted" : false,
     "blocked" : false,
