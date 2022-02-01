@@ -5,10 +5,11 @@ Vue.component("menadzer-requirement", {
         }
     },
 template: `
-<div class="container" style=" margin-top: 20px; margin-left: 40px; margin-right: 10px;">
+<div class="containerInfo">
+<div class="container" style=" margin-top: 20px; margin-left: 7%; margin-right: 10px;">
   
     
-        <h3 style=" margin-left: 30px;"> <small> Trenutno stanje svih Vasih porudzbina: </small> <hr></h3>
+        <h3 style=" margin-left: 6%;"> <small> Trenutno stanje svih Vasih porudzbina: </small> <hr></h3>
         <table class="table table-hover" >
             <thead >
             <tr>
@@ -30,7 +31,7 @@ template: `
             </tbody>
         </table>
  
-  
+  </div>
 </div>
 `,
 methods:{

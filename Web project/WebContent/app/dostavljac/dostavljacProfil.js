@@ -5,10 +5,10 @@ Vue.component("profil-dostavljac", {
         }
     },
 template: `
-
+<div class="containerInfo"> 
  <div class="row content">
-                    <div class="col-sm-3 sidenav">
-                        <h3><small>Vase informacije na profilu:</small> <hr> </h3>
+                    <div class="col-sm-3 sidenav " style="margin-left: 10%">
+                        <h3 style="width: 200px;"><small>Vase informacije na profilu:</small> <hr> </h3>
                         <img src="../pictures/korisnik.png">
                     </div> 
                     <div class="col-sm-9">
@@ -16,7 +16,7 @@ template: `
                                 
                                 <table style="margin-top: 120px;">
                                     <tr style="height: 25px;">
-                                        <td> Ime: </td>
+                                        <td style="width:11em;"> Ime: </td>
                                         <td> {{dostavljac.name}}</td>
                                         </tr>
                                     <tr style="height: 25px;"> 
@@ -37,7 +37,7 @@ template: `
                                     
                                     <tr style="height: 25px;"> 
                                     <td> Adresa:</td>
-                                    <td> {{dostavljac.address.street}} {{dostavljac.address.number}}, grad {{dostavljac.address.city}}  {{dostavljac.address.zipCode}} </td>
+                                    <td> {{dostavljac.address.street}} {{dostavljac.address.number}}, {{dostavljac.address.city}}  {{dostavljac.address.zipCode}} </td>
                                     </tr>
                                 <tr style="height: 25px;">  </tr> 
                                 </table>
@@ -45,7 +45,7 @@ template: `
                             </div>
                     </div>
  </div>
-
+</div>
 `,
 methods:{
     editProfile: function() {

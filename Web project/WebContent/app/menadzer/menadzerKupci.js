@@ -7,15 +7,12 @@ Vue.component("menadzer-users", {
   template: `
   <div class="containerInfo">
    
-   
-  
-   <p><i>Ovo su korisnici koji porucuju iz Vaseg restorana:</i></p> 
-  
   
     <!--tabela-->
-    <div id="users">
-      <table class="table table-hover">
-          <thead>
+    <div id="users" style="margin-left:6%">
+      <table class="table table-hover" style="width: 70%">
+          <thead> 
+           <h3 style="margin-top: 1em !important; margin-bottom: 1.2em;" ><small>Ovo su korisnici koji porucuju iz Vaseg restorana:</small></h3> 
             <tr>
               <th scope="col">Ime</th>
               <th scope="col">Prezime</th>

@@ -183,29 +183,29 @@
   },
   "14" : {
     "id" : 14,
-    "articalIds" : [ 4, 6 ],
+    "articalIds" : [ 1, 3 ],
     "retaurantId" : 2,
     "date" : 1643559394799,
     "price" : 1067.0,
     "idCustomer" : "kupac",
-    "status" : "OTKAZANA",
+    "status" : "CEKA_DOSTAVLJACA",
     "deleted" : false,
-    "idDeliverer" : "",
+    "idDeliverer" : "x",
     "restaurantType" : "ITALIJANSKI",
-    "potencialDeliverer" : ""
+    "potencialDeliverer" : "x"
   },
   "15" : {
     "id" : 15,
-    "articalIds" : [ 4 ],
+    "articalIds" : [ 1 ],
     "retaurantId" : 2,
     "date" : 1643559564681,
     "price" : 727.5,
     "idCustomer" : "kupac",
-    "status" : "OTKAZANA",
+    "status" : "CEKA_DOSTAVLJACA",
     "deleted" : false,
-    "idDeliverer" : "",
+    "idDeliverer" : "x",
     "restaurantType" : "ITALIJANSKI",
-    "potencialDeliverer" : ""
+    "potencialDeliverer" : "x"
   },
   "16" : {
     "id" : 16,
@@ -214,11 +214,11 @@
     "date" : 1643559868443,
     "price" : 349.2,
     "idCustomer" : "kupac",
-    "status" : "OTKAZANA",
+    "status" : "U_TRANSPORTU",
     "deleted" : false,
-    "idDeliverer" : "",
+    "idDeliverer" : "ZikaZivic",
     "restaurantType" : "ITALIJANSKI",
-    "potencialDeliverer" : ""
+    "potencialDeliverer" : "ZikaZivic"
   },
   "17" : {
     "id" : 17,
@@ -333,8 +333,8 @@
     "idCustomer" : "marko",
     "status" : "OTKAZANA",
     "deleted" : false,
-    "idDeliverer" : "",
+    "idDeliverer" : "ZikaZivic",
     "restaurantType" : "ITALIJANSKI",
-    "potencialDeliverer" : ""
+    "potencialDeliverer" : "ZikaZivic"
   }
 }

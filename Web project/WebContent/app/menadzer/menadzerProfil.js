@@ -7,9 +7,9 @@ Vue.component("profil-menadzer", {
 template: `
 <section> 
             
-            <div class="row content">
-                    <div class="col-sm-3 sidenav" >
-                        <h3><small>Vase informacije na profilu:</small> <hr> </h3>
+            <div class="row content" >
+                    <div class="col-sm-3 sidenav" style="margin-left: 8%">
+                        <h3 style="width: 300px;"><small>Vase informacije na profilu:</small> <hr> </h3>
                         <img class= "img-responsive"src="../pictures/korisnik.png">
                     </div> 
                     <div class="col-sm-9">
@@ -17,7 +17,7 @@ template: `
                                 
                                 <table style="margin-top: 120px;">
                                 <tr>
-                                    <td> Ime: </td>
+                                    <td style=" width: 150px;" > Ime: </td>
                                     <td> {{menadzer.name}}</td>
                                     </tr>
                                 <tr> 

@@ -19,6 +19,7 @@ import com.fasterxml.jackson.databind.type.TypeFactory;
 
 import beans.Address;
 import beans.Artical;
+import beans.ArticalChart;
 import beans.Restaurant;
 import dto.ArticalChangeDTO;
 import dto.ArticalDTO;
@@ -160,6 +161,15 @@ public class ArticalDAO {
 		this.articals.put(id, new Artical(id, artical.name, artical.price, artical.type, artical.idRestaurant,artical.quantity, artical.description, generateLink(artical.link),false, 0));
 		this.saveArticals();
 		return artical;
+	}
+	
+	//dodato za brisanje 
+	public void deleteArticalById(int id) {
+		Artical artical = getByID(id);
+		if(artical != null) {
+			artical.setDeleted(true);
+			this.saveArticals();
+		}
 	}
 
 	private String generateLink(String link) {

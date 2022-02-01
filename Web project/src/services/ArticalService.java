@@ -113,4 +113,14 @@ public class ArticalService {
 		ArticalDAO articalDAO = getArticalDAO();
 		articalDAO.changeArtical(artical);
 	}
+	
+	
+	@POST
+	@Path("/deleteArtical")
+	public  void delete(String articalId) {
+		ArticalDAO articalDAO = getArticalDAO();
+		articalDAO.deleteArticalById(Integer.parseInt(articalId));
+	}
+	
+	
 }

@@ -190,7 +190,9 @@ public class OrderService {
 		
 		for(Order order : orders) {
 			if(!order.getDeleted() && order.getRetaurantId() == user.getIdRestaurant()) {
+				System.out.println("u metodi sam za nabavljanje porudzbina");
 			ret.add(new OrderDTO(order.getId(), findOrderArticals(order.getArticalIds()), findNameRestaurant(order.getRetaurantId()), order.getDate(), order.getPrice(), order.getIdCustomer(), order.getStatus(), order.getDeleted(),order.getPotencialDeliverer(), order.getIdDeliverer(), order.getRestaurantType()));
+			System.out.println("uzela sam order " + order.getRetaurantId());
 			}
 		}
 		return ret;
@@ -564,8 +566,9 @@ public class OrderService {
 		Collection<Order> orders = ordersDAO.getValues();		
 		
 		for(Order order : orders) {
+			
 			if(!order.getDeleted()  && order.getStatus().equals(OrderStatus.CEKA_DOSTAVLJACA)) {
-			ret.add(new OrderDTO(order.getId(), findOrderArticals(order.getArticalIds()),findNameRestaurant(order.getRetaurantId()), order.getDate(), order.getPrice(), order.getIdCustomer(), order.getStatus(), order.getDeleted(),order.getPotencialDeliverer(), order.getIdDeliverer(), order.getRestaurantType()));
+				ret.add(new OrderDTO(order.getId(), findOrderArticals(order.getArticalIds()),findNameRestaurant(order.getRetaurantId()), order.getDate(), order.getPrice(), order.getIdCustomer(), order.getStatus(), order.getDeleted(),order.getPotencialDeliverer(), order.getIdDeliverer(), order.getRestaurantType()));
 			}
 		}
 		return ret;
