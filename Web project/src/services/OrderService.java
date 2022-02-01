@@ -196,6 +196,21 @@ public class OrderService {
 		return ret ;
 	}
 	
+	//pretraga poridzbina za kupca
+	@POST
+	@Path("/searchOrderForUser")
+	@Consumes(MediaType.APPLICATION_JSON)
+	@Produces(MediaType.APPLICATION_JSON)
+	public Collection<OrderDTO> searchOdersForUser(OrderSearchDTO order) {
+		OrderDAO dao = new OrderDAO();
+		 ArrayList<OrderDTO> ret = new ArrayList<OrderDTO>();
+		 User user = (User)request.getSession().getAttribute("loginUser");	
+		/* for(OrderDTO o :  dao.searchOrderForUser(order, user, this.getAll()) ) {
+			 ret.add(new OrderDTO(o.getId(), findOrderArticals(o.getArticalIds()), findNameRestaurant(o.getRetaurantId()), o.getDate(), o.getPrice(), o.getIdCustomer(), o.getStatus(), o.getDeleted(),o.getPotencialDeliverer(), o.getIdDeliverer(), o.getRestaurantType()));
+		 } */
+		return dao.searchOrderForUser(order, user, this.getAll()) ;
+	}
+	
 	
 	@GET
 	@Path("/getOrdersForRestaurant")

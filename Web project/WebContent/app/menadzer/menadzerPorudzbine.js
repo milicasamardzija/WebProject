@@ -161,6 +161,7 @@ methods:{
     },
     search: function(){
     	axios.post("/WebShopREST/rest/order/searchOrderForManager", {
+    		"restaurantName": '' + this.searchParameters.restaurantName,
             "priceFrom":''+ this.searchParameters.priceFrom, 
             "priceTo":''+ this.searchParameters.priceTo, 
             "dateFrom":''+ this.searchParameters.dateFrom, 

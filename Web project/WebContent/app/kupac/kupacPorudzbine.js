@@ -9,6 +9,7 @@ Vue.component("porudbine-kupac", {
         check: false,
         comment: {},
         komentar: false,
+        searchParameters: {}
         }
     },
 template: `
@@ -18,16 +19,16 @@ template: `
 <div >
 <table  style=" margin:25px 25px; font-size:1.1 em;"> 
 <tr>
-    <td > <input type="text" placeholder="naziv restorana" style="height:32px;" class="form-control search-slt"> </td>
+    <td > <input type="text" placeholder="naziv restorana" style="height:32px;" v-model="searchParameters.restaurantName" class="form-control search-slt"> </td>
     <td style="padding: 12px;"><p  style="width: 90px;margin-top: 5px; "> Cena od: </p> </td> 
-    <td style="padding: 12px;"> <input type="text" placeholder="pocetni iznos" style="height:32px;" class="form-control search-slt"></td> 
+    <td style="padding: 12px;"> <input type="text" placeholder="pocetni iznos" v-model="searchParameters.priceFrom" style="height:32px;" class="form-control search-slt"></td> 
     <td style="padding: 12px;"> do: </td> 
-    <td style="padding: 12px;"> <input type="text" placeholder="krajnji iznos" style="height:32px;" class="form-control search-slt"></td> 
+    <td style="padding: 12px;"> <input type="text" placeholder="krajnji iznos" style="height:32px;" v-model="searchParameters.priceTo" class="form-control search-slt"></td> 
     <td style="padding: 12px;"><p style="width: 90px; margin-top: 5px;"> Datum od: </p></td>
-    <td style="padding: 12px;"> <input type="date" style="height:32px;" ></td> 
+    <td style="padding: 12px;"> <input type="date" style="height:32px;" v-model="searchParameters.dateFrom" ></td> 
     <td style="padding: 12px;"> do: </td> 
-    <td style="padding: 12px;"> <input type="date" style="height:32px;"></td> 
-    <td> <button class="btn btn-danger" type="button" >Nadji</button> </td>
+    <td style="padding: 12px;"> <input type="date" style="height:32px;" v-model="searchParameters.dateTo"></td> 
+    <td> <button class="btn btn-danger" type="button" v-on:click="search" >Nadji</button> </td>
 
 </tr>
 
@@ -201,6 +202,20 @@ methods:{
             console.log(error)
         })
     }, 
+    
+    search: function(){
+     axios.post("/WebShopREST/rest/order/searchOrderForUser", {
+     "restaurantName" : this.searchParameters.restaurantName, 
+     "priceFrom":  this.searchParameters.priceFrom, 
+       "priceTo":  this.searchParameters.priceTo,
+         "dateFrom":  this.searchParameters.dateFrom,
+       "dateTo":  this.searchParameters.dateTo
+     }).then( response=> {
+     	this.orders= response.data;
+     });
+    
+    
+    },
     changeStatus() {
         axios.post("/WebShopREST/rest/order/changeStatusCancel", this.selected.id)
         .then(response => {
@@ -242,7 +257,7 @@ methods:{
           return 0;
         }
 
-        return this.restaurants.sort(compare);
+        return this.orders.sort(compare);
     }, 
     sortNameDesc: function() {
         function compare(a, b) {
@@ -253,7 +268,7 @@ methods:{
           return 0;
         }
         
-        return this.restaurants.sort(compare);
+        return this.orders.sort(compare);
     },
     
     sortPriceDesc: function() {
@@ -265,7 +280,7 @@ methods:{
           return 0;
         }
         
-        return this.restaurants.sort(compare);
+        return this.orders.sort(compare);
     },
     sortPriceAsc: function() {
         function compare(a, b) {
@@ -276,7 +291,7 @@ methods:{
           return 0;
         }
 
-        return this.restaurants.sort(compare);
+        return this.orders.sort(compare);
     },
     
     sortDateDesc: function() {
@@ -288,7 +303,7 @@ methods:{
           return 0;
         }
         
-        return this.restaurants.sort(compare);
+        return this.orders.sort(compare);
     },
     sortDateAsc: function() {
         function compare(a, b) {
@@ -299,7 +314,7 @@ methods:{
           return 0;
         }
 
-        return this.restaurants.sort(compare);
+        return this.orders.sort(compare);
     },
     reset:function() {
         

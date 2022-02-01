@@ -129,6 +129,7 @@ public class OrderDAO {
 	
 	
 	public Collection<Order> getValues(){
+		loadOrders();
 		return this.orders.values();
 	}
 
@@ -201,6 +202,23 @@ public class OrderDAO {
 		return ret;
 	}
 	
+	
+	public ArrayList<OrderDTO> searchOrderForUser(OrderSearchDTO search, User user, Collection<OrderDTO> ordersDto){
+		ArrayList<OrderDTO> ret = new ArrayList<OrderDTO>();
+	System.out.println("*************************************************************");
+		for(OrderDTO order : ordersDto) {
+			//String ime= findNameRestaurant(order.getRetaurantId());
+			//System.out.println(" IME RESTORANA " + ime);
+			if( order.getIdCustomer().equals(user.getUsername()) && order.restaurantName.toLowerCase().contains(search.restaurantName.toLowerCase()) ) {
+				if(order.getPrice() >= search.priceFrom && order.getPrice() <= search.priceTo && (order.getDate().compareTo(search.dateFrom) > 0) && (search.dateTo.compareTo(order.getDate()) > 0)) {
+					ret.add(order);
+				}
+				
+			}
+		}
+		
+		return ret;
+	}
 	//zatrazi dostavu
 	public Collection<Order> askForDeliver(String idDeliver, int idOrder) {
 		Order order=getByIdOrder(idOrder); //nasla sam je ;
@@ -233,6 +251,8 @@ public class OrderDAO {
 	
 	private String findNameRestaurant(int id) {
 		RestaurantDAO restaurantsDAO = getRestaurantsDAO();
+		System.out.println( restaurantsDAO.getByID(id));
+		System.out.println(restaurantsDAO.getByID(id).getName());
 		return restaurantsDAO.getByID(id).getName();
 	}
 	
