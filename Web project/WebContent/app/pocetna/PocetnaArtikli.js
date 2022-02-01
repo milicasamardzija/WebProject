@@ -24,7 +24,7 @@ template: `
                 <h4 class="text" style="color: black;">Status: {{restaurant.status}}</h4>
                 <h4 class="text" style="color: black;">Prosecna ocena: {{restaurant.grade}}</h4>
                 <button type="button" class="btn btn-success" v-on:click="showComments"> Pogledaj komentare </button>
-                <button type="button" class="btn btn-success" v-on:click="back"> Vrati se </button>
+                <button type="button" class="btn btn-secondary" v-on:click="back"> Vrati se </button>
             </div>
         </div>
        
