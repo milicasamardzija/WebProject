@@ -52,7 +52,8 @@ template: `
 		
 		
 		            <div class=" tab-pane container active">
-			                <div class="row-restaurants" v-for="restaurant in restaurants" v-on:click="getSelected(restaurant)" >
+		            
+			                <div class="row-restaurants" v-for="restaurant in restaurants" v-if="restaurant.status == 'OTVOREN'"  v-on:click="getSelected(restaurant)" >
 			                    <div class = "col-with-picture">
 			                        <div class="col-picture">
 			                            <div><img v-bind:src="'../pictures/'+restaurant.link" style="height:250px !important;border-radius: 4px; width:300px !important" v-on:click="goToRestaurant(restaurant.id)"></div>
@@ -63,6 +64,30 @@ template: `
 			                        <h4 style="width: 600px;" class="text">Tip:  {{restaurant.type}}</h4>
 			                        <h4 style="width: 600px;" class="text">Lokacija:  {{restaurant.address.street}} {{restaurant.address.number}}, {{restaurant.address.city}}</h4>
 			                        <h4 style="width: 600px;" class="text">Prosecna ocena: {{restaurant.grade}}</h4>
+			                        <h4 style="width: 600px;" class="text">Prosecna ocena: {{restaurant.status}}</h4>
+			                    </div>
+			                    <div class="buttons">
+			                        <div class="buttons btn-group-vertical">
+			                            <button style="width:100px; margin-top:10px;" type="button" class="btn btn-secondary" v-on:click="goToRestaurant(restaurant.id)">Porucivanje</button>
+			                        </div>
+			                    </div>
+			                </div>
+			                
+			                
+			                 <hr/>
+			                 
+			                    <div class="row-restaurants" v-for="restaurant in restaurants" v-if="restaurant.status == 'ZATVOREN'"  v-on:click="getSelected(restaurant)" >
+			                    <div class = "col-with-picture">
+			                        <div class="col-picture">
+			                            <div><img v-bind:src="'../pictures/'+restaurant.link" style="height:250px !important;border-radius: 4px; width:300px !important" v-on:click="goToRestaurant(restaurant.id)"></div>
+			                        </div>
+			                    </div>
+			                    <div class="col-info">
+			                        <h4 style="width: 600px;" class="text">Naziv:  {{restaurant.name}}</h4>
+			                        <h4 style="width: 600px;" class="text">Tip:  {{restaurant.type}}</h4>
+			                        <h4 style="width: 600px;" class="text">Lokacija:  {{restaurant.address.street}} {{restaurant.address.number}}, {{restaurant.address.city}}</h4>
+			                        <h4 style="width: 600px;" class="text">Prosecna ocena: {{restaurant.grade}}</h4>
+			                        <h4 style="width: 600px;" class="text">Prosecna ocena: {{restaurant.status}}</h4>
 			                    </div>
 			                    <div class="buttons">
 			                        <div class="buttons btn-group-vertical">
@@ -71,6 +96,9 @@ template: `
 			                    </div>
 			                </div>
 		             </div>
+		             
+		             
+		             
 </div>   
 `,
 methods:{
