@@ -1,5 +1,32 @@
 {
- 
+  "kupac" : {
+    "deleted" : false,
+    "blocked" : false,
+    "username" : "kupac",
+    "password" : "kupac",
+    "name" : "Tihomir",
+    "surname" : "Sijan",
+    "gender" : "MUSKI",
+    "birthday" : 925257600000,
+    "role" : "CUSTOMER",
+    "address" : {
+      "street" : "Jug Bogdana",
+      "number" : 15,
+      "city" : "Novi Sad",
+      "zipCode" : 21000,
+      "latitude" : 0.0,
+      "longitude" : 0.0
+    },
+    "orderIds" : [ ],
+    "chartId" : -1,
+    "points" : 932.0,
+    "typeCustomer" : {
+      "type" : "BRONZE",
+      "sale" : 3.0
+    },
+    "idRestaurant" : 0,
+    "suspecious" : true
+  },
   "MasaMasic" : {
     "deleted" : false,
     "blocked" : false,
@@ -189,34 +216,6 @@
     "orderIds" : [ ],
     "chartId" : -1,
     "points" : 252.0,
-    "typeCustomer" : {
-      "type" : "BRONZE",
-      "sale" : 3.0
-    },
-    "idRestaurant" : 0,
-    "suspecious" : false
-  },
-  "kupac" : {
-    "deleted" : false,
-    "blocked" : false,
-    "username" : "kupac",
-    "password" : "kupac",
-    "name" : "Tihomir",
-    "surname" : "Sijan",
-    "gender" : "MUSKI",
-    "birthday" : 925257600000,
-    "role" : "CUSTOMER",
-    "address" : {
-      "street" : "Jug Bogdana",
-      "number" : 15,
-      "city" : "Novi Sad",
-      "zipCode" : 21000,
-      "latitude" : 0.0,
-      "longitude" : 0.0
-    },
-    "orderIds" : [ ],
-    "chartId" : -1,
-    "points" : -8414.0,
     "typeCustomer" : {
       "type" : "BRONZE",
       "sale" : 3.0
