@@ -79,7 +79,7 @@ Vue.component("administrator-addManager", {
         "zipCode":''+ this.newUser.zipCode})
         .then(
           response => {
-            this.manager = this.newUser.name + " " + this.newUser.surname;
+            this.manager = this.newUser.name + this.newUser.surname;
             this.$router.push({path: `/dodajRestoranSaMenadzerom`, query:{ id: this.manager}})
           } 
         )

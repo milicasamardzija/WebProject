@@ -6,5 +6,6 @@ public enum RestaurantType {
 	PIZZA,
 	ROSTILJ,
 	RIBLJI,
-	VEGE
+	VEGE,
+	PRETRAGA
 }

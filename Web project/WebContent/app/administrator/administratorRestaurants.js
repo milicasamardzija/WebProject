@@ -3,7 +3,7 @@ Vue.component("administrator-restaurants", {
         return{
             restaurants:[], 
             selected:null,
-            search: {name:"", location:"", type:"", grade:""}
+            search: {name:"", location:"", type:6, grade:""}
         }
     },
 template: `

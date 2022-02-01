@@ -10,7 +10,6 @@ Vue.component("administrator-pocetna", {
 template: `
     
 <div class="containerInfo" >
-   
         <div class="row-restaurants">
             <div class = "col-with-picture">
                 <div class="col-picture">

@@ -3,8 +3,7 @@ Vue.component("restaurants", {
         return{
             restaurants:[], 
             selected:null,
-            search: {name:"", location:"", type:"", grade:""},
-     
+            search: {name:"", location:"", type:6, grade:""},
             check: false
         }
     },
@@ -19,7 +18,7 @@ template: `
                                 
                                                     <select v-model="search.type" style="height: 35px; width: 120px; background-color:#6c757d; color:white;  border-radius: 4px; font-size: 14px;">Tip
                                                      
-                                                       <option value="">  Tip restorana</option>
+                                                    <option value=6>Tip restorana</option>
                                                     <option  v-bind:value="0" style=" margin-left: 5px;background-color:white; color: black">Italijanski</option>
                                                     <option  v-bind:value="1" style="margin-left: 5px; background-color:white; color: black">Kineski</option>
                                                     <option  v-bind:value="2" style="margin-left: 5px; background-color:white; color: black">Pica</option>
@@ -133,29 +132,30 @@ template: `
 
             </div>
             
-            <div id="restoraniPrikaz"> 
-            </div> 
+            <!--<div id="restoraniPrikaz"> 
+            </div> -->
     </div>
+    
 
+         
 `,
 methods:{
-        getSelected: function(restaurant){
-        this.selected= restaurant;
-        },
-        goToRestaurant : function (idRest) {
-            this.$router.push({path: `/restoran`, query:{ id:idRest}})
-        },
-        pretrazi: function(){
-            axios.post('/WebShopREST/rest/restaurant/searchRestaurants', this.search)
-            .then(response => {
-               this.restaurants = response.data
-            })
-            .catch(function(error){
-                console.log(error)
-            })
-        },
-
-        sortNameAsc: function() {
+      getSelected: function(restaurant){
+      this.selected= restaurant;
+      },
+      goToRestaurant : function (idRest) {
+          this.$router.push({path: `/restoran`, query:{ id:idRest}})
+      },
+      pretrazi: function(){
+          axios.post('/WebShopREST/rest/restaurant/searchRestaurants', this.search)
+          .then(response => {
+              this.restaurants = response.data
+          })
+          .catch(function(error){
+              console.log(error)
+          })
+      },
+      sortNameAsc: function() {
 			function compare(a, b) {
 			  if (a.name < b.name)
 			    return -1;
@@ -254,7 +254,7 @@ computed: {
       }
   
       return this.restaurants.sort(compare);
-    }
+    },
   },
 mounted(){
     axios.get("/WebShopREST/rest/restaurant/getAllRestaurants")

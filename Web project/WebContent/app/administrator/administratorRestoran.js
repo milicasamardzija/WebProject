@@ -20,7 +20,7 @@ template: `
             <div class="col-info">
                 <h4 class="text" style="color: black;">Naziv: {{restaurant.name}}</h4>
                 <h4 class="text"style="color: black;" >Tip: {{restaurant.type}}</h4>
-                <h4 class="text" style="color: black;">Lokacija: {{restaurant.address.street}} {{restaurant.address.number}}, {{restaurant.address.city}} {{restaurant.address.zipCode}}</h4>
+                <h4 class="text" style="color: black;">Lokacija: {{restaurant.address.street}} {{restaurant.address.number}}, {{restaurant.address.city}} {{restaurant.address.zipCode}} ({{restaurant.address.longitude}} , {{restaurant.address.latitude}})</h4>
                 <h4 class="text" style="color: black;">Status: {{restaurant.status}}</h4>
                 <h4 class="text" style="color: black;">Prosecna ocena: {{restaurant.grade}}</h4>
                 <button type="button" class="btn btn-success" v-on:click="showComments"> Pogledaj komentare </button>

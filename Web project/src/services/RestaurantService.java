@@ -20,6 +20,7 @@ import dao.UsersDAO;
 import dto.RestaurantChangeDTO;
 import dto.RestaurantNewDTO;
 import dto.RestaurantSearchMixDTO;
+import enums.RestaurantType;
 
 
 @Path("/restaurant")
@@ -64,8 +65,8 @@ public class RestaurantService {
 	@Path("/addRestaurant")
 	@Consumes(MediaType.APPLICATION_JSON)
 	public void addRestaurant(RestaurantNewDTO restaurant) {
-		String managerId[] = restaurant.getManagerId().split(" ");
-		restaurant.setManagerId(managerId[0] + managerId[1]);
+		//String managerId[] = restaurant.getManagerId().split(" ");
+		restaurant.setManagerId(restaurant.managerId);
 		RestaurantDAO restaurantDAO = getRestaurantsDAO();
 		Restaurant newRestaurant = restaurantDAO.addRestaurant(restaurant);
 		addRestaurantToManager(newRestaurant);
@@ -95,6 +96,9 @@ public class RestaurantService {
 	@Produces(MediaType.APPLICATION_JSON)
 	public Collection<Restaurant> searchUsers(RestaurantSearchMixDTO restaurant) {
 		RestaurantDAO restaurantDAO = getRestaurantsDAO();
+		if (restaurant.type.equals("")) {
+			restaurant.type = RestaurantType.PRETRAGA;
+		}
 		return restaurantDAO.searchMix(restaurant);
 	}
 	
