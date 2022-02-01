@@ -24,15 +24,16 @@ Vue.component("administrator-restaurantCommentsPocetna", {
                 </div>
         </div>
 
-        <h4 style="margin-left: 15px;  font-weight: bold; "> KOMENTARI:  </h4> 
+        <h4 style="margin-left: 8%;  font-weight: bold; "> KOMENTARI:  </h4> 
 
-        <div class="media" v-for="comment in comments">
+        <div class="media" v-for="comment in comments" style="margin-left: 8%; ">
+        
             <div class="media-left media-top">
-            <img src="pictures/korisnik.png" class="media-object" style="width:60px">
+            <img src="pictures/korisnik.png" class="media-object" style="width:90px; height: 90px; margin-right: 1.2em;">
             </div>
             <div class="media-body">
                 <h4 class="media-heading">{{comment.restaurantName}}</h4>
-                <p style="font-weight: 300; font-style: italic;">{{comment.username}}</p>
+                <p style="font-weight: 300; font-style: italic; font-weight: bold;">{{comment.username}}</p>
                 <p>{{comment.text}}</p>
                 <span v-for="g in comment.grade">
                 <span class="fa fa-star checked"></span>

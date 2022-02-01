@@ -45,7 +45,9 @@ template: `
                                     <p class="title">{{artical.type}}</p>
                                     <p>Cena: {{artical.price}} din</p>
                                     <p>Gramaza: {{artical.quantity}}g</p>
-                                    <p>Opis: {{artical.description}}</p>
+                                     <div style=" word-wrap: break-word; width: 250px; margin-left: 0em ">
+                                    Opis: {{artical.description}}
+                                    </div>
                                 </div>
                                 <div>
                                 <td><p style="margin-left: 1em">Unesite kolicinu: </p> </td>

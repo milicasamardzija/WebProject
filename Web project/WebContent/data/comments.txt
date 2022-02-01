@@ -5,7 +5,7 @@
     "restaurantId" : 2,
     "text" : "Bilo je lose",
     "grade" : 2.0,
-    "approved" : false
+    "approved" : true
   },
   "1" : {
     "id" : 1,
@@ -41,7 +41,7 @@
   },
   "5" : {
     "id" : 5,
-    "customerId" : "kupac",
+    "customerId" : "marko",
     "restaurantId" : 0,
     "text" : "lose jako",
     "grade" : 3.0,
@@ -67,14 +67,14 @@
     "id" : 8,
     "customerId" : "kupac",
     "restaurantId" : 0,
-    "text" : "ree",
+    "text" : "Jako dobra saradnja sa ovim restoranom! Uvek sam bio zadovoljan",
     "grade" : 5.0,
-    "approved" : false
+    "approved" : true
   },
   "9" : {
     "id" : 9,
-    "customerId" : "kupac",
-    "restaurantId" : 0,
+    "customerId" : "marko",
+    "restaurantId" : 2,
     "text" : "sss",
     "grade" : 3.0,
     "approved" : false
