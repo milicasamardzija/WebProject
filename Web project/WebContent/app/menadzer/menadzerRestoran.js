@@ -43,8 +43,9 @@ template: `
                                     <p class="title" style="margin-left: 1.8em">{{artical.type}}</p>
                                     <p style="margin-left: 1.8em">Cena: {{artical.price}} din</p>
                                     <p style="margin-left: 1.8em">Gramaza: {{artical.quantity}}g</p>
-                                    <p style="margin-left: 1.8em">Opis: {{artical.description}}</p>
-
+                                    <div style=" word-wrap: break-word; width: 200px; margin-left: 1.8em ">
+                                    Opis: {{artical.description}}
+ 										</div>
                                     <table style=" margin-left: 2px;width:300px">
                                     <tr>
                                       <td> <button style="width:70px;  margin-left: 1.6em; margin-bottom: 1em" class="button" v-on:click="izmeni(artical.id)" >Izmeni</button></td>

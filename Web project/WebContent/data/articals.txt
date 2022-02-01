@@ -106,5 +106,29 @@
     "link" : "6_0.png",
     "deleted" : false,
     "number" : 0
+  },
+  "9" : {
+    "id" : 9,
+    "name" : "Limunada",
+    "price" : 150,
+    "type" : "PICE",
+    "idRestaurant" : 2,
+    "quantity" : 150.0,
+    "description" : "Cedjeni limun, voda, prilog secer",
+    "link" : "limunada.jpg",
+    "deleted" : false,
+    "number" : 0
+  },
+  "10" : {
+    "id" : 10,
+    "name" : "Hamburger",
+    "price" : 250,
+    "type" : "JELO",
+    "idRestaurant" : 2,
+    "quantity" : 180.0,
+    "description" : "Svinjsko mleveno meso, pavlaka, zelena salata, kackavalj",
+    "link" : "hamburger.jpg",
+    "deleted" : false,
+    "number" : 0
   }
 }

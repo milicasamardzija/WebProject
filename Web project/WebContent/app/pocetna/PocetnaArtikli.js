@@ -24,11 +24,11 @@ template: `
                 <h4 class="text" style="color: black;">Status: {{restaurant.status}}</h4>
                 <h4 class="text" style="color: black;">Prosecna ocena: {{restaurant.grade}}</h4>
                 <button type="button" class="btn btn-success" v-on:click="showComments"> Pogledaj komentare </button>
-                <button type="button" class="btn btn-success" v-on:click="back"> Vrati se </button>
+                <button type="button" class="btn btn-secondary" v-on:click="back"> Vrati se </button>
             </div>
         </div>
        
-    <h4 style="margin-left: 15px;  font-weight: bold; "> ARTIKLI:  </h4> 
+    <h4 style="margin-left: 5%;  font-weight: bold; "> ARTIKLI:  </h4> 
 
     
     <div id="artikli" class="tab-pane fade in active">
@@ -44,7 +44,9 @@ template: `
                                     <p class="title">{{artical.type}}</p>
                                     <p>Cena: {{artical.price}} din</p>
                                     <p>Gramaza: {{artical.quantity}}g</p>
-                                    <p>Opis: {{artical.description}}</p>
+                                     <div style=" word-wrap: break-word; width: 280px; margin-left: 0em ">
+                                   Opis: {{artical.description}}
+                                    </div>
                                 </div>
                             </div>
                         </div>

@@ -9,8 +9,8 @@ Vue.component("izmeniProfil-administrator", {
 template: 
 `
  <div class="row content">
-                <div class="col-sm-3 sidenav">
-                    <h3><small>Vase informacije na profilu:</small> <hr> </h3>
+                <div class="col-sm-3 sidenav" style="margin-left: 8%;">
+                    <h3  style="width: 200px;"><small>Vase informacije na profilu:</small> <hr> </h3>
                     <img class= "img-responsive"src="../pictures/korisnik.png">
                 </div> 
                 <div class="col-sm-9">
@@ -49,9 +49,10 @@ template:
                                         <tr> 
                                             <td> Adresa:</td>
                                             <td> <input class="form-control" type="text" placeholder="ulica"  v-model="user.address.street" v-bind:value="street" > </td>
-                                            <td> <input class="form-control" type="text" placeholder="broj" style="width:70px"  v-model="user.address.number" v-bind:value="number" ></td>
-                                            <td> <input class="form-control" type="text" placeholder="grad" style="width:120px"  v-model="user.address.city" v-bind:value="city"></td>
-                                            <td> <input class="form-control" type="text" placeholder="postanski broj" style="width:115px"  v-model="user.address.zipCode" v-bind:value="zipCode"></td>
+                                          <td> <input class="form-control" type="text" placeholder="broj" style="width:70px !important;"  v-model="user.address.number" v-bind:value="number" ></td>
+                                          </tr> 
+                                         <tr>  <td> </td> <td> <input class="form-control" type="text" placeholder="grad" style="width:120px"  v-model="user.address.city" v-bind:value="city"></td>
+                                            <td> <input class="form-control" type="text" placeholder="posta" style="width:70px !important;"  v-model="user.address.zipCode" v-bind:value="zipCode"></td>
                                         </tr>
                                      
                                         <tr> 
@@ -80,7 +81,7 @@ template:
                                         <tr style="height:10px;"> </tr>
                                              <tr>  <td><button type="button" class="btn btn-success" v-on:click="changeProfile">Sacuvaj izmene</button> </td>
                                              <td style="width:15px"> </td>       
-                                             <td>  <button type="button" class="btn btn-success" v-on:click="otkazi">Otkazi</button></td>
+                                             <td>  <button type="button" class="btn btn-secondary" v-on:click="otkazi">Otkazi</button></td>
                                              </tr>
                                         </table>
                                

@@ -3,13 +3,13 @@
   "MasaMasic" : {
     "deleted" : false,
     "blocked" : false,
-    "username" : "pliz radi",
-    "password" : "pliz radi",
-    "name" : "Masa ",
-    "surname" : "MAsic",
-    "gender" : "FEMALE",
-    "birthday" : 1643673600000,
-    "role" : "MANAGER",
+    "username" : "kupac",
+    "password" : "kupac",
+    "name" : "Tihomir",
+    "surname" : "Sijan",
+    "gender" : "MUSKI",
+    "birthday" : 925257600000,
+    "role" : "CUSTOMER",
     "address" : {
       "street" : "Vojvodjanska",
       "number" : 3,
@@ -20,7 +20,7 @@
     },
     "orderIds" : [ ],
     "chartId" : -1,
-    "points" : 0.0,
+    "points" : 217.0,
     "typeCustomer" : {
       "type" : "NONE",
       "sale" : 0.0

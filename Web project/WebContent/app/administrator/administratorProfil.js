@@ -7,8 +7,8 @@ Vue.component("administrator-profile", {
 template: `
     <div class="containerInfo">
     <div class="row content">
-    <div class="col-sm-3 sidenav">
-        <h3><small>Vase informacije na profilu:</small> <hr> </h3>
+    <div class="col-sm-3 sidenav" style="margin-left: 8%;">
+        <h3 style="width: 200px;"><small>Vase informacije na profilu:</small> <hr> </h3>
         <img class= "img-responsive"src="../pictures/korisnik.png">
     </div> 
     <div class="col-sm-9">
