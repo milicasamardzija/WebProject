@@ -117,7 +117,7 @@ public class UserService {
 		}
 		
 		if (userForLogin.getBlocked()) {
-			return Response.status(Response.Status.BAD_REQUEST).entity("Blokirani ste!").build();
+			return Response.status(Response.Status.BAD_REQUEST).entity("Zbog precestog otkazivanja porudzbina ste blokirani!").build();
 		}
 		
 		request.getSession().setAttribute("loginUser", userForLogin); //kacimo sesiju za korisnika
