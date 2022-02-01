@@ -19,6 +19,7 @@ import com.fasterxml.jackson.databind.type.TypeFactory;
 import beans.Restaurant;
 import beans.SuspiciousUsers;
 import beans.User;
+import dto.UserSearchDTO;
 
 public class SuspiciousUsersDAO {
 	
@@ -157,4 +158,7 @@ public class SuspiciousUsersDAO {
 			this.users.put(id, suspiciousUser);
 			saveUsers();
 		}
+		
+	
+		
 }

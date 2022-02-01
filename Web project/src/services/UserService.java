@@ -208,6 +208,16 @@ public class UserService {
 		return users.searchUsers(user);
 	}
 	
+	//pretraga korisnika koji su sumljivi
+	@POST
+	@Path("/searchUsersSuspicious")
+	@Consumes(MediaType.APPLICATION_JSON)
+	@Produces(MediaType.APPLICATION_JSON)
+	public Collection<User> searchUsersSuspicious(UserSearchDTO user) {
+		UsersDAO users = getUsers();
+		return users.searchUserSuspicious(user);
+	}
+	
 	//filtriranje korisnika
 	@POST
 	@Path("/filterUsers")

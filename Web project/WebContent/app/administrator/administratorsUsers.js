@@ -24,7 +24,7 @@ template: `
                     <td style="width: 70px;"> </td>
                     <td > <input  type="text" placeholder="Korisnicko ime" v-model="searchParameters.username" style="margin-left: 60px; height: 40px; width: 200px;  " class="form-control search-slt"> </td>  
                     <td style="width: 70px;"> </td>
-                    <td> <button style=" margin-left: 70%;" class="btn btn-danger" type="button" v-on:click= "" >Pronadji</button> </td>  
+                    <td> <button style=" margin-left: 70%;" class="btn btn-danger" type="button" v-on:click="show()" >Pronadji</button> </td>  
                     <td style="width: 200px;"> </td> 
                   
                     </tr>
@@ -177,6 +177,21 @@ template: `
       this.$router.push({path: `/izmeniKorisnika`, query:{ username: this.selected}})
     },
    
+    show: function() {
+        this.allUsers = null
+        this.filter = false
+        axios.post("/WebShopREST/rest/user/searchUsers", {
+            "name":''+ this.searchParameters.name, 
+            "surname":''+ this.searchParameters.surname, 
+            "username":''+ this.searchParameters.username})
+        .then( response => {
+            this.filter = true
+            this.allUsers = response.data
+        })
+        .catch(function(error){
+            console.log(error)
+        })
+    },
     getSelected: function(user){
       this.selected = user;
     },

@@ -219,6 +219,17 @@ public class UsersDAO {
 		return ret;
 	}
 	
+	public Collection<User> searchUserSuspicious(UserSearchDTO searchParameters) {
+		ArrayList<User> ret = new ArrayList<User>();
+			for (User user : this.users.values()) {
+				if(user.getSuspecious() && user.getName().toLowerCase().contains(searchParameters.name.toLowerCase()) || user.getSurname().toLowerCase().contains(searchParameters.surname.toLowerCase()) || user.getUsername().toLowerCase().contains(searchParameters.username.toLowerCase())) {
+					ret.add(user);
+				}
+			}
+		return ret;
+	}
+	
+	
 	public  Collection<User> filterUsersByRole(String userRole) {
 		Role role=checkUserRole(userRole);
 		ArrayList<User> ret= new ArrayList<User>();
