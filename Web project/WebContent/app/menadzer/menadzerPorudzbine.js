@@ -5,16 +5,18 @@ Vue.component("porudbine-menadzer", {
         }
     },
 template: `
-<div class="container" style=" margin-top: 20px; margin-left: 40px; margin-right: 10px;">
+<div class="containerInfo">
+<div class="container" style=" margin-left:7%; margin-right: 10px;">
   
-    <div>
+    <div  style="  margin-left:5%;">
         <table  style=" margin:25px 25px; font-size:1.1 em;"> 
         <tr>
-            <td style="padding: 12px;"> Cena od: </td> 
-            <td style="padding: 12px;"> <input type="text" placeholder="pocetni iznos" style="height:32px;"></td> 
+            <td style=" width: 115px;"> <p style=" width: 70px; margin-top: 7px; margin-left: -4px"> Cena od: </p></td> 
+           
+            <td style="padding: 12px;"> <input type="text" placeholder="Pocetni iznos" style="height:32px;"></td> 
             <td style="padding: 12px;"> do: </td> 
-            <td style="padding: 12px;"> <input type="text" placeholder="krajnji iznos" style="height:32px;"></td> 
-            <td style="padding: 12px;"> Datum od: </td>
+            <td style="padding: 12px;"> <input type="text" placeholder="Krajnji iznos" style="height:32px;"></td> 
+            <td style="padding: 12px;"> <p style=" width: 80px; margin-top: 7px; margin-left: -4px"> datum od: </p> </td>
             <td style="padding: 12px;"> <input type="date" style="height:32px;"></td> 
             <td style="padding: 12px;"> do: </td> 
             <td style="padding: 12px;"> <input type="date" style="height:32px;"></td> 
@@ -63,8 +65,8 @@ template: `
 
    
     <div v-if= "orders != []" > 
-    <h3 style=" margin-left: 30px;"> <small> Trenutno stanje svih Vasih porudzbina: </small> <hr></h3>
-        <table class="table table-hover" >
+    <h3 style=" margin-left:3.5em;"> <small> Trenutno stanje svih porudzbina za  Vas restoran: </small> <hr></h3>
+        <table class="table table-hover"  style=" margin-left:5.2em;">
             <thead v-if= "orders != null">
             <tr>
                 <th scope="col">Datum kreiranja</th>
@@ -85,7 +87,7 @@ template: `
             </tbody>
         </table>
     </div>
-  
+  </div>
 </div>
 `,
 methods:{

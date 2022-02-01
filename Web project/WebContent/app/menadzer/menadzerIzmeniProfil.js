@@ -7,8 +7,8 @@ Vue.component("izmeniProfil-menadzer", {
     },
 template: `
 <div class="row content">
-                <div class="col-sm-3 sidenav">
-                    <h3><small>Vase informacije na profilu:</small> <hr> </h3>
+                <div class="col-sm-3 sidenav" style="margin-left: 8%">
+                    <h3 style="width: 230px;"><small>Vase informacije na profilu:</small> <hr> </h3>
                     <img class= "img-responsive"src="../pictures/korisnik.png">
                 </div> 
                 <div class="col-sm-9">
@@ -16,7 +16,7 @@ template: `
                             <form @submit='changeProfile'>
                                     <table>
                                         <tr>
-                                            <td> Ime: </td>
+                                            <td style="width: 150px;"> Ime: </td>
                                             <td> <input class="form-control" type="text" v-model="user.name" v-bind:value="name"/>{{name}} </td>
                                         </tr>
                                         <tr> 
@@ -47,20 +47,20 @@ template: `
                                         <tr> 
                                             <td> Adresa:</td>
                                             <td> <input class="form-control" type="text" placeholder="ulica"  v-model="user.address.street" v-bind:value="street" > </td>
-                                            <td> <input class="form-control" type="text" placeholder="broj" style="width:70px"  v-model="user.address.number" v-bind:value="number" ></td>
-                                            <td> <input class="form-control" type="text" placeholder="grad" style="width:120px"  v-model="user.address.city" v-bind:value="city"></td>
-                                            <td> <input class="form-control" type="text" placeholder="postanski broj" style="width:115px"  v-model="user.address.zipCode" v-bind:value="zipCode"></td>
+                                            <td> <input class="form-control" type="text" placeholder="broj" style="width:70px !important"  v-model="user.address.number" v-bind:value="number" ></td>
+                                           </tr> <tr> <td> </td>  <td> <input class="form-control" type="text" placeholder="grad"   v-model="user.address.city" v-bind:value="city"></td>
+                                            <td> <input class="form-control" type="text" placeholder="postanski broj" style="width:70px !important"  v-model="user.address.zipCode" v-bind:value="zipCode"></td>
                                         </tr>
                                      
                                         <tr> 
-                                           <button type="button" class="btn btn-danger" v-on:click="changePassword"> Promeni sifru </button>
+                                           <button type="button" class="btn btn-danger" v-on:click="changePassword" style="width: 130px;"> Promeni sifru </button>
                                         </tr>
-                                           
+                                          </table>  
                                         <div v-if="mode" stylep="top-margin:5px;">
                                         <form id="izmena">
                                         <table>
                                          <tr> 
-                                             <td> Stara sifra:  </td>
+                                             <td style="width: 150px;"> Stara sifra:  </td>
                                              <td> <input class="form-control" type="password"></td> 
                                          </tr> 
                                          <tr> 
@@ -68,16 +68,16 @@ template: `
                                              <td> <input class="form-control" type="password"></td> 
                                          </tr>
                                          <tr> 
-                                             <td> Ponovo unesite novu sifru:  </td>
+                                             <td> Ponovite novu sifru:  </td>
                                              <td> <input class="form-control" type="password"></td> 
                                          </tr>
-                                        </table>
+                                       
                                         </form>
                                         </div>
                                            
-                                             <tr>  <td><button type="button" class="btn btn-success" v-on:click="changeProfile">Sacuvaj izmene</button> </td>
+                                             <tr>  <td><button type="button" class="btn btn-success" style="margin-top: 1em; " v-on:click="changeProfile">Sacuvaj izmene</button> </td>
                                              <td style="width:15px"> </td>       
-                                             <td>  <button type="button" class="btn btn-success" v-on:click="otkazi">Otkazi</button></td>
+                                             <td>  <button type="button" class="btn btn-secondary" v-on:click="otkazi" style="margin-top: 1em;" >Otkazi</button></td>
                                              </tr>
                                     </table>
                                
