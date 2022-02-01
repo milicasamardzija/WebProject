@@ -14,7 +14,7 @@ template: `
            <td> 
             
             <div class="media-left media-top">
-            <img src="../pictures/korisnik.png" class="media-object" style="width:90px; height: 95px;">
+            <img src="../pictures/korisnik.png" class="media-object" style="width:100px; height: 95px; margin-right: 1.2em;">
             </div>
             <div class="media-body">
             <h4 class="media-heading">{{comment.restaurantName}}</h4>
