@@ -10,7 +10,7 @@ template: `
 <div class="containerInfo">
 
 	<!--pretraga-->
-	<div class="row" style="width:1400px !important; margin-left:30px;">
+	<div class="row" style="width:1400px !important; margin-left:7%;">
 		<div class="col-lg-12">
 					    <div class="row" style="width:1400px !important;">
                         <form>
