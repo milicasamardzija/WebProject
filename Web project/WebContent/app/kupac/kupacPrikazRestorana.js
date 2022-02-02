@@ -14,14 +14,14 @@ template: `
 		<div class="col-lg-12">
 					    <div class="row" style="width:1400px !important;">
 										        <div class="col-lg-2 col-md-3 col-sm-12 p-0 search">
-										            <input type="text" class="form-control search-slt" placeholder="Naziv restorana">
+										            <input type="text" class="form-control search-slt" placeholder="Naziv restorana" v-model="search.name">
 										        </div>
 										        <div class="col-lg-2 col-md-3 col-sm-12 p-0 search" >
-										            <input type="text" class="form-control search-slt" placeholder="Lokacija restorana">
+										            <input type="text" class="form-control search-slt" placeholder="Lokacija restorana" v-model="search.location">
 										        </div>
                                                 <div class="dropdown col-lg-2 col-md-3 col-sm-12 p-0 filt">
-                                                    <select  style="height: 35px; width: 150px; background-color:#6c757d; color:white;  border-radius: 4px;">Tip
-                                                     <option value="">Tip restorana</option>
+                                                    <select v-model="search.type" style="height: 35px; width: 150px; background-color:#6c757d; color:white;  border-radius: 4px;">Tip
+                                                     <option value=6>Tip restorana</option>
                                                     <option  v-bind:value="0" style=" background-color:white; color: black">Italijanski</option>
                                                     <option  v-bind:value="1" style=" background-color:white; color: black">Kineski</option>
                                                     <option  v-bind:value="2" style=" background-color:white; color: black">Pica</option>
@@ -32,7 +32,7 @@ template: `
                                                    
                                                 </div>
                                                 <div class="dropdown col-lg-2 col-md-3 col-sm-12 p-0 filt">
-                                                    <select  style="height: 35px; width: 150px; background-color:#6c757d; color:white;  border-radius: 4px;"> Ocena
+                                                    <select v-model="search.grade" style="height: 35px; width: 150px; background-color:#6c757d; color:white;  border-radius: 4px;"> Ocena
                                                      <option value="">Ocena</option>
                                                     <option  v-bind:value="5" style=" background-color:white; color: black">5</option>
                                                     <option  v-bind:value="4" style=" background-color:white; color: black">4</option>
@@ -62,7 +62,7 @@ template: `
 			                    <div class="col-info">
 			                        <h4 style="width: 600px;" class="text">Naziv:  {{restaurant.name}}</h4>
 			                        <h4 style="width: 600px;" class="text">Tip:  {{restaurant.type}}</h4>
-			                        <h4 style="width: 600px;" class="text">Lokacija:  {{restaurant.address.street}} {{restaurant.address.number}}, {{restaurant.address.city}}</h4>
+			                        <h4 style="width: 600px;" class="text">Lokacija:  {{restaurant.address.street}} {{restaurant.address.number}}, {{restaurant.address.city}} ({{restaurant.address.latitude}} , {{restaurant.address.longitude}})</h4>
 			                        <h4 style="width: 600px;" class="text">Prosecna ocena: {{restaurant.grade}}</h4>
 			                        <h4 style="width: 600px;" class="text">Prosecna ocena: {{restaurant.status}}</h4>
 			                    </div>
