@@ -130,5 +130,53 @@
     "link" : "hamburger.jpg",
     "deleted" : false,
     "number" : 0
+  },
+  "11" : {
+    "id" : 11,
+    "name" : "voda",
+    "price" : 90,
+    "type" : "PICE",
+    "idRestaurant" : 0,
+    "quantity" : 0.5,
+    "description" : "Mineralna voda",
+    "link" : "voda.jpg",
+    "deleted" : false,
+    "number" : 0
+  },
+  "12" : {
+    "id" : 12,
+    "name" : "limunada",
+    "price" : 43,
+    "type" : "PICE",
+    "idRestaurant" : 3,
+    "quantity" : 3.0,
+    "description" : "dasa",
+    "link" : "6_0.png",
+    "deleted" : false,
+    "number" : 0
+  },
+  "13" : {
+    "id" : 13,
+    "name" : "Limunada",
+    "price" : 150,
+    "type" : "PICE",
+    "idRestaurant" : 3,
+    "quantity" : 150.0,
+    "description" : "Cedjeni limun, voda, prilog secer",
+    "link" : "limunada.jpg",
+    "deleted" : false,
+    "number" : 0
+  },
+  "14" : {
+    "id" : 10,
+    "name" : "Hamburger",
+    "price" : 250,
+    "type" : "JELO",
+    "idRestaurant" : 0,
+    "quantity" : 180.0,
+    "description" : "Svinjsko mleveno meso, pavlaka, zelena salata, kackavalj",
+    "link" : "hamburger.jpg",
+    "deleted" : false,
+    "number" : 0
   }
 }

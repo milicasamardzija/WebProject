@@ -106,7 +106,7 @@ template: `
                         <div class="col-info">
                             <h4 style="width: 600px;" class="text">Naziv:  {{restaurant.name}}</h4>
                             <h4 style="width: 600px;" class="text">Tip:  {{restaurant.type}}</h4>
-                            <h4 style="width: 600px;" class="text">Lokacija:  {{restaurant.address.street}} {{restaurant.address.number}}, {{restaurant.address.city}}</h4>
+                            <h4 style="width: 600px;" class="text">Lokacija:  {{restaurant.address.street}} {{restaurant.address.number}}, {{restaurant.address.city}} ({{restaurant.address.latitude}} , {{restaurant.address.longitude}})</h4>
                             <h4 style="width: 600px;" class="text">Prosecna ocena: {{restaurant.grade}}</h4>
                             <h4 style="width: 600px;" class="text">Status restorana: {{restaurant.status}}</h4>
                         </div>
@@ -122,7 +122,7 @@ template: `
                         <div class="col-info">
                             <h4 style="width: 600px;" class="text">Naziv:  {{restaurant.name}}</h4>
                             <h4 style="width: 600px;" class="text">Tip:  {{restaurant.type}}</h4>
-                            <h4 style="width: 600px;" class="text">Lokacija:  {{restaurant.address.street}} {{restaurant.address.number}}, {{restaurant.address.city}}</h4>
+                            <h4 style="width: 600px;" class="text">Lokacija:  {{restaurant.address.street}} {{restaurant.address.number}}, {{restaurant.address.city}} ({{restaurant.address.latitude}} , {{restaurant.address.longitude}})</h4>
                             <h4 style="width: 600px;" class="text">Prosecna ocena: {{restaurant.grade}}</h4>
                             <h4 style="width: 600px;" class="text">Status restorana: {{restaurant.status}}</h4>
                         </div>
