@@ -99,6 +99,7 @@ methods:{
         axios.post("/WebShopREST/rest/order/changeStatusManager", id)
         .then(response => {
             this.orders = response.data
+            this.$router.go()
         })
         .catch(function(error){
             console.log(error)

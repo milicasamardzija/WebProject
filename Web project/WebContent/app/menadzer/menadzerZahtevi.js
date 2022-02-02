@@ -39,6 +39,7 @@ methods:{
         axios.post("/WebShopREST/rest/order/changeDeliverer", id)
         .then(response => {
             router.push(`/zahtevi`)
+            this.$router.go()
         })
         .catch(function(error){
             console.log(error)
