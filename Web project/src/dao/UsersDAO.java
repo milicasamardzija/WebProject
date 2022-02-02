@@ -30,6 +30,7 @@ import com.fasterxml.jackson.databind.type.TypeFactory;
 
 import beans.Address;
 import beans.Customer;
+import beans.Order;
 import beans.SuspiciousUsers;
 import beans.User;
 import dto.ArticalChartsDTO;
@@ -383,11 +384,9 @@ public class UsersDAO {
 		this.saveUsers();
 	}
 	
-	public void minusPoens(User userByUsername, ArrayList<ArticalChartsDTO> articalsChart) {
+	public void minusPoens(User userByUsername, Order order) {
 		double newPoents = 0;
-		double price = 0;
-		
-		price = getPrice(userByUsername, articalsChart); 
+		double price = order.getPrice();
 		
 		newPoents = (price / 1000) * 133 * 4;
 		

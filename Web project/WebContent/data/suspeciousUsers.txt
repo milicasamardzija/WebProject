@@ -65,11 +65,23 @@
     "orderId" : 34,
     "dateOfCancelation" : 1643409577490
   },
+  "54" : {
+    "id" : 54,
+    "userId" : "kupac",
+    "orderId" : 13,
+    "dateOfCancelation" : 1643740127427
+  },
   "11" : {
     "id" : 11,
     "userId" : "marko",
     "orderId" : 33,
     "dateOfCancelation" : 1643409580813
+  },
+  "55" : {
+    "id" : 55,
+    "userId" : "kupac",
+    "orderId" : 10,
+    "dateOfCancelation" : 1643761553819
   },
   "12" : {
     "id" : 12,
@@ -77,11 +89,23 @@
     "orderId" : 31,
     "dateOfCancelation" : 1643409584403
   },
+  "56" : {
+    "id" : 56,
+    "userId" : "kupac",
+    "orderId" : 9,
+    "dateOfCancelation" : 1643761611738
+  },
   "13" : {
     "id" : 13,
     "userId" : "kupac",
     "orderId" : 28,
     "dateOfCancelation" : 1643409681419
+  },
+  "57" : {
+    "id" : 57,
+    "userId" : "kupac",
+    "orderId" : 7,
+    "dateOfCancelation" : 1643761621982
   },
   "14" : {
     "id" : 14,
@@ -89,11 +113,23 @@
     "orderId" : 27,
     "dateOfCancelation" : 1643410796164
   },
+  "58" : {
+    "id" : 58,
+    "userId" : "kupac",
+    "orderId" : 7,
+    "dateOfCancelation" : 1643761622977
+  },
   "15" : {
     "id" : 15,
     "userId" : "marko",
     "orderId" : 37,
     "dateOfCancelation" : 1643411712662
+  },
+  "59" : {
+    "id" : 59,
+    "userId" : "kupac",
+    "orderId" : 8,
+    "dateOfCancelation" : 1643761668405
   },
   "16" : {
     "id" : 16,
@@ -161,12 +197,6 @@
     "orderId" : 29,
     "dateOfCancelation" : 1643409470445
   },
-  "54" : {
-    "id" : 54,
-    "userId" : "kupac",
-    "orderId" : 13,
-    "dateOfCancelation" : 1643740127427
-  },
   "7" : {
     "id" : 7,
     "userId" : "marko",
@@ -185,6 +215,24 @@
     "orderId" : 35,
     "dateOfCancelation" : 1643409574021
   },
+  "60" : {
+    "id" : 60,
+    "userId" : "kupac",
+    "orderId" : 6,
+    "dateOfCancelation" : 1643761877824
+  },
+  "61" : {
+    "id" : 61,
+    "userId" : "kupac",
+    "orderId" : 5,
+    "dateOfCancelation" : 1643761895806
+  },
+  "62" : {
+    "id" : 62,
+    "userId" : "kupac",
+    "orderId" : 26,
+    "dateOfCancelation" : 1643762008192
+  },
   "20" : {
     "id" : 20,
     "userId" : "kupac",
@@ -196,6 +244,12 @@
     "userId" : "kupac",
     "orderId" : 17,
     "dateOfCancelation" : 1643680585295
+  },
+  "63" : {
+    "id" : 63,
+    "userId" : "kupac",
+    "orderId" : 4,
+    "dateOfCancelation" : 1643762619396
   },
   "22" : {
     "id" : 22,

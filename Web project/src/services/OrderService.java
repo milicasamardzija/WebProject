@@ -113,7 +113,7 @@ public class OrderService {
 		Collection<Order> orders = ordersDAO.getValues();
 		UsersDAO userDao = this.getUsers();
 		
-		userDao.minusPoens(userDao.getUserByUsername(username), this.getArticalChartDAO().getArticalsForChart(userDao.getUserByUsername(username)));
+		userDao.minusPoens(userDao.getUserByUsername(username), ordersDAO.getByIdOrder(Integer.parseInt(idOrder)));
 		ordersDAO.cancelOrder(userDao.getUserByUsername(username), idOrder);
 		for(Order order : orders) {
 			if(!order.getDeleted() && order.getIdCustomer().equals(username) && order.getStatus() != OrderStatus.DOSTAVLJENA && order.getStatus() != OrderStatus.OTKAZANA ) {

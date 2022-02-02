@@ -69,7 +69,8 @@ methods:{
     cancel(id){
       axios.get("/WebShopREST/rest/order/cancelOrder/" + localStorage.getItem("userLogged") + "/" + this.selected.id)
       .then(
-        response => this.orders = response.data
+        response => {this.orders = response.data;
+        this.$router.go()}
       )
       .catch(function(error){
           console.log(error)

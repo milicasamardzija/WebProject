@@ -197,6 +197,7 @@ methods:{
         axios.post("/WebShopREST/rest/order/deleteOrder", this.selected.id )
         .then(response => {
             router.push(`/porudzbine`);
+            this.$router.go()
         })
         .catch(function(error){
             console.log(error)

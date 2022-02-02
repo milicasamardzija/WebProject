@@ -19,7 +19,7 @@
     },
     "orderIds" : [ ],
     "chartId" : -1,
-    "points" : 932.0,
+    "points" : 739.0,
     "typeCustomer" : {
       "type" : "BRONZE",
       "sale" : 3.0
